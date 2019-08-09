@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "title": "about",
+      "url": "/about"
+    },
+    {
+      "title": "publication",
+      "url": "/publication"
+    },
+    {
+      "title": "research",
+      "url": "/research"
+    },
+    {
+      "title": "posts",
+      "url": "/posts"
+    },
+    {
+      "title": "photo",
+      "url": "/photo"
+    }
+  ]
+}

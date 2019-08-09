@@ -1,0 +1,43 @@
+{% extends "layouts/base.njk" %}
+{% set pageType = "post" %}
+
+{% block head %}
+{# include prismjs theme css file #}
+<link rel="stylesheet" type="text/css" href="/_includes/css/prism-sulphurpool.css">
+{# include katex css file #}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+{# in-page custom style for katex and img #}
+<style type="text/css">
+.katex-block{overflow-x:scroll}img{margin:auto}
+</style>
+{% endblock %}
+{% block content %}
+<article class="post">
+  {% if image %}
+  <header>
+    <figure>
+      <img src="{{ image }}" alt="Header Image">
+    </figure>
+  </header>
+  {% endif %}
+  <header>
+    <h1 class="text-left">{{ title }}</h1>
+    <div class="table w-full">
+      <div class="table-row">
+        <div class="table-cell text-gray-600 uppercase">{{ page.date | formatDate }}</div>
+        <div class="table-cell text-right align-middle">
+          {%- for tag in tags %}
+            <span class="tag hover:bg-gray-500">
+              <a href="#">
+              #{{ tag }}
+              </a>
+            </span>
+          {% endfor -%}
+        </div>
+      </div>
+    </div>
+    </header>
+  <hr class="my-4">
+  {{ content | safe }}
+</article>
+{% endblock %}

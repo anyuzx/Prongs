@@ -1,0 +1,12 @@
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+<article class="post">
+{% if image %}
+<figure>
+  <img src="{{ image }}" alt="Photo">
+</figure>
+{% endif %}
+{{ content | safe }}
+</article>
+{% endblock %}

@@ -1,0 +1,18 @@
+<nav class="nav-fixed container flex flex-wrap items-center mx-auto w-11/12 md:w-6/12 sm:w-11/12 py-8 bg-white border-black border-b-4" id="head-navigation">
+  <div class="flex font-extrabold hover:bg-gray-400 p-1">
+    <a href="/">Guang Shi</a>
+  </div>
+  <div class="flex flex-grow justify-end font-hairline uppercase">
+    {% for nav in navigation.items -%}
+      {% if loop.last and page.url.startsWith(nav.url) %}
+        <a class="active-nav inline-block" href="{{ nav.url }}">{{ nav.title }}</a>
+      {% elif loop.last and not page.url.startsWith(nav.url) %}
+        <a class="unactive-nav inline-block" href="{{ nav.url }}">{{ nav.title }}</a>
+      {% elif not loop.last and page.url.startsWith(nav.url) %}
+        <a class="mr-3 active-nav inline-block" href="{{ nav.url }}">{{ nav.title }}</a>
+      {% elif not loop.last and not page.url.startsWith(nav.url) %}
+        <a class="mr-3 unactive-nav inline-block" href="{{ nav.url }}">{{ nav.title }}</a>
+      {% endif %}
+    {%- endfor %}
+  </div>
+</nav>

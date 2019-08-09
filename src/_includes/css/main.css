@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom class from here */
+/*
+ * Add some base styles
+ */
+
+/*
+ * under line for a tag
+ */
+.post a {
+  @apply text-black underline;
+}
+
+/*
+ * add border to code blocks
+ */
+.post pre {
+  @apply border;
+}
+
+/*
+ * add bullet to list
+ */
+.post ul {
+  @apply list-disc;
+}
+
+/*
+ * custom class tag
+ */
+.tag {
+  @apply border py-1 px-2 mx-1 bg-auto rounded-full border-dashed;
+}
+
+.tag a {
+  @apply no-underline;
+}
+
+/*
+ * custom class note
+ */
+.note {
+  @apply bg-orange-300 border border-solid border-black p-4 mb-4;
+}
+
+.note *:last-child {
+  @apply m-0;
+}
+
+.unactive-nav {
+  position: relative;
+}
+
+.unactive-nav::before, .unactive-nav::after {
+  content: '';
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  height: 2px;
+  background-color: #003371;
+  transform: scaleX(0);
+  transition: transform 0.5s ease;
+}
+
+.unactive-nav::before {
+  top: 0;
+  transform-origin: center right;
+}
+
+.unactive-nav:hover::before {
+  transform-origin: center left;
+  transform: scaleX(1);
+}
+
+.unactive-nav::after {
+  bottom: 0;
+  transform-origin: center left;
+}
+
+.unactive-nav:hover::after {
+  transform-origin: center right;
+  transform: scaleX(1);
+}
+
+.active-nav {
+  position: relative;
+}
+
+.active-nav::before, .active-nav::after {
+  content: '';
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  height: 2px;
+  background-color: #003371;
+  transform: scaleX(1);
+  transition: transform 0.5s ease;
+}
+
+.active-nav::before {
+  top: 0;
+  transform-origin: center right;
+}
+
+
+.active-nav::after {
+  bottom: 0;
+  transform-origin: center left;
+}
+
+.nav-fixed {
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  position: fixed;
+}

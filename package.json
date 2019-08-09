@@ -1,0 +1,31 @@
+{
+  "name": "ProngsTy",
+  "version": "0.0.1",
+  "description": "Personal site built with 11ty",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "rm -rf dist && npx @11ty/eleventy",
+    "dev": "npx tailwind build src/_includes/css/main.css -o src/_includes/css/output.css && rm -rf dist && npx @11ty/eleventy --serve",
+    "debug": "DEBUG=Eleventy* npx @11ty/eleventy --dryrun"
+  },
+  "keywords": [],
+  "author": "Guang Shi",
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.8.3",
+    "eslint": "^6.1.0"
+  },
+  "dependencies": {
+    "@11ty/eleventy-plugin-syntaxhighlight": "^2.0.3",
+    "@iktakahiro/markdown-it-katex": "^3.1.0",
+    "dayjs": "^1.8.15",
+    "markdown-it-container": "^2.0.0",
+    "markdown-it-footnote": "^3.0.2",
+    "markdown-it-implicit-figures": "^0.9.0",
+    "reading-time": "^1.2.0",
+    "tailwindcss": "^1.0.6",
+    "typography": "^0.16.19",
+    "typography-theme-bootstrap": "^0.16.19"
+  }
+}

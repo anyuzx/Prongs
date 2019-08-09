@@ -1,0 +1,35 @@
+{% extends "layouts/base.njk" %}
+{% set pageType = "posts" %}
+
+{% block head %}
+<style>
+#posts:hover .collapsed{max-height:300px !important}
+</style>
+{% endblock %}
+
+{% block content %}
+<ol class="ml-0">
+{%- for post in collections.posts -%}
+  <li class="mb-4 border border-transparent hover:border-black hover:shadow-md p-2" id="posts">
+    <div class="flex">
+      <div class="w-3/4 whitespace-no-wrap overflow-hidden" style="text-overflow:ellipsis">
+        <a href="{{ post.url }}" class="font-medium">
+          {{ post.data.title }}
+        </a>
+      </div>
+      <div class="w-1/4">
+        <p class="text-right text-gray-600">
+          {{ post.date | formatDate }}
+        </p>
+      </div>
+    </div>
+    <hr class="mb-2">
+    <div class="flex collapsed h-auto overflow-hidden" style="transition:max-height 0.5s ease-in-out;max-height:0;">
+      <p>
+        {{ post.data.excerpt }}...
+      </p>
+    </div>
+  </li>
+{%- endfor -%}
+</ol>
+{% endblock %}
