@@ -14,11 +14,11 @@ Pivot algorithm is best Monte Carlo algorithm known so far used for generating c
 
 **Basically the most simple version of this algorithm breaks into following steps**:
 
-1. Prepare an initial configuration of a $N$ steps walk on lattice (equivalent to a $N$ monomer chain)
-2. Randomly pick a site along the chain as _**pivot site**_
-3. Randomly pick a side (right to the _**pivot site**_ or left to it), the chain on this side is used for the next step.
-4. Randomly apply a rotate operation on the part of the chain we choose at the above step.
-5. After the rotation, check the overlap between the rotated part of the chain and the rest part of the chain. Accept the new configuration if there is no overlap and restart from 2th step. Reject the configuration and repeat from 2th step if there are overlaps.
+* Prepare an initial configuration of a $N$ steps walk on lattice (equivalent to a $N$ monomer chain)
+* Randomly pick a site along the chain as _**pivot site**_
+* Randomly pick a side (right to the _**pivot site**_ or left to it), the chain on this side is used for the next step.
+* Randomly apply a rotate operation on the part of the chain we choose at the above step.
+* After the rotation, check the overlap between the rotated part of the chain and the rest part of the chain. Accept the new configuration if there is no overlap and restart from 2th step. Reject the configuration and repeat from 2th step if there are overlaps.
 
 > **Note**: For random walks on a 3D cubic lattice, there are only 9 distinct rotation operations.
 
