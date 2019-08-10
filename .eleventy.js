@@ -1,6 +1,7 @@
 // require the modules
 const readingTime = require('reading-time');
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const pluginRss = require("@11ty/eleventy-plugin-rss");
 const markdownIt = require("markdown-it");
 const markdownItKatex = require('@iktakahiro/markdown-it-katex');
 const markdownItFootnote = require('markdown-it-footnote');
@@ -29,6 +30,7 @@ module.exports = function(config) {
 
   // add plugins
   config.addPlugin(syntaxHighlight);
+  config.addPlugin(pluginRss);
 
   // add passthrough copy
   config.addPassthroughCopy("src/_includes/css");
