@@ -245,6 +245,7 @@ Here we use the builtin variable `page.url` to access the url of the current pag
 - [ ] return to top button
 - [ ] add similar posts section for individual post page
 - [ ] directly embedding github gist
+- [ ] allow photo collection based on EXIF information
 
 ## References
 [^1] Design inspiration #1: https://macwright.org/
