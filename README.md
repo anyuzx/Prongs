@@ -226,6 +226,8 @@ Let's say we have a navigation bar whose items are `about` and `posts`. When the
 
 Here we use the builtin variable `page.url` to access the url of the current page and check wether it starts with the url of our navigation item. If the condition is evaluated to be true, then we add a `active-nav` class to the `<a>` tag, otherwise a class `unactive-nav` is added.
 
+### How to enable tags page?
+
 ## To-do
 - [x] Syntax highlight (options:[https://www.npmjs.com/package/@11ty/eleventy-plugin-syntaxhighlight](https://www.npmjs.com/package/@11ty/eleventy-plugin-syntaxhighlight))
 - [x] enable Katex
