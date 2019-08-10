@@ -15,6 +15,7 @@ module.exports = function(config) {
       ...collection.getFilteredByGlob('src/contents/posts/*.md')
     ].reverse();
   });
+  config.addCollection("tagList", require("./src/_includes/js/getTagList.js"));
 
   // add filter to count words for post
   config.addFilter("readingTime", function(s) {
@@ -45,6 +46,10 @@ module.exports = function(config) {
     .use(markdownItFootnote)
     .use(markdownImplicitFigure)
     .use(markdownItContainer, 'note'))
+
+  // Shortcodes
+  // shortcode for injecting typography css
+  config.addShortcode("injectTypography", require('./src/_includes/js/typography.js'));
 
   return {
     dir: {
