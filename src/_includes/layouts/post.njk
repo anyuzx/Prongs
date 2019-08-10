@@ -23,12 +23,12 @@
   <header>
     <h1 class="text-left">{{ title }}</h1>
     <div class="table w-full">
-      <div class="table-row">
+      <div class="table-row text-sm font-mono">
         <div class="table-cell text-gray-600 uppercase">{{ page.date | formatDate }}</div>
         <div class="table-cell text-right align-middle">
           {%- for tag in tags %}
             <span class="tag hover:bg-gray-500">
-              <a href="#">
+              <a href="/tags/{{ tag | slug }}">
               #{{ tag }}
               </a>
             </span>
