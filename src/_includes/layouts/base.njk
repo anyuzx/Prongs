@@ -14,8 +14,9 @@
     <meta name="theme-color" content="#ffffff">
     <title> {{ title }}</title>
     <style type="text/css">
-    {{ typography.typography.toString() | safe }}
+    {% injectTypography %}
     </style>
+
     {% block head %}
     {% endblock %}
   </head>
