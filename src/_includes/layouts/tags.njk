@@ -14,13 +14,13 @@
     {% set tagPath = "/tags/" + tag | slug + "/" %}
     {% if tag != 'posts' and tag != 'all' %}
       {% if page.url == tagPath %}
-        <span class="tag bg-gray-500 my-1">
+        <span class="post-tag bg-gray-500 my-1">
           <a href="/tags/{{ tag | slug }}">
           #{{ tag }}
           </a>
         </span>
       {% else %}
-        <span class="tag hover:bg-gray-500 my-1">
+        <span class="post-tag hover:bg-gray-500 my-1">
           <a href="/tags/{{ tag | slug }}">
           #{{ tag }}
           </a>

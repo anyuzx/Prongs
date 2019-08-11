@@ -7586,7 +7586,7 @@ video {
  * custom class tag
  */
 
-.tag {
+.post-tag {
   border-width: 1px;
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
@@ -7599,7 +7599,7 @@ video {
   border-style: dashed;
 }
 
-.tag a {
+.post-tag a {
   text-decoration: none;
 }
 

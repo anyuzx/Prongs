@@ -31,11 +31,11 @@
 /*
  * custom class tag
  */
-.tag {
+.post-tag {
   @apply border py-1 px-2 mx-1 bg-auto rounded-full border-dashed;
 }
 
-.tag a {
+.post-tag a {
   @apply no-underline;
 }
 

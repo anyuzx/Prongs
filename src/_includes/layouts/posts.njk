@@ -11,7 +11,7 @@
 <div class="flex flex-wrap mb-8 p-2 text-xs font-mono">
   {% for tag in collections.tagList %}
     {% if tag != 'posts' and tag != 'all' %}
-      <span class="tag hover:bg-gray-500 my-1">
+      <span class="post-tag hover:bg-gray-500 my-1">
         <a href="/tags/{{ tag | slug }}">
         #{{ tag }}
         </a>
