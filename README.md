@@ -228,6 +228,10 @@ Here we use the builtin variable `page.url` to access the url of the current pag
 
 ### How to enable tags page?
 
+Refer to this [page](https://www.11ty.io/docs/quicktips/tag-pages/) on how to create a tag page.
+
+
+
 ## To-do
 - [x] Syntax highlight (options:[https://www.npmjs.com/package/@11ty/eleventy-plugin-syntaxhighlight](https://www.npmjs.com/package/@11ty/eleventy-plugin-syntaxhighlight))
 - [x] enable Katex
