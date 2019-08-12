@@ -1,7 +1,10 @@
 module.exports = function(collection) {
-  // let tagSet = new Set();
+  // initialize a object to store all the tags
   let tagDic = {};
+  // initialize an array for the final output
   let tagArray = [];
+
+  // use eleventy provided collection API to get all the tags and loop through it
   collection.getAllSorted().forEach(function(item) {
     if( "tags" in item.data ) {
       let tags = item.data.tags;
@@ -20,8 +23,8 @@ module.exports = function(collection) {
         return true;
       });
 
+      // loop through each tag
       for (const tag of tags) {
-        // tagSet.add(tag);
         if (tag in tagDic) {
           tagDic[tag] += 1
         } else {
@@ -31,15 +34,18 @@ module.exports = function(collection) {
     }
   });
 
-  // returning an array in addCollection works in Eleventy 0.5.3
-  // return [...tagSet].sort();
+  // populate the array
+  // first column is the tag name
+  // second column is the number of posts with that tag
   for (var key in tagDic) {
     tagArray.push([key, tagDic[key]])
   };
 
+  // sort the array using the tag name (alphabetically)
   tagArray.sort(function(a, b) {
     return (a[0].toUpperCase() < b[0].toUpperCase()) ? -1 : 1;
   });
 
+  // returning an array in addCollection works in Eleventy 0.5.3
   return tagArray;
 };
