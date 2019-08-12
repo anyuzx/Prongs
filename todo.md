@@ -1,0 +1,1 @@
+- [ ] abstract tag style to a single class
