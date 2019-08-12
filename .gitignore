@@ -7,6 +7,9 @@
 # secrets and errors
 .env
 
+# tailwindcss output
+/src/_includes/css/output.css
+
 # eslint
 .eslintrc.js
 
