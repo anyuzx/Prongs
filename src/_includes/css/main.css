@@ -32,7 +32,7 @@
  * custom class tag
  */
 .post-tag {
-  @apply border py-1 px-2 mx-1 bg-auto rounded-full border-dashed;
+  @apply border py-1 px-2 mx-1 bg-auto rounded-sm border-solid;
 }
 
 .post-tag a {
