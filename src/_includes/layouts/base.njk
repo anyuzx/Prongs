@@ -13,7 +13,7 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <link rel="alternate" href="/feed.xml" title="Blog posts feed, by Guang Shi" type="application/atom+xml">
-    <title> {{ title }}</title>
+    <title>{%- if title -%}{{ title }} | {{ site.title }}{%- else -%}{{ site.title }}{%- endif -%}</title>
     <style type="text/css">
     {% injectTypography %}
     </style>

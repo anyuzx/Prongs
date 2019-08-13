@@ -1,6 +1,7 @@
 ---
 layout: layouts/default.njk
 permalink: /publication/index.html
+title: Publication
 ---
 
 ::: note

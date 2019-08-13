@@ -1,6 +1,7 @@
 ---
 layout: layouts/default.njk
 permalink: /about/index.html
+title: About
 image: /assets/images/photo.jpg
 ---
 
