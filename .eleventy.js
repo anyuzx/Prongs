@@ -16,6 +16,13 @@ module.exports = function(config) {
       ...collection.getFilteredByGlob('src/contents/posts/*.md')
     ].reverse();
   });
+  config.addCollection('postsLatest', function(collection) {
+    return [
+      ...collection.getFilteredByGlob('src/contents/posts/*.md')
+    ]
+    .reverse()
+    .slice(0, 3);
+  });
   config.addCollection("tagList", require("./src/_includes/js/getTagList.js"));
 
   // add filter to count words for post
