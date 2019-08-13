@@ -1,12 +1,11 @@
 ---
 permalink: feed.xml
 metadata:
-  title: '{{ site.title }} - blog posts'
-  subtitle: Guang Shi's personal website. Research, Posts and Photos
+  subtitle: "Guang Shi's personal website. Research, Posts and Photos"
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>{{ metadata.title }}</title>
+  <title>{{ site.title }} - blog posts</title>
   <subtitle>{{ metadata.subtitle }}</subtitle>
   <link href="{{ site.url }}/{{ permalink }}" rel="self"/>
   <link href="{{ site.url }}"/>
