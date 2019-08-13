@@ -1,0 +1,76 @@
+---
+researchProjects:
+  - title: 'Chromosome Copolymer Model'
+    img: '/assets/images/project-ccm-illustration.jpg'
+  - title: 'FISH-Hi-C Paradox'
+    img: '/assets/images/project-heterogeneity-illustration.jpg'
+  - title: '3D Reconstruction of Chromosomes'
+    img: '/assets/images/project-reconstruction-illustration.jpg'
+  - title: 'Multi-motor system'
+    img: '/assets/images/project-motor-illustration.jpg'
+---
+
+{% extends "layouts/base.njk" %}
+
+{% block head %}
+<style>
+#posts:hover .collapsed{max-height:300px !important}
+</style>
+{% endblock %}
+
+{% block content %}
+{# research section #}
+<section class="py-8 mb-8 border-b">
+  <h4><a href="#">Research Projects</a></h4>
+  <div class="flex">
+    {% for project in researchProjects -%}
+      {% if loop.last %}
+      <a href="#" class="group w-1/4 p-2 flex flex-col border rounded-sm mr-0 shadow">
+      {% else %}
+      <a href="#" class="group w-1/4 p-2 flex flex-col border rounded-sm mr-2 shadow">
+      {% endif %}
+        <div>
+          <div><p class="group-hover:underline leading-tight">{{ project.title }}</p></div>
+          <div class="flex flex-col justify-center flex-grow">
+            <figure class="w-full relative m-0" style="padding-top:100%">
+              <img class="absolute w-full h-full inset-0 m-0 object-contain" src="{{ project.img }}">
+            </figure>
+          </div>
+        </div>
+      </a>
+    {%- endfor %}
+  </div>
+</section>
+{# posts section #}
+<section>
+  <h4>Latest <a href="#" class="text-red-600">posts</a></h4>
+  <ol class="ml-0">
+  {% for post in collections.postsLatest %}
+    <li class="mb-4 border border-transparent hover:border-black hover:shadow-md p-2" id="posts">
+      <div class="flex">
+        <div class="w-3/4 whitespace-no-wrap overflow-hidden" style="text-overflow:ellipsis">
+          <a href="{{ post.url }}" class="font-medium">
+            {{ post.data.title }}
+          </a>
+        </div>
+        <div class="w-1/4">
+          <p class="text-right text-gray-600">
+            {{ post.date | formatDate }}
+          </p>
+        </div>
+      </div>
+      <hr class="mb-2">
+      <div class="flex collapsed h-auto overflow-hidden" style="transition:max-height 0.5s ease-in-out;max-height:0;">
+        <p>
+          {{ post.data.excerpt }}...
+        </p>
+      </div>
+    </li>
+  {% endfor %}
+  </ol>
+</section>
+{# instagram feed section #}
+<section>
+  <h1>New on Instagram</h1>
+</section>
+{% endblock %}
