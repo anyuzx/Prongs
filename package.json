@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx tailwind build src/_includes/css/main.css -o src/_includes/css/output.css && rm -rf dist && npx @11ty/eleventy",
-    "dev": "npx tailwind build src/_includes/css/main.css -o src/_includes/css/output.css && rm -rf dist && npx @11ty/eleventy --serve",
+    "start": "npx tailwind build src/_includes/css/main.css -c tailwind.config.js -o src/_includes/css/output.css && rm -rf dist && npx @11ty/eleventy",
+    "dev": "npx tailwind build src/_includes/css/main.css -c tailwind.config.js -o src/_includes/css/output.css && rm -rf dist && npx @11ty/eleventy --serve",
     "debug": "DEBUG=Eleventy* npx @11ty/eleventy --dryrun"
   },
   "keywords": [],
