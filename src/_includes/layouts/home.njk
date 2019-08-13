@@ -25,9 +25,9 @@ researchProjects:
   <div class="flex">
     {% for project in researchProjects -%}
       {% if loop.last %}
-      <a href="#" class="group w-1/4 p-2 flex flex-col border rounded-sm mr-0 shadow">
+      <a href="#" class="group w-1/4 p-2 flex flex-col border rounded-sm mr-0 shadow hover:border-black">
       {% else %}
-      <a href="#" class="group w-1/4 p-2 flex flex-col border rounded-sm mr-2 shadow">
+      <a href="#" class="group w-1/4 p-2 flex flex-col border rounded-sm mr-2 shadow hover:border-black">
       {% endif %}
         <div>
           <div><p class="group-hover:underline leading-tight">{{ project.title }}</p></div>
