@@ -42,6 +42,7 @@ module.exports = function(config) {
   // add passthrough copy
   config.addPassthroughCopy("src/_includes/css");
   config.addPassthroughCopy("src/assets");
+  config.addPassthroughCopy("src/site.webmanifest");
 
   // customize markdown-it
   let options = {
@@ -63,7 +64,7 @@ module.exports = function(config) {
   return {
     dir: {
       input: "src",
-      output: "dist"
+      output: ".tmp"
     }
   }
 }
