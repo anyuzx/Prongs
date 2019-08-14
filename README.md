@@ -237,11 +237,11 @@ Refer to this [page](https://www.11ty.io/docs/quicktips/tag-pages/) on how to cr
 - [x] enable Katex
 - [x] enable typography.js
 - [x] use tailwindcss
-- [ ] home page (newly updated content + latest news)
+- [x] home page (newly updated content + latest news)
 - [ ] reduce some variable to global variables for easier maintenance
 - [ ] Progressive image
-- [ ] css pipeline (css compile + purgecss)
-- [ ] js pipeline
+- [x] css pipeline (css compile + purgecss) (use Parcel.js)
+- [x] js pipeline (use Parcel.js)
 - [ ] image resize/optimization pipeline
 - [ ] Bundle optimization
 - [ ] add tags navigation for posts index page
@@ -250,7 +250,7 @@ Refer to this [page](https://www.11ty.io/docs/quicktips/tag-pages/) on how to cr
 - [ ] add similar posts section for individual post page
 - [ ] directly embedding github gist
 - [ ] allow photo collection based on EXIF information
-- [ ] RSS feed
+- [x] RSS feed (use 11ty plugin)
 
 ## References
 [^1] Design inspiration #1: https://macwright.org/
