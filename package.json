@@ -5,16 +5,21 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx tailwind build src/_includes/css/main.css -c tailwind.config.js -o src/_includes/css/output.css && rm -rf dist && npx @11ty/eleventy",
-    "dev": "npx tailwind build src/_includes/css/main.css -c tailwind.config.js -o src/_includes/css/output.css && rm -rf dist && npx @11ty/eleventy --serve",
-    "debug": "DEBUG=Eleventy* npx @11ty/eleventy --dryrun"
+    "11ty:clean": "rm -rf .tmp",
+    "11ty:build": "npm run 11ty:clean && npx @11ty/eleventy",
+    "11ty:debug": "DEBUG=Eleventy* npx @11ty/eleventy --dryrun",
+    "parcel:clean": "rm -rf dist",
+    "parcel:build": "npm run parcel:clean && parcel build '.tmp/**/*.html' --out-dir dist",
+    "build": "npm run 11ty:build && npm run parcel:build"
   },
   "keywords": [],
   "author": "Guang Shi",
   "license": "ISC",
   "devDependencies": {
     "@11ty/eleventy": "^0.8.3",
-    "eslint": "^6.1.0"
+    "@fullhuman/postcss-purgecss": "^1.2.0",
+    "eslint": "^6.1.0",
+    "parcel-bundler": "^1.12.3"
   },
   "dependencies": {
     "@11ty/eleventy-plugin-rss": "^1.0.6",
