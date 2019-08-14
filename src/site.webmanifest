@@ -1,14 +1,15 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "Guang Shi",
+    "short_name": "Guang Shi",
+    "description": "Guang Shi's personal site - Research, Posts and Photos",
     "icons": [
         {
-            "src": "/android-chrome-192x192.png",
+            "src": "./assets/favicon/android-chrome-192x192.png",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "/android-chrome-512x512.png",
+            "src": "./assets/favicon/android-chrome-512x512.png",
             "sizes": "512x512",
             "type": "image/png"
         }
