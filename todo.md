@@ -1,1 +1,2 @@
 - [ ] abstract tag style to a single class
+- [ ] fix the non-equal width for home page research project card on mobile
