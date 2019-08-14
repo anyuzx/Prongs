@@ -1,6 +1,6 @@
 module.exports = {
   "title": "Guang Shi",
-  "description": "Guang Shi's Personal site - Research, Posts and Photos",
+  "description": "Guang Shi's personal site. Learn about my research projects, read my blog posts and see my photos.",
   "url": "https://guang-shi.com",
   "author": "Guang Shi",
   "email": "guang.shi.gs@gmail.com",
