@@ -18,6 +18,11 @@ module.exports = function(config) {
       ...collection.getFilteredByGlob('src/contents/posts/*.md')
     ].reverse();
   });
+  config.addCollection('research', function(collection) {
+    return [
+      ...collection.getFilteredByGlob('src/contents/research/*.md')
+    ];
+  });
   config.addCollection('postsLatest', function(collection) {
     return [
       ...collection.getFilteredByGlob('src/contents/posts/*.md')
@@ -58,7 +63,7 @@ module.exports = function(config) {
     .use(markdownItKatex, {"throwOnError" : false, "errorColor" : " #cc0000"})
     .use(markdownItFootnote)
     .use(markdownImplicitFigure)
-    .use(markdownItContainer, 'note'))
+    .use(markdownItContainer, 'note'));
 
   // Shortcodes
   // shortcode for injecting typography css
@@ -67,7 +72,7 @@ module.exports = function(config) {
   // add transform
   // used to post-process
   config.addTransform("htmlmin", function(content, outputPath) {
-    if( outputPath.endsWith(".html") ) {
+    if(outputPath && outputPath.endsWith(".html") ) {
       let minified = htmlmin.minify(content, {
         useShortDoctype: true,
         removeComments: true,
