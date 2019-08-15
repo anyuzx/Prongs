@@ -64,7 +64,7 @@ module.exports = function(config) {
   return {
     dir: {
       input: "src",
-      output: ".tmp"
+      output: "dist"
     }
   }
 }
