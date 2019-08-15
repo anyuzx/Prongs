@@ -2,12 +2,16 @@
 researchProjects:
   - title: 'Chromosome Copolymer Model'
     img: '/assets/images/project-ccm-illustration.jpg'
+    url: '/research'
   - title: 'FISH-Hi-C Paradox'
     img: '/assets/images/project-heterogeneity-illustration.jpg'
+    url: '/research'
   - title: '3D Reconstruction of Chromosomes'
     img: '/assets/images/project-reconstruction-illustration.jpg'
+    url: '/research'
   - title: 'Multi-motor system'
     img: '/assets/images/project-motor-illustration.jpg'
+    url: '/research'
 ---
 
 {% extends "layouts/base.njk" %}
@@ -25,9 +29,9 @@ researchProjects:
   <div class="flex">
     {% for project in researchProjects -%}
       {% if loop.last %}
-      <a href="#" class="group w-1/4 p-2 flex flex-col border rounded-sm mr-0 shadow hover:border-black">
+      <a href="{{ project.url }}" class="group w-1/4 p-2 flex flex-col border rounded-sm mr-0 shadow hover:border-black">
       {% else %}
-      <a href="#" class="group w-1/4 p-2 flex flex-col border rounded-sm mr-2 shadow hover:border-black">
+      <a href="{{ project.url }}" class="group w-1/4 p-2 flex flex-col border rounded-sm mr-2 shadow hover:border-black">
       {% endif %}
         <div>
           <div><p class="group-hover:underline leading-tight">{{ project.title }}</p></div>
