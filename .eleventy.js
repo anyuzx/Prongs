@@ -8,6 +8,8 @@ const markdownItFootnote = require('markdown-it-footnote');
 const markdownImplicitFigure = require('markdown-it-implicit-figures');
 const markdownItContainer = require('markdown-it-container');
 const dayjs = require("dayjs");
+//const lazyImagesPlugin = require('eleventy-plugin-lazyimages');
+const htmlmin = require("html-minifier");
 
 module.exports = function(config) {
   // Filter source file names using a glob
@@ -38,6 +40,7 @@ module.exports = function(config) {
   // add plugins
   config.addPlugin(syntaxHighlight);
   config.addPlugin(pluginRss);
+  //config.addPlugin(lazyImagesPlugin);
 
   // add passthrough copy
   config.addPassthroughCopy("src/_includes/css");
@@ -60,6 +63,22 @@ module.exports = function(config) {
   // Shortcodes
   // shortcode for injecting typography css
   config.addShortcode("injectTypography", require('./src/_includes/js/typography.js'));
+
+  // add transform
+  // used to post-process
+  config.addTransform("htmlmin", function(content, outputPath) {
+    if( outputPath.endsWith(".html") ) {
+      let minified = htmlmin.minify(content, {
+        useShortDoctype: true,
+        removeComments: true,
+        collapseWhitespace: true,
+        minifyJS: true,
+        minifyCSS: true
+      });
+      return minified;
+    }
+    return content;
+  });
 
   return {
     dir: {
