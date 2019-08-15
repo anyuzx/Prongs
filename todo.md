@@ -1,2 +1,3 @@
 - [ ] abstract tag style to a single class
 - [ ] fix the non-equal width for home page research project card on mobile
+- [ ] allow disable katex in the front-matter (useful when the post does not contain mathematical expression)
