@@ -6,6 +6,7 @@ categories:
   - code
 tags:
   - javascript
+disableKatex: true
 ---
 
 This note is about an exercise of using `express.js` and `axios`. First, I create a simple express server, and secondly, I use axios to make http call to the server created.
