@@ -15,10 +15,6 @@
     {
       "title": "posts",
       "url": "/posts"
-    },
-    {
-      "title": "photo",
-      "url": "/photo"
     }
   ]
 }
