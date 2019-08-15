@@ -239,9 +239,10 @@ Refer to this [page](https://www.11ty.io/docs/quicktips/tag-pages/) on how to cr
 - [x] use tailwindcss
 - [x] home page (newly updated content + latest news)
 - [ ] reduce some variable to global variables for easier maintenance
-- [ ] Progressive image
-- [x] css pipeline (css compile + purgecss) (use Parcel.js)
-- [x] js pipeline (use Parcel.js)
+- [ ] Responsive image
+- [x] css pipeline (css compile + purgecss) (use postcss-cli)
+- [ ] js pipeline
+- [ ] HTML minimization
 - [ ] image resize/optimization pipeline
 - [ ] Bundle optimization
 - [ ] add tags navigation for posts index page
