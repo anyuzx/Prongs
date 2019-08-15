@@ -3,6 +3,7 @@ layout: layouts/default.njk
 permalink: /about/index.html
 title: About
 image: /assets/images/photo.jpg
+description: "A brief about myself page"
 ---
 
 Hi, I'm Guang Shi (时光). I am a postdoctoral researcher at XXX University. I work on developing physical models (both theoretical and computational) to study living system. 

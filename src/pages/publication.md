@@ -2,6 +2,7 @@
 layout: layouts/default.njk
 permalink: /publication/index.html
 title: Publication
+description: "A list of my academic publication"
 ---
 
 ::: note
