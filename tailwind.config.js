@@ -3,7 +3,8 @@ module.exports = {
     extend: {}
   },
   variants: {
-    textDecoration: ['responsive', 'hover', 'focus', 'active', 'group-hover']
+    textDecoration: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
+    justifyContent: ['responsive']
   },
   plugins: []
 }
