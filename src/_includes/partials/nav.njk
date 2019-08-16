@@ -2,16 +2,19 @@
   {% include "../svg/logo-reverse-solid.min.svg" %}
 {% endset %}
 
-<nav class="nav-fixed container flex flex-wrap items-center mx-auto w-11/12 lg:w-6/12 sm:w-11/12 py-8 bg-white border-black border-b-4" id="head-navigation">
+<nav class="nav-fixed container sm:flex items-center mx-auto w-11/12 lg:w-6/12 sm:w-11/12 py-4 bg-white border-black border-b-4" id="head-navigation">
   {#
   <a href="/" class="flex flex-grow sm:flex-grow-0 justify-center sm:justify-start font-extrabold text-lg pb-3 sm:pb-0 hover:bg-gray-400">
     Guang Shi
   </a>
   #}
-  <a href="/" class="w-6 h-6 mb-3 sm:mb-0">
+  <a href="/" class="flex items-center justify-center mb-3 sm:mb-0">
+    <span class="w-6 h-6">
     {{ logo | safe }}
+    </span>
+    <span class="font-extrabold ml-3">Guang Shi</span>
   </a>
-  <div class="flex flex-grow justify-center sm:justify-end uppercase mb-0 font-semibold text-gray-500">
+  <div class="flex flex-grow justify-center sm:justify-end font-medium text-gray-500">
     {% for nav in navigation.items -%}
       {% if loop.last and page.url.startsWith(nav.url) %}
         <a class="active-nav inline-block" href="{{ nav.url }}">{{ nav.title }}</a>

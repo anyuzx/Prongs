@@ -1,19 +1,19 @@
 {
   "items": [
     {
-      "title": "about",
+      "title": "About",
       "url": "/about"
     },
     {
-      "title": "publication",
+      "title": "Publication",
       "url": "/publication"
     },
     {
-      "title": "research",
+      "title": "Research",
       "url": "/research"
     },
     {
-      "title": "posts",
+      "title": "Posts",
       "url": "/posts"
     }
   ]
