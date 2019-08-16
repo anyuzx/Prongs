@@ -1,19 +1,3 @@
----
-researchProjects:
-  - title: 'Chromosome Copolymer Model'
-    img: '/assets/images/project-ccm-illustration.jpg'
-    url: '/research'
-  - title: 'FISH-Hi-C Paradox'
-    img: '/assets/images/project-heterogeneity-illustration.jpg'
-    url: '/research'
-  - title: '3D Reconstruction of Chromosomes'
-    img: '/assets/images/project-reconstruction-illustration.jpg'
-    url: '/research'
-  - title: 'Multi-motor system'
-    img: '/assets/images/project-motor-illustration.jpg'
-    url: '/research'
----
-
 {% extends "layouts/base.njk" %}
 
 {% block head %}
@@ -27,21 +11,23 @@ researchProjects:
 <section class="pb-8 mb-8 border-b">
   <h4><a href="#">Research Projects</a></h4>
   <div class="flex">
-    {% for project in researchProjects -%}
-      {% if loop.last %}
-      <a href="{{ project.url }}" class="group w-1/4 p-2 flex flex-col border rounded-sm mr-0 shadow hover:border-black">
-      {% else %}
-      <a href="{{ project.url }}" class="group w-1/4 p-2 flex flex-col border rounded-sm mr-2 shadow hover:border-black">
-      {% endif %}
-        <div>
-          <div><p class="group-hover:underline leading-tight">{{ project.title }}</p></div>
-          <div class="flex flex-col justify-center flex-grow">
-            <figure class="w-full relative m-0" style="padding-top:100%">
-              <img class="absolute w-full h-full inset-0 m-0 object-contain" src="{{ project.img }}">
-            </figure>
+    {% for project in collections.research | reverse %}
+      {% if project.fileSlug !== "summary" %}
+        {% if loop.last %}
+        <a href="/research#{{ project.data.title | slug }}" class="group w-1/4 p-2 flex flex-col border rounded-sm mr-0 shadow hover:border-black">
+        {% else %}
+        <a href="/research#{{ project.data.title | slug }}" class="group w-1/4 p-2 flex flex-col border rounded-sm mr-2 shadow hover:border-black">
+        {% endif %}
+          <div>
+            <div><p class="group-hover:underline leading-tight">{{ project.data.title }}</p></div>
+            <div class="flex flex-col justify-center flex-grow">
+              <figure class="w-full relative m-0" style="padding-top:100%">
+                <img class="absolute w-full h-full inset-0 m-0 object-contain" src="{{ project.data.image }}">
+              </figure>
+            </div>
           </div>
-        </div>
-      </a>
+        </a>
+      {% endif %}
     {%- endfor %}
   </div>
 </section>
