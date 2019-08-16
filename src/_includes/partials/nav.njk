@@ -1,8 +1,17 @@
+{% set logo %}
+  {% include "../svg/logo-reverse-solid.min.svg" %}
+{% endset %}
+
 <nav class="nav-fixed container flex flex-wrap items-center mx-auto w-11/12 lg:w-6/12 sm:w-11/12 py-8 bg-white border-black border-b-4" id="head-navigation">
+  {#
   <a href="/" class="flex flex-grow sm:flex-grow-0 justify-center sm:justify-start font-extrabold text-lg pb-3 sm:pb-0 hover:bg-gray-400">
     Guang Shi
   </a>
-  <div class="flex flex-grow justify-center sm:justify-end uppercase pb-3 sm:pb-0 font-semibold text-gray-500">
+  #}
+  <a href="/" class="w-6 h-6 mb-3 sm:mb-0">
+    {{ logo | safe }}
+  </a>
+  <div class="flex flex-grow justify-center sm:justify-end uppercase mb-0 font-semibold text-gray-500">
     {% for nav in navigation.items -%}
       {% if loop.last and page.url.startsWith(nav.url) %}
         <a class="active-nav inline-block" href="{{ nav.url }}">{{ nav.title }}</a>

@@ -15,7 +15,7 @@
       {% if project.fileSlug !== "summary" %}
         <a href="/research#{{ project.data.title | slug }}" class="group w-1/2 sm:w-1/4 p-2">
           <div class="border hover:border-black p-1 rounded-sm shadow h-full flex flex-col">
-            <div><p class="group-hover:underline leading-tight">{{ project.data.title }}</p></div>
+            <div><p class="group-hover:underline leading-tight text-gray-700 font-medium">{{ project.data.title }}</p></div>
             <div class="flex flex-col justify-center flex-grow">
               <figure class="w-full relative m-0" style="padding-top:100%">
                 <img class="absolute w-full h-full inset-0 m-0 object-contain" src="{{ project.data.image }}">
@@ -34,8 +34,8 @@
   {% for post in collections.postsLatest %}
     <li class="mb-4 border border-transparent hover:border-black hover:shadow-md p-2" id="posts">
       <div class="flex">
-        <div class="w-3/4 whitespace-no-wrap overflow-hidden text-gray-700" style="text-overflow:ellipsis">
-          <a href="{{ post.url }}" class="font-medium">
+        <div class="w-3/4 whitespace-no-wrap overflow-hidden text-gray-700 font-medium" style="text-overflow:ellipsis">
+          <a href="{{ post.url }}">
             {{ post.data.title }}
           </a>
         </div>
