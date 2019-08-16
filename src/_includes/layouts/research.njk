@@ -9,13 +9,13 @@ img{margin:auto}
 {% block content %}
 {%- for project in collections.research | reverse -%}
   {% if project.fileSlug === "summary" %}
-    <article class="border border-black bg-orange-200 p-2 mb-4">
+    <article class="border border-black p-2 mb-4 rounded-sm">
       <h1 class="text-center text-xl font-bold leading-tight">{{ project.data.title }}</h1>
       {{ project.templateContent | safe }}
     </article>
   {% else %}
     <article id="{{ project.data.title | slug }}">
-      <h2 class="text-xl font-bold leading-tight text-left">{{ project.data.title }}</h2>
+      <h2 class="text-xl font-bold leading-tight text-left -mt-32 sm:-mt-20 border-t-32 sm:border-t-20 border-solid border-transparent" style="-webkit-background-clip:padding-box;-moz-background-clip:padding;background-clip:padding-box;">{{ project.data.title }}</h2>
       {% if project.data.image %}
       <figure>
         <img src="{{ project.data.image }}" width="300" alt="illustration">
