@@ -9,7 +9,7 @@
 {% block content %}
 {# research section #}
 <section class="pb-8 mb-8 border-b">
-  <h4><a href="#">Research Projects</a></h4>
+  <h4 class="font-bold">Research Projects</h4>
   <div class="flex flex-wrap -mx-2">
     {% for project in collections.research | reverse %}
       {% if project.fileSlug !== "summary" %}
@@ -29,18 +29,18 @@
 </section>
 {# posts section #}
 <section>
-  <h4>Latest <a href="/posts" class="underline">posts</a></h4>
+  <h4 class="font-bold">Latest Posts</h4>
   <ol class="ml-0">
   {% for post in collections.postsLatest %}
     <li class="mb-4 border border-transparent hover:border-black hover:shadow-md p-2" id="posts">
       <div class="flex">
-        <div class="w-3/4 whitespace-no-wrap overflow-hidden" style="text-overflow:ellipsis">
+        <div class="w-3/4 whitespace-no-wrap overflow-hidden text-gray-700" style="text-overflow:ellipsis">
           <a href="{{ post.url }}" class="font-medium">
             {{ post.data.title }}
           </a>
         </div>
         <div class="w-1/4">
-          <p class="text-right text-gray-600">
+          <p class="text-right text-blue-500">
             {{ post.date | formatDate }}
           </p>
         </div>
