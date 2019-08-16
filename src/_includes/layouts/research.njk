@@ -15,7 +15,7 @@ img{margin:auto}
     </article>
   {% else %}
     <article id="{{ project.data.title | slug }}">
-      <h2 class="text-2xl font-medium text-left">{{ project.data.title }}</h2>
+      <h2 class="text-xl font-bold leading-tight text-left">{{ project.data.title }}</h2>
       {% if project.data.image %}
       <figure>
         <img src="{{ project.data.image }}" width="300" alt="illustration">
