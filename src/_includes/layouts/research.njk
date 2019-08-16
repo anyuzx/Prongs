@@ -1,0 +1,31 @@
+{% extends "layouts/base.njk" %}
+
+{% block head %}
+<style type="text/css">
+img{margin:auto}
+</style>
+{% endblock %}
+
+{% block content %}
+{%- for project in collections.research | reverse -%}
+  {% if project.fileSlug === "summary" %}
+    <article class="border border-black bg-orange-200 p-2 mb-4">
+      <h1 class="text-center text-3xl font-medium">{{ project.data.title }}</h1>
+      {{ project.templateContent | safe }}
+    </article>
+  {% else %}
+    <article id="{{ project.data.title }}" class="text-justify">
+      <h2 class="text-2xl font-medium">{{ project.data.title }}</h2>
+      {% if project.data.image %}
+      <figure>
+        <img src="{{ project.data.image }}" alt="illustration">
+      </figure>
+      {% endif %}
+      {{ project.templateContent | safe }}
+    </article>
+    {% if not loop.last %}
+      <hr>
+    {% endif %}
+  {% endif %}
+{% endfor %}
+{% endblock %}
