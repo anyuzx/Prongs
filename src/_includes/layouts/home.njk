@@ -14,7 +14,7 @@
     {% for project in collections.research | reverse %}
       {% if project.fileSlug !== "summary" %}
         <a href="/research#{{ project.data.title | slug }}" class="group w-1/2 sm:w-1/4 p-2">
-          <div class="border hover:border-black p-1 rounded-sm shadow h-full flex flex-col">
+          <div class="border hover:border-black p-2 rounded-sm shadow h-full flex flex-col">
             <div><p class="group-hover:underline leading-tight text-gray-700 font-medium">{{ project.data.title }}</p></div>
             <div class="flex flex-col justify-center flex-grow">
               <figure class="w-full relative m-0" style="padding-top:100%">
