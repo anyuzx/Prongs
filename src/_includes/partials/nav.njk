@@ -1,8 +1,8 @@
 <nav class="nav-fixed container flex flex-wrap items-center mx-auto w-11/12 md:w-6/12 sm:w-11/12 py-8 bg-white border-black border-b-4" id="head-navigation">
-  <div class="flex flex-grow justify-center sm:justify-start font-extrabold hover:bg-gray-400 p-1">
-    <a href="/">Guang Shi</a>
-  </div>
-  <div class="flex flex-grow justify-center sm:justify-end font-hairline uppercase">
+  <a href="/" class="flex flex-grow sm:flex-grow-0 justify-center sm:justify-start font-extrabold text-lg pb-3 sm:pb-0 hover:bg-gray-400">
+    Guang Shi
+  </a>
+  <div class="flex flex-grow justify-center sm:justify-end font-light uppercase">
     {% for nav in navigation.items -%}
       {% if loop.last and page.url.startsWith(nav.url) %}
         <a class="active-nav inline-block" href="{{ nav.url }}">{{ nav.title }}</a>
