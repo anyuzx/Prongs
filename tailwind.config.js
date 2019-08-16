@@ -9,7 +9,6 @@ module.exports = {
   },
   variants: {
     textDecoration: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
-    justifyContent: ['responsive'],
     borderWidth: ['responsive']
   },
   plugins: []
