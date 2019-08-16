@@ -1,6 +1,7 @@
 ---
 title: "Chromosome Organization and Dynamics"
 permalink: false
+date: 2019-08-15
 ---
 
 Nowadays, we know a great deal of the structure of DNA. However, as for the structure of chromosomes, there is still a lot more we don't know than what we do know. Due to the limitation of experimental techniques, it was very difficult to directly visualize the details of how these extremely long macromolecule organize inside the tight space of nucleus. Humans are inherently visual animals, if we cannot visualize something, we have little confident about our knowledge about it. 
