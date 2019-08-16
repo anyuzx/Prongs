@@ -26,7 +26,7 @@
     {% if not disableNavigation %}
       {% include "partials/nav.njk" %}
     {% endif %}
-    <main class="container mx-auto w-11/12 lg:w-6/12 sm:w-11/12 pt-32 sm:pt-20">
+    <main class="mx-auto px-6 pt-32 sm:pt-20" style="max-width:800px">
     {% block content %}
     {% endblock %}
     </main>
