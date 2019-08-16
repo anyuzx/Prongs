@@ -6,13 +6,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm -rf dist",
+    "11ty:debug": "DEBUG=Eleventy* npx @11ty/eleventy --dryrun",
     "build:css": "NODE_ENV=production postcss dist/_includes/css/*.css --dir dist/_includes/css/",
     "build:11ty": "npx @11ty/eleventy",
     "build": "run-s clean build:11ty build:css",
-    "start:css": "postcss dist/_includes/css/*.css --dir dist/_includes/css/ --watch",
+    "start:css": "postcss dist/_includes/css/*.css --dir dist/_includes/css/",
     "start:11ty": "npx @11ty/eleventy --quiet --serve",
     "prestart": "run-s clean build:11ty",
-    "start": "run-p start:11ty start:css"
+    "watch:css": "watch 'npm run start:css' ./src",
+    "start": "run-p start:11ty watch:css"
   },
   "keywords": [],
   "author": "Guang Shi",
@@ -20,10 +22,10 @@
   "devDependencies": {
     "@11ty/eleventy": "^0.8.3",
     "@fullhuman/postcss-purgecss": "^1.2.0",
-    "eleventy-plugin-lazyimages": "github:liamfiddler/eleventy-plugin-lazyimages",
     "eslint": "^6.1.0",
     "npm-run-all": "^4.1.5",
-    "postcss-cli": "^6.1.3"
+    "postcss-cli": "^6.1.3",
+    "watch": "^1.0.2"
   },
   "dependencies": {
     "@11ty/eleventy-plugin-rss": "^1.0.6",
