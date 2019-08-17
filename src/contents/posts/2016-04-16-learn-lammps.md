@@ -7,6 +7,7 @@ categories:
 tags:
   - LAMMPS
   - c++
+disableKatex: true
 ---
 
 

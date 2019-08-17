@@ -7,6 +7,7 @@ categories:
 tags:
   - python
   - jupyter
+disableKatex: true
 ---
 
 My research work involves a lot of using of IPython Notebook. I usually do it on an office MAC. However I also very often need to access it from home. After a brief searching, I found these three wonderful articles on this topic.

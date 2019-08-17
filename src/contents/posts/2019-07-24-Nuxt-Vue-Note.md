@@ -8,6 +8,7 @@ tags:
   - javascript
   - front-end
 image: /assets/images/R0000768.jpg
+disableKatex: true
 ---
 
 This note is about [Nuxt.js](https://nuxtjs.org), [Vue.js](https://vuejs.org/) and [Bulma](https://bulma.io/). This note is incrementally built along the process of building a personal website using these three tools/frameworks. The content of this note will be mainly about the tips and details I consider important or those I find not easy to googling answers for.
