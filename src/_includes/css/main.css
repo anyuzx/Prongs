@@ -11,7 +11,7 @@
  * under line for a tag
  */
 .post a {
-  @apply text-black underline;
+  @apply underline;
 }
 
 /*
@@ -43,7 +43,8 @@
  * custom class note
  */
 .note {
-  @apply bg-orange-300 border border-solid border-black p-4 mb-4;
+  @apply border border-solid border-black p-2 mb-4 rounded-sm;
+  background-color: lightgray;
 }
 
 .note *:last-child {
