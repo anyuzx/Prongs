@@ -245,7 +245,7 @@ Refer to this [page](https://www.11ty.io/docs/quicktips/tag-pages/) on how to cr
 - [x] css pipeline (css compile + purgecss) (use postcss-cli)
 - [ ] js pipeline
 - [x] HTML minimization
-- [ ] image resize/optimization pipeline
+- [ ] image resize/optimization pipeline (try Lepto.js?)
 - [ ] Bundle optimization
 - [ ] add tags navigation for posts index page
 - [ ] allow video used as header media for post
