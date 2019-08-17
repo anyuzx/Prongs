@@ -41,6 +41,9 @@ module.exports = function(config) {
   config.addFilter("formatDate", function(s) {
     return dayjs(s).format('MM/DD/YYYY');
   });
+  config.addFilter("accurateTime", function(s) {
+    return dayjs(s).format();
+  });
 
   // add plugins
   config.addPlugin(syntaxHighlight);
