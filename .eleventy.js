@@ -51,6 +51,7 @@ module.exports = function(config) {
   config.addPassthroughCopy("src/_includes/css");
   config.addPassthroughCopy("src/assets");
   config.addPassthroughCopy("src/site.webmanifest");
+  config.addPassthroughCopy("src/_redirects");
 
   // customize markdown-it
   let options = {
