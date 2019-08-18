@@ -11,6 +11,39 @@ const dayjs = require("dayjs");
 //const lazyImagesPlugin = require('eleventy-plugin-lazyimages');
 const htmlmin = require("html-minifier");
 
+// customize markdown-it
+let options = {
+  html: true,
+  typographer: true,
+  linkify: true
+};
+
+customMarkdownIt = markdownIt(options)
+  .use(markdownItKatex, {"throwOnError" : false, "errorColor" : " #cc0000"})
+  .use(markdownItFootnote)
+  .use(markdownImplicitFigure)
+  .use(markdownItContainer, 'note');
+
+// Remember old renderer, if overridden, or proxy to default renderer
+var defaultRender = customMarkdownIt.renderer.rules.link_open || function(tokens, idx, options, env, self) {
+  return self.renderToken(tokens, idx, options);
+};
+
+customMarkdownIt.renderer.rules.link_open = function (tokens, idx, options, env, self) {
+  // If you are sure other plugins can't add `target` - drop check below
+  var aIndex = tokens[idx].attrIndex('target');
+
+  if (aIndex < 0) {
+    tokens[idx].attrPush(['target', '_blank']); // add new attribute
+  } else {
+    tokens[idx].attrs[aIndex][1] = '_blank';    // replace value of existing attr
+  }
+
+  // pass token to default renderer.
+  return defaultRender(tokens, idx, options, env, self);
+};
+
+// config for eleventy starts from here
 module.exports = function(config) {
   // Filter source file names using a glob
   config.addCollection('posts', function(collection) {
@@ -56,18 +89,7 @@ module.exports = function(config) {
   config.addPassthroughCopy("src/site.webmanifest");
   config.addPassthroughCopy("src/_redirects");
 
-  // customize markdown-it
-  let options = {
-    html: true,
-    typographer: true,
-    linkify: true
-  };
-
-  config.setLibrary("md", markdownIt(options)
-    .use(markdownItKatex, {"throwOnError" : false, "errorColor" : " #cc0000"})
-    .use(markdownItFootnote)
-    .use(markdownImplicitFigure)
-    .use(markdownItContainer, 'note'));
+  config.setLibrary("md", customMarkdownIt);
 
   // Shortcodes
   // shortcode for injecting typography css
