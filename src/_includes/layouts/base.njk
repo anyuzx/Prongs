@@ -24,7 +24,7 @@
     <link rel="alternate" href="/feed.xml" title="Blog posts feed, by Guang Shi" type="application/atom+xml">
     <title>{%- if title -%}{{ title }} | {{ site.title }}{%- else -%}{{ site.title }}{%- endif -%}</title>
     <style type="text/css">
-    {% injectTypography %}
+    {% injectTypography %}figure{margin:auto}img{margin:auto}
     </style>
 
     {% block head %}
@@ -34,7 +34,7 @@
     {% if not disableNavigation %}
       {% include "partials/nav.njk" %}
     {% endif %}
-    <main class="mx-auto px-6 pt-32 sm:pt-20" style="max-width:800px">
+    <main class="mx-auto px-4 pt-32 sm:pt-20" style="max-width:800px">
     {% block content %}
     {% endblock %}
     </main>
