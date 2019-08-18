@@ -1,10 +1,14 @@
-<footer class="mx-auto px-6" style="max-width:800px">
-<div class="text-center">
-  <p class="mb-0">
-    <a href="/feed.xml" class="underline">RSS</a>
-    <a href="https://github.com/anyuzx/Prongs" class="underline">Source Code</a>
-    <span>all rights reserved</span>
-  </p>
-  <p>Last updated: {{ site.buildTime | accurateTime }}</p>
-</div>
+<footer class="border py-10">
+  <div class="text-center mx-auto" style="max-width:800px;">
+    <p class="mb-0">
+      <a href="/feed.xml" class="underline">RSS</a>
+      <a href="https://github.com/anyuzx/Prongs" class="underline">Source Code</a>
+    </p>
+    <p class="mb-0">
+      The content on this site is published under <a class="underline" href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener noreferrer" target="_blank">CC BY-NC 4.0 license</a>
+    </p>
+    <p class="mb-0">
+      Last updated: {{ site.buildTime | accurateTime }}
+    </p>
+  </div>
 </footer>
