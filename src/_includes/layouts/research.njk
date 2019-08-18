@@ -1,11 +1,5 @@
 {% extends "layouts/base.njk" %}
 
-{% block head %}
-<style type="text/css">
-img{margin:auto}
-</style>
-{% endblock %}
-
 {% block content %}
 {%- for project in collections.research | reverse -%}
   {% if project.fileSlug === "summary" %}
