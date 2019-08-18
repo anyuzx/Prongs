@@ -51,6 +51,26 @@
   @apply m-0;
 }
 
+/*
+ * fluid svg
+ */
+
+svg {
+  width: 100%;
+  height: 100%;
+}
+
+/*
+ * center image
+ */
+figure {
+  max-width: 600px;
+}
+
+img {
+  max-width: 600px;
+}
+
 .unactive-nav {
   position: relative;
 }
