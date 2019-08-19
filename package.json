@@ -9,12 +9,13 @@
     "11ty:debug": "DEBUG=Eleventy* npx @11ty/eleventy --dryrun",
     "build:css": "NODE_ENV=production postcss dist/_includes/css/*.css --dir dist/_includes/css/",
     "build:11ty": "npx @11ty/eleventy",
-    "build": "run-s clean build:11ty build:css",
+    "build": "run-s clean build:11ty build:css css:critical",
     "start:css": "postcss dist/_includes/css/*.css --dir dist/_includes/css/",
     "start:11ty": "npx @11ty/eleventy --quiet --serve",
     "prestart": "run-s clean build:11ty",
     "watch:css": "watch 'npm run start:css' ./src",
-    "start": "run-p start:11ty watch:css"
+    "start": "run-p start:11ty watch:css",
+    "css:critical": "node criticalCSS.js"
   },
   "keywords": [],
   "author": "Guang Shi",
@@ -22,6 +23,7 @@
   "devDependencies": {
     "@11ty/eleventy": "^0.8.3",
     "@fullhuman/postcss-purgecss": "^1.2.0",
+    "critical": "^2.0.0-20",
     "eslint": "^6.1.0",
     "npm-run-all": "^4.1.5",
     "postcss-cli": "^6.1.3",
