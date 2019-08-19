@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full">
   <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-139423558-3"></script>
@@ -30,11 +30,11 @@
     {% block head %}
     {% endblock %}
   </head>
-  <body class="antialiased text-black">
+  <body class="antialiased text-black h-full flex flex-col">
     {% if not disableNavigation %}
       {% include "partials/nav.njk" %}
     {% endif %}
-    <main class="mx-auto px-4 pt-32 sm:pt-20" style="max-width:800px">
+    <main class="mx-auto px-4 pt-32 sm:pt-20 flex-grow flex-shrink-0" style="max-width:800px">
     {% block content %}
     {% endblock %}
     </main>
