@@ -9,7 +9,7 @@
     "11ty:debug": "DEBUG=Eleventy* npx @11ty/eleventy --dryrun",
     "build:css": "NODE_ENV=production postcss dist/_includes/css/*.css --dir dist/_includes/css/",
     "build:11ty": "npx @11ty/eleventy",
-    "build": "run-s clean build:11ty build:css css:critical",
+    "build": "run-s clean build:11ty build:css",
     "start:css": "postcss dist/_includes/css/*.css --dir dist/_includes/css/",
     "start:11ty": "npx @11ty/eleventy --quiet --serve",
     "prestart": "run-s clean build:11ty",
