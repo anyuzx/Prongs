@@ -3,7 +3,7 @@
 {% block content %}
 {%- for project in collections.research | reverse -%}
   {% if project.fileSlug === "summary" %}
-    <article class="border border-black p-2 mb-4 rounded-sm" style="background:#F7F7F8">
+    <article class="p-2 mb-4 rounded-sm" style="background:#F7F7F8">
       <h1 class="text-center text-xl font-bold leading-tight">{{ project.data.title }}</h1>
       {{ project.templateContent | safe }}
     </article>
