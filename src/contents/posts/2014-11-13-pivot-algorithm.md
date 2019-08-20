@@ -5,8 +5,7 @@ excerpt: "Pivot algorithm is best Monte Carlo algorithm known so far used for ge
 categories:
   - research
 tags:
-  - python
-  - pivot algorithm
+  - algorithm
   - random walk
 ---
 

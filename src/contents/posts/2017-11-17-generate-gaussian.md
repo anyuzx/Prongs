@@ -5,7 +5,6 @@ excerpt: "Random walks generated in an alternative way and understanding Rouse m
 categories:
   - research
 tags:
-  - polymer
   - random walk
 ---
 

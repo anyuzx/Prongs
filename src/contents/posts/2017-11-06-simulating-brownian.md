@@ -5,9 +5,8 @@ excerpt: "Writing a overdamped Brownian Dynamics fix for LAMMPS. LAMMPS is a ver
 categories:
   - research
 tags:
-  - c++
   - LAMMPS
-  - brownian dynamics
+  - simulation
 ---
 
 ::: note

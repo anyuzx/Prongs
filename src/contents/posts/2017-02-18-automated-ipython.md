@@ -6,7 +6,6 @@ categories:
   - code
 tags:
   - python
-  - jupyter
 disableKatex: true
 ---
 

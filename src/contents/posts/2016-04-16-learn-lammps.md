@@ -6,7 +6,6 @@ categories:
   - research
 tags:
   - LAMMPS
-  - c++
 disableKatex: true
 ---
 
