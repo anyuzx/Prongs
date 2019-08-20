@@ -43,7 +43,8 @@
  * custom class note
  */
 .note {
-  @apply bg-blue-100 border-t border-b border-blue-500 text-blue-700 p-2 mb-4;
+  @apply border-t border-b border-black text-white p-2 mb-4;
+  background-color: #003371;
 }
 
 .note *:last-child {
