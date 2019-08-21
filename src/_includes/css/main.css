@@ -10,21 +10,21 @@
 /*
  * under line for a tag
  */
-.post a {
+article a {
   @apply underline;
 }
 
 /*
  * add border to code blocks
  */
-.post pre {
+article pre {
   @apply border;
 }
 
 /*
  * add bullet to list
  */
-.post ul {
+article ul {
   @apply list-disc;
 }
 
