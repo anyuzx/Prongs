@@ -10,7 +10,7 @@ collections:
     folder: "src/contents/posts"
     slug: "{{slug}}"
     preview_path: "posts/{{slug}}"
-    create true
+    create: true
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "SEO Meta Title", name: "metaTitle", widget: "string", required: false}
