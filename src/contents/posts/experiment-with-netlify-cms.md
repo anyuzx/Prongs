@@ -12,3 +12,12 @@ This post is generated directly through Netlify CMS admin portal.
 ## Header 2
 
 ![](https://i.imgur.com/Z2wWmPD.jpg)
+
+Here is a code fence
+
+```python
+import numpy as np
+import scipy
+
+print(1+1)
+```
