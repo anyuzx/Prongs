@@ -78,6 +78,9 @@ module.exports = function(config) {
     return dayjs(s).format();
   });
 
+  // add filter to render markdown
+  config.addFilter("renderUsingMarkdown", rawString => customMarkdownIt.render(rawString));
+
   // add plugins
   config.addPlugin(syntaxHighlight);
   config.addPlugin(pluginRss);
