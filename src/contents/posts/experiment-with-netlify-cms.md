@@ -1,7 +1,9 @@
 ---
 title: Experiment with Netlify CMS
 date: 2019-08-21T21:37:47.249Z
-excerpt: This is a test for Netlify CMS
+excerpt: >-
+  This is a test for Netlify CMS. You can use **markdown** *syntax* in the
+  `excerpt`!
 tags:
   - netlify
   - test
