@@ -2,4 +2,6 @@
 - [x] fix the non-equal width for home page research project card on mobile
 - [x] allow disable katex in the front-matter (useful when the post does not contain mathematical expression)
 - [x] fix bug (using 11ty serve sometimes fails to recompile the css when changes are made)
-- [x] fix flash of unstyled svg problem 
+- [x] fix flash of unstyled svg problem
+- [ ] make the relation between template and page clearer
+  - [ ] possibility of reducing number of templates (rightnow almost each page has its own template, need a way to make it more abstract)

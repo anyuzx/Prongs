@@ -246,15 +246,16 @@ Refer to this [page](https://www.11ty.io/docs/quicktips/tag-pages/) on how to cr
 - [ ] js pipeline
 - [x] HTML minimization
 - [ ] image resize/optimization pipeline (try Lepto.js?)
-- [ ] Bundle optimization
-- [ ] add tags navigation for posts index page
+- [ ] Assets bundle (parcel?)
+- [x] add tags navigation for posts index page
 - [ ] allow video used as header media for post
-- [ ] return to top button
 - [ ] add similar posts section for individual post page
 - [ ] directly embedding github gist
 - [ ] allow photo collection based on EXIF information
 - [x] RSS feed (use 11ty plugin)
 - [ ] add in-site search
+- [x] Netlify CMS
+- [x] inline critical CSS (need improvement)
 
 ## References
 [^1] Design inspiration #1: https://macwright.org/
