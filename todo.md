@@ -5,3 +5,6 @@
 - [x] fix flash of unstyled svg problem
 - [ ] make the relation between template and page clearer
   - [ ] possibility of reducing number of templates (rightnow almost each page has its own template, need a way to make it more abstract)
+- [x] async filter not working in partial template and used by include inside a if condition)
+  - [x] solution: use `ifAsync` instead of `if`
+  - [ ] write a note/post on this
