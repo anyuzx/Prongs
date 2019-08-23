@@ -14,8 +14,6 @@ This post is generated directly through Netlify CMS admin portal.
 
 ## Header 2
 
-![dog](https://i.imgur.com/Z2wWmPD.jpg "a god")
-
 Here is a code fence
 
 ```python
