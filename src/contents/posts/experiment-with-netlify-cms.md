@@ -12,6 +12,8 @@ This post is generated directly through Netlify CMS admin portal.
 
 # Header 1
 
+![dog](https://i.imgur.com/A8eQsll.jpg)
+
 ## Header 2
 
 Here is a code fence
