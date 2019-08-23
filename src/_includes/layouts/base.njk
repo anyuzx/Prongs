@@ -34,7 +34,7 @@
     {% endblock %}
   </head>
   <body class="antialiased text-black h-full flex flex-col">
-    {% if not disableNavigation %}
+    {% ifAsync not disableNavigation %}
       {% include "partials/_nav.njk" %}
     {% endif %}
     <main class="sm:mx-auto px-4 pt-32 sm:pt-20 flex-grow flex-shrink-0" style="max-width:800px">

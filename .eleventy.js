@@ -8,6 +8,7 @@ const markdownItFootnote = require('markdown-it-footnote');
 const markdownImplicitFigure = require('markdown-it-implicit-figures');
 const markdownItContainer = require('markdown-it-container');
 const dayjs = require("dayjs");
+const SVGO = require("svgo");
 //const lazyImagesPlugin = require('eleventy-plugin-lazyimages');
 const htmlmin = require("html-minifier");
 
@@ -42,6 +43,8 @@ customMarkdownIt.renderer.rules.link_open = function (tokens, idx, options, env,
   // pass token to default renderer.
   return defaultRender(tokens, idx, options, env, self);
 };
+
+var svgo = new SVGO({plugins: [{removeXMLNS: true}]})
 
 // config for eleventy starts from here
 module.exports = function(config) {
@@ -80,6 +83,12 @@ module.exports = function(config) {
 
   // add filter to render markdown
   config.addFilter("renderUsingMarkdown", rawString => customMarkdownIt.render(rawString));
+
+  // add filter to minimize svg using svgo
+  config.addNunjucksAsyncFilter("svgo", async(svgContent, callback) => {
+    var svgmin = await svgo.optimize(svgContent).then(({data}) => data);
+    callback(null, svgmin);
+  })
 
   // add plugins
   config.addPlugin(syntaxHighlight);

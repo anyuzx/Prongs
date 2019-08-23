@@ -6,7 +6,7 @@
   <nav class="sm:flex items-center m-auto px-4 py-4 border-b border-black" style="max-width:800px" id="head-navigation">
     <a href="/" class="flex items-center justify-center mb-3 sm:mb-0">
       <span class="w-6 h-6">
-      {{ logo | safe }}
+        {{ logo | svgo | safe }}
       </span>
       <span class="font-extrabold ml-3">Guang Shi</span>
     </a>
