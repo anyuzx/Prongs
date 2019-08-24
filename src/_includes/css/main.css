@@ -32,7 +32,7 @@ article ul {
  * custom class tag
  */
 .post-tag {
-  @apply border py-1 px-2 mx-1 bg-auto rounded-sm border-solid;
+  @apply py-1 px-2 m-1 bg-gray-200 rounded-sm;
 }
 
 .post-tag a {
