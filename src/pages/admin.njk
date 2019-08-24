@@ -15,6 +15,7 @@ permalink: admin/index.html
     <!-- Include the script that builds the page and powers Netlify CMS -->
     <script src="https://unpkg.com/netlify-cms@^2.9.7/dist/netlify-cms.js"></script>
     <script>
+      <script type="module" src="/admin/preview.js"></script>
       CMS.registerPreviewStyle("/_includes/css/main.css");
       CMS.registerPreviewStyle("/_includes/css/prism-sulphurpool.css");
       CMS.registerPreviewStyle(`{% injectTypography %}`, { raw: true });
