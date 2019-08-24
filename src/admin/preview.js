@@ -1,5 +1,4 @@
-import mdRender from '../_includes/js/mdRender.js';
-
+const {mdRender} = previewUtil;
 const env = nunjucks.configure();
 
 env.addFilter('mdFilter', mdRender.render)

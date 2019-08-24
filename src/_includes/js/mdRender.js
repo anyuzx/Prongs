@@ -38,4 +38,5 @@ customMarkdownIt.renderer.rules.link_open = function (tokens, idx, options, env,
   return defaultRender(tokens, idx, options, env, self);
 };
 
-module.exports = customMarkdownIt
+module.exports = customMarkdownIt;
+//export default {customMarkdownIt};
