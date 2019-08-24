@@ -24,3 +24,9 @@ import scipy
 
 print(1+1)
 ```
+
+This is a math expression
+
+$$
+\int f(x) = A
+$$
