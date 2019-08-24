@@ -27,18 +27,18 @@
   {% endif %}
   <header>
     <h1 class="text-left">{{ title }}</h1>
-    <div class="table w-full">
-      <div class="table-row text-sm font-mono">
-        <div class="table-cell text-gray-600 uppercase">{{ page.date | formatDate }}</div>
-        <div class="table-cell text-right align-middle">
-          {%- for tag in tags %}
-            <span class="post-tag hover:bg-gray-500">
-              <a href="/tags/{{ tag | slug }}">
-              #{{ tag }}
-              </a>
-            </span>
-          {% endfor -%}
-        </div>
+    <div class="flex justify-between text-sm font-mono">
+      <div class="self-center">
+        {{ page.date | formatDate }}
+      </div>
+      <div class="self-center">
+        {%- for tag in tags %}
+          <button class="post-tag hover:bg-gray-500">
+            <a href="/tags/{{ tag | slug }}">
+            #{{ tag }}
+            </a>
+          </button>
+        {% endfor -%}
       </div>
     </div>
     </header>
