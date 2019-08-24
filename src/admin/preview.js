@@ -8,7 +8,7 @@ const Preview = ({ entry, path, context }) => {
   const data = context(entry.get('data').toJS());
   const html = env.render(path, { ...data });
   return <div dangerouslySetInnerHTML={{ __html: html }}/>
-}
+};
 
 const Post = ({ entry }) => {
   <Preview
