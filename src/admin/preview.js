@@ -17,7 +17,7 @@ const Post = ({ entry }) => {
       title,
       date,
       tags,
-      content: mdFilter(body || ''),
+      content: mdRender.render(body || ''),
     })}
   />
 }
