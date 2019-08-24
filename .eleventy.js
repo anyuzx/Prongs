@@ -7,6 +7,7 @@ const markdownItKatex = require('@iktakahiro/markdown-it-katex');
 const markdownItFootnote = require('markdown-it-footnote');
 const markdownImplicitFigure = require('markdown-it-implicit-figures');
 const markdownItContainer = require('markdown-it-container');
+const markdownItAnchor = require('markdown-it-anchor');
 const dayjs = require("dayjs");
 const SVGO = require("svgo");
 //const lazyImagesPlugin = require('eleventy-plugin-lazyimages');
@@ -23,7 +24,8 @@ customMarkdownIt = markdownIt(options)
   .use(markdownItKatex, {"throwOnError" : false, "errorColor" : " #cc0000"})
   .use(markdownItFootnote)
   .use(markdownImplicitFigure)
-  .use(markdownItContainer, 'note');
+  .use(markdownItContainer, 'note')
+  .use(markdownItAnchor, {"permalink": true});
 
 // Remember old renderer, if overridden, or proxy to default renderer
 var defaultRender = customMarkdownIt.renderer.rules.link_open || function(tokens, idx, options, env, self) {
