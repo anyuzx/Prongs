@@ -6,7 +6,7 @@ env.addFilter('mdFilter', mdRender.render)
 
 const Preview = ({ entry, path, context }) => {
   const data = context(entry.get('data').toJS());
-  const html = env.render(path, { ...data })
+  const html = env.render(path, { ...data });
   return <div dangerouslySetInnerHTML={{ __html: html }}/>
 }
 
