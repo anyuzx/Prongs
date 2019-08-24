@@ -2,49 +2,13 @@
 const readingTime = require('reading-time');
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
-const markdownIt = require("markdown-it");
-const markdownItKatex = require('@iktakahiro/markdown-it-katex');
-const markdownItFootnote = require('markdown-it-footnote');
-const markdownImplicitFigure = require('markdown-it-implicit-figures');
-const markdownItContainer = require('markdown-it-container');
-const markdownItAnchor = require('markdown-it-anchor');
 const dayjs = require("dayjs");
 const SVGO = require("svgo");
 //const lazyImagesPlugin = require('eleventy-plugin-lazyimages');
 const htmlmin = require("html-minifier");
 
-// customize markdown-it
-let options = {
-  html: true,
-  typographer: true,
-  linkify: true
-};
+const mdRender = require('./src/_includes/js/mdRender.js');
 
-customMarkdownIt = markdownIt(options)
-  .use(markdownItKatex, {"throwOnError" : false, "errorColor" : " #cc0000"})
-  .use(markdownItFootnote)
-  .use(markdownImplicitFigure)
-  .use(markdownItContainer, 'note')
-  .use(markdownItAnchor, {"permalink": true});
-
-// Remember old renderer, if overridden, or proxy to default renderer
-var defaultRender = customMarkdownIt.renderer.rules.link_open || function(tokens, idx, options, env, self) {
-  return self.renderToken(tokens, idx, options);
-};
-
-customMarkdownIt.renderer.rules.link_open = function (tokens, idx, options, env, self) {
-  // If you are sure other plugins can't add `target` - drop check below
-  var aIndex = tokens[idx].attrIndex('target');
-
-  if (aIndex < 0) {
-    tokens[idx].attrPush(['target', '_blank']); // add new attribute
-  } else {
-    tokens[idx].attrs[aIndex][1] = '_blank';    // replace value of existing attr
-  }
-
-  // pass token to default renderer.
-  return defaultRender(tokens, idx, options, env, self);
-};
 
 var svgo = new SVGO({plugins: [{removeXMLNS: true}]})
 
@@ -84,7 +48,7 @@ module.exports = function(config) {
   });
 
   // add filter to render markdown
-  config.addFilter("renderUsingMarkdown", rawString => customMarkdownIt.render(rawString));
+  config.addFilter("renderUsingMarkdown", rawString => mdRender.render(rawString));
 
   // add filter to minimize svg using svgo
   config.addNunjucksAsyncFilter("svgo", async(svgContent, callback) => {
@@ -104,7 +68,7 @@ module.exports = function(config) {
   config.addPassthroughCopy("src/_redirects");
   config.addPassthroughCopy("src/admin");
 
-  config.setLibrary("md", customMarkdownIt);
+  config.setLibrary("md", mdRender);
 
   // Shortcodes
   // shortcode for injecting typography css
