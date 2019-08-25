@@ -8,6 +8,8 @@ const markdownItAnchor = require('markdown-it-anchor');
 
 //import Prism from "prismjs";
 const Prism = require("prismjs");
+const loadLanguages = require("prismjs/components/");
+loadLanguages(['python', 'cpp', 'c', 'bash', 'django', 'git']);
 
 // customize markdown-it
 let options = {
