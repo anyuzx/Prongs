@@ -11,7 +11,8 @@ var Post = createClass({
       <main>
         <article>
           <h1>${entry.getIn(["data", "title"], null)}</h1>
-          "${this.props.widgetFor("body")}"
+          ${entry.getIn(["data", "body"])}
+          ${this.props.widgetFor("body")}
         </article>
       </main>
     `;
