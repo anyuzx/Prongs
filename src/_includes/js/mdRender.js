@@ -4,6 +4,7 @@ const markdownItFootnote = require('markdown-it-footnote');
 const markdownImplicitFigure = require('markdown-it-implicit-figures');
 const markdownItContainer = require('markdown-it-container');
 const markdownItAnchor = require('markdown-it-anchor');
+const markdownItPrism = require('markdown-it-prism');
 
 // customize markdown-it
 let options = {
@@ -17,7 +18,8 @@ var customMarkdownIt = markdownIt(options)
   .use(markdownItFootnote)
   .use(markdownImplicitFigure)
   .use(markdownItContainer, 'note')
-  .use(markdownItAnchor, {"permalink": true});
+  .use(markdownItAnchor, {"permalink": true})
+  .use(markdownItPrism);
 
 // Remember old renderer, if overridden, or proxy to default renderer
 var defaultRender = customMarkdownIt.renderer.rules.link_open || function(tokens, idx, options, env, self) {

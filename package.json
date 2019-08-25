@@ -49,6 +49,7 @@
     "markdown-it-container": "^2.0.0",
     "markdown-it-footnote": "^3.0.2",
     "markdown-it-implicit-figures": "^0.9.0",
+    "markdown-it-prism": "^2.0.2",
     "reading-time": "^1.2.0",
     "rollup": "^1.20.1",
     "tailwindcss": "^1.0.6",
