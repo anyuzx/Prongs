@@ -11,9 +11,18 @@ export default {
     format: 'esm',
   },
   plugins: [
-    nodeResolve(),
-    commonjs(),
+    nodeResolve({browser:true}),
+    commonjs({ignore: ["conditional-runtime-dependency"]}),
     builtins(),
     json(),
+    /*
+    babel({
+      "plugins": [
+        ["prismjs", {
+          "languages": ["javascript", "css", "markup", "python", "clike"]
+        }]
+      ]
+    })
+    */
   ]
 };
