@@ -1,4 +1,4 @@
-import mdRender from '../_includes/js/mdRender.js';
+//import mdRender from '../_includes/js/mdRender.js';
 import htm from 'https://unpkg.com/htm?module'; //https://github.com/developit/htm
 
 const html = htm.bind(h); //'h' here is short hand for React.createElement
