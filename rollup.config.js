@@ -12,7 +12,7 @@ export default {
   plugins: [
     builtins(),
     nodeResolve(),
-    commonjs(),
+    commonjs({ignore: ["conditional-runtime-dependency"]}),
     json(),
   ]
 };
