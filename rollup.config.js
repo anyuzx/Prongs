@@ -7,8 +7,7 @@ export default {
   input: 'src/admin/preview.js',
   output: {
     file: 'dist/admin/preview.js',
-    format: 'iife',
-    name: 'previewUtil',
+    format: 'esm',
   },
   plugins: [
     builtins(),
