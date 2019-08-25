@@ -11,7 +11,7 @@ var Post = createClass({
       <main>
         <article>
           <h1>${entry.getIn(["data", "title"], null)}</h1>
-          ${entry.getIn(["data", "body"])}
+          ${mdRender.render(entry.getIn(["data", "body"]))}
           ${this.props.widgetFor("body")}
         </article>
       </main>
