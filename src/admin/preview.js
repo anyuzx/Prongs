@@ -1,25 +1,21 @@
-const {mdRender} = previewUtil;
-const env = nunjucks.configure();
+import mdRender from '../_includes/js/mdRender.js';
+import htm from 'https://unpkg.com/htm?module'; //https://github.com/developit/htm
 
-env.addFilter('mdFilter', mdRender.render)
+const html = htm.bind(h); //'h' here is short hand for React.createElement
 
-const Preview = ({ entry, path, context }) => {
-  const data = context(entry.get('data').toJS());
-  const html = env.render(path, { ...data });
-  return <div dangerouslySetInnerHTML={{ __html: html }}/>
-};
+var Post = createClass({
+  render() {
+    const entry = this.props.entry;
 
-const Post = ({ entry }) => {
-  <Preview
-    entry = {entry}
-    path = "layouts/post.njk"
-    context={({ title, date, tags, body }) => ({
-      title,
-      date,
-      tags,
-      content: mdRender.render(body || ''),
-    })}
-  />
-}
+    return html`
+      <main>
+        <article>
+          <h1>${entry.getIn(["data", "title"], null)}</h1>
+          ${this.props.widgetFor("body")}
+        </article>
+      </main>
+    `;
+  }
+});
 
 CMS.registerPreviewTemplate('posts', Post);
