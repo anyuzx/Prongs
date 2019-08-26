@@ -22,11 +22,28 @@ let options = {
   }
 };
 
-var customMarkdownIt = new markdownIt(options)
+var customMarkdownIt = new markdownIt(options);
+
+customMarkdownIt
   .use(markdownItKatex, {"throwOnError" : false, "errorColor" : " #cc0000"})
   .use(markdownItFootnote)
   .use(markdownImplicitFigure)
   .use(markdownItContainer, 'note')
+  .use(markdownItContainer, 'collapse', {
+    validate: function(params) {
+      return params.trim().match(/^collapse\s+(.*)$/);
+    },
+    render: function (tokens, idx) {
+      var m = tokens[idx].info.trim().match(/^collapse\s+(.*)$/);
+      if (tokens[idx].nesting === 1) {
+        // opening tag
+        return '<details><summary>' + customMarkdownIt.renderInline(m[1]) + '</summary>\n';
+      } else {
+        // closing tag
+        return '</details>\n';
+      }
+    }
+  })
   .use(markdownItAnchor, {"permalink": true});
 
 // Remember old renderer, if overridden, or proxy to default renderer
