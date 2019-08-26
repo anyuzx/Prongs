@@ -47,6 +47,10 @@ article ul {
   background-color: #003371;
 }
 
+.note * {
+  background: inherit;
+}
+
 .note *:last-child {
   @apply m-0;
 }
