@@ -12,7 +12,7 @@ This site is hosted on [Netlify](https://www.netlify.com/) and configured with b
 
 The Netlify CMS also provides a custom preview pane which reflects any editing in real-time. However, the default preview pane does not provide some functionalities I need, such as the ability to render math expression and highlight syntax in code blocks. Fortunately, the Netlify CMS provides [ways to customize](https://www.netlifycms.org/docs/customization/) the preview pane. One method `registerPreviewTemplate` is used to render a customized preview template. This method can take a React component as an argument and use this component to render the template. This allows me to incorporate `markdown-it` and `prism` directly into the rendering process.
 
-![Editing in the Netlify CMS admin portal](https://tva1.sinaimg.cn/large/006y8mN6ly1g6dn4aya4nj31i90u0woe.jpg "Editing in the Netlify CMS admin portal")
+![Editing in the Netlify CMS admin portal](https://tva1.sinaimg.cn/large/006y8mN6ly1g6dn4aya4nj31i90u0woe.jpg)
 
 In this post, I will demonstrate,
 
