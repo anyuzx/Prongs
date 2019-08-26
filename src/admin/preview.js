@@ -1,4 +1,5 @@
-import mdRender from '../_includes/js/mdRender.js';
+//import mdRender from '../_includes/js/mdRender.js';
+import mdRender from './util.js';
 //https://github.com/developit/htm
 import htm from 'https://unpkg.com/htm?module';
 //'h' here is short hand for React.createElement
@@ -17,8 +18,6 @@ var Post = createClass({
           <div dangerouslySetInnerHTML=${{__html: bodyRendered}}></div>
         </article>
       </main>
-      <script src="https://unpkg.com/prismjs@1.17.1/components/prism-core.min.js"></script>
-      <script src="https://unpkg.com/prismjs@1.17.1/plugins/autoloader/prism-autoloader.min.js"></script>
     </body>
     `;
   }
