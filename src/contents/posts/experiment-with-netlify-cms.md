@@ -102,7 +102,7 @@ To render `bodyRendered`, we have to use `dangerouslySetInnerHTML` which is prov
 var Post = createClass({
   render() {
     const entry = this.props.entry;
-    const bodyRendered = mdRender.render(entry.getIn(["data", "body"]));
+    const bodyRendered = customMarkdownIt.render(entry.getIn(["data", "body"]));
 
     return html`
     <body>
