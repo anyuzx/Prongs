@@ -17,7 +17,9 @@ var customMarkdownIt = new markdownIt(options);
 customMarkdownIt
   .use(markdownItKatex, {"throwOnError" : false, "errorColor" : " #cc0000"})
   .use(markdownItFootnote)
-  .use(markdownImplicitFigure)
+  .use(markdownImplicitFigure, {
+    figcaption: true
+  })
   .use(markdownItContainer, 'note')
   .use(markdownItContainer, 'collapse', {
     validate: function(params) {

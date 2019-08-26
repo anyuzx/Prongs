@@ -71,6 +71,10 @@ figure {
   max-width: 600px;
 }
 
+figcaption {
+  @apply text-center italic bg-gray-200;
+}
+
 img {
   max-width: 600px;
 }
