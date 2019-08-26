@@ -42,8 +42,14 @@ var Post = createClass({
   }
 });
 ```
-In the example shown above, I use [**htm**](https://www.npmjs.com/package/htm) npm module to write `JSX` like syntax without need of compilation during build time. It is also possible to directly use the method `h` provided by Netlify CMS (alias for React's `createElement`) to write the render template.
+In the example shown above, I use [**htm**](https://www.npmjs.com/package/htm) npm module to write `JSX` like syntax without need of compilation during build time. It is also possible to directly use the method `h` provided by Netlify CMS (alias for React's `createElement`) to write the render template, which is the method given in their [official examples](https://www.netlifycms.org/docs/customization/#registerpreviewtemplate). 
 
 * `this.props.entry` is exposed by CMS which is a immutable collection containing the [collection data](https://www.netlifycms.org/docs/collection-types/) which is defined in the `config.yml`
-* `entry.getIn(["data", "title"])` and `entry.getIn(["data", "body"])` access the collection field named `title` and `body`, respectively
-* both these 
+* `entry.getIn(["data", "title"])` and `entry.getIn(["data", "body"])` access the collection fields `title` and `body`, respectively
+
+
+## Use markdown-it and Prism.js in the template
+
+The problem with the template shown above is that the variable `body` is just a raw string in markdown syntax which is not processed to rendered as html. Thus, we need a way to parse `body` and convert it into html. To do this, I choose to use `markdown-it`. *It is however certainly possible to use other javascript based markdown engines as well.*
+
+
