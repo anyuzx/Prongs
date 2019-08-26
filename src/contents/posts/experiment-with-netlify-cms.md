@@ -8,7 +8,7 @@ excerpt: >-
 tags:
   - javascript
 ---
-This site is hosted on [Netlify](https://www.netlify.com/) and configured with built-in [Netlify CMS](https://www.netlifycms.org/). I usually would like to just write my post or other contents on this site using **vim** or other text editors. However, sometimes it is not possible to access my laptop and Netlify CMS allows me to write post anywhere instead of only on my laptop. I can just login https://www.guangshi.io/admin/ in my office computer and start editing. The post written and saved in the admin portal is directly pushed to a GitHub branch and I can then merge pull request to publish it. **Actually, the post you are reading now is written and published using Netlify CMS admin portal.**
+This site is hosted on [Netlify](https://www.netlify.com/) and configured with built-in [Netlify CMS](https://www.netlifycms.org/). I usually would like to just write my post or other contents on this site using **vim** or other text editors. However, sometimes it is not possible to access my laptop and Netlify CMS allows me to write post anywhere instead of only on my laptop. I can just login https://www.guangshi.io/admin/ in my office computer and start editing. The post written and saved in the admin portal is directly pushed to a GitHub branch and I can then merge pull request to publish it. **Actually, this very post you are reading now is written and published using Netlify CMS admin portal.**
  
 The Netlify CMS also provides a custom preview pane which reflects any editing in real-time. However, the default preview pane does not provide some functionalities I need, such as the ability to render math expression and highlight syntax in code blocks. Fortunately, the Netlify CMS provides [ways to customize](https://www.netlifycms.org/docs/customization/) the preview pane. One method `registerPreviewTemplate` is used to render a customized preview template. This method can take a React component as an argument and use this component to render the template. This allows me to incorporate `markdown-it` and `prism` directly into the rendering process.
  
@@ -86,7 +86,7 @@ The above codes demonstrate how to `import` markdown-it as a module and how to c
 * I use [**prism.js**](https://prismjs.com) to perform the syntax highlighting. Note that the `highlight` part in the `options` allows the **prism.js** to add classes to code blocks and used for CSS styling (hence *highlighting*)
  
 ::: note
-I recommend to use `import` to load the `prism.js` module in order to use [**babel-plugin-prismjs**](https://github.com/mAAdhaTTah/babel-plugin-prismjs) to bundle all the dependencies. I had trouble to use **prism.js** in the browser using `require` instead of `import`.
+I recommend to use `import` to load the `prism.js` module in order to use [**babel-plugin-prismjs**](https://github.com/mAAdhaTTah/babel-plugin-prismjs) to bundle all the dependencies. I had trouble to get **prism.js** working in the browser using `require` instead of `import`.
 :::
  
 Now we have loaded the **markdown-it**, the `body` can be translated to `HTML` using,
@@ -108,7 +108,7 @@ var Post = createClass({
       <main>
         <article>
           <h1>${entry.getIn(["data", "title"], null)}</h1>
-          <div dangerouslySetInnerHTML=$></div>
+          <div dangerouslySetInnerHTML=${{__html: bodyRendered}}></div>
         </article>
       </main>
     </body>
