@@ -8,3 +8,5 @@
 - [x] async filter not working in partial template and used by include inside a if condition)
   - [x] solution: use `ifAsync` instead of `if`
   - [ ] write a note/post on this
+- [x] customize preview template for Netlify CMS
+  - [ ] write about how to use markdown-it and prismjs with custom preview template
