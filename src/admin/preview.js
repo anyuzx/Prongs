@@ -1,4 +1,3 @@
-//import mdRender from '../_includes/js/mdRender.js';
 import mdRender from './util.js';
 //https://github.com/developit/htm
 import htm from 'https://unpkg.com/htm?module';

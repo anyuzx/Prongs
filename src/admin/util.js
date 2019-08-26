@@ -1,12 +1,3 @@
-/*
-const markdownIt = require("markdown-it");
-const markdownItKatex = require('@iktakahiro/markdown-it-katex');
-const markdownItFootnote = require('markdown-it-footnote');
-const markdownImplicitFigure = require('markdown-it-implicit-figures');
-const markdownItContainer = require('markdown-it-container');
-const markdownItAnchor = require('markdown-it-anchor');
-*/
-
 import markdownIt from "markdown-it";
 import markdownItKatex from "@iktakahiro/markdown-it-katex";
 import markdownItFootnote from "markdown-it-footnote";
@@ -14,11 +5,7 @@ import markdownImplicitFigure from "markdown-it-implicit-figures";
 import markdownItContainer from "markdown-it-container";
 import markdownItAnchor from "markdown-it-anchor";
 
-//import Prism from "prismjs";
-//const Prism = require("prismjs");
 import Prism from "prismjs";
-//const loadLanguages = require("prismjs/components/");
-//loadLanguages(['python', 'cpp', 'c', 'bash', 'django', 'git']);
 
 // customize markdown-it
 let options = {
@@ -41,7 +28,6 @@ var customMarkdownIt = new markdownIt(options)
   .use(markdownImplicitFigure)
   .use(markdownItContainer, 'note')
   .use(markdownItAnchor, {"permalink": true});
-//  .use(markdownItPrism);
 
 // Remember old renderer, if overridden, or proxy to default renderer
 var defaultRender = customMarkdownIt.renderer.rules.link_open || function(tokens, idx, options, env, self) {
