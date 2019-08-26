@@ -11,7 +11,7 @@ The Netlify CMS also provides a custom preview pane which reflects any editing i
 
 In this post, I will demonstrate,
 
-* How to write a simple React component for the post
+* [How to write a simple React component for the post](#a-simple-react-component-for-custom-preview)
 * How to use [markdown-it](https://github.com/markdown-it/markdown-it) and [prism.js](https://prismjs.com/) in the template
 * How to pre-compile the template and use it
 
