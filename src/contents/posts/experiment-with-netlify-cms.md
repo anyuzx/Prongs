@@ -19,6 +19,10 @@ In this post, I will demonstrate,
 The simplest preview template would just render a title and the body of the markdown text. Thus, using the variable `entry` provided by Netlify CMS, the template can be written as the following,
 
 ```js
+// Netlify CMS exposes two React method "createClass" and "h"
+import htm from 'https://unpkg.com/htm?module';
+const html = htm.bind(h); 
+
 var Post = createClass({
   render() {
     const entry = this.props.entry;
@@ -38,3 +42,8 @@ var Post = createClass({
   }
 });
 ```
+In the example shown above, I use [**htm**](https://www.npmjs.com/package/htm) npm module to write `JSX` like syntax without need of compilation during build time. It is also possible to directly use the method `h` provided by Netlify CMS (alias for React's `createElement`) to write the render template.
+
+* `this.props.entry` is exposed by CMS which is a immutable collection containing the [collection data](https://www.netlifycms.org/docs/collection-types/) which is defined in the `config.yml`
+* `entry.getIn(["data", "title"])` and `entry.getIn(["data", "body"])` access the collection field named `title` and `body`, respectively
+* both these 
