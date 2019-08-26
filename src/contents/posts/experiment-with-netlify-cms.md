@@ -30,3 +30,18 @@ This is a math expression
 $$
 \int f(x) = A
 $$
+
+```js
+var x = 5;
+var y = 3;
+var z = 1;
+```
+
+### Header 3
+
+```python
+def myfunc(a):
+    return a
+```
+
+
