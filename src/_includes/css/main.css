@@ -72,7 +72,7 @@ figure {
 }
 
 figcaption {
-  @apply text-center italic text-sm;
+  @apply text-center text-sm;
   background: #f7f7f8;
 }
 
