@@ -1,7 +1,10 @@
 ---
 title: Customize Netlify CMS preview with Markdown-it and Prism.js
 date: 2019-08-26T03:40:47.249Z
-excerpt: ''
+excerpt: >-
+  In this post, I will demonstrate 1) How to write a simple React component for
+  the post 2) How to use markdown-it and prism.js in the template, and 3) How to
+  pre-compile the template and use it
 tags:
   - javascript
 ---
