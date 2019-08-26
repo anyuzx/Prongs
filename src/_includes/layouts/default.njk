@@ -2,9 +2,9 @@
 
 {% block content %}
 <article>
-{% if image %}
+{% if coverImage %}
 <figure class="shadow-md">
-  <img src="{{ image }}" alt="Photo">
+  <img src="{{ coverImage }}" alt="Photo">
 </figure>
 {% endif %}
 {{ content | safe }}
