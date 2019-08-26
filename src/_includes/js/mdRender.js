@@ -26,7 +26,7 @@ let options = {
   }
 };
 
-var customMarkdownIt = markdownIt(options)
+var customMarkdownIt = new markdownIt(options)
   .use(markdownItKatex, {"throwOnError" : false, "errorColor" : " #cc0000"})
   .use(markdownItFootnote)
   .use(markdownImplicitFigure)
