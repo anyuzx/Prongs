@@ -4,21 +4,22 @@ backend:
   squash_merges: true # squash all commits into a single commit
 publish_mode: editorial_workflow # allow direct push to github repository from CMS
 site_url: "https://www.guangshi.io"
-media_folder: "src/images"
-public_folder: "images"
+media_folder: "src/assets/images"
+public_folder: "assets/images"
 collections:
   - name: "posts"
     label: "Posts"
     folder: "src/contents/posts"
-    slug: "{{slug}}"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     preview_path: "posts/{{slug}}"
     create: true
     fields:
+      - {label: "Slug", name: "slug", widget: "string"}
       - {label: "Title", name: "title", widget: "string"}
       - {label: "SEO Meta Title", name: "metaTitle", widget: "string", required: false}
       - {label: "SEO Meta Description", name: "metaDesc", widget: "string", required: false}
       - {label: "Publiash Date", name: "date", widget: "datetime"}
       - {label: "Cover Image", name: "coverImage", widget: "image", required: false}
-      - {label: "Excerpt", name: "excerpt", widget: "markdown", required: false}
+      - {label: "Excerpt", name: "excerpt", widget: "markdown"}
       - {label: "Tags", name: "tags", widget: "list", allow_add: true, required: false}
       - {label: "Body", name: "body", widget: "markdown"}
