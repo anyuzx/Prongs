@@ -7,7 +7,12 @@ const html = htm.bind(h);
 var Post = createClass({
   render() {
     const entry = this.props.entry;
-    const bodyRendered = mdRender.render(entry.getIn(["data", "body"]));
+
+    try {
+      const bodyRendered = mdRender.render(entry.getIn(["data", "body"]));
+    } catch (err) {
+      const bodyRendered = '';
+    }
 
     return html`
     <body>
