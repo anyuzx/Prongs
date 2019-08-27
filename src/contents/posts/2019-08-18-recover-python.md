@@ -3,6 +3,7 @@ title: How to recover the deleted function in jupyter notebook?
 excerpt: Suppose you defined a function `myfunc` in jupyter notebook but deleted it by accident and don't want to rewrite it. You can use the following function to recover it.
 tags:
   - python
+disableKatex: true
 ---
 
 Suppose you define a function `myfunc` in jupyter notebook but delete it by accident and don't want to rewrite it. You can use the following function to recover it,

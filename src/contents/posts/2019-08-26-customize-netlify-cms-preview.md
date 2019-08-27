@@ -7,6 +7,7 @@ excerpt: >-
   pre-compile the template and use it
 tags:
   - javascript
+disableKatex: true
 ---
 This site is hosted on [Netlify](https://www.netlify.com/) and configured with built-in [Netlify CMS](https://www.netlifycms.org/). I usually would like to just write my post or other contents on this site using **vim** or other text editors. However, sometimes it is not possible to access my laptop and Netlify CMS allows me to write post anywhere instead of only on my laptop. I can just login https://www.guangshi.io/admin/ in my office computer and start editing. The post written and saved in the admin portal is directly pushed to a GitHub branch and I can then merge pull request to publish it. **Actually, this very post you are reading now is written and published using Netlify CMS admin portal.**
 

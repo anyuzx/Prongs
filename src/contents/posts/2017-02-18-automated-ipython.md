@@ -138,10 +138,13 @@ This script does the following:
 4. On the local machine, find an available port and create an SSH tunneling to port forwarding the port on the remote machine to local machine.
 
 If the script runs successfully, you will see something like this.
-![alt text](https://i.imgur.com/OoFQ3zg.png)
-If you want to check does IPython Notebook really runs on the remote machine. Use command `tmux ls`. A tmux session named `remote_ipython_session` should exist.
-![alt text](https://i.imgur.com/anufLcg.png)
-In browser, open `http://localhost: 50979`. You should be able to access your ipython notebook.
 
-To terminate the ipython notebook on the remote machines, simply do
-![alt text](https://i.imgur.com/EOfdo8h.png)
+![Run the script](https://i.imgur.com/OoFQ3zg.png)
+
+If you want to check does IPython Notebook really runs on the remote machine. Use command `tmux ls`. A tmux session named `remote_ipython_session` should exist.
+
+![Check the status](https://i.imgur.com/anufLcg.png)
+
+In browser, open `http://localhost: 50979`. You should be able to access your ipython notebook. To terminate the ipython notebook on the remote machines, simply do
+
+![Terminate the tunneling](https://i.imgur.com/EOfdo8h.png)
