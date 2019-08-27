@@ -10,7 +10,7 @@ collections:
   - name: "posts"
     label: "Posts"
     folder: "src/contents/posts"
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: "{{year}}-{{month}}-{{day}}-{{fields.slug}}"
     preview_path: "posts/{{slug}}"
     create: true
     fields:
