@@ -72,12 +72,16 @@ figure {
 }
 
 figcaption {
-  @apply text-center text-sm;
-  background: #f7f7f8;
+  @apply text-left text-sm p-4;
+  color: dimgrey;
 }
 
 img {
   max-width: 600px;
+}
+
+figure > img {
+  @apply mb-0;
 }
 
 .unactive-nav {
