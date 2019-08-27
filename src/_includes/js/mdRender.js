@@ -36,7 +36,7 @@ customMarkdownIt
       }
     }
   })
-  .use(markdownItAnchor, {"permalink": true});
+  .use(markdownItAnchor);
 
 /*
 // Remember old renderer, if overridden, or proxy to default renderer

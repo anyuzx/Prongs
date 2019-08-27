@@ -46,8 +46,9 @@ customMarkdownIt
       }
     }
   })
-  .use(markdownItAnchor, {"permalink": true});
+  .use(markdownItAnchor);
 
+/*
 // Remember old renderer, if overridden, or proxy to default renderer
 var defaultRender = customMarkdownIt.renderer.rules.link_open || function(tokens, idx, options, env, self) {
   return self.renderToken(tokens, idx, options);
@@ -66,6 +67,7 @@ customMarkdownIt.renderer.rules.link_open = function (tokens, idx, options, env,
   // pass token to default renderer.
   return defaultRender(tokens, idx, options, env, self);
 };
+*/
 
 //module.exports = customMarkdownIt;
 export default customMarkdownIt;
