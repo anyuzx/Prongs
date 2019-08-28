@@ -182,6 +182,8 @@ To use the template, the final step is to include it as a `<script type=module>`
 
 See this screenshot
 
+![Wondering what that equation means? Checkout [**Crooks Fluctuation Theorem**](https://en.wikipedia.org/wiki/Crooks_fluctuation_theorem)!](https://tva1.sinaimg.cn/large/006y8mN6ly1g6g66jj4idj31s70u0472.jpg)
+
 
 
 
