@@ -1,19 +1,22 @@
 ---
+slug: customize-netlify-cms-preview
 title: Customize Netlify CMS preview with Markdown-it and Prism.js
 date: 2019-08-26T03:40:47.249Z
+disableKatex: true
 excerpt: >-
-  In this post, I will demonstrate 1) How to write a simple React component for
-  the post 2) How to use markdown-it and prism.js in the template, and 3) How to
-  pre-compile the template and use it
+  In this post, I will show how to use the API provided by Netlify CMS to give
+  the preview pane the ability to render math expression and highlighting
+  syntax. The post has three parts 1) How to write a simple React component 2)
+  How to use markdown-it and prism.js in the template, and 3) How to pre-compile
+  the template and use it
 tags:
   - javascript
-disableKatex: true
 ---
-This site is hosted on [Netlify](https://www.netlify.com/) and configured with built-in [Netlify CMS](https://www.netlifycms.org/). I usually would like to just write my post or other contents on this site using **vim** or other text editors. However, sometimes it is not possible to access my laptop and Netlify CMS allows me to write post anywhere instead of only on my laptop. I can just login https://www.guangshi.io/admin/ in my office computer and start editing. The post written and saved in the admin portal is directly pushed to a GitHub branch and I can then merge pull request to publish it. **Actually, this very post you are reading now is written and published using Netlify CMS admin portal.**
+This site is hosted on [Netlify](https://www.netlify.com/) and configured with [Netlify CMS](https://www.netlifycms.org/). I normally would like to write my post or other contents on this site using **vim** or other text editors. However, sometimes it is convenient to be able to edit contents online (in the browser) and Netlify CMS allows me to just. Two biggest benefits I find of using CMS is the UI and the ability to write on any computer accessible to the internet. I can just login https://www.guangshi.io/admin/ in my office computer and start editing. The post written and saved in the admin portal is directly commited to the GitHub and trigger a rebuild on Netlify. *This very post you are reading now is written and published using Netlify CMS admin portal.*
 
-The Netlify CMS also provides a custom preview pane which reflects any editing in real-time. However, the default preview pane does not provide some functionalities I need, such as the ability to render math expression and highlight syntax in code blocks. Fortunately, the Netlify CMS provides [ways to customize](https://www.netlifycms.org/docs/customization/) the preview pane. One method `registerPreviewTemplate` is used to render a customized preview template. This method can take a React component as an argument and use this component to render the template. This allows me to incorporate `markdown-it` and `prism` directly into the rendering process.
+The Netlify CMS provides a preview pane which reflects any editing in real-time. However, the default preview pane does not provide some functionalities I need, such as the ability to render math expression and highlight syntax in code blocks. Fortunately, it provides ways to [customize](https://www.netlifycms.org/docs/customization/) the preview pane. The API `registerPreviewTemplate` can be used to render customized preview templates. One can provide a React component and the API can use it to render the template. This functionality allows me to incorporate `markdown-it` and `prism` directly into the preview pane.
 
-![Editing in the Netlify CMS admin portal](https://tva1.sinaimg.cn/large/006y8mN6ly1g6dn4aya4nj31i90u0woe.jpg)
+![Editing in the Netlify CMS admin portal. The right hand side is the preview pane](https://tva1.sinaimg.cn/large/006y8mN6ly1g6dn4aya4nj31i90u0woe.jpg)
 
 In this post, I will demonstrate,
 
@@ -170,3 +173,7 @@ To use the template, the final step is to include it as a `<script type=module>`
   <script type=module src="/admin/preview.js"></script>
 </body>
 ```
+
+## Remarks
+
+
