@@ -24,6 +24,8 @@ In this post, I will demonstrate,
 * How to use [markdown-it](https://github.com/markdown-it/markdown-it) and [prism.js](https://prismjs.com/) in the template
 * How to pre-compile the template and use it
 
+---
+
 ## A simple React component for custom preview
 
 The simplest preview template would just render a title and the body of the markdown text. Thus, using the variable `entry` provided by Netlify CMS, the template can be written as the following,
@@ -174,6 +176,13 @@ To use the template, the final step is to include it as a `<script type=module>`
 </body>
 ```
 
-## Remarks
+---
+
+## It works!
+
+See this screenshot
+
+
+
 
 
