@@ -1,18 +1,16 @@
 ---
-permalink: feed.xml
-metadata:
-  subtitle: "Guang Shi's personal website. Research, Posts and Photos"
+permalink: "{{ site.FEED.PATH }}"
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>{{ site.title }} - blog posts</title>
-  <subtitle>{{ metadata.subtitle }}</subtitle>
-  <link href="{{ site.url }}/{{ permalink }}" rel="self"/>
-  <link href="{{ site.url }}"/>
+  <title>{{ site.TITLE }} - Blog Posts</title>
+  <subtitle>{{ site.DESCRIPTION }}</subtitle>
+  <link href="{{ site.URL }}/{{ site.FEED.PATH }}" rel="self"/>
+  <link href="{{ site.URL }}"/>
   <updated>{{ collections.posts | rssLastUpdatedDate }}</updated>
-  <id>{{ site.url }}</id>
+  <id>{{ site.URL }}</id>
   <author>
-    <name>{{ site.author }}</name>
+    <name>{{ site.AUTHOR.NAME }}</name>
   </author>
   {%- for post in collections.posts %}
   {% set absolutePostUrl %}{{ post.url | url | absoluteUrl(site.url) }}{% endset %}

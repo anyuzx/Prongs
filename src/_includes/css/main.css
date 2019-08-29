@@ -152,3 +152,10 @@ figure > img {
   z-index: 1000;
   position: fixed;
 }
+
+.icon {
+}
+
+svg > * {
+  @apply fill-current;
+}

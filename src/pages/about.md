@@ -2,7 +2,7 @@
 layout: layouts/default.njk
 permalink: /about/index.html
 title: About
-image: /assets/images/photo.jpg
+coverImage: /assets/images/photo.jpg
 description: "A brief about myself page"
 ---
 

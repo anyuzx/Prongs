@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" class="h-full">
   <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-139423558-3"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'UA-139423558-3');
-    </script>
+    <!-- only include google analytics if it is defined in site.js and the environment is production -->
+    {% if site.ENV == "production" and site.GOOGLE_ANALYTICS %}
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.GOOGLE_ANALYTICS }}"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '{{ site.GOOGLE_ANALYTICS }}');
+      </script>
+    {% endif %}
+    <!-- end of google analytics -->
     {% if pageType === 'home' %}
       <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     {% endif %}
@@ -23,13 +27,12 @@
     <link rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
-    <meta name="description" content="{%- if description -%}{{ description }} | {{ site.description }}{%- elif excerpt -%}{{ excerpt }} | {{ site.description}}{%- else -%}{{ site.description }}{%- endif -%}">
-    <link rel="alternate" href="/feed.xml" title="Blog posts feed, by Guang Shi" type="application/atom+xml">
-    <title>{%- if title -%}{{ title }} | {{ site.title }}{%- else -%}{{ site.title }}{%- endif -%}</title>
+    <meta name="description" content="{%- if description -%}{{ description }} | {{ site.DESCRIPTION }}{%- elif excerpt -%}{{ excerpt }} | {{ site.DESCRIPTION}}{%- else -%}{{ site.DESCRIPTION }}{%- endif -%}">
+    <title>{%- if title -%}{{ title }} | {{ site.TITLE }}{%- else -%}{{ site.TITLE }}{%- endif -%}</title>
+    <link rel="alternate" href="/{{ site.FEED.PATH }}" title="{{ site.FEED.TITLE }}" type="application/atom+xml">
     <style type="text/css">
-    {% injectTypography %}figure{margin-left:auto;margin-right:auto}img{margin-left:auto;margin-right:auto}
+      {% injectTypography %}figure{margin-left:auto;margin-right:auto}img{margin-left:auto;margin-right:auto}
     </style>
-
     {% block head %}
     {% endblock %}
   </head>
@@ -41,7 +44,9 @@
     {% block content %}
     {% endblock %}
     </main>
-    {% include "partials/_footer.njk" %}
+    {% ifAsync not disableFooter %}
+      {% include "partials/_footer.njk" %}
+    {% endif %}
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {

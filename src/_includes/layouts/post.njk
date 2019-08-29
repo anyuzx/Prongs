@@ -29,7 +29,7 @@
     <h1 class="text-left">{{ title }}</h1>
     <div class="flex justify-between text-sm font-mono">
       <div class="self-center">
-        {{ page.date | formatDate }}
+        {% dayjs page.date, 'MMM DD, YYYY' %}
       </div>
       <div class="self-center">
         {%- for tag in tags %}

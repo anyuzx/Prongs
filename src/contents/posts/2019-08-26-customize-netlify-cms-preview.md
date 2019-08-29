@@ -117,7 +117,7 @@ var Post = createClass({
       <main>
         <article>
           <h1>${title}</h1>
-          <div dangerouslySetInnerHTML=${{ '{{' }}__html: bodyRendered{{ '}}' }}></div>
+          <div dangerouslySetInnerHTML=${{ '{{' }}__html: bodyRendered}}></div>
         </article>
       </main>
     </body>

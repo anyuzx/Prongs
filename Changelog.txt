@@ -1,0 +1,30 @@
+Changelog
+
+Fix:
+- Clean up: delete unused codes
+- Use `coverImage` instead of `image` in the frontmatter to defined the cover image (about.md)
+
+Feature:
+- Add production mode
+  - Define enviroment variable in both _data/site.js and .eleventy.js
+  - Use `ELEVENTY_ENV` in package.json 
+  - Use `ELEVENTY_ENV` in postcss.config.js
+  - Use `site.ENV` in templates
+  - Now when running production run
+    - include google analytics
+    - run purgeCSS
+    - minify HTML
+- Rewrite _data/site.js
+  - use all CAPS for each variable
+  - add some new variables
+    - RSS feed file is now defined in site.js and used in the templates (base.njk, feed.njk)
+- Icons system
+  - new svg icons in _includes/svg
+  - _includes/partial/_footer.njk is redesigned with some icons
+  - add class .icon to _includes/css/main.css
+  - apply fill-current class to all tags whose parent is <svg>
+- Define a shortcode to wrapp dayjs
+  - now the date can be formatted as {% dayjs [date], [format] %} where format can be something like 'YYYY-MM-DD'
+- Use Nunjucks as template engine for preprocessing markdown file (consistent with tempaltes)
+
+
