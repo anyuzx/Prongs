@@ -108,8 +108,8 @@ To render `bodyRendered`, we have to use `dangerouslySetInnerHTML` which is prov
 var Post = createClass({
   render() {
     const entry = this.props.entry;
-    const title = entry.getIn(["data", "title"], null)
-    const body = entry.getIn(["data", "body"], null)
+    const title = entry.getIn(["data", "title"], null);
+    const body = entry.getIn(["data", "body"], null);
     const bodyRendered = customMarkdownIt.render(body || '');
 
     return html`
