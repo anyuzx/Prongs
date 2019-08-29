@@ -12,23 +12,23 @@ excerpt: >-
 tags:
   - javascript
 ---
-This site is hosted on [Netlify](https://www.netlify.com/) and configured with [Netlify CMS](https://www.netlifycms.org/). I normally would like to write my post or other contents on this site using **vim** or other text editors. However, sometimes it is convenient to be able to edit contents online (in the browser) and Netlify CMS allows me to just. Two biggest benefits I find of using CMS is the UI and the ability to write on any computer accessible to the internet. I can just login https://www.guangshi.io/admin/ in my office computer and start editing. The post written and saved in the admin portal is directly commited to the GitHub and trigger a rebuild on Netlify. *This very post you are reading now is written and published using Netlify CMS admin portal.*
+This site is hosted on [Netlify](https://www.netlify.com/) and configured with [Netlify CMS](https://www.netlifycms.org/). I normally would like to write my post or other contents on this site using **vim** or other text editors. However, sometimes it is convenient to be able to edit contents online (in the browser) and a CMS allows me to do just that. I can just login https://www.guangshi.io/admin/ in any computer and start editing. In addition, a CMS provides UI to easier editing. The post written and saved in the admin portal is directly commited to the GitHub and trigger a rebuild on Netlify. *This very post you are reading now is written and published using Netlify CMS admin portal.*
 
-The Netlify CMS provides a preview pane which reflects any editing in real-time. However, the default preview pane does not provide some functionalities I need, such as the ability to render math expression and highlight syntax in code blocks. Fortunately, it provides ways to [customize](https://www.netlifycms.org/docs/customization/) the preview pane. The API `registerPreviewTemplate` can be used to render customized preview templates. One can provide a React component and the API can use it to render the template. This functionality allows me to incorporate `markdown-it` and `prism` directly into the preview pane.
+The Netlify CMS provides a preview pane which reflects any editing in real-time. However, the default preview pane does not provide some functionalities I need, such as the ability to render math expression and highlight syntax in code blocks. Fortunately, it provides ways to [customize](https://www.netlifycms.org/docs/customization/) the preview pane. The API `registerPreviewTemplate` can be used to render customized preview templates. One can provide a React component and the API can use it to render the template. This functionality allows me to incorporate [**markdown-it**](https://www.npmjs.com/package/@iktakahiro/markdown-it-katex) and [**prismjs**](https://prismjs.com/) directly into the preview pane.
 
 ![Editing in the Netlify CMS admin portal. The right hand side is the preview pane](https://tva1.sinaimg.cn/large/006y8mN6ly1g6dn4aya4nj31i90u0woe.jpg)
 
 In this post, I will demonstrate,
 
-* How to write a simple React component for the post
-* How to use [markdown-it](https://github.com/markdown-it/markdown-it) and [prism.js](https://prismjs.com/) in the template
-* How to pre-compile the template and use it
+* How to write a simple React component for the post.
+* How to use [markdown-it](https://github.com/markdown-it/markdown-it) and [prism.js](https://prismjs.com/) in the template.
+* How to pre-compile the template and use it.
 
 ---
 
 ## A simple React component for custom preview
 
-The simplest preview template would just render a title and the body of the markdown text. Thus, using the variable `entry` provided by Netlify CMS, the template can be written as the following,
+I guess a simple preview template would render a title and the body of the markdown text. Using the variable `entry` provided by Netlify CMS, the template can be written as the following,
 
 ```js
 // Netlify CMS exposes two React method "createClass" and "h"
@@ -38,8 +38,8 @@ const html = htm.bind(h);
 var Post = createClass({
   render() {
     const entry = this.props.entry;
-    const title = entry.getIn(["data", "title"]);
-    const body = entry.getIn(["data", "body"]);
+    const title = entry.getIn(["data", "title"], null);
+    const body = entry.getIn(["data", "body"], null);
  
     return html`
       <body>
@@ -60,9 +60,9 @@ In the example shown above, I use [**htm**](https://www.npmjs.com/package/htm) n
 * `this.props.entry` is exposed by CMS which is a immutable collection containing the [collection data](https://www.netlifycms.org/docs/collection-types/) which is defined in the `config.yml`
 * `entry.getIn(["data", "title"])` and `entry.getIn(["data", "body"])` access the collection fields `title` and `body`, respectively
 
-## Use markdown-it and Prism.js in the template
+## Use markdown-it and prism.js in the template
 
-The problem with the template shown above is that the variable `body` is just a raw string in markdown syntax which is not processed to rendered as `HTML`. Thus, we need a way to parse `body` and convert it into `HTML`. To do this, I choose to use [**markdown-it**](https://github.com/markdown-it/markdown-it). _It is however certainly possible to use other javascript-based markdown engines as well._ 
+The problem with the template shown above is that the variable `body` is just a raw string in markdown syntax which is not processed to be rendered as `HTML`. Thus, we need a way to parse `body` and convert it into `HTML`. To do this, I choose to use [**markdown-it**](https://github.com/markdown-it/markdown-it).
 
 ```js
 import markdownIt from "markdown-it";
@@ -108,13 +108,15 @@ To render `bodyRendered`, we have to use `dangerouslySetInnerHTML` which is prov
 var Post = createClass({
   render() {
     const entry = this.props.entry;
-    const bodyRendered = customMarkdownIt.render(entry.getIn(["data", "body"]));
+    const title = entry.getIn(["data", "title"], null)
+    const body = entry.getIn(["data", "body"], null)
+    const bodyRendered = customMarkdownIt.render(body || '');
 
     return html`
     <body>
       <main>
         <article>
-          <h1>${entry.getIn(["data", "title"], null)}</h1>
+          <h1>${title}</h1>
           <div dangerouslySetInnerHTML=${{__html: bodyRendered}}></div>
         </article>
       </main>
@@ -130,7 +132,7 @@ Note that there is a new line in the end. There, we use the method `registerPrev
 
 ## Pre-compile the template
 
-Now, I have shown how to 1) write a simple template for the preview pane and 2) how to use **markdown-it** and **prism.js** in the template. However, the codes shown above cannot be executed in the browser since the browser has no access to the `markdown-it` and `prismjs` which live in your local `node_modules` directory. Here enters [**rollup.js**](https://www.npmjs.com/package/rollup) which essentially can look into the node module `markdown-it` and `prismjs`, and take all the necessary codes and bundle them into one big file which contains all the codes needed without any external dependency anymore. In this way, the code can be executed directly inside the browser. It is not complicated to set up **rollup.js**. First, write the config file,
+Now, I have shown how to 1) write a simple template for the preview pane and 2) how to use **markdown-it** and **prism.js** in the template. However, the codes shown above cannot be executed in the browser since the browser has no access to the **markdown-it** and **prismjs** which live in your local `node_modules` directory. Here enters [**rollup.js**](https://www.npmjs.com/package/rollup) which essentially can look into the node module `markdown-it` and `prismjs`, and take all the necessary codes and bundle them into one big file which contains all the codes needed without any external dependency anymore. In this way, the code can be executed directly inside the browser. To set up **rollup.js**. We need a config file,
 
 ```js
 // rollup.config.js
@@ -162,13 +164,13 @@ export default {
 };
 ```
 
-* `src/admin/preview.js` is the template code
+* `src/admin/preview.js` is the path of the template code
 * Set the format to be `esm` tells the **rollup.js** to bundle the code as an ES module.
-* I use the [**babel-plugin-prismjs**](https://github.com/mAAdhaTTah/babel-plugin-prismjs) to first handle the dependencies of **prism.js**.
+* I use the [**babel-plugin-prismjs**](https://github.com/mAAdhaTTah/babel-plugin-prismjs) to handle the dependencies of **prism.js**.
 
 The perform the bundling, one can either use `rollup --config` in the terminal if **rollup.js** is installed globally or add it as a `npm` script. The config above tells the **rollup.js** to generate the file `dist/admin/preview.js`. 
 
-To use the template, the final step is to include it as a `<script type=module>` tag. Add the following in your `admin/index.html`,
+To use the template, the final step is to include it as a `<script type=module>` tag. Add the following in the `<head>` section in your `admin/index.html`,
 
 ```html
 <body>
