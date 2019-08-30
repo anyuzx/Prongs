@@ -5,11 +5,21 @@ const markdownImplicitFigure = require('markdown-it-implicit-figures');
 const markdownItContainer = require('markdown-it-container');
 const markdownItAnchor = require('markdown-it-anchor');
 
+const hljs = require("highlight.js");
+
 // customize markdown-it
 let options = {
   html: true,
   typographer: true,
   linkify: true,
+  highlight: function (str, lang) {
+    if (lang && hljs.getLanguage(lang)) {
+      try {
+        return '<pre class="hljs"><code>' + hljs.highlight(lang, str, true).value + '</code></pre>';
+      } catch (_) {}
+    }
+    return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>';
+  }
 };
 
 var customMarkdownIt = new markdownIt(options);
