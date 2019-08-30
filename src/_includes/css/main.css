@@ -43,8 +43,8 @@ article ul {
  * custom class note
  */
 .note {
-  @apply border-t border-b border-black text-white p-2 mb-4;
-  background-color: #003371;
+  @apply rounded-sm border p-2 mb-4;
+  border-color: darkturquoise;
 }
 
 .note * {

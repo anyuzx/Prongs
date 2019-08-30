@@ -9,7 +9,7 @@ description: "A list of my academic publication"
 You can also check my [google scholar page](https://scholar.google.com/citations?user=JMf5dv8AAAAJ&hl=en) 
 :::
 
-* Shi, G., & Thirumalai, D. (2019). Conformational Heterogeneity in Human Interphase Chromosome Organization Reconciles the FISH and Hi-C Paradox. *Accepted by Nature Communication*. [bioRxiv preprint](https://www.biorxiv.org/content/10.1101/615120v3).
+* Shi, G., & Thirumalai, D. (2019). [Conformational Heterogeneity in Human Interphase Chromosome Organization Reconciles the FISH and Hi-C Paradox](https://www.nature.com/articles/s41467-019-11897-0). *Nature Communication*, 10(1), 3894.
 
 * Liu, L., Shi, G., Thirumalai, D., & Hyeon, C. (2018). [Chain organization of human interphase chromosome determines the spatiotemporal dynamics of chromatin loci](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006617). *PLoS computational biology*, 14(12), e1006617.
 
