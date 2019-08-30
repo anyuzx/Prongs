@@ -46,7 +46,7 @@ module.exports = function(config) {
   })
 
   // add plugins
-  config.addPlugin(syntaxHighlight);
+  //config.addPlugin(syntaxHighlight);
   config.addPlugin(pluginRss);
   //config.addPlugin(lazyImagesPlugin);
 

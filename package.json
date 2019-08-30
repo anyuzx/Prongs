@@ -44,6 +44,7 @@
     "babel-plugin-prismjs": "^1.1.1",
     "cssnano": "^4.1.10",
     "dayjs": "^1.8.15",
+    "highlight.js": "^9.15.10",
     "html-minifier": "^4.0.0",
     "make-dir": "^3.0.0",
     "make-dir-cli": "^2.0.0",
