@@ -28,6 +28,10 @@ article ul {
   @apply list-disc;
 }
 
+article ol {
+  @apply list-decimal;
+}
+
 /*
  * custom class tag
  */
