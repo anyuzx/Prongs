@@ -1,14 +1,17 @@
-// require the modules
+// require the npm modules
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const dayjs = require("dayjs");
 const SVGO = require("svgo");
-const htmlmin = require("html-minifier");
+const inclusiveLangPlugin = require("@11ty/eleventy-plugin-inclusive-language");
 //const lazyImagesPlugin = require('eleventy-plugin-lazyimages');
 
+// local library/modules
 const mdRender = require('./src/_includes/js/mdRender.js');
+const applyTypeset = require('./src/_includes/js/typeset.js')({});
+const htmlmin = require('./src/_includes/js/html-minify.js');
 
-
+// initialize SVGO
 var svgo = new SVGO({plugins: [{removeXMLNS: true}]});
 
 // define environment variable
@@ -48,6 +51,7 @@ module.exports = function(config) {
   // add plugins
   //config.addPlugin(syntaxHighlight);
   config.addPlugin(pluginRss);
+  config.addPlugin(inclusiveLangPlugin);
   //config.addPlugin(lazyImagesPlugin);
 
   // add passthrough copy
@@ -69,21 +73,13 @@ module.exports = function(config) {
 
   // add transform
   // used to post-process
+  // apply html minification (only in production)
   if (env == "production") {
-    config.addTransform("htmlmin", function(content, outputPath) {
-      if(outputPath && outputPath.endsWith(".html") ) {
-        let minified = htmlmin.minify(content, {
-          useShortDoctype: true,
-          removeComments: true,
-          collapseWhitespace: true,
-          minifyJS: true,
-          minifyCSS: true
-        });
-        return minified;
-      }
-      return content;
-    });
+    config.addTransform("htmlmin", htmlmin);
   };
+
+  // use typeset
+  config.addTransform("typeset", applyTypeset);
 
   return {
     markdownTemplateEngine: "njk",
