@@ -1,3 +1,7 @@
+{% set typesetCSS %}
+  {% include '../css/typeset.css' %}
+{% endset %}
+
 <!DOCTYPE html>
 <html lang="en" class="h-full">
   <head>
@@ -32,6 +36,9 @@
     <link rel="alternate" href="/{{ site.FEED.PATH }}" title="{{ site.FEED.TITLE }}" type="application/atom+xml">
     <style type="text/css">
       {% injectTypography %}figure{margin-left:auto;margin-right:auto}img{margin-left:auto;margin-right:auto}
+    </style>
+    <style type="text/css">
+      {{ typesetCSS | safe }}
     </style>
     {% block head %}
     {% endblock %}
