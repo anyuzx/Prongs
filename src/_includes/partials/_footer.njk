@@ -14,12 +14,24 @@
   {% include "../svg/publish.svg" %}
 {% endset %}
 
+{% set githubIcon %}
+  {% include "../svg/github.svg" %}
+{% endset %}
+
+{% set spotifyIcon %}
+  {% include "../svg/spotify.svg" %}
+{% endset %}
+
+{% set instagramIcon %}
+  {% include "../svg/instagram.svg" %}
+{% endset %}
+
 <footer class="flex-shrink-0">
   <div class="sm:flex sm:justify-between p-4 text-center mx-auto text-sm border-t border-black" style="max-width:800px;">
     <div>
       {% if site.FEED %}
         <a href="/{{ site.FEED.PATH }}">
-          <button class="inline-flex items-center bg-gray-100 hover:bg-black hover:text-white p-1 rounded-sm">
+          <button class="inline-flex items-center hover:bg-black hover:text-white p-1 rounded-sm">
             <span class="icon w-3 h-3">
               {{ rssLogo | svgo | safe }}
             </span>
@@ -28,15 +40,36 @@
       {% endif %}
       {% if site.SOURCE_CODE %}
         <a href="{{ site.SOURCE_CODE }}">
-          <button class="inline-flex items-center bg-gray-100 hover:bg-black hover:text-white p-1 rounded-sm">
+          <button class="inline-flex items-center hover:bg-black hover:text-white p-1 rounded-sm">
             <span class="icon w-3 h-3">
               {{ sourcecodeLogo | svgo | safe }}
             </span>
           </button>
         </a>
       {% endif %}
+      <a href="https://github.com/{{ site.AUTHOR.GITHUB }}">
+        <button class="inline-flex items-center hover:bg-black hover:text-white p-1 rounded-sm">
+          <span class="icon w-3 h-3">
+            {{ githubIcon | svgo | safe }}
+          </span>
+        </button>
+      </a>
+      <a href="https://open.spotify.com/user/22zyx7ee57x7lb4dnkmfmpv2y?si=dlbMfWqET7-b61K58n5UJw">
+        <button class="inline-flex items-center hover:bg-black hover:text-white p-1 rounded-sm">
+          <span class="icon w-3 h-3">
+            {{ spotifyIcon | svgo | safe }}
+          </span>
+        </button>
+      </a>
+      <a href="https://www.instagram.com/{{ site.AUTHOR.INSTAGRAM }}">
+        <button class="inline-flex items-center hover:bg-black hover:text-white p-1 rounded-sm">
+          <span class="icon w-3 h-3">
+            {{ instagramIcon | svgo | safe }}
+          </span>
+        </button>
+      </a>
       <a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener noreferrer" target="_blank">
-        <button class="inline-flex items-center bg-gray-100 hover:bg-black hover:text-white p-1 rounded-sm">
+        <button class="inline-flex items-center hover:bg-black hover:text-white p-1 rounded-sm">
           <span class="icon w-3 h-3 mr-1">
             {{ copyrightLogo | svgo | safe }}
           </span>
@@ -45,14 +78,12 @@
       </a>
     </div>
     <div>
-      <a href="/">
-        <button class="inline-flex items-center bg-gray-100 hover:bg-black hover:text-white p-1 rounded-sm">
-          <span class="icon w-3 h-3 mr-1">
-            {{ publishIcon | svgo | safe }}
-          </span>
-          <span style="line-height:0;">{% dayjs site.BUILD_TIME, 'HH:mm MMMM DD, YYYY' %}</span>
-        </button>
-      </a>
+      <div class="inline-flex items-center p-1 rounded-sm">
+        <span class="icon w-3 h-3 mr-1">
+          {{ publishIcon | svgo | safe }}
+        </span>
+        <span style="line-height:0;">{% dayjs site.BUILD_TIME, 'HH:mm MMMM DD, YYYY' %}</span>
+      </div>
     </div>
   </div>
 </footer>
