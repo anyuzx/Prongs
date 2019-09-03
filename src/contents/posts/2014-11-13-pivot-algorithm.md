@@ -19,7 +19,7 @@ Pivot algorithm is best Monte Carlo algorithm known so far used for generating c
 * Randomly apply a rotate operation on the part of the chain we choose at the above step.
 * After the rotation, check the overlap between the rotated part of the chain and the rest part of the chain. Accept the new configuration if there is no overlap and restart from 2th step. Reject the configuration and repeat from 2th step if there are overlaps.
 
-> **Note**: For random walks on a 3D cubic lattice, there are only 9 distinct rotation operations.
+> For random walks on a 3D cubic lattice, there are only 9 distinct rotation operations.
 
 --------
 
