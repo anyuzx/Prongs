@@ -4,6 +4,12 @@ const markdownItFootnote = require('markdown-it-footnote');
 const markdownImplicitFigure = require('markdown-it-implicit-figures');
 const markdownItContainer = require('markdown-it-container');
 const markdownItAnchor = require('markdown-it-anchor');
+const markdownItEmoji = require('markdown-it-emoji');
+const markdownItSub = require('markdown-it-sub');
+const markdownItSup = require('markdown-it-sup');
+const markdownItIns = require('markdown-it-ins');
+const markdownItMark = require('markdown-it-mark');
+const markdownItAbbr = require('markdown-it-abbr');
 
 const hljs = require("highlight.js");
 
@@ -46,7 +52,13 @@ customMarkdownIt
       }
     }
   })
-  .use(markdownItAnchor);
+  .use(markdownItAnchor)
+  .use(markdownItEmoji)
+  .use(markdownItSub)
+  .use(markdownItSup)
+  .use(markdownItIns)
+  .use(markdownItMark)
+  .use(markdownItAbbr);
 
 /*
 // Remember old renderer, if overridden, or proxy to default renderer
