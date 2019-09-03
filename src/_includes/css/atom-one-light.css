@@ -21,9 +21,13 @@ hue-6-2: #c18401
 .hljs {
   display: block;
   overflow-x: auto;
-  padding: 0.5em;
+  padding: 1.0em;
   color: #383a42;
   background: #fafafa;
+  line-height: 1.375;
+}
+
+.hljs > code {
   line-height: 1.375;
 }
 
