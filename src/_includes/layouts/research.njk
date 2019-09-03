@@ -3,7 +3,7 @@
 {% block content %}
 {%- for project in collections.research | reverse -%}
   {% if project.fileSlug === "summary" %}
-    <article class="p-2 mb-4 rounded-sm" style="background:#F7F7F8">
+    <article class="mb-4 note">
       <h1 class="text-center text-xl font-bold leading-tight">{{ project.data.title }}</h1>
       {{ project.templateContent | safe }}
     </article>
@@ -11,9 +11,7 @@
     <article id="{{ project.data.title | slug }}">
       <h2 class="text-xl font-bold leading-tight text-left -mt-32 sm:-mt-20 border-t-32 sm:border-t-20 border-solid border-transparent" style="-webkit-background-clip:padding-box;-moz-background-clip:padding;background-clip:padding-box;">{{ project.data.title }}</h2>
       {% if project.data.image %}
-      <figure>
-        <img src="{{ project.data.image }}" width="300" alt="illustration">
-      </figure>
+      <img src="{{ project.data.image }}" width="300" alt="illustration" style="float: right;margin-bottom:0;">
       {% endif %}
       {{ project.templateContent | safe }}
     </article>
