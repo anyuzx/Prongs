@@ -31,7 +31,9 @@ My research methods are theoretical and computational, involving equilibrium and
 
 * The site favicon is the character of my last name **时** written in the ancient style - [**篆书**](https://en.wikipedia.org/wiki/Seal_script). It is made using Inkscape by myself.
 
-* **Text contents and photos appeared in this site are copyrighted**.
+::: note
+Writing contents and photos on this site are copyrighted. Feel free to contact me if you have any questions.
+:::
 
 ---
 
