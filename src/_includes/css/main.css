@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@tailwind screens;
 
 /* Custom class from here */
 /*
@@ -47,8 +48,10 @@ article ol {
  * custom class note
  */
 .note {
-  @apply rounded-sm border p-2 mb-4;
-  border-color: darkturquoise;
+  @apply rounded-sm border-2 p-2;
+  border-color: #a6c8dd;
+  background-color: #e9f1f6;
+  margin-bottom: 1.63rem;
 }
 
 .note * {
@@ -71,8 +74,26 @@ svg {
 /*
  * center image
  */
-figure {
-  max-width: 600px;
+@screen md {
+  article figure {
+    left: 50%;
+    right: 50%;
+    margin-left: -384px;
+    margin-right: -384px;
+    max-width: 768px;
+    width: 768px;
+    position: relative;
+  }
+
+  article pre {
+    left: 50%;
+    right: 50%;
+    margin-left: -384px;
+    margin-right: -384px;
+    max-width: 768px;
+    width: 768px;
+    position: relative;
+  }
 }
 
 figcaption {
