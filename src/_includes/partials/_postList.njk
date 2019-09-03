@@ -1,18 +1,18 @@
 {% macro display(collection) %}
   {% for post in collection %}
-    <li class="mb-4 border border-transparent hover:border-black hover:shadow-md p-2 rounded-sm" id="post-{{ loop.index }}">
+    <li class="mb-0 border border-transparent hover:border-black hover:shadow-md p-2 rounded-sm" id="post-{{ loop.index }}">
       <div class="flex">
-        <div class="w-3/5 font-medium inline-flex items-center">
-          <button class="plus-minus plus-minus-untoggle mr-2 outline-none" id="post-toggle-{{ loop.index }}" onclick="myFunction(this, 'post-excerpt-{{ loop.index }}')">
-          </button>
-          <a class="truncate" href="{{ post.url }}">
+        <div class="w-3/5 font-medium truncate">
+          <a href="{{ post.url }}">
             {{ post.data.title }}
           </a>
         </div>
-        <div class="w-2/5">
-          <p class="text-right text-gray-500">
+        <div class="w-2/5 inline-flex items-center justify-end">
+          <div style="font-variant-numeric: tabular-nums;letter-spacing:-.012em;">
             {% dayjs post.date, 'YYYY-MM-DD' %}
-          </p>
+          </div>
+          <button class="plus-minus plus-minus-untoggle ml-2 outline-none" id="post-toggle-{{ loop.index }}" onclick="openExcerpt(this, &apos;post-excerpt-{{ loop.index }}&apos;)">
+          </button>
         </div>
       </div>
       <hr class="mb-2">
