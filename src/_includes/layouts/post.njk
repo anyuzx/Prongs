@@ -33,11 +33,13 @@
       </div>
       <div class="self-center">
         {%- for tag in tags %}
-          <button class="post-tag hover:bg-gray-500">
-            <a href="/tags/{{ tag | slug }}">
-            #{{ tag }}
-            </a>
-          </button>
+          {% if tag !== "pinned" %}
+            <button class="post-tag hover:bg-gray-500">
+              <a href="/tags/{{ tag | slug }}">
+              #{{ tag }}
+              </a>
+            </button>
+          {% endif %}
         {% endfor -%}
       </div>
     </div>

@@ -20,18 +20,29 @@ function openExcerpt(toggle, id) {
 {% endblock %}
 
 {% block content %}
-<div class="flex flex-wrap mb-8 p-2 text-xs font-mono justify-center">
-  {% for tag, number in collections.tagList %}
-    <div class="inline-block mr-2 mb-2">
-      <span class="rounded-l-sm inline-block bg-gray-200 hover:bg-gray-500 mr-0 px-2 py-1 border-t border-b border-l">
-        <a href="/tags/{{ tag | slug }}">
-        #{{ tag }}
-        </a>
-      </span><span class="rounded-r-sm inline-block ml-0 px-2 py-1 border-t border-b border-r">{{ number }}</span>
+<section>
+  <h4 class="font-bold">Pinned Posts</h4>
+  <ol class="ml-0">
+    {{ postList.display(collections.pinned | reverse, pinned=true) }}
+  </ol>
+</section>
+<section>
+  <h4 class="font-bold">All Posts</h4>
+  <section>
+    <div class="flex flex-wrap mb-8 p-2 text-xs font-mono justify-center">
+      {% for tag, number in collections.tagList %}
+        <div class="inline-block mr-2 mb-2">
+          <span class="rounded-l-sm inline-block bg-gray-200 hover:bg-gray-500 mr-0 px-2 py-1 border-t border-b border-l">
+            <a href="/tags/{{ tag | slug }}">
+            #{{ tag }}
+            </a>
+          </span><span class="rounded-r-sm inline-block ml-0 px-2 py-1 border-t border-b border-r">{{ number }}</span>
+        </div>
+      {% endfor %}
     </div>
-  {% endfor %}
-</div>
-<ol class="ml-0">
-  {{ postList.display(collections.posts) }}
-</ol>
+  </section>
+  <ol class="ml-0">
+    {{ postList.display(collections.posts) }}
+  </ol>
+</section>
 {% endblock %}
