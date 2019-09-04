@@ -38,6 +38,7 @@ module.exports = function(config) {
     .slice(0, 3);
   });
   config.addCollection("tagList", require("./src/_includes/js/getTagList.js"));
+  config.addCollection("categories", require("./src/_includes/js/getCategories.js"));
 
   // add filter to render markdown
   config.addFilter("renderUsingMarkdown", rawString => mdRender.render(rawString));
