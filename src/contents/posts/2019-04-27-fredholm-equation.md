@@ -5,6 +5,7 @@ excerpt: "Simple python code for solving integral equation. In this article, I w
 categories:
   - research
 tags:
+  - pinned
   - algorithm
 ---
 
