@@ -1,42 +1,39 @@
-{% macro display(collection, pinned=false) %}
-  {% for post in collection %}
-    {% if pinned %}
-      <a href="{{ post.url }}">
-      <li class="mb-6 hover:shadow-md p-2 rounded-sm" style="background:#F0F0F4">
-    {% else %}
-      <li class="mb-0 border border-transparent hover:border-black hover:shadow-md p-2 rounded-sm" id="post-{{ loop.index }}">
-    {% endif %}
-      <div class="flex">
-        {% if pinned %}
-          <div class="font-black truncate">
-            {{ post.data.title }}
-        {% else %}
-          <div class="w-3/5 font-medium truncate">
-            <a href="{{ post.url }}">
-              {{ post.data.title }}
-            </a>
-        {% endif %}
+{% macro items(collection) %}
+<div>
+  {% for post in collection -%}
+    <div class="post-item" id="post-{{ loop.index }}">
+      <div class="post-info">
+        <a href="{{ post.url }}">
+          {{ post.data.title }}
+        </a>
+        <div>
+          <time>
+            {% dayjs post.date, 'YYYY-MM-DD' %}
+          </time>
+          <button class="plus-minus" id="post-toggle-{{ loop.index }}" aria-label="Open excerpt of this post" onclick="openExcerpt(this, &apos;post-excerpt-{{ loop.index }}&apos;)">
+          </button>
         </div>
-        {% if not pinned %}
-          <div class="w-2/5 inline-flex items-center justify-end">
-            <div style="font-variant-numeric: tabular-nums;letter-spacing:-.012em;">
-              {% dayjs post.date, 'YYYY-MM-DD' %}
-            </div>
-            <button class="plus-minus plus-minus-untoggle ml-2 outline-none" id="post-toggle-{{ loop.index }}" onclick="openExcerpt(this, &apos;post-excerpt-{{ loop.index }}&apos;)">
-            </button>
-          </div>
-        {% endif %}
       </div>
-      <hr class="mb-2">
-      {% if pinned %}
-        <div class="text-gray-700" style="max-height:300px">
-          {{ post.data.excerpt | renderUsingMarkdown | safe }}
-        </div>
-      {% else %}
-        <div id="post-excerpt-{{ loop.index }}" class="overflow-hidden" style="transition:max-height 0.5s ease-in-out;max-height:0;">
-          {{ post.data.excerpt | renderUsingMarkdown | safe }}
-        </div>
-      {% endif %}
-    </li>
-  {% endfor %}
+      <div id="post-excerpt-{{ loop.index }}" class="post-excerpt">
+        {{ post.data.excerpt | renderUsingMarkdown | safe }}
+      </div>
+    </div>
+  {%- endfor %}
+</div>
+{% endmacro %}
+
+
+{% macro cards(collection) %}
+<div>
+  {% for post in collection -%}
+    <a class="post-card" href="{{ post.url }}">
+      <div class="post-title">
+        {{ post.data.title }}
+      </div>
+      <div class="post-excerpt">
+        {{ post.data.excerpt | renderUsingMarkdown | safe }}
+      </div>
+    </a>
+  {%- endfor %}
+</div>
 {% endmacro %}
