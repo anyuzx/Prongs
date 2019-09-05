@@ -1,3 +1,7 @@
+{% set openPostExcerptJS %}
+  {% include "../js/openPostExcerpt.js" %}
+{% endset %}
+
 {% import "../partials/_postList.njk" as postList %}
 
 {% extends "layouts/base.njk" %}
@@ -5,30 +9,18 @@
 
 {% block head %}
 <script>
-function openExcerpt(toggle, id) {
-  var elem = document.getElementById(id);
-
-  toggle.classList.toggle("plus-minus-toggle");
-
-  if (elem.style.maxHeight === "0px") {
-    elem.style.maxHeight = elem.scrollHeight + "px";
-  } else {
-    elem.style.maxHeight = "0px";
-  }
-}
+  {{ openPostExcerptJS | safe }}
 </script>
 {% endblock %}
 
 {% block content %}
 <section>
-  <h4 class="font-bold">Pinned Posts</h4>
-  <ol class="ml-0">
-    {{ postList.display(collections.pinned | reverse, pinned=true) }}
-  </ol>
+  <h1 class="font-bold text-2xl">Pinned Posts</h1>
+  {{ postList.cards(collections.pinned | reverse) }}
 </section>
 <section>
-  <h4 class="font-bold">All Posts</h4>
-  <section>
+  <h1 class="font-bold text-2xl">All Posts</h1>
+  <div>
     <div class="flex flex-wrap mb-8 p-2 text-xs font-mono justify-center">
       {% for tag, number in collections.tagList %}
         <div class="inline-block mr-2 mb-2">
@@ -40,9 +32,7 @@ function openExcerpt(toggle, id) {
         </div>
       {% endfor %}
     </div>
-  </section>
-  <ol class="ml-0">
-    {{ postList.display(collections.posts) }}
-  </ol>
+  </div>
+  {{ postList.items(collections.posts) }}
 </section>
 {% endblock %}
