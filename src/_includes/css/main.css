@@ -1,12 +1,4 @@
 @tailwind base;
-@tailwind components;
-@tailwind utilities;
-@tailwind screens;
-
-/* Custom class from here */
-/*
- * Add some base styles
- */
 
 /*
  * under line for a tag
@@ -31,6 +23,107 @@ article ul {
 
 article ol {
   @apply list-decimal;
+}
+
+/*
+ * fluid svg
+ */
+
+svg {
+  width: 100%;
+  height: 100%;
+}
+
+svg > * {
+  @apply fill-current;
+}
+
+figcaption {
+  @apply text-left text-sm p-4;
+  color: dimgrey;
+}
+
+img {
+  max-width: 600px;
+}
+
+figure > img {
+  @apply mb-0;
+}
+
+@tailwind components;
+
+/* Custom class from here */
+/*
+ * Add some base styles
+ */
+
+/*
+ * Style post list
+ * There are two basic styles of listing post
+ * post-item and post-card
+ * post-item show post title, date and a button to open excerpt when clicked
+ * post-card show post title and excerpt
+ * Inside a post-item
+ * Define post-info and post-excerpt
+ * <a>, <time> and <button> tag are styled directly using css selector
+ */
+.post-item {
+  @apply mb-0 p-2 rounded-sm border border-transparent;
+}
+
+.post-item:hover {
+  @apply border-black shadow-md;
+}
+
+.post-item .post-info {
+  @apply flex;
+}
+
+.post-item .post-info > a {
+  @apply w-3/5 font-medium truncate;
+}
+
+.post-item .post-info > div {
+  @apply w-2/5 inline-flex items-center justify-end;
+}
+
+.post-item .post-info > div > time {
+  @apply mr-2;
+  font-variant-numeric: tabular-nums;
+  letter-spacing:-.012em;
+}
+
+.post-item .post-excerpt {
+  @apply overflow-hidden;
+  max-height: 0px;
+  transition: max-height 0.5s ease-in-out;
+}
+
+.post-item .post-excerpt > p:last-child {
+  @apply mb-0;
+}
+
+.post-card {
+  @apply mb-6 p-2 rounded-sm block;
+  background-color: #F0F0F4;
+}
+
+.post-card:hover {
+  @apply shadow-md;
+}
+
+.post-card .post-title {
+  @apply font-black;
+}
+
+.post-card .post-excerpt {
+  @apply text-gray-700;
+  max-height: 300px;
+}
+
+.post-card .post-excerpt > p:last-child {
+  @apply mb-0;
 }
 
 /*
@@ -62,52 +155,12 @@ article ol {
   @apply m-0;
 }
 
-/*
- * fluid svg
- */
-
-svg {
-  width: 100%;
-  height: 100%;
+.nav-fixed {
+  @apply inset-x-0 top-0 z-50 fixed;
 }
 
-/*
- * center image
- */
-@screen md {
-  article figure {
-    left: 50%;
-    right: 50%;
-    margin-left: -384px;
-    margin-right: -384px;
-    max-width: 768px;
-    width: 768px;
-    position: relative;
-  }
 
-  article pre {
-    left: 50%;
-    right: 50%;
-    margin-left: -384px;
-    margin-right: -384px;
-    max-width: 768px;
-    width: 768px;
-    position: relative;
-  }
-}
-
-figcaption {
-  @apply text-left text-sm p-4;
-  color: dimgrey;
-}
-
-img {
-  max-width: 600px;
-}
-
-figure > img {
-  @apply mb-0;
-}
+@tailwind utilities;
 
 .unactive-nav {
   position: relative;
@@ -170,20 +223,7 @@ figure > img {
   transform-origin: center left;
 }
 
-.nav-fixed {
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  position: fixed;
-}
 
-.icon {
-}
-
-svg > * {
-  @apply fill-current;
-}
 
 /*
  * CSS plus/minus animation
@@ -232,4 +272,30 @@ svg > * {
 
 .plus-minus-toggle.plus-minus:after {
   transform: rotate(180deg);
+}
+
+@tailwind screens;
+/*
+ * center image
+ */
+@screen md {
+  article figure {
+    left: 50%;
+    right: 50%;
+    margin-left: -384px;
+    margin-right: -384px;
+    max-width: 768px;
+    width: 768px;
+    position: relative;
+  }
+
+  article pre {
+    left: 50%;
+    right: 50%;
+    margin-left: -384px;
+    margin-right: -384px;
+    max-width: 768px;
+    width: 768px;
+    position: relative;
+  }
 }
