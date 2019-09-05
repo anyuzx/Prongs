@@ -1,3 +1,7 @@
+{% set openPostExcerptJS %}
+  {% include "../js/openPostExcerpt.js" %}
+{% endset %}
+
 {% import "../partials/_postList.njk" as postList %}
 
 {% set pageType = 'home' %}
@@ -6,17 +10,7 @@
 
 {% block head %}
 <script>
-function openExcerpt(toggle, id) {
-  var elem = document.getElementById(id);
-
-  toggle.classList.toggle("plus-minus-toggle");
-
-  if (elem.style.maxHeight === "0px") {
-    elem.style.maxHeight = elem.scrollHeight + "px";
-  } else {
-    elem.style.maxHeight = "0px";
-  }
-}
+  {{ openPostExcerptJS | safe }}
 </script>
 {% endblock %}
 
@@ -24,7 +18,7 @@ function openExcerpt(toggle, id) {
 {{ content | safe }}
 {# research section #}
 <section class="pb-8 mb-8 border-b">
-  <h4 class="font-bold">Research Projects</h4>
+  <h1 class="font-bold text-2xl">Research Projects</h1>
   <div class="flex flex-wrap -mx-2">
     {% for project in collections.research | reverse %}
       {% if project.fileSlug !== "summary" %}
@@ -33,7 +27,7 @@ function openExcerpt(toggle, id) {
             <div><p class="group-hover:underline leading-tight font-medium">{{ project.data.title }}</p></div>
             <div class="flex flex-col justify-center flex-grow">
               <figure class="w-full relative m-0" style="padding-top:100%">
-                <img class="absolute w-full h-full inset-0 m-0 object-contain" src="{{ project.data.image }}">
+                <img class="absolute w-full h-full inset-0 m-0 object-contain" src="{{ project.data.image.path }}" alt="{{ project.data.image.description }}">
               </figure>
             </div>
           </div>
@@ -44,9 +38,7 @@ function openExcerpt(toggle, id) {
 </section>
 {# posts section #}
 <section>
-  <h4 class="font-bold">Latest Posts</h4>
-  <ol class="ml-0">
-    {{ postList.display(collections.postsLatest) }}
-  </ol>
+  <h1 class="font-bold text-2xl">Latest Posts</h1>
+  {{ postList.items(collections.postsLatest) }}
 </section>
 {% endblock %}
