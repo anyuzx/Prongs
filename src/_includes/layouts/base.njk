@@ -5,6 +5,26 @@
 <!DOCTYPE html>
 <html lang="en" class="h-full">
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="/_includes/css/main.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="{%- if description -%}{{ description }} | {{ site.DESCRIPTION }}{%- elif excerpt -%}{{ excerpt }} | {{ site.DESCRIPTION}}{%- else -%}{{ site.DESCRIPTION }}{%- endif -%}">
+    <title>{%- if title -%}{{ title }} | {{ site.TITLE }}{%- else -%}{{ site.TITLE }}{%- endif -%}</title>
+    <link rel="alternate" href="/{{ site.FEED.PATH }}" title="{{ site.FEED.TITLE }}" type="application/atom+xml">
+    <style>
+      {% injectTypography %}figure{margin-left:auto;margin-right:auto}img{margin-left:auto;margin-right:auto}
+    </style>
+    <style>
+      {{ typesetCSS | safe }}
+    </style>
     <!-- only include google analytics if it is defined in site.js and the environment is production -->
     {% if site.ENV == "production" and site.GOOGLE_ANALYTICS %}
       <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -20,26 +40,6 @@
     {% if pageType === 'home' %}
       <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     {% endif %}
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="/_includes/css/main.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
-    <meta name="description" content="{%- if description -%}{{ description }} | {{ site.DESCRIPTION }}{%- elif excerpt -%}{{ excerpt }} | {{ site.DESCRIPTION}}{%- else -%}{{ site.DESCRIPTION }}{%- endif -%}">
-    <title>{%- if title -%}{{ title }} | {{ site.TITLE }}{%- else -%}{{ site.TITLE }}{%- endif -%}</title>
-    <link rel="alternate" href="/{{ site.FEED.PATH }}" title="{{ site.FEED.TITLE }}" type="application/atom+xml">
-    <style type="text/css">
-      {% injectTypography %}figure{margin-left:auto;margin-right:auto}img{margin-left:auto;margin-right:auto}
-    </style>
-    <style type="text/css">
-      {{ typesetCSS | safe }}
-    </style>
     {% block head %}
     {% endblock %}
   </head>
