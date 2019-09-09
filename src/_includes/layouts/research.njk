@@ -8,16 +8,17 @@
       {{ project.templateContent | safe }}
     </article>
   {% else %}
-    <article id="{{ project.data.title | slug }}" class="clearfix">
+    {% if not loop.last -%}
+      <article id="{{ project.data.title | slug }}" class="clearfix my-4 border-b">
+    {%- else -%}
+      <article id="{{ project.data.title | slug }}" class="clearfix my-4">
+    {%- endif %}
       <h2 class="text-xl font-bold leading-tight text-left -mt-32 sm:-mt-20 border-t-32 sm:border-t-20 border-solid border-transparent" style="-webkit-background-clip:padding-box;-moz-background-clip:padding;background-clip:padding-box;">{{ project.data.title }}</h2>
       {% if project.data.image %}
       <img src="{{ project.data.image.path }}" alt="{{ project.data.image.description }}" width="300" alt="illustration" class="float-none sm:float-right sm:mb-0">
       {% endif %}
       {{ project.templateContent | safe }}
     </article>
-    {% if not loop.last %}
-      <hr>
-    {% endif %}
   {% endif %}
 {% endfor %}
 {% endblock %}
