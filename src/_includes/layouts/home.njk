@@ -19,20 +19,16 @@
 {# research section #}
 <section class="mb-8">
   <h1 class="section-header">Research Projects</h1>
-  <div class="flex flex-wrap -mx-2">
-    {% for project in collections.research | reverse %}
-      {% if project.fileSlug !== "summary" %}
-        <a href="/research#{{ project.data.title | slug }}" class="group w-1/2 sm:w-1/4 p-4">
-          <div class="border hover:border-black p-2 rounded-sm h-full flex flex-col">
-            <div><p class="group-hover:underline leading-tight font-medium">{{ project.data.title }}</p></div>
-            <div class="flex flex-col justify-center flex-grow">
-              <figure class="w-full relative m-0" style="padding-top:100%">
-                <img class="absolute w-full h-full inset-0 m-0 object-contain" src="{{ project.data.image.path }}" alt="{{ project.data.image.description }}">
-              </figure>
-            </div>
-          </div>
+  <div class="research-display">
+    {% for project in collections.research | reverse -%}
+      {% if project.fileSlug !== "summary" -%}
+        <a href="/research#{{ project.data.title | slug }}" class="research-item group">
+          <h2 class="research-title group-hover:underline">{{ project.data.title }}</h2>
+          <figure>
+            <img src="{{ project.data.image.path }}" alt="{{ project.data.image.description }}">
+          </figure>
         </a>
-      {% endif %}
+      {%- endif %}
     {%- endfor %}
   </div>
 </section>
