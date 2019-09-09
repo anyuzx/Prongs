@@ -8,7 +8,7 @@ const inclusiveLangPlugin = require("@11ty/eleventy-plugin-inclusive-language");
 
 // local library/modules
 const mdRender = require('./src/_includes/js/mdRender.js');
-const applyTypeset = require('./src/_includes/js/typeset.js')({});
+const applyTypeset = require('./src/_includes/js/typeset.js')({ disable: ['smallCaps'] });
 const htmlmin = require('./src/_includes/js/html-minify.js');
 
 // initialize SVGO
@@ -41,7 +41,7 @@ module.exports = function(config) {
   config.addCollection("categories", require("./src/_includes/js/getCategories.js"));
 
   // add filter to render markdown
-  config.addFilter("renderUsingMarkdown", rawString => mdRender.render(rawString));
+  config.addNunjucksFilter("renderUsingMarkdown", rawString => mdRender.render(rawString));
 
   // add filter to minimize svg using svgo
   config.addNunjucksAsyncFilter("svgo", async(svgContent, callback) => {
