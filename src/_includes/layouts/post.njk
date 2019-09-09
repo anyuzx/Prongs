@@ -17,7 +17,7 @@
 
 {% endblock %}
 {% block content %}
-<article>
+<article class="single-post">
   {% if coverImage %}
   <header>
     <figure>
@@ -27,7 +27,7 @@
   {% endif %}
   <header>
     <h1 class="text-left">{{ title }}</h1>
-    <div class="flex justify-between text-sm font-mono">
+    <div class="flex justify-between text-sm font-hairline">
       <div class="self-center">
         {% dayjs page.date, 'MMM DD, YYYY' %}
       </div>
@@ -43,7 +43,7 @@
         {% endfor -%}
       </div>
     </div>
-    </header>
+  </header>
   <hr class="my-4">
   <main class="mx-auto" style="max-width:40em;">
     {{ content | safe }}
