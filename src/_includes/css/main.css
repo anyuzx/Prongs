@@ -14,6 +14,11 @@ article pre {
   @apply rounded-sm shadow-inner;
 }
 
+article :not(pre) > code {
+  @apply rounded-sm p-1;
+  background-color: #F0F0F4;
+}
+
 /*
  * add bullet to list
  */
@@ -95,9 +100,13 @@ figure > img {
 }
 
 .post-item .post-excerpt {
-  @apply overflow-hidden;
+  @apply overflow-hidden text-gray-700;
   max-height: 0px;
   transition: max-height 0.5s ease-in-out;
+}
+
+.post-item .post-excerpt > p:first-child {
+  @apply border-t border-black mt-2 pt-2;
 }
 
 .post-item .post-excerpt > p:last-child {
@@ -145,10 +154,6 @@ figure > img {
   border-color: #a6c8dd;
   background-color: #e9f1f6;
   margin-bottom: 1.63rem;
-}
-
-.note * {
-  background: inherit;
 }
 
 .note *:last-child {
@@ -275,11 +280,9 @@ figure > img {
 }
 
 @tailwind screens;
-/*
- * center image
- */
+
 @screen md {
-  article figure {
+  article.single-post figure {
     left: 50%;
     right: 50%;
     margin-left: -384px;
@@ -289,7 +292,7 @@ figure > img {
     position: relative;
   }
 
-  article pre {
+  article.single-post pre {
     left: 50%;
     right: 50%;
     margin-left: -384px;
