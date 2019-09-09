@@ -37,6 +37,7 @@
       </script>
     {% endif %}
     <!-- end of google analytics -->
+    <!-- include netlify cms for home page -->
     {% if pageType === 'home' %}
       <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     {% endif %}
@@ -59,7 +60,7 @@
         window.addEventListener('load', () => {
           navigator.serviceWorker.register('/service-worker.js');
         });
-      }
+      };
     </script>
   </body>
 </html>
