@@ -74,11 +74,11 @@ figure > img {
  * <a>, <time> and <button> tag are styled directly using css selector
  */
 .post-item {
-  @apply mb-0 p-2 rounded-sm border border-transparent;
+  @apply mb-0 py-2 border-t border-b border-transparent;
 }
 
 .post-item:hover {
-  @apply border-black shadow-md;
+  @apply border-black;
 }
 
 .post-item .post-info {
@@ -106,7 +106,7 @@ figure > img {
 }
 
 .post-item .post-excerpt > p:first-child {
-  @apply border-t border-black mt-2 pt-2;
+  @apply border-t mt-2 pt-2;
 }
 
 .post-item .post-excerpt > p:last-child {
@@ -162,6 +162,13 @@ figure > img {
 
 .nav-fixed {
   @apply inset-x-0 top-0 z-50 fixed;
+}
+
+.section-header {
+  @apply font-bold text-2xl border-b-4;
+  border-color: #003371;
+  width: fit-content;
+  width: -moz-fit-content;
 }
 
 
