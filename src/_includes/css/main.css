@@ -164,6 +164,9 @@ figure > img {
   @apply inset-x-0 top-0 z-50 fixed;
 }
 
+/*
+* used for styling the header for non-article section
+*/
 .section-header {
   @apply font-bold text-2xl border-b-4;
   border-color: #003371;
@@ -171,6 +174,34 @@ figure > img {
   width: -moz-fit-content;
 }
 
+/*
+* displaying research projects on the front page
+* use CSS grid
+*
+*/
+.research-display {
+  @apply bg-black border border-solid border-black rounded-sm;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1px;
+}
+
+.research-item {
+  @apply bg-white p-2; 
+}
+
+.research-item h2 {
+  @apply font-medium leading-tight text-base;
+}
+
+.research-item figure {
+  @apply m-0 relative;
+  padding-top: 100%;
+}
+
+.research-item figure > img {
+  @apply absolute h-full inset-0 object-contain;
+}
 
 @tailwind utilities;
 
@@ -307,5 +338,17 @@ figure > img {
     max-width: 768px;
     width: 768px;
     position: relative;
+  }
+}
+
+@screen sm {
+  /*
+  * on small screen display two research projects per row
+  */
+  .research-display {
+    @apply bg-black border border-solid border-black;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-column-gap: 1px;
   }
 }
