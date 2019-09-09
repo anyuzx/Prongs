@@ -1,60 +1,18 @@
+{% set openPostExcerptJS %}
+  {% include "../js/openPostExcerpt.js" %}
+{% endset %}
+
 {% extends "layouts/base.njk" %}
 {% set pageType = "tags" %}
-{% set tagPosts = collections[ tag ] %}
+{#{% set tagPosts = collections[ tag ] %}#}
+
 
 {% block head %}
-<style>
-#posts:hover .collapsed{max-height:300px !important}
-</style>
+<script>
+  {{ openPostExcerptJS | safe }}
+</script>
 {% endblock %}
 
 {% block content %}
-<div class="flex flex-wrap mb-8 p-2 text-xs font-mono justify-center">
-  {% for tag, number in collections.tagList %}
-    {% set tagPath = "/tags/" + tag | slug + "/" %}
-    {% if tag != 'posts' and tag != 'all' %}
-      {% if page.url == tagPath %}
-        <div class="inline-block mr-2 mb-2">
-          <span class="rounded-l-sm inline-block bg-gray-500 mr-0 px-2 py-1 border-t border-b border-l">
-            <a href="/tags/{{ tag | slug }}">
-            #{{ tag }}
-            </a>
-          </span><span class="rounded-r-sm inline-block ml-0 px-2 py-1 border-t border-b border-r">{{ number }}</span>
-        </div>
-      {% else %}
-        <div class="inline-block mr-2 mb-2">
-          <span class="rounded-l-sm inline-block bg-gray-200 hover:bg-gray-500 mr-0 px-2 py-1 border-t border-b border-l">
-            <a href="/tags/{{ tag | slug }}">
-            #{{ tag }}
-            </a>
-          </span><span class="rounded-r-sm inline-block ml-0 px-2 py-1 border-t border-b border-r">{{ number }}</span>
-        </div>
-      {% endif %}
-    {% endif %}
-  {% endfor %}
-</div>
-<ol class="ml-0">
-{%- for post in tagPosts | reverse -%}
-  <li class="mb-4 border border-transparent hover:border-black hover:shadow-md p-2" id="posts">
-    <div class="flex">
-      <div class="w-3/4 whitespace-no-wrap overflow-hidden" style="text-overflow:ellipsis">
-        <a href="{{ post.url }}" class="font-medium">
-          {{ post.data.title }}
-        </a>
-      </div>
-      <div class="w-1/4">
-        <p class="text-right text-gray-600">
-          {% dayjs post.date, 'YYYY-MM-DD' %}
-        </p>
-      </div>
-    </div>
-    <hr class="mb-2">
-    <div class="flex collapsed h-auto overflow-hidden" style="transition:max-height 0.5s ease-in-out;max-height:0;">
-      <p>
-        {{ post.data.excerpt }}...
-      </p>
-    </div>
-  </li>
-{%- endfor -%}
-</ol>
+  {{ content | safe }}
 {% endblock %}

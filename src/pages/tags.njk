@@ -14,4 +14,53 @@ layout: layouts/tags.njk
 description: "Posts tags"
 ---
 
+{% set tagPosts = collections[ tag ] %}
 
+<div class="flex flex-wrap mb-8 p-2 text-xs font-mono justify-center">
+  {% for tag, number in collections.tagList %}
+    {% set tagPath = "/tags/" + tag | slug + "/" %}
+    {% if tag != 'posts' and tag != 'all' %}
+      {% if page.url == tagPath %}
+        <div class="inline-block mr-2 mb-2">
+          <span class="rounded-l-sm inline-block bg-gray-500 mr-0 px-2 py-1 border-t border-b border-l">
+            <a href="/tags/{{ tag | slug }}">
+            #{{ tag }}
+            </a>
+          </span><span class="rounded-r-sm inline-block ml-0 px-2 py-1 border-t border-b border-r">{{ number }}</span>
+        </div>
+      {% else %}
+        <div class="inline-block mr-2 mb-2">
+          <span class="rounded-l-sm inline-block bg-gray-200 hover:bg-gray-500 mr-0 px-2 py-1 border-t border-b border-l">
+            <a href="/tags/{{ tag | slug }}">
+            #{{ tag }}
+            </a>
+          </span><span class="rounded-r-sm inline-block ml-0 px-2 py-1 border-t border-b border-r">{{ number }}</span>
+        </div>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+</div>
+
+<section class="mb-8">
+  <div>
+  {% for post in tagPosts | reverse -%}
+    <div class="post-item" id="post-{{ loop.index }}">
+      <div class="post-info">
+        <a href="{{ post.url }}">
+          {{ post.data.title }}
+        </a>
+        <div>
+          <time>
+            {% dayjs post.date, 'YYYY-MM-DD' %}
+          </time>
+          <button class="plus-minus" id="post-toggle-{{ loop.index }}" aria-label="Open excerpt of this post" onclick="openExcerpt(this, &apos;post-excerpt-{{ loop.index }}&apos;)">
+          </button>
+        </div>
+      </div>
+      <div id="post-excerpt-{{ loop.index }}" class="post-excerpt">
+        {{ post.data.excerpt | safe }}
+      </div>
+    </div>
+  {%- endfor %}
+  </div>
+</section>
