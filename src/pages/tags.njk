@@ -16,7 +16,7 @@ description: "Posts tags"
 
 {% set tagPosts = collections[ tag ] %}
 
-<div class="flex flex-wrap mb-8 p-2 text-xs font-mono justify-center">
+<div class="text-sm">
   {% for tag, number in collections.tagList %}
     {% set tagPath = "/tags/" + tag | slug + "/" %}
     {% if tag != 'posts' and tag != 'all' %}
