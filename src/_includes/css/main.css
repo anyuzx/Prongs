@@ -187,11 +187,11 @@ figure > img {
 }
 
 .research-item {
-  @apply bg-white p-2; 
+  @apply flex flex-col justify-between bg-white p-2; 
 }
 
 .research-item h2 {
-  @apply font-medium leading-tight text-base;
+  @apply mb-0 font-medium leading-tight text-base;
 }
 
 .research-item figure {
