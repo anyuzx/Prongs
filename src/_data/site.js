@@ -23,5 +23,6 @@ module.exports = {
     "INSTAGRAM": "guang_shi_stefan", // author's instagram
     // "TWITTER": "", // author's twitter handler
     // "ADDRESS": "" // author's address
-  }
+  },
+  "CLOUDINARY": "guangshi"
 }
