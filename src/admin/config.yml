@@ -16,8 +16,6 @@ collections:
     fields:
       - {label: "Slug", name: "slug", widget: "string"}
       - {label: "Title", name: "title", widget: "string"}
-      - {label: "SEO Meta Title", name: "metaTitle", widget: "string", required: false}
-      - {label: "SEO Meta Description", name: "metaDesc", widget: "string", required: false}
       - {label: "Publiash Date", name: "date", widget: "datetime"}
       - {label: "Cover Image", name: "coverImage", widget: "image", required: false}
       - {label: "Disable Math", name: "disableKatex", widget: "boolean", required: false}
