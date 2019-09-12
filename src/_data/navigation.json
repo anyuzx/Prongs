@@ -15,6 +15,10 @@
     {
       "title": "Posts",
       "url": "/posts"
+    },
+    {
+      "title": "Photos",
+      "url": "/photos"
     }
   ]
 }
