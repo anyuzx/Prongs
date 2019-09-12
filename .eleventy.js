@@ -39,6 +39,7 @@ module.exports = function(config) {
   });
   config.addCollection("tagList", require("./src/_includes/js/getTagList.js"));
   config.addCollection("categories", require("./src/_includes/js/getCategories.js"));
+  config.addCollection("photos", require("./src/_includes/js/getPhotos.js"));
 
   // add filter to render markdown
   config.addNunjucksFilter("renderUsingMarkdown", rawString => mdRender.render(rawString));
