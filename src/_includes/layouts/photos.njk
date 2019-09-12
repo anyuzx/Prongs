@@ -1,0 +1,38 @@
+{% extends "layouts/base.njk" %}
+
+{% set cloudinary_url = "https://res.cloudinary.com/" + site.CLOUDINARY + "/image/upload" %}
+
+{% block content %}
+{% for photo in collections.photos | reverse -%}
+    {% if loop.last %}
+    <section class="mb-8">
+    {% else %}
+    <section class="mb-16">
+    {% endif %}
+        <a href="/photos/{{ photo.public_id | slug }}">
+            <picture>
+                <source
+                    srcset="{{ cloudinary_url }}/c_scale,f_auto,q_100,w_800/{{ photo.public_id }}.webp 800w,
+                            {{ cloudinary_url }}/c_scale,f_auto,q_100,w_1600/{{ photo.public_id }}.webp 1600w"
+                    type="image/webp">
+                <img
+                    sizes="(max-width:650px) 100vw,
+                        768px"
+                    srcset="{{ cloudinary_url }}/c_scale,f_auto,q_100,w_800/{{ photo.public_id }}.jpg 800w,
+                            {{ cloudinary_url }}/c_scale,f_auto,q_100,w_1600/{{ photo.public_id }}.jpg 1600w"
+                    src="{{ cloudinary_url }}/c_scale,f_auto,q_100,w_1600/{{ photo.public_id }}.jpg"
+                    alt="{{ photo.context.custom.alt }}"
+                >
+            </picture>
+        </a>
+        <div class="flex items-end justify-between">
+            <span class="font-bold" style="font-variant:all-small-caps;">{{ photo.context.custom.type | upper }}</span>
+            <div>
+                {% for tag in photo.tags %}
+                    <span class="text-xs px-1 bg-gray-300 rounded-sm">{{ tag }}</span>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{%- endfor %}
+{% endblock %}

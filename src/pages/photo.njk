@@ -1,0 +1,62 @@
+---
+pagination:
+    data: collections.photos
+    size: 1
+    alias: photo
+layout: layouts/photo.njk
+permalink: /photos/{{ photo.public_id.split("/")[1] | slug }}/
+---
+
+{% set cloudinary_url = "https://res.cloudinary.com/" + site.CLOUDINARY + "/image/upload" %}
+
+{% for photo in pagination.items -%}
+  {% if loop.last %}
+  <section class="mb-8">
+  {% else %}
+  <section class="mb-8">
+  {% endif %}
+    <picture>
+        <source
+            srcset="{{ cloudinary_url }}/c_scale,f_auto,q_100,w_800/{{ photo.public_id }}.webp 800w,
+                    {{ cloudinary_url }}/c_scale,f_auto,q_100,w_1600/{{ photo.public_id }}.webp 1600w"
+            type="image/webp">
+        <img
+            sizes="(max-width:650px) 100vw,
+                768px"
+            srcset="{{ cloudinary_url }}/c_scale,f_auto,q_100,w_800/{{ photo.public_id }}.jpg 800w,
+                    {{ cloudinary_url }}/c_scale,f_auto,q_100,w_1600/{{ photo.public_id }}.jpg 1600w"
+            src="{{ cloudinary_url }}/c_scale,f_auto,q_100,w_1600/{{ photo.public_id }}.jpg"
+            alt="{{ photo.context.custom.alt }}"
+        >
+    </picture>
+    <div class="flex justify-between">
+        <div class="text-left">
+            {% if photo.context.custom.caption %}
+                <div class="font-black">{{ photo.context.custom.caption }}</div>
+            {% endif %}
+            {% if photo.context.custom.alt %}
+                <div>{{ photo.context.custom.alt }}</div>
+            {% endif %}
+        </div>
+        <div class="text-right" style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr 1fr;">
+            {% if photo.image_metadata.model %}
+                <div style="grid-column-start:1;grid-column-end:3;" class="font-bold text-right">{{ photo.image_metadata.model }}</div>
+            {% elif photo.context.custom.camera %}
+                <div style="grid-column-start:1;grid-column-end:3;" class="font-bold text-right">{{ photo.context.custom.camera }}</div>
+            {% endif %}
+            {% if photo.image_metadata.ShutterSpeedValue %}
+                <div class="text-left text-gray-700 mr-2">{{ photo.image_metadata.ShutterSpeedValue }} s</div>
+            {% endif %}
+            {% if photo.image_metadata.ApertureValue %}
+                <div class="text-gray-700">f/{{ photo.image_metadata.ApertureValue }}</div>
+            {% endif %}
+            {% if photo.image_metadata.FocalLength %}
+                <div class="text-left text-gray-700">{{ photo.image_metadata.FocalLength }}</div>
+            {% endif %}
+            {% if photo.image_metadata.ISO %}
+                <div class="text-gray-700">ISO {{ photo.image_metadata.ISO }}</div>
+            {% endif %}
+        </div>
+    </div>
+  </section>
+{%- endfor %}
