@@ -203,6 +203,19 @@ figure > img {
   @apply absolute h-full inset-0 object-contain;
 }
 
+/*
+* displaying the photo EXIF
+*/
+
+.photoExif {
+  @apply flex text-gray-700;
+  font-variant:unicase;
+}
+
+.photoExif > div {
+  @apply mr-2;
+}
+
 @tailwind utilities;
 
 .unactive-nav {
@@ -343,12 +356,28 @@ figure > img {
 
 @screen sm {
   /*
-  * on small screen display two research projects per row
+  * on large screen display four research projects per row
   */
   .research-display {
     @apply bg-black border border-solid border-black;
     display:grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-column-gap: 1px;
+  }
+}
+
+@screen sm {
+  /*
+  * on large screen display the photo EXIF on 2x2 grids
+  */
+  .photoExif {
+    @apply text-gray-700;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    font-variant:unicase;
+  }
+
+  .photoExif > div {
+    @apply mr-0;
   }
 }

@@ -27,9 +27,18 @@ permalink: /photos/{{ photo.public_id.split("/")[1] | slug }}/
                     {{ cloudinary_url }}/c_scale,f_auto,q_100,w_1600/{{ photo.public_id }}.jpg 1600w"
             src="{{ cloudinary_url }}/c_scale,f_auto,q_100,w_1600/{{ photo.public_id }}.jpg"
             alt="{{ photo.context.custom.alt }}"
+            class="mb-2"
         >
     </picture>
-    <div class="sm:flex justify-between">
+    <div class="flex mb-4 text-gray-700 text-sm font-light" style="font-variant:all-small-caps;">
+    {% if pagination.previousPageHref %}
+        <a class="mr-auto" href="{{ pagination.previousPageHref }}">Prev</a>
+    {% endif %}
+    {% if pagination.nextPageHref %}
+        <a class="ml-auto" href="{{ pagination.nextPageHref }}">Next</a>
+    {% endif %}
+    </div>
+    <div class="sm:flex items-start justify-between">
         <div class="text-left sm:w-3/4">
             {% if photo.context.custom.caption %}
                 <div class="font-black">{{ photo.context.custom.caption | title }}</div>
@@ -37,29 +46,41 @@ permalink: /photos/{{ photo.public_id.split("/")[1] | slug }}/
             {% if photo.context.custom.alt %}
                 <div>{{ photo.context.custom.alt }}</div>
             {% endif %}
-            <div>&copy; All copyrights reserved.</div>
+            <div>&copy; {{ site.AUTHOR.NAME }} All copyrights reserved</div>
         </div>
-        <div class="sm:w-1/4 note mb-0 mt-4 sm:mt-0">
-            {% if photo.image_metadata.model %}
-                <div class="font-bold">{{ photo.image_metadata.model }}</div>
-            {% elif photo.context.custom.camera %}
-                <div class="font-bold">{{ photo.context.custom.camera }}</div>
+        <div class="sm:text-right note mb-0 mt-4 sm:mt-0">
+            {# display camera model #}
+            {% if photo.context.custom.type === "digital" %}
+                {% if photo.image_metadata.Model %}
+                    <div class="font-bold">{{ photo.image_metadata.Model }}</div>
+                {% elif photo.context.custom.camera %}
+                    <div class="font-bold">{{ photo.context.custom.camera }}</div>
+                {% endif %}
+            {% elif photo.context.custom.type === "film" %}
+                {% if photo.context.custom.camera %}
+                    <div class="font-bold">{{ photo.context.custom.camera }}</div>
+                    <div class="photoFilm">{{ photo.context.custom.film }}</div>
+                {% endif %}
+            {% else %}
+                {% if photo.image_metadata.Model %}
+                    <div class="font-bold">{{ photo.image_metadata.Model }}</div>
+                {% elif photo.context.custom.camera %}
+                    <div class="font-bold">{{ photo.context.custom.camera }}</div>
+                {% endif %}
             {% endif %}
-            {% if photo.context.custom.film %}
-                <div class="pr-2 sm:w-1/2">{{ photo.context.custom.film }}</div>
-            {% endif %}
-            <div class="flex flex-wrap text-gray-700" style="font-variant:unicase;">
+            {# display additional information EXIF #}
+            <div class="photoExif">
                 {% if photo.image_metadata.ShutterSpeedValue %}
-                    <div class="pr-2 sm:w-1/2"><span style="font-variant:diagonal-fractions;">{{ photo.image_metadata.ShutterSpeedValue }}</span> s</div>
+                    <div><span style="font-variant:diagonal-fractions;">{{ photo.image_metadata.ShutterSpeedValue }}</span> s</div>
                 {% endif %}
                 {% if photo.image_metadata.ApertureValue %}
-                    <div class="pr-2 sm:w-1/2">&#402;/{{ photo.image_metadata.ApertureValue }}</div>
+                    <div>&#402;/{{ photo.image_metadata.ApertureValue }}</div>
                 {% endif %}
                 {% if photo.image_metadata.FocalLength %}
-                    <div class="pr-2 sm:w-1/2">{{ photo.image_metadata.FocalLength }}</div>
+                    <div>{{ photo.image_metadata.FocalLength.split(" ")[0] | round }} &#13212;</div>
                 {% endif %}
                 {% if photo.image_metadata.ISO %}
-                    <div class="pr-2 sm:w-1/2">ISO {{ photo.image_metadata.ISO }}</div>
+                    <div>ISO {{ photo.image_metadata.ISO }}</div>
                 {% endif %}
             </div>
         </div>
