@@ -2,22 +2,6 @@ module.exports = async function(collection) {
     // require cloudinary node.js SDK
     const cloudinary = require('cloudinary').v2;
 
-    // set cloudinary account
-    // this information is confidential
-    // SHOULD NOT BE UPLOADED ON GITHUB!!!
-    /*
-    const CLOUD_NAME = "guangshi";
-    const API_KEY = "299486271898776";
-    const API_SECRET = "zV9iYJlI3Q_oZnYSuEFXdavJKZ0";
-
-    cloudinary.config({
-    "cloud_name": CLOUD_NAME,
-    "api_key": API_KEY,
-    "api_secret": API_SECRET
-    });
-    */
-
-
     // function to fetch all photos in the folder guangshi.io
     // return a promise to be used in asycn function
     const getAllPhotosInfo = () => {

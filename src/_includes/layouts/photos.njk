@@ -4,12 +4,13 @@
 
 {% block content %}
 {% for photo in collections.photos | reverse -%}
+    {% set photoSlug = photo.public_id.split("/")[1] | slug %}
     {% if loop.last %}
     <section class="mb-8">
     {% else %}
     <section class="mb-16">
     {% endif %}
-        <a href="/photos/{{ photo.public_id | strip | slug }}">
+        <a href="/photos/{{ photoSlug }}">
             <picture>
                 <source
                     srcset="{{ cloudinary_url }}/c_scale,f_auto,q_100,w_800/{{ photo.public_id }}.webp 800w,

@@ -50,9 +50,6 @@ module.exports = function(config) {
     callback(null, svgmin);
   })
 
-  // add filter to split the string
-  config.addNunjucksFilter("strip", value => {return value.split("/")[1]});
-
   // add plugins
   //config.addPlugin(syntaxHighlight);
   config.addPlugin(pluginRss);

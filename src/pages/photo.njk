@@ -29,33 +29,39 @@ permalink: /photos/{{ photo.public_id.split("/")[1] | slug }}/
             alt="{{ photo.context.custom.alt }}"
         >
     </picture>
-    <div class="flex justify-between">
-        <div class="text-left">
+    <div class="sm:flex justify-between">
+        <div class="text-left sm:w-3/4">
             {% if photo.context.custom.caption %}
-                <div class="font-black">{{ photo.context.custom.caption }}</div>
+                <div class="font-black">{{ photo.context.custom.caption | title }}</div>
             {% endif %}
             {% if photo.context.custom.alt %}
                 <div>{{ photo.context.custom.alt }}</div>
             {% endif %}
+            <div>&copy; All copyrights reserved.</div>
         </div>
-        <div class="text-right" style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr 1fr;">
+        <div class="sm:w-1/4 note mb-0 mt-4 sm:mt-0">
             {% if photo.image_metadata.model %}
-                <div style="grid-column-start:1;grid-column-end:3;" class="font-bold text-right">{{ photo.image_metadata.model }}</div>
+                <div class="font-bold">{{ photo.image_metadata.model }}</div>
             {% elif photo.context.custom.camera %}
-                <div style="grid-column-start:1;grid-column-end:3;" class="font-bold text-right">{{ photo.context.custom.camera }}</div>
+                <div class="font-bold">{{ photo.context.custom.camera }}</div>
             {% endif %}
-            {% if photo.image_metadata.ShutterSpeedValue %}
-                <div class="text-left text-gray-700 mr-2">{{ photo.image_metadata.ShutterSpeedValue }} s</div>
+            {% if photo.context.custom.film %}
+                <div class="pr-2 sm:w-1/2">{{ photo.context.custom.film }}</div>
             {% endif %}
-            {% if photo.image_metadata.ApertureValue %}
-                <div class="text-gray-700">f/{{ photo.image_metadata.ApertureValue }}</div>
-            {% endif %}
-            {% if photo.image_metadata.FocalLength %}
-                <div class="text-left text-gray-700">{{ photo.image_metadata.FocalLength }}</div>
-            {% endif %}
-            {% if photo.image_metadata.ISO %}
-                <div class="text-gray-700">ISO {{ photo.image_metadata.ISO }}</div>
-            {% endif %}
+            <div class="flex flex-wrap text-gray-700" style="font-variant:unicase;">
+                {% if photo.image_metadata.ShutterSpeedValue %}
+                    <div class="pr-2 sm:w-1/2"><span style="font-variant:diagonal-fractions;">{{ photo.image_metadata.ShutterSpeedValue }}</span> s</div>
+                {% endif %}
+                {% if photo.image_metadata.ApertureValue %}
+                    <div class="pr-2 sm:w-1/2">&#402;/{{ photo.image_metadata.ApertureValue }}</div>
+                {% endif %}
+                {% if photo.image_metadata.FocalLength %}
+                    <div class="pr-2 sm:w-1/2">{{ photo.image_metadata.FocalLength }}</div>
+                {% endif %}
+                {% if photo.image_metadata.ISO %}
+                    <div class="pr-2 sm:w-1/2">ISO {{ photo.image_metadata.ISO }}</div>
+                {% endif %}
+            </div>
         </div>
     </div>
   </section>
