@@ -1,54 +1,105 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/37ea660e-25ff-45dc-ba7a-44afaa8dec09/deploy-status)](https://app.netlify.com/sites/guangshi/deploys)
 
-This file contains
-* Notes on building this site using 11ty
-* To-do list
-* References
+> This file is in construction :construction:
+
+This documentation mainly serves for self use. However, I hope anyone interested at building static site using Eleventy can find some useful information here. The following aspects are addressed in this file,
+
+* Instructions for using this site
+* Notes of building this site
+* References/Resources
+
+## Instructions
+---
+### Files
+The root directory contains the following,
+
+* `.eleventy.js` The essential configuration file for Eleventy.
+* `tailwind.config.js` The tailwindcss configuration file
+* `postcss.config.js` The PostCSS configuration file.
+* `criticalCSS.js` The script to run [**critical**](https://github.com/addyosmani/critical)
+* `rollup.config.js` Configuration file for Rollup.
+* `src` Directory containing templates, layouts, markdown files and assets
+  * `_data` Global data files
+  * `_includes`
+    * `css` CSS files
+      * `main.css` Main CSS styles
+      * `atom-one-light.css` Style file for code
+      * `typeset.css` A minimal CSS file used for **typeset**
+    * `js` Javascript utilities
+      * `getCategories.js` Used for generating Eleventy collection based on the front-matter entry `category`
+      * `getPhotos.js` Used for generating Eleventy collection for photos uploaded on Cloudinary
+      * `getTagList.js` Used for generating Eleventy collection for all tags
+      * `html-minify.js` Used for HTML minification (post-processing)
+      * `mdRender.js` Customized markdown-it parser
+      * `openPostExcerpt.js` A small JS code needed to be included in the page to open post excerpt
+      * `service-worker.js` Template file for service worker. Used together with `service-worker.njk`
+      * `typeset.js` Post-processing generated HTML files with [**Typeset**](https://github.com/davidmerfield/Typeset)
+      * `typography.js` Configure [**typography.js**](https://github.com/KyleAMathews/typography.js)
+    * `layouts` Template files
+      * `base.njk` Base layout (common elements for all pages)
+      * `default.njk` Default layout
+      * `home.njk` Front page layout
+      * `photo.njk` Single photo page layout
+      * `photos.njk` Photos page layout
+      * `post.njk` Single post page layout
+      * `posts.njk` Posts page layout
+      * `research.njk` Research page layout
+      * `tags.njk` Single tag page layout
+    * `partial` Also template files. Used for included in the main template file in `/layouts`
+      * `_footer.njk` Page footer
+      * `_nav.njk` Main navigation
+      * `_postList.njk` Macro for listing posts
+    * `svg` All SVG files (icons, logo)
+  * `admin` Files for Netlify CMS
+    * `config.yml` Configuration file for Netlify CMS
+    * `preview.js` Preview template for Netlify CMS
+    * `util.js` Javascript utility
+  * `assets`
+    * `favicon` All favicon files
+    * `images` Image files (not photography images)
+  * `contents` Textural content files
+    * `posts` Markdown files for posts
+    * `research` Markdown files for research projects
+  * `pages` Page templates
+    * `about.md` About me page (`/about`)
+    * `admin.njk` Netlify CMS admin portal (`/admin`)
+    * `photo.njk` Individual photo page. *Eleventy pagination*
+    * `photos.njk` Photos front page (`/photos`)
+    * `publication.md` Publication page (`/publication`)
+    * `research.md` Research page
+    * `tags.njk` Individual tag page. *Eleventy pagination*
+  * `404.njk` 404 Error page
+  * `feed.njk` RSS Feed page
+  * `index.md` Main front page
+  * `service-worker.njk` Template for generating service workers (with `/_includes/js/service-worker.js`).
+  * `site.webmanifest`
+
+### NPM script
+
+To build the site, run
+
+``` bash
+npm run build
+```
+
+Some other commands
+
+* `npm run build:development` Build the site without running HTML minification, PurgeCSS and criticalCSS.
+* `npm run 11ty:debug` Debug mode.
+* `npm run cms:bundle` Run **rollup** to bundle the files needed for Netlify CMS
+
+### How to set navigation items
+
+### How to add a post
+
+### How to customize the style
+
+### How to edit site-wise data
+
+### How to customize markdown-it parser
 
 ## Notes
-### Initial setup
-Adopting the good convention used by [^3][^4], I put all source files into a `src` directory. The global configuration file such as `.eleventy.js` and other files such as `package.json` is put in the root directory. For such file structure, we need to change the default setting of eleventy. Edit the `.eleventy.js` as such,
-
-```js
-// .eleventy.js
-module.exports = function(config) {
-  return {
-    dir: {
-      input: "src",
-      output: "dist"
-    }
-  };
-```
-
-Currently, when you run `npx @11ty/eleventy` or `eleventy`, the existing `dist` directory will not be override but simply appended which will cause a problem. To start clean, you need to manually delete `dist` directory every time before you run `eleventy`. To make life simpler. you can add a script in the `package.json` file,
-
-```json
-{
-  ...
-  "scripts": {
-    "dev": "rm -rf dist && npx @11ty/eleventy --serve"
-  }
-  ...
-}
-```
-
-Then you can run `npm run dev` to delete the dist folder, build the site and start the server.
-
-### Debug mode
-It is convenient to add the following script in the `package.json` file.
-
-```json
-{
-  ...
-  "scripts":{
-    "debug": "DEBUG=Eleventy* npx @11ty/eleventy --dryrun"
-  }
-  ...
-}
-```
-
-Then you can simply run `npm run debug` to enable the debug mode of `eleventy`.
-
+---
 ### Displaying posts index page
 We want to collect all posts files in a subdirectory inside `src`, and display it on the page `/posts`. To do this, the most easy way is to add collection is using the config API `getFilteredByGlob` provided by `eleventy`,
 
@@ -104,34 +155,6 @@ Now let's create a layout file named `post.njk` inside the directory `_includes/
 ```
 
 Notice that we use `title`, `data`, `tags` variables here. All of these variables are defined inside the front matter inside the individual post file.
-
-### How to display the word count?
-To display the number of words for each post, I use the [filter](https://www.11ty.io/docs/filters/) functionality provided by `11ty`. A filter is basically a function which takes variable and output a result. In our case, the variable would be the string of the post and the output would be the number of words.
-
-To save time, I use [`reading-time`](https://www.npmjs.com/package/reading-time) npm module to do the actual computation. All we need to do is just add the filter inside `.eleventy.js`,
-
-```js
-// .eleventy.js
-// require the reading-time npm module
-const readingTime = require('reading-time')
-
-module.exports = function(config) {
-  ...
-  // add our filter to count words and compute reading time
-  config.addFilter("readingTime", function(s) {
-    return readingTime(s);
-  }
-  ...
-}
-```
-
-Then inside our post layout file `_includes/layouts/post.njk`, we can add the following line,
-
-```njk
-<p>{{ (content | readingTime).words }} words {{ (content | readingTime).minutes | round }} mins read</p>
-```
-
-The output of `content | readingTime` is actually a object which contains the number of minutes, time in the unit of milliseconds and the number of words. We can obtain these values by wrap the object with a parenthesis and use `.` operator to refer the variable. Note that we also use `round` here, which is a builtin filter for Nunjucks to round the float number to a integer.
 
 ### How to include tailwind CSS
 In my case, I create a subdirectory `_includes/styles/` and create `main.css`. The content of `main.css` is the following,
@@ -232,33 +255,12 @@ Here we use the builtin variable `page.url` to access the url of the current pag
 
 Refer to this [page](https://www.11ty.io/docs/quicktips/tag-pages/) on how to create a tag page.
 
+### Use PurgeCSS
 
+### Use CriticalCSS
 
-## To-do
-- [x] Syntax highlight (options:[https://www.npmjs.com/package/@11ty/eleventy-plugin-syntaxhighlight](https://www.npmjs.com/package/@11ty/eleventy-plugin-syntaxhighlight))
-- [x] enable Katex
-- [x] enable typography.js
-- [x] use tailwindcss
-- [x] home page (newly updated content + latest news)
-- [ ] reduce some variable to global variables for easier maintenance
-- [ ] Responsive image
-- [x] css pipeline (css compile + purgecss) (use postcss-cli)
-- [ ] js pipeline
-- [x] HTML minimization
-- [ ] image resize/optimization pipeline (try Lepto.js?)
-- [ ] Assets bundle (parcel?)
-- [x] add tags navigation for posts index page
-- [ ] allow video used as header media for post
-- [ ] add similar posts section for individual post page
-- [ ] directly embedding github gist
-- [ ] allow photo collection based on EXIF information
-- [x] RSS feed (use 11ty plugin)
-- [ ] add in-site search
-- [x] Netlify CMS
-- [x] inline critical CSS (need improvement)
+### Use typeset.js
 
-## References
-[^1] Design inspiration #1: https://macwright.org/
-[^2] Design inspiration #2: https://www.pborenstein.com/
-[^3] 11ty example #1: https://github.com/philhawksworth/eleventyone
-[^4] 11ty example #2: https://github.com/andybelldesign/hylia
+### HTML minification
+
+### Set up photography page
