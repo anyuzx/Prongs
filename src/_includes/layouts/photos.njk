@@ -8,7 +8,7 @@
     {% if loop.last %}
     <section class="mb-8">
     {% else %}
-    <section class="mb-16">
+    <section class="mb-24">
     {% endif %}
         <a href="/photos/{{ photoSlug }}">
             <picture>
@@ -26,6 +26,7 @@
                 >
             </picture>
         </a>
+        {#
         <div class="flex items-end justify-between">
             <span class="font-bold" style="font-variant:all-small-caps;">{{ photo.context.custom.type | upper }}</span>
             <div>
@@ -34,6 +35,7 @@
                 {% endfor %}
             </div>
         </div>
+        #}
     </section>
 {%- endfor %}
 {% endblock %}
