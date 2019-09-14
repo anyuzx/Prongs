@@ -23,15 +23,15 @@ My research methods are theoretical and computational, involving equilibrium and
 
 #### Colophon
 
-* I occasionally [blog](/posts) about side projects, interesting problems encountered in my research and other stuff. My old blog is [here](https://biophyenvpol.wordpress.com/).
-
-* You can check my photos at my [instagram](https://www.instagram.com/guang_shi_stefan/).
-
-* The site favicon is the character of my last name **时** written in the ancient style - [**篆书**](https://en.wikipedia.org/wiki/Seal_script). It is made using Inkscape by myself.
-
 ::: note
 Writing contents and photos on this site are copyrighted. Feel free to contact me if you have any questions.
 :::
+
+* I occasionally [blog](/posts) about side projects, interesting problems encountered in my research and other stuff. My old blog is [here](https://biophyenvpol.wordpress.com/).
+
+* I like to take [photos](/photos). You can also check my [instagram](https://www.instagram.com/guang_shi_stefan/).
+
+* The site favicon is the character of my last name **时** written in the ancient style - [**篆书**](https://en.wikipedia.org/wiki/Seal_script). It is made using Inkscape by myself.
 
 ---
 
