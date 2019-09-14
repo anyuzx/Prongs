@@ -1,3 +1,25 @@
+## To-do
+- [x] Syntax highlight (options:[https://www.npmjs.com/package/@11ty/eleventy-plugin-syntaxhighlight](https://www.npmjs.com/package/@11ty/eleventy-plugin-syntaxhighlight))
+- [x] enable Katex
+- [x] enable typography.js
+- [x] use tailwindcss
+- [x] home page (newly updated content + latest news)
+- [ ] reduce some variable to global variables for easier maintenance
+- [ ] Responsive image
+- [x] css pipeline (css compile + purgecss) (use postcss-cli)
+- [ ] js pipeline
+- [x] HTML minimization
+- [ ] image resize/optimization pipeline (try Lepto.js?)
+- [ ] Assets bundle (parcel?)
+- [x] add tags navigation for posts index page
+- [ ] allow video used as header media for post
+- [ ] add similar posts section for individual post page
+- [ ] directly embedding github gist
+- [ ] allow photo collection based on EXIF information
+- [x] RSS feed (use 11ty plugin)
+- [ ] add in-site search
+- [x] Netlify CMS
+- [x] inline critical CSS (need improvement)
 - [ ] abstract tag style to a single class
 - [x] fix the non-equal width for home page research project card on mobile
 - [x] allow disable katex in the front-matter (useful when the post does not contain mathematical expression)
