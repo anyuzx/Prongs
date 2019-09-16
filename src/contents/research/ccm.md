@@ -4,6 +4,7 @@ permalink: false
 date: 2019-08-14
 image:
   path: /assets/images/project-ccm-illustration.min.png
+  pathThumbnail: /assets/images/project-ccm-illustration.small.min.png
   description: folding process of copolymer chromosome model
 ---
 

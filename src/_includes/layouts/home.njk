@@ -25,7 +25,7 @@
         <a href="/research#{{ project.data.title | slug }}" class="research-item group">
           <h2 class="research-title group-hover:underline">{{ project.data.title }}</h2>
           <figure>
-            <img src="{{ project.data.image.path }}" alt="{{ project.data.image.description }}">
+            <img src="{{ project.data.image.pathThumbnail }}" alt="{{ project.data.image.description }}">
           </figure>
         </a>
       {%- endif %}
