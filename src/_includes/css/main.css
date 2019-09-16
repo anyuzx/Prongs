@@ -15,6 +15,7 @@ article pre {
 }
 
 article :not(pre) > code {
+  font-family: 'Roboto Mono',Menlo,monospace;
   @apply rounded-sm p-1;
   background-color: #F0F0F4;
 }

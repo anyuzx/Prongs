@@ -28,6 +28,7 @@ hue-6-2: #c18401
 }
 
 .hljs > code {
+  font-family: 'Roboto Mono',Menlo,monospace;
   line-height: 1.375;
 }
 

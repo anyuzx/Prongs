@@ -8,6 +8,8 @@ const typography = new Typography({ ...TypographyBootstrap,
                                     baseLineHeight: 1.63,
                                     headerWeight: 600,
                                     includeNormalize: false,
+                                    bodyFontFamily: ['IBM Plex Sans','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue','sans-serif'],
+                                    headerFontFamily: ['IBM Plex Sans','-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue','sans-serif']
                                  })
 
 module.exports = function () {
