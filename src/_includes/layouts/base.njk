@@ -39,9 +39,11 @@
       {{ typesetCSS | safe }}
     </style>
     <!-- include netlify cms for home page -->
+    {#
     {% if pageType === 'home' %}
       <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     {% endif %}
+    #}
     {% block head %}
     {% endblock %}
   </head>
