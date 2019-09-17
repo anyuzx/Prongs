@@ -17,15 +17,15 @@ permalink: /photos/{{ photo.public_id.split("/")[1] | slug }}/
   {% endif %}
     <picture>
         <source
-            srcset="{{ cloudinary_url }}/c_scale,f_auto,q_100,w_800/{{ photo.public_id }}.webp 800w,
-                    {{ cloudinary_url }}/c_scale,f_auto,q_100,w_1600/{{ photo.public_id }}.webp 1600w"
+            srcset="{{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_800/{{ photo.public_id }}.webp 800w,
+                    {{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_1600/{{ photo.public_id }}.webp 1600w"
             type="image/webp">
         <img
             sizes="(max-width:650px) 100vw,
                 768px"
-            srcset="{{ cloudinary_url }}/c_scale,f_auto,q_100,w_800/{{ photo.public_id }}.jpg 800w,
-                    {{ cloudinary_url }}/c_scale,f_auto,q_100,w_1600/{{ photo.public_id }}.jpg 1600w"
-            src="{{ cloudinary_url }}/c_scale,f_auto,q_100,w_1600/{{ photo.public_id }}.jpg"
+            srcset="{{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_800/{{ photo.public_id }}.jpg 800w,
+                    {{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_1600/{{ photo.public_id }}.jpg 1600w"
+            src="{{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_1600/{{ photo.public_id }}.jpg"
             alt="{{ photo.context.custom.alt }}"
             class="mb-2"
         >
