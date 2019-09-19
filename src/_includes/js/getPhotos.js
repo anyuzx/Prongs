@@ -10,7 +10,8 @@ module.exports = async function(collection) {
             {
                 type:"upload",
                 prefix:"guangshi.io",
-                context:true
+                context:true,
+                max_results: 500
             },
             function(error, result){
                 resolve(result);
