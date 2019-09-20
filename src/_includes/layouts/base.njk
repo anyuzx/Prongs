@@ -38,12 +38,6 @@
     <style>
       {{ typesetCSS | safe }}
     </style>
-    <!-- include netlify cms for home page -->
-    {#
-    {% if pageType === 'home' %}
-      <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    {% endif %}
-    #}
     {% block head %}
     {% endblock %}
   </head>
@@ -58,6 +52,12 @@
     {% ifAsync not disableFooter %}
       {% include "partials/_footer.njk" %}
     {% endif %}
+    <!-- include netlify cms for home page -->
+    {#
+    {% if pageType === 'home' %}
+      <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" async defer></script>
+    {% endif %}
+    #}
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
