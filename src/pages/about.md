@@ -6,9 +6,11 @@ coverImage: /assets/images/my-photo.jpg
 description: "A brief about myself page"
 ---
 
-Hi, I'm Guang Shi (时光). I work on developing physical models (both theoretical and computational) for living system.
+Hi, I'm Guang Shi (时光). I'm currently a postdoctoral fellow at University of Texas at Austin. I work on developing physical models (both theoretical and computational) for living system. Currently, my research focuses on the physical modelling of chromatin folding and molecular motors.
 
-I grew up in Xi'an, China. I received my Bachelor's degree in Physics from Nanjing University and I continued studying Biophysics at Univ. of Maryland at College Park and received the Ph.D. in 2019. Asides from my academic research, I like coding, math and exploring ideas of using machine learning to analyze data. I also love to take photos. I primarily take films but sometimes digital as well.
+I grew up in Xi'an, China. I received my Bachelor's degree in Physics from Nanjing University and got my Ph.D. in biophysics from Univ. of Maryland at College Park. Coming from a physics background, I believe physical modeling of living system can leads to insights and discoveries which are otherwise difficult to be achieved purely by experiments. At the same time, many of 'biology' do lies in the details - an important point computational and theoretical biophysicist should always bear in mind.
+
+Asides from my academic research, I like coding, math, data analysis and visualization. I also love to take photos. I primarily take films but sometimes digital as well.
 
 ---
 
