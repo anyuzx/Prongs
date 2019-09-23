@@ -18,10 +18,10 @@
 {% endblock %}
 {% block content %}
 <article class="single-post">
-  {% if coverImage %}
+  {% if image %}
   <header>
     <figure>
-      <img src="{{ coverImage }}" alt="Cover Image">
+      <img src="{{ image.path }}" alt="{{ image.description }}">
     </figure>
   </header>
   {% endif %}
