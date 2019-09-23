@@ -62,6 +62,7 @@ module.exports = function(config) {
   config.addPassthroughCopy("src/site.webmanifest");
   config.addPassthroughCopy("src/_redirects");
   config.addPassthroughCopy("src/admin/config.yml");
+  config.addPassthroughCopy("src/_includes/js/pyodide.js");
   //config.addPassthroughCopy("src/admin/preview.js");
 
   config.setLibrary("md", mdRender);
