@@ -130,7 +130,7 @@ Every time you hit `Reset` and `Start`, a new random walk trajectory is generate
 Since Pyodide uses WebAssembly, older browser cannot run the demonstration. You can [check](https://caniuse.com/#feat=wasm) whether your browser support WebAssembly.
 :::
 
-<div class="flex justify-center mb-4">
+<div class="flex flex-col sm:flex-row justify-center mb-4">
   <button id="initPyodide" class="border border-black p-1 rounded-sm mr-2 bg-yellow-300">Initialize Pyodide</button>
   <input id="stepNumber" type="number" value="100" placeholder="number of steps" class="border border-black p-1 rounded-sm mr-2">
   <button id="reset" disabled class="border border-black p-1 rounded-sm opacity-50 cursor-not-allowed mr-2">Reset</button>
