@@ -10,80 +10,77 @@ permalink: /photos/{{ photo.public_id.split("/")[1] | slug }}/
 {% set cloudinary_url = "https://res.cloudinary.com/" + site.CLOUDINARY + "/image/upload" %}
 
 {% for photo in pagination.items -%}
-  {% if loop.last %}
-  <section class="mb-8">
-  {% else %}
-  <section class="mb-8">
-  {% endif %}
-    <picture>
-        <source
-            srcset="{{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_800/{{ photo.public_id }}.webp 800w,
+{% if loop.last %}
+<section class="mb-8">
+    {% else %}
+    <section class="mb-8">
+        {% endif %}
+        <picture>
+            <source srcset="{{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_800/{{ photo.public_id }}.webp 800w,
                     {{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_1600/{{ photo.public_id }}.webp 1600w"
-            type="image/webp">
-        <img
-            sizes="(max-width:650px) 100vw,
-                768px"
-            srcset="{{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_800/{{ photo.public_id }}.jpg 800w,
+                type="image/webp">
+            <img sizes="(max-width:650px) 100vw,
+                768px" srcset="{{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_800/{{ photo.public_id }}.jpg 800w,
                     {{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_1600/{{ photo.public_id }}.jpg 1600w"
-            src="{{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_1600/{{ photo.public_id }}.jpg"
-            alt="{{ photo.context.custom.alt }}"
-            class="mb-2"
-        >
-    </picture>
-    <div class="flex mb-4 text-gray-700 text-sm font-light" style="font-variant:all-small-caps;">
-    {% if pagination.previousPageHref %}
-        <a class="mr-auto" href="{{ pagination.previousPageHref }}">Prev</a>
-    {% endif %}
-    {% if pagination.nextPageHref %}
-        <a class="ml-auto" href="{{ pagination.nextPageHref }}">Next</a>
-    {% endif %}
-    </div>
-    <div class="sm:flex items-start justify-between">
-        <div class="text-left sm:w-3/4">
-            {% if photo.context.custom.caption %}
-                <div class="font-black">{{ photo.context.custom.caption | title }}</div>
+                src="{{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_1600/{{ photo.public_id }}.jpg"
+                alt="{{ photo.context.custom.alt }}" class="mb-2">
+        </picture>
+        <div class="flex mb-4 text-gray-700 text-sm font-light" style="font-variant:all-small-caps;">
+            {% if pagination.previousPageHref %}
+            <a class="mr-auto" href="{{ pagination.previousPageHref }}">Prev</a>
             {% endif %}
-            {% if photo.context.custom.alt %}
-                <div>{{ photo.context.custom.alt }}</div>
+            {% if pagination.nextPageHref %}
+            <a class="ml-auto" href="{{ pagination.nextPageHref }}">Next</a>
             {% endif %}
-            <div>&copy; {{ site.AUTHOR.NAME }} All copyrights reserved</div>
         </div>
-        <div class="sm:text-right note mb-0 mt-4 sm:mt-0">
-            {# display camera model #}
-            {% if photo.context.custom.type === "digital" %}
-                {% if photo.image_metadata.Model %}
-                    <div class="font-bold">{{ photo.image_metadata.Model }}</div>
-                {% elif photo.context.custom.camera %}
-                    <div class="font-bold">{{ photo.context.custom.camera }}</div>
+        <div class="sm:flex items-start justify-between">
+            <div class="text-left sm:w-3/4">
+                {% if photo.context.custom.caption %}
+                <div class="font-black">{{ photo.context.custom.caption | title }}</div>
                 {% endif %}
-            {% elif photo.context.custom.type === "film" %}
+                {% if photo.context.custom.alt %}
+                <div>{{ photo.context.custom.alt }}</div>
+                {% endif %}
+                <div>&copy; {{ site.AUTHOR.NAME }} All copyrights reserved</div>
+            </div>
+            <div class="sm:text-right note mb-0 mt-4 sm:mt-0">
+                {# display camera model #}
+                {% if photo.context.custom.type === "digital" %}
+                {% if photo.image_metadata.Model %}
+                <div class="font-bold">{{ photo.image_metadata.Model }}</div>
+                {% elif photo.context.custom.camera %}
+                <div class="font-bold">{{ photo.context.custom.camera }}</div>
+                {% endif %}
+                {% elif photo.context.custom.type === "film" %}
                 {% if photo.context.custom.camera %}
-                    <div class="font-bold">{{ photo.context.custom.camera }}</div>
-                    <div class="photoFilm">{{ photo.context.custom.film }}</div>
+                <div class="font-bold">{{ photo.context.custom.camera }}</div>
+                <div class="photoFilm">{{ photo.context.custom.film }}</div>
                 {% endif %}
-            {% else %}
+                {% else %}
                 {% if photo.image_metadata.Model %}
-                    <div class="font-bold">{{ photo.image_metadata.Model }}</div>
+                <div class="font-bold">{{ photo.image_metadata.Model }}</div>
                 {% elif photo.context.custom.camera %}
-                    <div class="font-bold">{{ photo.context.custom.camera }}</div>
+                <div class="font-bold">{{ photo.context.custom.camera }}</div>
                 {% endif %}
-            {% endif %}
-            {# display additional information EXIF #}
-            <div class="photoExif">
-                {% if photo.image_metadata.ShutterSpeedValue %}
-                    <div><span style="font-variant:diagonal-fractions;">{{ photo.image_metadata.ShutterSpeedValue }}</span> s</div>
                 {% endif %}
-                {% if photo.image_metadata.ApertureValue %}
+                {# display additional information EXIF #}
+                <div class="photoExif">
+                    {% if photo.image_metadata.ShutterSpeedValue %}
+                    <div><span
+                            style="font-variant:diagonal-fractions;">{{ photo.image_metadata.ShutterSpeedValue }}</span>
+                        s</div>
+                    {% endif %}
+                    {% if photo.image_metadata.ApertureValue %}
                     <div>&#402;/{{ photo.image_metadata.ApertureValue }}</div>
-                {% endif %}
-                {% if photo.image_metadata.FocalLength %}
+                    {% endif %}
+                    {% if photo.image_metadata.FocalLength %}
                     <div>{{ photo.image_metadata.FocalLength.split(" ")[0] | round }} &#13212;</div>
-                {% endif %}
-                {% if photo.image_metadata.ISO %}
+                    {% endif %}
+                    {% if photo.image_metadata.ISO %}
                     <div>ISO {{ photo.image_metadata.ISO }}</div>
-                {% endif %}
+                    {% endif %}
+                </div>
             </div>
         </div>
-    </div>
-  </section>
-{%- endfor %}
+    </section>
+    {%- endfor %}
