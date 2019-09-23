@@ -1,7 +1,7 @@
 ---
 slug: run-a-random-walker-in-your-website-using-pyodide
 title: Run a random walker in your website using Pyodide
-date: 2019-09-21
+date: 2019-09-23
 image:
   path: /assets/images/random-walker.svg
   description: a two-dimensional random walker trajectory
