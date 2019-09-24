@@ -11,7 +11,7 @@ disableKatex: true
 
 This note is about an exercise of using `express.js` and `axios`. First, I create a simple express server, and secondly, I use axios to make http call to the server created.
 
-### Express server
+## Express server
 The following is the code for our little express server.
 
 ```js
@@ -31,7 +31,7 @@ app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
 Save the above code to file `myexpress-server.js`. Now if you run `node myexpress-server.js` in your terminal and open `http://localhost:3000` in your browser, you should see the values of `mydata` printed on the screen!. Now we have successfully set up a small express server!
 
-### Use `axios` to make http call
+## Use `axios` to make http call
 Now we want to acquire our `mydata` from some external place, we can use `axios` to make API call to our express server built and get our `mydata` object. Let's write our axios code,
 
 ```js

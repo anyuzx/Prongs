@@ -35,7 +35,7 @@ Some references on **Pivot algorithm**
 ## Python Implementation
 The implement of this algorithm in `Python` is very straightforward. The raw file can be found here
 
-~~~ python
+```python
 import numpy as np
 import timeit
 from scipy.spatial.distance import cdist
@@ -103,11 +103,11 @@ t = 1000 # number of pivot steps
 chain = lattice_SAW(N,l0)
 
 %timeit chain.walk(t)
-~~~
+```
 
-~~~ bash
+```bash
 1 loops, best of 3: 2.61 s per loop
-~~~
+```
 
 Above code performs a 100 monomer chain with 1000 successful pivot steps. However even with `numpy` and the built-in function `cdist` of `scipy`, the code is still too slow for large number of random walk steps. Of course, you can directly write `C`, `C++` or `Fortran` code to have the maximum speed. But for me, I would like to write any codes using `Python` in an ideal world.
 
@@ -117,13 +117,13 @@ Above code performs a 100 monomer chain with 1000 successful pivot steps. Howeve
 
 However world is never perfect. When comming to the loops, `Python` can be very slow. In many complex situations, even `numpy` and `scipy` is not that useful. For instance in this case, in order to determine the overlaps, we need to have a nested loop over two sets of sites (monomers). In the above code, I use built-in function `cdist` of `scipy` to do this, which is already highly optimized. But actually we don't have to complete the loops, because we can stop the search if we encounter one overlap. However I can't think of a `numpy` or `scipy` way to do this easily and efficiently because we have this conditional break feature. Here is where [Cython][^4] can be extrememly useful. `Cython` can _translate_ your `python` code in `C` and _translate_ your `C` or `C++` code into a `Python` module so you can `import` your `C` code into `Python`. To do that, first we just handwrite our **pivot algorithm** using plain `C++` code.
 
-~~~ c
+```cpp
 #include #include
 using namespace std;
 void c_lattice_SAW(double* chain, int N, double l0, int ve, int t){
 ... // pivot algorithm codes here
 }
-~~~
+```
 
 Name the file `c_lattice_SAW.cpp`. Here we define a function called `c_lattice_SAW`. Where `chain` is the array storing the coordinates of monomers, `N` is the number of monomers, `l0` is the bond length, `t` is the number of successful steps.
 > * `C++11` library **random** is used here in order to use Mersenne twister RNG directly.
@@ -132,9 +132,9 @@ Name the file `c_lattice_SAW.cpp`. Here we define a function called `c_lattice_S
 
 The whole `C++` code is not shown, because it is a bit long. Beside our plain `C` code, we also need a header file `c_lattice_SAW.h`.
 
-~~~ c
+```cpp
 void c_lattice_SAW(double* chain, int N, double l0, int ve, int t);
-~~~
+```
 
 If you don't want to handwrite a `C` code, another way to use `Cython` is to write plain `Cython` program(much simpler and readable). But in that way, how to get high quality random numbers efficiently is a problem.Usually there are several ways to get random numbers in `Cython`
 
@@ -162,7 +162,7 @@ What I did in this post is the last method.
 
 Now we need to make a `.pyx` file that will handle the C code in `Cython` and define a python function to use our C code. Give the `.pyx` a different name like `lattice_SAW.pyx`
 
-~~~ python
+```python
 import cython
 import numpy as np
 cimport numpy as np
@@ -177,11 +177,11 @@ def lattice_SAW(int N, double l0, int ve, int t):
     cdef np.ndarray[double,ndim = 1,mode="c"] chain = np.zeros(N*3)
     c_lattice_SAW(&chain[0],N,l0,ve,t)
     return chain
-~~~
+```
 
 Compile our C code to generate a shared library which can be imported into `Python` as a module. To do that, we use `Python` `distutils` package. Make a file named `setup.py`.
 
-~~~ python
+```python
 from distutils.core import setup
 from distutils.extension import Extension
 from Cython.Distutils import build_ext
@@ -196,7 +196,7 @@ cmdclass = {'build_ext':build_ext},
             language="c++",
             include_dirs = [numpy.get_include()])],
 )
-~~~
+```
 
 > **NOTE**: Instead of normal arguments, we also have `extra_compile_args` here. This is because in the `C++` code, we use library **random** which is new in `C++11`. On **MAC**, `-std=c++11` and `-stdlib=libc++` need to be added to tell the compilers to support `C++11` and use `libc++` as the standard library. On **Linux** system like **Ubuntu**, just `-std=c++11` is enough.
 > **NOTE**: If `numpy` array is used in Cython, then the setting `include_dirs = [numpy.get_include()])]` need to be added
@@ -204,27 +204,27 @@ cmdclass = {'build_ext':build_ext},
 Then in terminal we do
 
 Linux
-~~~ bash
+```bash
 python setup.py build_ext --inplace
-~~~
+```
 or Mac OS
-~~~ bash
+```bash
 clang++ python setup.py build_ext --inplace
-~~~
+```
 > **NOTE**: `clang++` tell the python use `clang` compiler not `gcc` because apparently the version of `gcc` shipped with **OS X** doesn't support `C++11`.
 
 If the compilation goes successfully, then a `.so` library file is generated. Now we can import our module in `Python` in that working directory
 
-~~~ python
+```python
 import lattice_SAW
 import numpy
 
 %timeit lattice_SAW.lattice_SAW(100,1,1,1000)
-~~~
+```
 
-~~~ bash
+```bash
 100 loops, best of 3: 5.97 ms per loop
-~~~
+```
 
 That is 437 times faster than our normal *numpy/scipy* way!
 

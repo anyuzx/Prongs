@@ -27,7 +27,7 @@ where $k_{p}=\frac{6\pi^{2}k_{\mathrm{B}}T}{N b^{2}}p^{2}$, $N$ is the number of
 
 This suggests that we can first generate normal modes. Since the normal modes are independent with each other and they are just gaussian random number. It is very easy and straightforward to do. And then we just transform them to the actual position of beads using the first equation and we get the position of each beads, giving us the conformations. This may seems untrivial at first glance but should give us the correct result. To test this, let's implement the algorithm in python.
 
-~~~ python
+```python
 def generate_gaussian_chain(N, b, pmax):
     # N = number of beads
     # b = kuhn length
@@ -46,11 +46,11 @@ def generate_gaussian_chain(N, b, pmax):
     y = 2.0 * np.sum(np.resize(xpy, (len(xpy),1)) * cosarray, axis=0)
     z = 2.0 * np.sum(np.resize(xpz, (len(xpz),1)) * cosarray, axis=0)
     return np.dstack((x,y,z))[0]
-~~~
+```
 
 Note that there is a parameter called `pmax`. Although actual position is the linear combination of **inifinite** number of normal modes, numerically we must truncate this summation. `pmax` set the number of normal modes computed. Also in the above code, we use numpy broadcasting to make the code very consie and efficient. Let's use this code to generate three conformations with different values of `pmax` and plot them
 
-~~~python
+```python
 # N = 300
 # b = 1.0
 conf1 = generate_gaussian_chain(300, 1.0, 10) # pmax = 10
@@ -62,7 +62,7 @@ fig = plt.figure(figsize=(15,5))
 # matplotlib codes here
 
 plt.show()
-~~~
+```
 
 ![polymer conformations](https://i.imgur.com/4mxmVAY.png)
 

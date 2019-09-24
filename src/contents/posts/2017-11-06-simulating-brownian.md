@@ -48,8 +48,7 @@ $$
 
 where $\omega(t)$ is the normal random variable with zero mean and unit variance. Since for BD, the velocities are not well defined anymore, only the positions are updated. The implementation of this scheme in `LAMMPS` is straightforward. Based on source codes `fix_langevin.cpp` and `fix_langevin.h` in the `LAMMPS`, I wrote a custom `fix` of BD myself. The core part of the code is the following. The whole code is [here](https://raw.githubusercontent.com/anyuzx/Lammps_brownian/master/fix_bd.cpp).
 
-~~~cpp
-...
+```cpp
 void FixBD::initial_integrate(int vflag)
 {
   double dtfm;
@@ -87,8 +86,7 @@ void FixBD::initial_integrate(int vflag)
       }
   }
  }
-...
-~~~
+```
 
 As one can see, the implementation of the integration scheme is easy, shown above. `dtv` is the time step $\Delta t$ used. `dtfm` is $1/(\gamma m)$ and `randf` is $\sqrt{2m\gamma/(\Delta t\beta)}$.
 

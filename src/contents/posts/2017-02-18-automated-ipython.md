@@ -17,7 +17,7 @@ My research work involves a lot of using of IPython Notebook. I usually do it on
 
 I have been doing this for a while. But it eventually comes to me that how good it is if I can make it automatic. So I wrote this python script to do the procedures described in those three articles. I am sure there must be some more elegant way to do this. But this is what I got so far and it works.
 
-~~~ python
+```python
 import paramiko
 import sys
 import subprocess
@@ -129,7 +129,7 @@ if args.terminate:
     close()
 else:
     connect()
-~~~
+```
 
 This script does the following:
 1. Connect to the server using python package [**paramiko**](http://www.paramiko.org).
