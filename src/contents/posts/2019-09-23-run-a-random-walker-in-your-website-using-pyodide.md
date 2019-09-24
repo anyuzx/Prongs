@@ -123,11 +123,11 @@ I don't want to make this post super long, thus I won't go into very details of 
 Here is the end product! Click the button `Initialize Pyodide` to download the Pyodide and load Numpy. Once the initialization is finished (*it can takes about 20 seconds or even longer with slow network*. Not good, I know ...), the button `Reset`, `Start` and `Pause` will become clickable and green. Then enter a step number (or use the default number 100) and hit `Start` button to watch the animation of a 2D random walker. Click `Pause` to pause the animation anytime and `Start` to resume. Click `Reset` button to reset the random walker.
 
 ::: note
-Every time you hit `Reset` and `Start`, a new random walk trajectory is generated which happens entirely in your browser. No server involved!
+Every time you hit `Reset` and `Start`, a new random walk trajectory is generated directly inside your browser. There is no server involved whatsoever!
 :::
 
 ::: note
-Since Pyodide uses WebAssembly, older browser cannot run the demonstration. You can [check](https://caniuse.com/#feat=wasm) whether your browser support WebAssembly.
+Since Pyodide uses WebAssembly, older browser cannot run the demonstration. You can [check](https://caniuse.com/#feat=wasm) whether your browser support WebAssembly. I recommend use latest version of desktop chrome and firefox for the best experience.
 :::
 
 <div class="flex flex-col sm:flex-row justify-center mb-4">
@@ -139,6 +139,8 @@ Since Pyodide uses WebAssembly, older browser cannot run the demonstration. You 
 </div>
 <figure id="plot_div">
 </figure>
+
+---
 
 ### Further reading
 
