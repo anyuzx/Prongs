@@ -33,7 +33,7 @@ async function fetchGist () {
 function placeholderPlot() {
   Plotly.newPlot(
     'plot_div',
-    [{x:[0],y:[0],type:'scatter'}],
+    [{x:[0],y:[0],mode:'markers',type:'scatter',marker:{size: 30}}],
     {
       title: '2D Random Walk',
       xaxis: {
@@ -53,13 +53,14 @@ function placeholderPlot() {
   )
 }
 
-// initialize the plot
+// initialize animation
 function initPlot(x, y) {
   Plotly.react(
     'plot_div',
-    [{x:[0],y:[0],type: 'scatter'}],
+    [{x:[0],y:[0],mode:'markers',type: 'scatter',marker:{size:30}},{x:[0],y:[0],mode:'lines',type:'scatter'}],
     {
       title: '2D Random Walk',
+      showlegend: false,
       xaxis: {
         title: 'x',
         range: [Math.min(...x) - 10, Math.max(...x) + 10]
@@ -79,32 +80,22 @@ function initPlot(x, y) {
   )
 }
 
-// animate the trajectory
+// start animation
 function startAnimate(x, y) {
-  i = i + 1;
+  traceHead = {
+    x: x.slice(0,i).slice(-1),
+    y: y.slice(0,i).slice(-1)
+  };
+  traceTail = {
+    x: x.slice(0,i),
+    y: y.slice(0,i)
+  };
   if (i <= x.length) {
-    Plotly.animate('plot_div', {
-      data: [
-              {x: x.slice(0,i), y: y.slice(0,i)}
-            ],
-      traces: [0],
-      layout: {
-        title: '2D Random Walk',
-        xaxis: {
-          title: 'x'
-        },
-        yaxis: {
-          title: 'y'
-        },
-        autosize: true,
-        margin: {
-          l: 40,
-          r: 40,
-          b: 40,
-          t: 40
-        }
-      }
-    },{
+    Plotly.animate('plot_div',
+    {
+      data: [traceHead, traceTail]
+    }
+    ,{
       transition: {
         duration: 0
       },
@@ -112,9 +103,10 @@ function startAnimate(x, y) {
         duration: 0,
         redraw: false
       }
-    })
+    });
     requestID = requestAnimationFrame(function(){startAnimate(x,y)});
-  }
+  };
+  i = i + 1;
 }
 
 // reset the plot
@@ -156,6 +148,7 @@ function initPyodide() {
     .catch(e => {console.log(e)})
 }
 
+// this function return the promise of pyodide runPython function
 function generateRandomWalk(stepNumber) {
   return gistFetchPromise
   .then(res => pyodide.runPython(res))
@@ -164,7 +157,11 @@ function generateRandomWalk(stepNumber) {
   })
 }
 
+// this function execute the animation
 function runRandomWalk(stepNumber) {
+  // depends on whether reset button is pressed
+  // if resetted, then generate a new random walk trajectory
+  // otherwise resume the animation
   if (reset) {
     reset = false;
     randomWalkPromise = generateRandomWalk(stepNumber);
@@ -210,3 +207,5 @@ var reset = true;
 var i = 0;
 var requestID;
 var randomWalkPromise;
+var traceTail;
+var traceHead;
