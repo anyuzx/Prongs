@@ -95,7 +95,7 @@ Next, we declare two types of member of our derived class, `public` and `private
 
 here all the function `init`, `compute_scalar` and `compute_vector` all are the base class member which are already defined in `compute.h`. However they are all virtual functions, which means that they can be overrided in the derived class, here it is the `ComputeGyration`. [This](http://stackoverflow.com/questions/2391679/why-do-we-need-virtual-methods-in-c) and [this](http://nrecursions.blogspot.in/2015/06/so-why-do-we-need-virtual-functions.html) pages provide some basic explanations for the use of virtual functions. Here is a list shown in LAMMPS documentation of **some examples** of the virtual functions you can use in your derived class.
 
-![Virtual function list of compute.h](https://ws4.sinaimg.cn/large/006tNc79ly1g30qx6pv6lj30uy0paq7y.jpg)
+![Virtual function list of compute.h](https://tva1.sinaimg.cn/large/006y8mN6ly1g7ak3jbwv6j30qm0kjwil.jpg)
 
 In our case, gyration computation will return a scalor and a vector, then we need `compute_scalar()` and `compute_vector()`. Private member `masstotal` is the quantity calculated locally which is only used within the class and not needed for the rest of the codes.
 
