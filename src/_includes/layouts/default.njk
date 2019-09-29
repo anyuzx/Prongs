@@ -2,10 +2,11 @@
 
 {% block content %}
 <article>
-{% if coverImage %}
-<figure class="shadow-md mx-auto" style="max-width:600px">
-  <img src="{{ coverImage }}" alt="Photo">
-</figure>
+{% if image %}
+  <figure class="mx-auto" style="max-width:600px">
+    <img src="{{ image.path }}" alt="{{ image.description }}">
+    <figcaption class="text-center">{{ image.caption }}</figcaption>
+  </figure>
 {% endif %}
 {{ content | safe }}
 </article>
