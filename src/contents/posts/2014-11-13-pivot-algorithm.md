@@ -32,8 +32,8 @@ Some references on **Pivot algorithm**
 
 --------
 
-## Python Implementation
-The implement of this algorithm in `Python` is very straightforward. The raw file can be found here
+## Python Implementation Using Numpy and Scipy
+The implement of this algorithm in `Python` is very straightforward. The raw file can be found [here](https://gist.github.com/anyuzx/91ffa2ea98ceea1abba5f70cbc83b307)
 
 ```python
 import numpy as np
@@ -103,22 +103,19 @@ t = 1000 # number of pivot steps
 chain = lattice_SAW(N,l0)
 
 %timeit chain.walk(t)
-```
-
-```bash
 1 loops, best of 3: 2.61 s per loop
 ```
 
-Above code performs a 100 monomer chain with 1000 successful pivot steps. However even with `numpy` and the built-in function `cdist` of `scipy`, the code is still too slow for large number of random walk steps. Of course, you can directly write `C`, `C++` or `Fortran` code to have the maximum speed. But for me, I would like to write any codes using `Python` in an ideal world.
+Above code performs a 100 monomer chain with 1000 successful pivot steps. However even with `numpy` and the built-in function `cdist` of `scipy`, the code is still too slow for large number of random walk steps.
 
 ---------------------------------------
 
 ## Cython Implementation
 
-However world is never perfect. When comming to the loops, `Python` can be very slow. In many complex situations, even `numpy` and `scipy` is not that useful. For instance in this case, in order to determine the overlaps, we need to have a nested loop over two sets of sites (monomers). In the above code, I use built-in function `cdist` of `scipy` to do this, which is already highly optimized. But actually we don't have to complete the loops, because we can stop the search if we encounter one overlap. However I can't think of a `numpy` or `scipy` way to do this easily and efficiently because we have this conditional break feature. Here is where [Cython][^4] can be extrememly useful. `Cython` can _translate_ your `python` code in `C` and _translate_ your `C` or `C++` code into a `Python` module so you can `import` your `C` code into `Python`. To do that, first we just handwrite our **pivot algorithm** using plain `C++` code.
+When come to the loops, Python can be *very* slow. In many complex situations, even `numpy` and `scipy` is not that helpful. For instance in this case, in order to determine the overlaps, we need to have a nested loop over two sets of sites (monomers). In the above code, I use built-in function `cdist` of `scipy` to do this, which is already highly optimized. But actually we don't have to complete the loops, because we can stop the search if we encounter one overlap. However I can't think of a natural `numpy` or `scipy` way to do this efficiently due to the conditional break. Here is where [Cython][^4] can be extrememly useful. `Cython` can _translate_ your `python` code to `C` and _translate_ your `C` or `C++` code to a `Python` module so you can directly `import` your C/C++ code in Python. To do that, first we just handwrite our **pivot algorithm** using plain `C++` code.
 
 ```cpp
-#include #include
+#include <math.h>
 using namespace std;
 void c_lattice_SAW(double* chain, int N, double l0, int ve, int t){
 ... // pivot algorithm codes here
@@ -130,13 +127,13 @@ Name the file `c_lattice_SAW.cpp`. Here we define a function called `c_lattice_S
 
 > * The `C++` code in this case is not a complete program. It doesn't have `main` function.
 
-The whole `C++` code is not shown, because it is a bit long. Beside our plain `C` code, we also need a header file `c_lattice_SAW.h`.
+The whole `C++` code can be found [here](https://gist.github.com/anyuzx/fdd27b467c273665328955fbc111dfeb). Beside our plain `C` code, we also need a header file `c_lattice_SAW.h`.
 
 ```cpp
 void c_lattice_SAW(double* chain, int N, double l0, int ve, int t);
 ```
 
-If you don't want to handwrite a `C` code, another way to use `Cython` is to write plain `Cython` program(much simpler and readable). But in that way, how to get high quality random numbers efficiently is a problem.Usually there are several ways to get random numbers in `Cython`
+If you don't want to handwrite a `C` code, another way to use `Cython` is to write plain `Cython` program whose syntax is very much Python-like. But in that way, how to get high quality random numbers efficiently is a problem. Usually there are several ways to get random numbers in `Cython`
 
 * Use Python module **random**.
 
@@ -198,8 +195,13 @@ cmdclass = {'build_ext':build_ext},
 )
 ```
 
-> **NOTE**: Instead of normal arguments, we also have `extra_compile_args` here. This is because in the `C++` code, we use library **random** which is new in `C++11`. On **MAC**, `-std=c++11` and `-stdlib=libc++` need to be added to tell the compilers to support `C++11` and use `libc++` as the standard library. On **Linux** system like **Ubuntu**, just `-std=c++11` is enough.
-> **NOTE**: If `numpy` array is used in Cython, then the setting `include_dirs = [numpy.get_include()])]` need to be added
+::: note
+Instead of normal arguments, we also have `extra_compile_args` here. This is because in the `C++` code, we use library `random` which is new in `C++11`. On Mac, `-std=c++11` and `-stdlib=libc++` need to be added to tell the compilers to support `C++11` and use `libc++` as the standard library. On Linux system, just `-std=c++11` is enough.
+:::
+
+::: note
+If `cimport numpy` is used, then the setting `include_dirs = [numpy.get_include()])]` need to be added
+:::
 
 Then in terminal we do
 
@@ -211,7 +213,10 @@ or Mac OS
 ```bash
 clang++ python setup.py build_ext --inplace
 ```
-> **NOTE**: `clang++` tell the python use `clang` compiler not `gcc` because apparently the version of `gcc` shipped with **OS X** doesn't support `C++11`.
+
+::: note
+`clang++` tell the python use `clang` compiler not `gcc` because apparently the version of `gcc` shipped with **OS X** doesn't support `C++11`.
+:::
 
 If the compilation goes successfully, then a `.so` library file is generated. Now we can import our module in `Python` in that working directory
 
@@ -220,13 +225,10 @@ import lattice_SAW
 import numpy
 
 %timeit lattice_SAW.lattice_SAW(100,1,1,1000)
-```
-
-```bash
 100 loops, best of 3: 5.97 ms per loop
 ```
 
-That is 437 times faster than our normal *numpy/scipy* way!
+That is 437 times faster than our Numpy/Scipy way!
 
 [^1]: http://www.tandfonline.com/doi/abs/10.1080/00268976900100781#.VGLBSfldV8E
 [^2]: http://link.springer.com/article/10.1007/BF01022990
