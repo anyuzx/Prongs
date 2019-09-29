@@ -3,6 +3,10 @@ layout: layouts/default.njk
 permalink: /about/index.html
 title: About
 coverImage: /assets/images/my-photo.jpg
+image:
+    path: /assets/images/my-photo.jpg
+    description: guang-shi-photo
+    caption: Photo taken at Central Park, NYC - my favourite city in the world
 description: "A brief about myself page"
 ---
 
