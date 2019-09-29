@@ -161,6 +161,17 @@ figure > img {
   @apply m-0;
 }
 
+/*
+ * custom class big-box
+ */
+.big-box {
+  @apply border-2 border-black mb-4 p-4 rounded-sm;
+}
+
+.big-box *:last-child {
+  @apply m-0;
+}
+
 .nav-fixed {
   @apply inset-x-0 top-0 z-50 fixed;
 }
