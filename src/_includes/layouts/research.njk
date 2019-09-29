@@ -3,8 +3,8 @@
 {% block content %}
 {%- for project in collections.research | reverse -%}
   {% if project.fileSlug === "summary" %}
-    <article class="mb-4 note">
-      <h1 class="text-center text-xl font-bold leading-tight">{{ project.data.title }}</h1>
+    <article class="big-box">
+      <h1 class="text-center text-3xl font-bold leading-tight">{{ project.data.title }}</h1>
       {{ project.templateContent | safe }}
     </article>
   {% else %}
