@@ -1,6 +1,6 @@
 ---
-slug: run-a-random-walker-in-your-website-using-pyodide
-title: Run a random walker in your website using Pyodide
+slug: run-a-random-walker-in-browser-using-pyodide
+title: Run a random walker in the browser using Pyodide
 date: 2019-09-23
 image:
   path: /assets/images/random-walker.svg
