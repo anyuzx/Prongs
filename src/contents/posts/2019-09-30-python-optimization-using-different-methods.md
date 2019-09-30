@@ -4,6 +4,8 @@ title: Optimizing python code for computations of pair-wise distances - Part I
 date: 2019-09-30
 excerpt: >-
     In this series of posts, I show various ways to optimize Python code using computation of distances under periodic boundary condition as an example, I show severy different methods to speed up the computation. The performances of different methods are benchmarked for comparison.
+tags:
+    - python
 ---
 
 In this series of posts, several different Python implementations are provided for computing the pair-wise distances in a periodic boundary condition. The performances of each method are benchmarked for comparison. I will investigate these methods:
