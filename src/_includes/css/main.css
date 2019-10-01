@@ -45,7 +45,7 @@ svg > * {
 }
 
 figcaption {
-  @apply text-left text-sm p-4;
+  @apply text-center text-sm p-4;
   color: dimgrey;
 }
 
