@@ -16,6 +16,10 @@ In this series of posts, several different Python implementations are provided f
 
 * Numba/Cython implementation (Part III)
 
+::: note
+You can [run the codes](https://hub.gke.mybinder.org/user/anyuzx-69b1c1f6-a8feed3cc2813cf-78mly9q8/notebooks/pdist_benchmark_pure_python.ipynb) shown in this post.
+:::
+
 ## Background
 
 In molecular dynamics simulations or other simulations of similar types, one of the core computations is to compute the pair-wise distances between particles. Suppose we have $N$ particles in our system, the [time complexity](https://en.wikipedia.org/wiki/Time_complexity) of computing their pair-wise distances is $O(N^2)$. Such complexity is best we can do if the whole set of pair-wise distances are needed. The good thing is that for actual simulation, in most the cases, we don't care about the distances if it is larger than some threshold. In such a case, the complexity can be greatly reduced to $O(N)$ using [neighbor list algorithm](https://en.wikipedia.org/wiki/Cell_lists).
@@ -122,8 +126,14 @@ Now let's benchmark the `pdist_v2` and compare it to `pdist`. To make comparison
 
 If this is plotted on a log-log scale, one can readily see that both curves scale as $N^2$ which is expected.
 
-**Conclusion**: The `pdist_v2` implementation is about 38% faster than `pdist` version. I guess the take-home message from these results is that replacing explicit `for` loop with functions like `map` and `itertools` can boost the performance. However, one needs to make a strategic decision here, as the `pdist` version with the explicit loop is much more readable and easier to understand whereas `pdist_v2` requires a more or less advanced understanding of python.
+## Conclusion
 
-**Side Note**: In the benchmark code above, we first convert the numpy array of positions to python list. However, since numpy array can be treated just like a python list (*but not vice versa*), we can directly provide numpy array as the argument in both `pdist` and `pdist_v2`. However, one can experiment a little bit to see that using numpy array directly actually slow down the computation a lot (about 5 times slower on my laptop). Mixing numpy array with built-in functions such as `map` or `itertools` harms the performance. Instead, one should try to use numpy native functions whenever possible if working with numpy array.
+The `pdist_v2` implementation is about 38% faster than `pdist` version. I guess the take-home message from these results is that replacing explicit `for` loop with functions like `map` and `itertools` can boost the performance. However, one needs to make a strategic decision here, as the `pdist` version with the explicit loop is much more readable and easier to understand whereas `pdist_v2` requires a more or less advanced understanding of python.
+
+::: note
+In the benchmark code above, we first convert the numpy array of positions to python list. Since numpy array can be treated just like a python list (*but not vice versa*), we can directly provide numpy array as the argument in both `pdist` and `pdist_v2`. However, one can experiment a little bit to see that using numpy array directly actually slow down the computation a lot (about 5 times slower on my laptop). Mixing numpy array with built-in functions such as `map` or `itertools` harms the performance. Instead, one should always try to use numpy native functions if possible when working with numpy array.
+:::
+
+---
 
 In the next post, I will show how to use `numpy` to do the same calculation but faster than the *pure* python implementation shown here.
