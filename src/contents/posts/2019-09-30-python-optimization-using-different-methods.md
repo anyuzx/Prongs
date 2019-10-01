@@ -136,4 +136,4 @@ In the benchmark code above, we first convert the numpy array of positions to py
 
 ---
 
-In the next post, I will show how to use `numpy` to do the same calculation but faster than the *pure* python implementation shown here.
+In the next post, I will show how to use Numpy to do the same calculation but faster than the *pure* python implementation shown here.
