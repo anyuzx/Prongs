@@ -8,6 +8,10 @@ tags:
     - python
 ---
 
+<a href="https://colab.research.google.com/gist/anyuzx/69b1c1f6671133a6ba8feed3cc2813cf/pdist_benchmark_pure_python.ipynb">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" style="margin-left:unset;margin-right:unset;" alt="Open In Colab"/>
+</a>
+
 In this series of posts, several different Python implementations are provided for computing the pair-wise distances in a periodic boundary condition. The performances of each method are benchmarked for comparison. I will investigate these methods:
 
 * Python implementation only using built-in libraries (Part I)
@@ -15,10 +19,6 @@ In this series of posts, several different Python implementations are provided f
 * Numpy implementation (Part II)
 
 * Numba/Cython implementation (Part III)
-
-::: note
-You can [run the codes](https://colab.research.google.com/gist/anyuzx/69b1c1f6671133a6ba8feed3cc2813cf/pdist_benchmark_pure_python.ipynb) shown in this post.
-:::
 
 ## Background
 
