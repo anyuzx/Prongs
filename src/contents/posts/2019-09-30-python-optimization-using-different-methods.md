@@ -17,7 +17,7 @@ In this series of posts, several different Python implementations are provided f
 * Numba/Cython implementation (Part III)
 
 ::: note
-You can [run the codes](https://hub.gke.mybinder.org/user/anyuzx-69b1c1f6-a8feed3cc2813cf-78mly9q8/notebooks/pdist_benchmark_pure_python.ipynb) shown in this post.
+You can [run the codes](https://colab.research.google.com/gist/anyuzx/69b1c1f6671133a6ba8feed3cc2813cf/pdist_benchmark_pure_python.ipynb) shown in this post.
 :::
 
 ## Background
