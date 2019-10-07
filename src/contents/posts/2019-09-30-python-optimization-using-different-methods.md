@@ -22,7 +22,7 @@ In this series of posts, several different Python implementations are provided f
 
 ## Background
 
-In molecular dynamics simulations or other simulations of similar types, one of the core computations is to compute the pair-wise distances between particles. Suppose we have $N$ particles in our system, the [time complexity](https://en.wikipedia.org/wiki/Time_complexity) of computing their pair-wise distances is $O(N^2)$. Such complexity is best we can do if the whole set of pair-wise distances are needed. The good thing is that for actual simulation, in most the cases, we don't care about the distances if it is larger than some threshold. In such a case, the complexity can be greatly reduced to $O(N)$ using [neighbor list algorithm](https://en.wikipedia.org/wiki/Cell_lists).
+In molecular dynamics simulations or other simulations of similar types, one of the core computations is to compute the pair-wise distances between particles. Suppose we have $N$ particles in our system, the [time complexity](https://en.wikipedia.org/wiki/Time_complexity) of computing their pair-wise distances is $O(N^2)$. This is the best we can do when the whole set of pair-wise distances are needed. The good thing is that for actual simulation, in most the cases, we don't care about the distances if it is larger than some threshold. In such a case, the complexity can be greatly reduced to $O(N)$ using [neighbor list algorithm](https://en.wikipedia.org/wiki/Cell_lists).
 
 In this post, I won't implement the neighbor list algorithm. I will assume that we do need all the distances to be computed.
 
