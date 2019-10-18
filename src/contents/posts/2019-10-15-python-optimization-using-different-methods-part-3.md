@@ -16,7 +16,7 @@ tags:
 Skip to see the final [summary of benchmark results](#summing-up).
 :::
 
-This is Part III of a series of three posts. In Part I and II, I discussed pure python and numpy implementations of performing pair-wise distances under a periodic condition, respectively. In this post, I show how to use [Numba](http://numba.pydata.org/) and [Cython](https://cython.org/) to further speed up the python codes.
+This is Part III of a series of three posts. In [Part I](/posts/python-optimization-using-different-methods) and [II](/posts/python-optimization-using-different-methods-part-2), I discussed pure python and numpy implementations of performing pair-wise distances under a periodic condition, respectively. In this post, I show how to use [Numba](http://numba.pydata.org/) and [Cython](https://cython.org/) to further speed up the python codes.
 
 At some point, the optimized python codes are not *strictly* python codes anymore. For instance, in this post, using Cython, we can make our codes very efficient. However, strictly speaking, Cython is *not* Python. It is a superset of Python, which means that any Python code can be compiled as Cython code but not vice versa. To see the performance boost, one needs to write Cython codes. So what is stopping you to just write C++/C codes instead and be done with it? I believe there is always some balance between the performance of the codes and the effort you put into writing the codes. As I will show here, using Numba or writing Cython codes is straightforward if you are familiar with Python. Hence, I always prefer to optimize the Python codes rather than rewrite it in C/C++ because it is more cost-effective for me.
 
@@ -29,7 +29,7 @@ $$
 \Delta_{ij} = \sigma_{ij} - \left[ \sigma_{ij}/L \right] \cdot L
 $$
 
-where $\sigma_{ij}=x_i-x_j$ and $L$ is the length of the simulation box edge. $x_i$ and $x_j$ is the positions. For more information, please read [Part I](https://www.guangshi.io/posts/python-optimization-using-different-methods#background).
+where $\sigma_{ij}=x_i-x_j$ and $L$ is the length of the simulation box edge. $x_i$ and $x_j$ is the positions. For more information, please read [Part I](/posts/python-optimization-using-different-methods#background).
 
 ## Using Numba
 
