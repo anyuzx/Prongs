@@ -13,10 +13,20 @@ tags:
 </a>
 
 ::: note
-Skip to see the final [summary of benchmark results](#summing-up).
+**Article Series**
+
+* Part I: [Python implementation only using built-in libraries](/posts/python-optimization-using-different-methods)
+
+* Part II: [Numpy implementation](/posts/python-optimization-using-different-methods-part-2)
+
+* Part III: Numba and Cython implementation (you are here)
 :::
 
 This is Part III of a series of three posts. In [Part I](/posts/python-optimization-using-different-methods) and [II](/posts/python-optimization-using-different-methods-part-2), I discussed pure python and numpy implementations of performing pair-wise distances under a periodic condition, respectively. In this post, I show how to use [Numba](http://numba.pydata.org/) and [Cython](https://cython.org/) to further speed up the python codes.
+
+::: note
+Skip to see the [summary of benchmark results](#summing-up).
+:::
 
 At some point, the optimized python codes are not *strictly* python codes anymore. For instance, in this post, using Cython, we can make our codes very efficient. However, strictly speaking, Cython is *not* Python. It is a superset of Python, which means that any Python code can be compiled as Cython code but not vice versa. To see the performance boost, one needs to write Cython codes. So what is stopping you to just write C++/C codes instead and be done with it? I believe there is always some balance between the performance of the codes and the effort you put into writing the codes. As I will show here, using Numba or writing Cython codes is straightforward if you are familiar with Python. Hence, I always prefer to optimize the Python codes rather than rewrite it in C/C++ because it is more cost-effective for me.
 
@@ -203,6 +213,8 @@ The result of benchmarking `pdist_cython_serial` and `pdist_cython_parallel` is 
 
 As expected, the serial version is about half the speed of the parallel version on my 2-cores laptop. The serial version is more than two times faster than its counterpart using Numba.
 
+---
+
 ## Summing up
 
 In this serial of posts, using computations of pair-wise distance under periodic boundary condition as an example, I showed various ways to optimize the Python codes using built-in Python functions ([Part I](posts/python-optimization-using-different-methods)), NumPy ([Part II](posts/python-optimization-using-different-methods-part-2)), Numba and Cython ([Part III]()). The benchmark results from all of the functions tested are summarized in the table below,
@@ -219,3 +231,13 @@ In this serial of posts, using computations of pair-wise distance under periodic
 | `pdist_cython_parallel` |         3.19        |   398   |
 
 The time is measured when $N=1000$. The parallel versions are tested on a 2-cores machine.
+
+---
+
+### Further Reading
+
+* [Parallel computing in Cython - threads](http://nealhughes.net/parallelcomp2/)
+
+* [Parallel Processing in Python](https://homes.cs.washington.edu/~jmschr/lectures/Parallel_Processing_in_Python.html)
+
+* [Optimizing your code with NumPy, Cython, pythran and numba](https://flothesof.github.io/optimizing-python-code-numpy-cython-pythran-numba.html)

@@ -13,7 +13,13 @@ tags:
 </a>
 
 ::: note
-[Part I](/posts/python-optimization-using-different-methods): *Pure* Python implementation
+**Article Series**
+
+* Part I: [Python implementation only using built-in libraries](/posts/python-optimization-using-different-methods)
+
+* Part II: Numpy implementation (you are here)
+
+* Part III: [Numba and Cython implementation](/posts/python-optimization-using-different-methods-part-3)
 :::
 
 This is part II of series of three posts on optimizing python code. Using an example of computing pair-wise distances under periodic boundary conditions, I will explore several ways to optimize the python codes, including pure python implementation without any third-party libraries, Numpy implementation, and implementation using Numba or Cython.

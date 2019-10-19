@@ -3,7 +3,7 @@ slug: optimizing-python-code-computing-pair-wise-distances-part-1
 title: Optimizing python code for computations of pair-wise distances - Part I
 date: 2019-09-30
 excerpt: >-
-    In this series of posts, I show various ways to optimize Python code using computation of distances under periodic boundary condition as an example, I show severy different methods to speed up the computation. The performances of different methods are benchmarked for comparison.
+    In this series of posts, using calculation of pair-wise distances under periodic boundary condition as an example, I show several different methods to optimize Python codes. The performances from different methods are benchmarked for comparison.
 tags:
     - python
 ---
@@ -12,13 +12,17 @@ tags:
   <img src="https://colab.research.google.com/assets/colab-badge.svg" style="margin-left:unset;margin-right:unset;" alt="Open In Colab"/>
 </a>
 
-In this series of posts, several different Python implementations are provided for computing the pair-wise distances in a periodic boundary condition. The performances of each method are benchmarked for comparison. I will investigate these methods:
+In this series of posts, several different Python implementations are provided to compute the pair-wise distances in a periodic boundary condition. The performances of each method are benchmarked for comparison. I will investigate the following methods.
 
-* Python implementation only using built-in libraries (Part I)
+::: note
+**Article Series**
 
-* Numpy implementation (Part II)
+* Part I: Python implementation only using built-in libraries (you are here)
 
-* Numba/Cython implementation (Part III)
+* Part II: [Numpy implementation](/posts/python-optimization-using-different-methods-part-2)
+
+* Part III: [Numba and Cython implementation](/posts/python-optimization-using-different-methods-part-3)
+:::
 
 ## Background
 
