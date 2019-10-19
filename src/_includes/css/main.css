@@ -159,7 +159,7 @@ figure > img {
 }
 
 .note *:last-child {
-  @apply m-0;
+  @apply mb-0;
 }
 
 /*
