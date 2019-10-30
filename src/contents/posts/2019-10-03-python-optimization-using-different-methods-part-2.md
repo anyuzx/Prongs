@@ -35,7 +35,7 @@ $$
 \Delta_{ij} = \sigma_{ij} - \left[ \sigma_{ij}/L \right] \cdot L
 $$
 
-where $\sigma_{ij}=x_i-x_j$ and $L$ is the length of the simulation box edge. $x_i$ and $x_j$ is the positions. For more information, you read up in [Part I](https://www.guangshi.io/posts/python-optimization-using-different-methods#background).
+where $\sigma_{ij}=x_i-x_j$ and $L$ is the length of the simulation box edge. $x_i$ and $x_j$ is the positions. For more information, you read up in [Part I](/posts/python-optimization-using-different-methods#background).
 
 ## *Naive* Numpy Implementation
 

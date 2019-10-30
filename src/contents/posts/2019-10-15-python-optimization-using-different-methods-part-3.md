@@ -119,7 +119,7 @@ Now let's benchmark the two versions of Numba implementations. The result is sho
 
 ![Speed Benchmark: comparison between pdist_numba_serial and pdist_numba_parallel](/assets/images/posts/pdist_numba_benchmark.svg)
 
-Compared to the fastest Numpy implementation shown in [Part II](posts/python-optimization-using-different-methods-part-2), the serial Numba implementation provides more than three times of speedup. As one can see, the parallel version is about twice as fast as the serial version on my 2-cores laptop. I didn't test on the machines with more cores but I expect the speed up should scale linearly with the number of cores.
+Compared to the fastest Numpy implementation shown in [Part II](/posts/python-optimization-using-different-methods-part-2), the serial Numba implementation provides more than three times of speedup. As one can see, the parallel version is about twice as fast as the serial version on my 2-cores laptop. I didn't test on the machines with more cores but I expect the speed up should scale linearly with the number of cores.
 
 I am sure there are some more advanced techniques to make the Numba version even faster (using CUDA for instance). I would argue that the implementations above are the most cost-effective.
 
@@ -217,7 +217,7 @@ As expected, the serial version is about half the speed of the parallel version 
 
 ## Summing up
 
-In this serial of posts, using computations of pair-wise distance under periodic boundary condition as an example, I showed various ways to optimize the Python codes using built-in Python functions ([Part I](posts/python-optimization-using-different-methods)), NumPy ([Part II](posts/python-optimization-using-different-methods-part-2)), Numba and Cython ([Part III]()). The benchmark results from all of the functions tested are summarized in the table below,
+In this serial of posts, using computations of pair-wise distance under periodic boundary condition as an example, I showed various ways to optimize the Python codes using built-in Python functions ([Part I](/posts/python-optimization-using-different-methods)), NumPy ([Part II](/posts/python-optimization-using-different-methods-part-2)), Numba and Cython (this post). The benchmark results from all of the functions tested are summarized in the table below,
 
 |        Function       | Averaged Speed (ms) | Speedup |
 |:---------------------:|:-------------------:|:-------:|
