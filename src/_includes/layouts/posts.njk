@@ -14,12 +14,17 @@
 {% endblock %}
 
 {% block content %}
+{#
 <section>
   <h1 class="section-header">Pinned Posts</h1>
   {{ postList.cards(collections.pinned | reverse) }}
 </section>
+#}
 <section>
+  {#
   <h1 class="section-header">All Posts</h1>
+  #}
+  {#
   <div>
     <div class="text-sm">
       {% for tag, number in collections.tagList %}
@@ -33,6 +38,7 @@
       {% endfor %}
     </div>
   </div>
+  #}
   {{ postList.items(collections.posts) }}
 </section>
 {% endblock %}
