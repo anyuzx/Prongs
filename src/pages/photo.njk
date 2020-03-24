@@ -23,14 +23,14 @@ permalink: /photos/{{ photo.public_id.split("/")[1] | slug }}/
                 768px" srcset="{{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_800/{{ photo.public_id }}.jpg 800w,
                     {{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_1600/{{ photo.public_id }}.jpg 1600w"
                 src="{{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_1600/{{ photo.public_id }}.jpg"
-                alt="{{ photo.context.custom.alt }}" class="mb-2">
+                alt="{{ photo.context.custom.alt }}" class="mb-2 shadow-lg border-2 border-black">
         </picture>
-        <div class="flex mb-4 text-gray-700 text-sm font-light" style="font-variant:all-small-caps;">
+        <div class="flex mb-4 text-gray-700">
             {% if pagination.previousPageHref %}
-            <a class="mr-auto" href="{{ pagination.previousPageHref }}">Prev</a>
+            <a class="mr-auto" href="{{ pagination.previousPageHref }}">&#11104;</a>
             {% endif %}
             {% if pagination.nextPageHref %}
-            <a class="ml-auto" href="{{ pagination.nextPageHref }}">Next</a>
+            <a class="ml-auto" href="{{ pagination.nextPageHref }}">&#11106;</a>
             {% endif %}
         </div>
         <div class="sm:flex items-start justify-between">
@@ -39,9 +39,9 @@ permalink: /photos/{{ photo.public_id.split("/")[1] | slug }}/
                 <div class="font-black">{{ photo.context.custom.caption | title }}</div>
                 {% endif %}
                 {% if photo.context.custom.alt %}
-                <div>{{ photo.context.custom.alt }}</div>
+                <div class="mb-2">{{ photo.context.custom.alt }}</div>
                 {% endif %}
-                <div>&copy; {{ site.AUTHOR.NAME }} All copyrights reserved</div>
+                <div class="italic">&copy; {{ site.AUTHOR.NAME }} All copyrights reserved</div>
             </div>
             <div class="sm:text-right note mb-0 mt-4 sm:mt-0">
                 {# display camera model #}
