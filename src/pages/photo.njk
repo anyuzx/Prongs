@@ -3,6 +3,7 @@ pagination:
     data: collections.photos
     size: 1
     alias: photo
+    addAllPagesToCollections: true
 layout: layouts/photo.njk
 permalink: /photos/{{ photo.public_id.split("/")[1] | slug }}/
 ---
