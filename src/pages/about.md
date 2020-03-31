@@ -6,7 +6,7 @@ coverImage: /assets/images/my-photo.jpg
 image:
     path: /assets/images/my-photo.jpg
     description: guang-shi-photo
-    caption: Photo taken at Central Park, NYC - my favourite city in the world
+    caption: Photo taken at Central Park, NYC. Thanksgiving, 2015
 description: "A brief about myself page"
 ---
 
