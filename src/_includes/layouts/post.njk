@@ -26,7 +26,7 @@
   </header>
   {% endif %}
   <header>
-    <h1 class="text-left">{{ title }}</h1>
+    <h1 class="text-left leading-normal">{{ title }}</h1>
     <div class="flex justify-between text-sm font-hairline">
       <div class="self-center">
         {% dayjs page.date, 'MMM DD, YYYY' %}
@@ -44,7 +44,7 @@
       </div>
     </div>
   </header>
-  <hr class="my-4">
+  <hr class="my-4 bg-black" style="height:3px">
   <main class="mx-auto" style="max-width:40em;">
     {{ content | safe }}
   </main>
