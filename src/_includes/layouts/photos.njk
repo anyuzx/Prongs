@@ -23,12 +23,13 @@
                             {{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_1600/{{ photo.public_id }}.jpg 1600w"
                     src="{{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_1600/{{ photo.public_id }}.jpg"
                     alt="{{ photo.context.custom.alt }}"
+                    class="shadow-lg"
                 >
             </picture>
         </a>
         {#
-        <div class="flex items-end justify-between">
-            <span class="font-bold" style="font-variant:all-small-caps;">{{ photo.context.custom.type | upper }}</span>
+        <div class="flex items-end justify-end">
+            <span class="text-xs px-1 bg-gray-300 rounded-sm">{{ photo.context.custom.type | first | upper }}</span>
             <div>
                 {% for tag in photo.tags %}
                     <span class="text-xs px-1 bg-gray-300 rounded-sm">{{ tag }}</span>
