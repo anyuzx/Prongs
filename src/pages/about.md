@@ -37,7 +37,7 @@ Writing contents and photos on this site are copyrighted. Feel free to contact m
 
 * I like to take [photos](/photos). You can also check my [instagram](https://www.instagram.com/guang_shi_stefan/).
 
-* The site favicon is the character of my last name **时** written in the ancient style - [**篆书**](https://en.wikipedia.org/wiki/Seal_script). It is made using Inkscape by myself.
+* The site favicon is the character of my last name **时** written in the ancient style - [**篆书**](https://en.wikipedia.org/wiki/Seal_script).
 
 ---
 
