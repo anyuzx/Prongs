@@ -10,6 +10,7 @@ module.exports = async function(collection) {
             {
                 type:"upload",
                 prefix:"guangshi.io",
+                tags: true,
                 context:true,
                 max_results: 500
             },
