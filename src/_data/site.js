@@ -9,7 +9,7 @@ module.exports = {
   "DESCRIPTION": "Guang Shi's personal site. Learn about my research projects, read my blog posts and see my photos.", // site description, used in meta head for SEO purpose
   "URL": "https://www.guangshi.io", // absolute url for the site
   "BUILD_TIME" : new Date(), // build time for the site
-  "SOURCE_CODE": "https://github.com/anyuzx/Prongs", // the github repo of the source code
+  //"SOURCE_CODE": "https://github.com/anyuzx/Prongs", // the github repo of the source code
   "ENV": process.env.ELEVENTY_ENV, // environment variable can be accessed in templates https://www.11ty.io/docs/data-js/#example%3A-exposing-environment-variables
   "FEED": {
     "PATH": "feed.xml", // name of the RSS feed file. The file should be in the root of the site
@@ -21,7 +21,7 @@ module.exports = {
     "GITHUB": "anyuzx", // author's github username
     "EMAIL": "guang.shi.gs@gmail.com", // author's email address
     "INSTAGRAM": "guang_shi_stefan", // author's instagram
-    // "TWITTER": "", // author's twitter handler
+    "TWITTER": "anyuzx", // author's twitter handler
     // "ADDRESS": "" // author's address
   },
   "CLOUDINARY": "guangshi"
