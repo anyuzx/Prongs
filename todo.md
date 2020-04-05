@@ -5,9 +5,9 @@
 - [x] use tailwindcss
 - [x] home page (newly updated content + latest news)
 - [ ] reduce some variable to global variables for easier maintenance
-- [ ] Responsive image
+- [x] Responsive image
 - [x] css pipeline (css compile + purgecss) (use postcss-cli)
-- [ ] js pipeline
+- [x] js pipeline
 - [x] HTML minimization
 - [ ] image resize/optimization pipeline (try Lepto.js?)
 - [ ] Assets bundle (parcel?)
@@ -31,4 +31,4 @@
   - [x] solution: use `ifAsync` instead of `if`
   - [ ] write a note/post on this
 - [x] customize preview template for Netlify CMS
-  - [ ] write about how to use markdown-it and prismjs with custom preview template
+  - [x] write about how to use markdown-it and prismjs with custom preview template
