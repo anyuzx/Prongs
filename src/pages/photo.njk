@@ -58,7 +58,7 @@ permalink: /photos/{{ photo.public_id.split("/")[1] | slug }}/
                 {% endif %}
                 <div class="italic">&copy; {{ site.AUTHOR.NAME }} All copyrights reserved</div>
             </div>
-            <div class="sm:text-right note mb-0 mt-4 sm:mt-0">
+            <div class="note mb-0 mt-4 sm:mt-0">
                 {# display camera model #}
                 {% if photo.context.custom.type === "digital" %}
                 {% if photo.image_metadata.Model %}
