@@ -24,7 +24,7 @@ $$
 m \ddot{\mathbf{x}} = -\nabla U(\mathbf{x}) - m\gamma \dot{\mathbf{x}}+\mathbf{R}(t)
 $$
 
-where $m$ is the mass of the particle, $x$ is its position and $\gamma$ is the damping constant. $\mathbf{R}(t)$ is random force. The random force is subjected to fluctuation-dissipation theorem. $\langle \mathbf{R}(0)\cdot\mathbf{R}(t) \rangle = 2m\gamma\delta(t)/\beta$. $\gamma=\xi/m$ where $\xi$ is the drag coefficient. $\mathbf{R(t)}$ is nowhere differentiable, its integral is called *Wiener process*. Denote the wiener process associated with $ \mathbf{R}(t)$ as $\omega(t)$. It has the property $\omega(t+\Delta t)-\omega(t)=\sqrt{\Delta t}\theta$, $\theta$ is the Gaussian random variable of zero mean, variance of $2m\gamma/\beta$.
+where $m$ is the mass of the particle, $x$ is its position and $\gamma$ is the damping constant. $\mathbf{R}(t)$ is random force. The random force is subjected to fluctuation-dissipation theorem. $\langle \mathbf{R}(0)\cdot\mathbf{R}(t) \rangle = 2m\gamma\delta(t)/\beta$. $\gamma=\xi/m$ where $\xi$ is the drag coefficient. $\mathbf{R(t)}$ is nowhere differentiable, its integral is called *Wiener process*. Denote the wiener process associated with $\mathbf{R}(t)$ as $\omega(t)$. It has the property $\omega(t+\Delta t)-\omega(t)=\sqrt{\Delta t}\theta$, $\theta$ is the Gaussian random variable of zero mean, variance of $2m\gamma/\beta$.
 
 
 $$
@@ -46,7 +46,7 @@ $$
 \mathbf{x}(t+\Delta t)-\mathbf{x}(t)=-\frac{\Delta t}{m\gamma}\nabla U(\mathbf{x})+\sqrt{\frac{2\Delta t}{m\gamma\beta}}\omega(t)
 $$
 
-where $\omega(t)$ is the normal random variable with zero mean and unit variance. Since for BD, the velocities are not well defined anymore, only the positions are updated. The implementation of this scheme in `LAMMPS` is straightforward. Based on source codes `fix_langevin.cpp` and `fix_langevin.h` in the `LAMMPS`, I wrote a custom `fix` of BD myself. The core part of the code is the following. The whole code is [here](https://raw.githubusercontent.com/anyuzx/Lammps_brownian/master/fix_bd.cpp).
+where $\omega(t)$ is the gaussian random variable with zero mean and **unit** variance (not the same varaible appeared above). Since for BD, the velocities are not well defined anymore, only the positions are updated. The implementation of this scheme in `LAMMPS` is straightforward. Based on source codes `fix_langevin.cpp` and `fix_langevin.h` in the `LAMMPS`, I wrote a custom `fix` of BD myself. The core part of the code is the following. The whole code is [here](https://raw.githubusercontent.com/anyuzx/Lammps_brownian/master/fix_bd.cpp).
 
 ```cpp
 void FixBD::initial_integrate(int vflag)
