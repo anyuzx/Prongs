@@ -41,9 +41,7 @@ With the limited knowledge of Javascript I learnt from trying Nuxt.js and the he
 
 As for the design of this site, I end up choosing the [tailwindcss](https://tailwindcss.com/) since it is a low-level CSS framework, thus allows me to design the site to my liking easily.
 
-I guess the lesson I learnt is,
-
-> do not make things overcomplicated.
+I guess the lesson I learnt is, **do not make things overcomplicated**.
 
 [^1]: https://github.com/11ty/eleventy-base-blog
 [^2]: https://github.com/philhawksworth/eleventyone
