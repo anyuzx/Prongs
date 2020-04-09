@@ -8,6 +8,17 @@ This documentation mainly serves for self use. However, I hope anyone interested
 * Notes of building this site
 * References/Resources
 
+## Features
+
+* sitemap
+* service worker
+* criticalCSS
+* HTML minified
+* Photo page with responsive image (using Cloudinary) 
+* Netlify CMS with support of custom syntax highlight and math equation
+* Math equation support using Katex
+* RSS feed
+
 ## Instructions
 ---
 ### Files
