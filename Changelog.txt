@@ -27,4 +27,23 @@ Feature:
   - now the date can be formatted as {% dayjs [date], [format] %} where format can be something like 'YYYY-MM-DD'
 - Use Nunjucks as template engine for preprocessing markdown file (consistent with tempaltes)
 
+Changelog 2020/04/08
+
+Feature:
+- Add panorama mode for photo
+  - photo with the custom context field "panorama: True" in *cloudinary* will be displayed
+  with 90 viewport width. See [this
+  page](https://www.guangshi.io/photos/san-francisco-park-panorama) for
+  example
+  - this feature is achieved using [this CSS trick](https://css-tricks.com/full-width-containers-limited-width-parents/#article-header-id-6)
+- Add sitemap
+  - add sitemap.njk
+- Minor style changes
+  - Decrease the font size of post title
+  - Do not use the seperating line after the header and before the footer
+  - Change the style of the footer
+	- add twitter link (with icon)
+	- do not show the modified date
+	- make the icon size larger
+  - make the equation font size smaller (1.1em instead of 1.2em)
 
