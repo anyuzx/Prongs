@@ -27,6 +27,8 @@ Feature:
   - now the date can be formatted as {% dayjs [date], [format] %} where format can be something like 'YYYY-MM-DD'
 - Use Nunjucks as template engine for preprocessing markdown file (consistent with tempaltes)
 
+---
+
 Changelog 2020/04/08
 
 Feature:
