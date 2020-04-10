@@ -1,7 +1,7 @@
 {
-  "name": "ProngsTy",
-  "version": "0.5.0",
-  "description": "Personal site built with 11ty",
+  "name": "Prongs",
+  "version": "0.6.0",
+  "description": "Personal site",
   "repository": {
     "type": "git",
     "url": "https://github.com/anyuzx/Prongs.git"
