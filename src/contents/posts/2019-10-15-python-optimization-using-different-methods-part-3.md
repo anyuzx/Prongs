@@ -34,7 +34,6 @@ At some point, the optimized python codes are not *strictly* python codes anymor
 
 Just to reiterate, the computation is to calculate pair-wise distances between every pair of $N$ particles under periodic boundary condition. The positions of particles are stored in an array/list with form `[[x1,y1,z1],[x2,y2,z2],...,[xN,yN,zN]]`. The distance between two particles, $i$ and $j$ is calculated as the following,
 
-
 $$
 \Delta_{ij} = \sigma_{ij} - \left[ \sigma_{ij}/L \right] \cdot L
 $$
@@ -113,7 +112,7 @@ def pdist_numba_parallel(positions, l):
 
 There are some caveats when using `prange` when race condition would occur. However for our case, there is no race condition since the distances calculations for pairs are independent with each other, i.e. there is no communication between cores/threads. For more information on parallelizing using Numba, refer to their [documentation](https://numba.pydata.org/numba-doc/dev/user/parallel.html).
 
-**Benchmark**
+### Benchmark
 
 Now let's benchmark the two versions of Numba implementations. The result is shown below,
 
@@ -149,10 +148,10 @@ from libc.math cimport nearbyint
 def pdist_cython_serial(double [:,:] positions not None, double l):
     cdef Py_ssize_t n = positions.shape[0]
     cdef Py_ssize_t ndim = positions.shape[1]
-    
+
     pdistances = np.zeros(n * (n-1) // 2, dtype = np.float64)
     cdef double [:] pdistances_view = pdistances
-    
+
     cdef double d, dd
     cdef Py_ssize_t i, j, k
     for i in range(n-1):
@@ -163,12 +162,11 @@ def pdist_cython_serial(double [:,:] positions not None, double l):
                 d = d - nearbyint(d / l) * l
                 dd += d * d
             pdistances_view[j - 1 + (2 * n - 3 - i) * i // 2] = sqrt(dd)
-    
+
     return pdistances
 ```
 
-
-**Some Remarks**
+#### Some Remarks
 
 * Declare static types for variables using `cdef`. For instance, `cdef double d` declare that the variable `d` has a double/float type.
 
@@ -205,7 +203,7 @@ Everything else remains the same. Here I follow the [example](https://cython.rea
 I had some trouble compiling the parallel version directly in the Jupyter Notebook. Instead, it is compiled as a standalone module. The `.pyx` file and `setup.py` file can be found [here](https://gist.github.com/anyuzx/e8f8950ed6fcc901a80c65aec28aabba).
 :::
 
-**Benchmark**
+### Benchmark
 
 The result of benchmarking `pdist_cython_serial` and `pdist_cython_parallel` is shown in the figure below,
 

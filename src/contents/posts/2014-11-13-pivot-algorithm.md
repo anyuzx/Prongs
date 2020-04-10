@@ -12,27 +12,27 @@ tags:
 
 Pivot algorithm is best Monte Carlo algorithm known so far used for generating canonical ensemble of self-avoiding random walks (fixed number of steps). Originally it is for the random walk on a lattice, but it also can be modified for continuous random walk. Recently I encountered a problem where I need to generate self-avoiding chain configurations.
 
-**Basically the most simple version of this algorithm breaks into following steps**:
+**The simplest version of this algorithm breaks into following steps**:
 
 * Prepare an initial configuration of a $N$ steps walk on lattice (equivalent to a $N$ monomer chain)
 * Randomly pick a site along the chain as _**pivot site**_
 * Randomly pick a side (right to the _**pivot site**_ or left to it), the chain on this side is used for the next step.
 * Randomly apply a rotate operation on the part of the chain we choose at the above step.
-* After the rotation, check the overlap between the rotated part of the chain and the rest part of the chain. Accept the new configuration if there is no overlap and restart from 2th step. Reject the configuration and repeat from 2th step if there are overlaps.
+* After the rotation, check the overlap between the rotated part of the chain and the rest part of the chain. Accept the new configuration if there is no overlap and restart from 2th step. Reject the configuration and repeat from 2th step if there are overlaps. _For random walks on a 3D cubic lattice, there are only 9 distinct rotation operations_.
 
-> For random walks on a 3D cubic lattice, there are only 9 distinct rotation operations.
 
---------
-
-Some references on **Pivot algorithm**
+::: note
+Some references on Pivot algorithm
 
 * [Lal(1969)][^1]: The original paper of pivot algorithm.
 * [Madras and Sokal(1988)][^2]: The most cited paper on this field. For the first time, they showed pivot algorithm is extrememly efficient contradicted to the intuition.
 * [Clisby(2010)][^3]: The author developed a new more efficient inplementation of pivot algorithm and calculate the critical exponent $\nu$, which is also the _**Flory exponent**_ for polymer chain in bad solvent.
+:::
 
 --------
 
 ## Python Implementation Using Numpy and Scipy
+
 The implement of this algorithm in `Python` is very straightforward. The raw file can be found [here](https://gist.github.com/anyuzx/91ffa2ea98ceea1abba5f70cbc83b307)
 
 ```python
@@ -123,9 +123,11 @@ void c_lattice_SAW(double* chain, int N, double l0, int ve, int t){
 ```
 
 Name the file `c_lattice_SAW.cpp`. Here we define a function called `c_lattice_SAW`. Where `chain` is the array storing the coordinates of monomers, `N` is the number of monomers, `l0` is the bond length, `t` is the number of successful steps.
-> * `C++11` library **random** is used here in order to use Mersenne twister RNG directly.
 
-> * The `C++` code in this case is not a complete program. It doesn't have `main` function.
+::: note
+* `C++11` library **random** is used here in order to use Mersenne twister RNG directly.
+* The `C++` code in this case is not a complete program. It doesn't have `main` function.
+:::
 
 The whole `C++` code can be found [here](https://gist.github.com/anyuzx/fdd27b467c273665328955fbc111dfeb). Beside our plain `C` code, we also need a header file `c_lattice_SAW.h`.
 
@@ -135,25 +137,15 @@ void c_lattice_SAW(double* chain, int N, double l0, int ve, int t);
 
 If you don't want to handwrite a `C` code, another way to use `Cython` is to write plain `Cython` program whose syntax is very much Python-like. But in that way, how to get high quality random numbers efficiently is a problem. Usually there are several ways to get random numbers in `Cython`
 
-* Use Python module **random**.
+* **Use Python module `random`**.This method will be very slow if random number is generated in a big loop because generated C code must call a Python module everytime which is a lot of overhead time.
 
-> This method will be very slow if random number is generated in a big loop because generated C code must call a Python module everytime which is a lot of overhead time.
+* **Use `numpy` to generate many random numbers in advance**. This will require large amount of memory and also in many cases, the total number of random numbers needed is not known before the computation.
 
-* Use `numpy` to generate many random numbers in advance.
+* **Use C function `rand()` from standard library `stdlib` in `Cython`**. `rand()` is not a very good RNG. In a scientific computation like Monte Carlo simulation, this is not good way to get random numbers.
 
-> This will require large amount of memory and also in many cases, the total number of random numbers needed is not known before the computation.
+* **Wrap a good C-implemented RNG using Cython**. This can be a good way. Currently I have found two ways to do this: 1. [Use numpy `randomkit`][^5] 2. [Use GSL library][^6]
 
-* Use C function `rand()` from standard library `stdlib` in `Cython`
-
-> `rand()` is not a very good RNG. In a scientific computation like Monte Carlo simulation, this is not good way to get random numbers.
-
-* Wrap a good C-implemented RNG using Cython.
-
-> This can be a good way. Currently I have found two ways to do this: 1. [Use numpy **randomkit**][^5] 2. [Use GSL library][^6]
-
-* Handwrite `C` or `C++` code using **random** library or other external library and use `Cython` to wrap the code.
-
-> This will give the optimal performance, but comes with more complicated and less readable code.
+* **Handwrite `C` or `C++` code using `random` library or other external library and use `Cython` to wrap the code**. This will give the optimal performance, but comes with more complicated and less readable code.
 
 What I did in this post is the last method.
 
@@ -203,13 +195,15 @@ Instead of normal arguments, we also have `extra_compile_args` here. This is bec
 If `cimport numpy` is used, then the setting `include_dirs = [numpy.get_include()])]` need to be added
 :::
 
-Then in terminal we do
+Then in terminal we do,
 
-Linux
+_On Linux_
+
 ```bash
 python setup.py build_ext --inplace
 ```
-or Mac OS
+_or on Mac OS_
+
 ```bash
 clang++ python setup.py build_ext --inplace
 ```
