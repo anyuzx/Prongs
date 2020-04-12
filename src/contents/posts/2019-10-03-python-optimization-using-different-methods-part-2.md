@@ -64,7 +64,7 @@ def pdist_np_naive(positions, l):
     return pdistances
 ```
 
-**Benchmark**
+### Benchmark
 
 ```python
 n = 100
@@ -143,7 +143,7 @@ def pdist_np_broadcasting(positions, l):
     return pdistances
 ```
 
-**Benchmark**
+### Benchmark
 
 ```python
 n = 100

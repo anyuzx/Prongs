@@ -110,8 +110,6 @@ def pdist_v2(positions, l):
     return [math.sqrt(sum(map(lambda p1, p2: (p1 - p2 - round((p1 - p2) / l) * l) ** 2.0, *pair))) for pair in all_pairs]
 ```
 
-**Explanation**:
-
 * First, we use `itertool.combinations()` to return an iterator `all_pairs` of all possible combination of particles. `r=2` means that we only want pair-wise combinations (no triplets, etc)
 
 * We loop over the `all_pairs` using list comprehension using `[do_something(pair) for pair in all_pairs]`.

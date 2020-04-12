@@ -147,7 +147,7 @@ Since Pyodide uses WebAssembly, older browser cannot run the demonstration. You 
 
 ---
 
-### Further reading
+## Further reading
 
 * [Running Python in the Browser](https://pythontips.com/2019/05/22/running-python-in-the-browser/)
 * [Python-in-the-browser technologies](http://stromberg.dnsalias.org/~strombrg/pybrowser/python-browser.html)

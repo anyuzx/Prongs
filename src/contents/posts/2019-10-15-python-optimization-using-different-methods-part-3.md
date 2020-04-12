@@ -232,7 +232,7 @@ The time is measured when $N=1000$. The parallel versions are tested on a 2-core
 
 ---
 
-### Further Reading
+## Further Reading
 
 * [Parallel computing in Cython - threads](http://nealhughes.net/parallelcomp2/)
 
