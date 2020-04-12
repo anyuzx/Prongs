@@ -28,7 +28,7 @@ permalink: /photos/{{ photo.public_id.split("/")[1] | slug }}/
                     {{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_1600/{{ photo.public_id }}.jpg 1600w,
                     {{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_3200/{{ photo.public_id }}.jpg 3200w"
                 src="{{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_1600/{{ photo.public_id }}.jpg"
-                alt="{{ photo.context.custom.alt }}" class="mb-2 shadow-lg border-2" style="width:98vw;position:relative;left:50%;right:50%;margin-left:-49vw;margin-right:-49vw;max-width:unset;max-height:unset">
+                alt="{{ photo.context.custom.alt }}" class="mb-2 shadow-lg" style="width:98vw;position:relative;left:50%;right:50%;margin-left:-49vw;margin-right:-49vw;max-width:unset;max-height:unset">
             {% else %}
             <source srcset="{{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_800/{{ photo.public_id }}.webp 800w,
                     {{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_1600/{{ photo.public_id }}.webp 1600w" 
@@ -37,15 +37,15 @@ permalink: /photos/{{ photo.public_id.split("/")[1] | slug }}/
                 srcset="{{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_800/{{ photo.public_id }}.jpg 800w,
                     {{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_1600/{{ photo.public_id }}.jpg 1600w"
                 src="{{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_1600/{{ photo.public_id }}.jpg"
-                alt="{{ photo.context.custom.alt }}" class="mb-2 shadow-lg border-2">
+                alt="{{ photo.context.custom.alt }}" class="mb-2 shadow-lg">
             {% endif %}
         </picture>
-        <div class="flex mb-4 text-gray-700">
+        <div class="flex mb-4 font-bold text-2xl">
             {% if pagination.previousPageHref %}
-            <a class="mr-auto" href="{{ pagination.previousPageHref }}">&#11104;</a>
+            <a class="mr-auto" href="{{ pagination.previousPageHref }}">&#8249;</a>
             {% endif %}
             {% if pagination.nextPageHref %}
-            <a class="ml-auto" href="{{ pagination.nextPageHref }}">&#11106;</a>
+            <a class="ml-auto" href="{{ pagination.nextPageHref }}">&#8250;</a>
             {% endif %}
         </div>
         <div class="sm:flex items-start justify-between">
@@ -58,7 +58,7 @@ permalink: /photos/{{ photo.public_id.split("/")[1] | slug }}/
                 {% endif %}
                 <div class="italic">&copy; {{ site.AUTHOR.NAME }} All copyrights reserved</div>
             </div>
-            <div class="note mb-0 mt-4 sm:mt-0">
+            <div class="photoExifBox mb-0 mt-4 sm:mt-0">
                 {# display camera model #}
                 {% if photo.context.custom.type === "digital" %}
                 {% if photo.image_metadata.Model %}
