@@ -4,6 +4,7 @@
  * Use Inter font https://rsms.me/inter/
  */
 
+/*
 @font-face {
   font-family: 'Inter';
   font-style:  normal;
@@ -44,6 +45,7 @@
   src: url("https://rsms.me/inter/font-files/Inter-Bold.woff2?v=3.12") format("woff2"),
        url("https://rsms.me/inter/font-files/Inter-Bold.woff?v=3.12") format("woff");
 }
+*/
 
 /* -------------------------------------------------------
 Variable font.
@@ -55,6 +57,46 @@ html { font-family: 'Inter', sans-serif; }
   html { font-family: 'Inter var', sans-serif; }
 }
 
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("https://rsms.me/inter/font-files/Inter-Light.woff2?v=3.12") format("woff2"),
+       url("https://rsms.me/inter/font-files/Inter-Light.woff?v=3.12") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://rsms.me/inter/font-files/Inter-Regular.woff2?v=3.12") format("woff2"),
+       url("https://rsms.me/inter/font-files/Inter-Regular.woff?v=3.12") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://rsms.me/inter/font-files/Inter-Italic.woff2?v=3.12") format("woff2"),
+       url("https://rsms.me/inter/font-files/Inter-Italic.woff?v=3.12") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("https://rsms.me/inter/font-files/Inter-Medium.woff2?v=3.12") format("woff2"),
+       url("https://rsms.me/inter/font-files/Inter-Medium.woff?v=3.12") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("https://rsms.me/inter/font-files/Inter-Bold.woff2?v=3.12") format("woff2"),
+       url("https://rsms.me/inter/font-files/Inter-Bold.woff?v=3.12") format("woff");
+}
 @font-face {
   font-family: 'Inter var';
   font-weight: 100 900;
@@ -117,6 +159,10 @@ explicitly, e.g.
  */
 article a {
   @apply underline;
+}
+
+article a:hover {
+  @apply bg-black text-white;
 }
 
 /*
@@ -261,7 +307,7 @@ figure > img {
  * custom class tag
  */
 .post-tag {
-  @apply py-1 px-2 m-1 bg-gray-200 rounded-sm font-light shadow-md;
+  @apply py-1 px-2 m-1 bg-gray-200 rounded-sm font-light no-underline;
 }
 
 .post-tag a {

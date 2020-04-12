@@ -9,8 +9,8 @@ const typography = new Typography({ ...TypographyBootstrap,
                                     baseLineHeight: 1.5,
                                     headerWeight: 700,
                                     includeNormalize: false,
-                                    bodyFontFamily: ['Inter', '-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue','sans-serif'],
-                                    headerFontFamily: ['Inter', '-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue','sans-serif']
+                                    bodyFontFamily: ['Inter var', '-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue','sans-serif'],
+                                    headerFontFamily: ['Inter var', '-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue','sans-serif']
                                  })
 
 module.exports = function () {

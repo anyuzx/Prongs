@@ -29,17 +29,15 @@
   <header>
     <h1 class="capitalize text-4xl text-left leading-normal">{{ title }}</h1>
     <div class="flex justify-between text-sm">
-      <div class="self-center font-light">
+      <div class="uppercase self-center font-light">
         {% dayjs page.date, 'MMM DD, YYYY' %}
       </div>
       <div class="self-center">
         {%- for tag in tags %}
           {% if tag !== "pinned" %}
-            <button class="post-tag hover:bg-gray-500">
-              <a href="/tags/{{ tag | slug }}">
-              #{{ tag }}
-              </a>
-            </button>
+            <a class="mx-1 p-1 hover:bg-black hover:text-white" href="/tags/{{ tag | slug }}">
+            #{{ tag }}
+            </a>
           {% endif %}
         {% endfor -%}
       </div>
