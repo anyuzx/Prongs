@@ -32,3 +32,5 @@
   - [ ] write a note/post on this
 - [x] customize preview template for Netlify CMS
   - [x] write about how to use markdown-it and prismjs with custom preview template
+- [ ] table of contents for post
+- [x] numbering headings for post
