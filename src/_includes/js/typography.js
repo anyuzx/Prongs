@@ -4,8 +4,8 @@ const TypographyBootstrap = require('typography-theme-bootstrap').default
 //TypographyBootstrap.overrideThemeStyles = (options, styles) => ({})
 
 const typography = new Typography({ ...TypographyBootstrap,
-                                    baseFontSize: '15px',
-                                    scaleRatio: 1.25,
+                                    baseFontSize: '16px',
+                                    scaleRatio: 1.6,
                                     baseLineHeight: 1.5,
                                     headerWeight: 700,
                                     includeNormalize: false,
