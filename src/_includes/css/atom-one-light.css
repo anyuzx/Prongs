@@ -28,7 +28,7 @@ hue-6-2: #c18401
 }
 
 .hljs > code {
-  font-family: 'Space Mono','Roboto Mono',Menlo,monospace;
+  font-family: 'Fira Code','Roboto Mono',Menlo,monospace;
   line-height: 1.375;
 }
 
