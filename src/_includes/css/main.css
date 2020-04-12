@@ -127,10 +127,17 @@ article pre {
 }
 
 article :not(pre) > code {
-  font-family: 'Space Mono','Roboto Mono',Menlo,monospace;
+  font-family: 'Fira Code','Roboto Mono',Menlo,monospace;
   @apply rounded-sm;
   background-color: #F0F0F4;
   padding: 0.05rem;
+}
+
+article h1:not(pre) > code, h2:not(pre) > code, h3:not(pre) > code, h4:not(pre) > code, h5:not(pre) > code, h6:not(pre) > code {
+  font-size: inherit;
+  font-weight: inherit;
+  padding: unset;
+  background: unset;
 }
 
 /*
@@ -254,7 +261,7 @@ figure > img {
  * custom class tag
  */
 .post-tag {
-  @apply py-1 px-2 m-1 bg-gray-200 rounded-sm;
+  @apply py-1 px-2 m-1 bg-gray-200 rounded-sm font-light shadow-md;
 }
 
 .post-tag a {
@@ -265,7 +272,7 @@ figure > img {
  * custom class note
  */
 .note {
-  @apply rounded-sm border-2 p-2;
+  @apply border-2 p-2;
   border-color: #a6c8dd;
   background-color: #e9f1f6;
   margin-bottom: 1.63rem;
@@ -306,14 +313,14 @@ figure > img {
 *
 */
 .research-display {
-  @apply bg-black border border-solid border-black rounded-sm;
+  @apply rounded-sm;
   display:grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 1px;
+  grid-gap: 10px;
 }
 
 .research-item {
-  @apply flex flex-col justify-between bg-white p-2; 
+  @apply flex flex-col justify-between bg-white p-2 border border-solid border-black; 
 }
 
 .research-item h2 {
@@ -332,6 +339,10 @@ figure > img {
 /*
 * displaying the photo EXIF
 */
+
+.photoExifBox{
+  @apply border border-black p-2;
+}
 
 .photoExif {
   @apply flex text-gray-700;
@@ -456,6 +467,38 @@ figure > img {
   transform: rotate(180deg);
 }
 
+/*
+ * style .single-post class
+ */
+
+.single-post {
+  counter-reset: h2;
+}
+
+.single-post h2 {
+  counter-reset: h3;
+}
+
+.single-post h3 {
+  counter-reset: h4;
+}
+
+.single-post h4 {
+  counter-reset: h5;
+}
+
+.single-post h5 {
+  counter-reset: h6;
+}
+
+.single-post h2:before {counter-increment: h2; content: counter(h2) "."; position: absolute; transform: translateX(-100%); padding-right:1em;}
+.single-post h3:before {counter-increment: h3; content: counter(h2) "." counter(h3) "."; position: absolute; transform: translateX(-100%); padding-right:1em;}
+.single-post h4:before {counter-increment: h4; content: counter(h2) "." counter(h3) "." counter(h4) "."; position: absolute; transform: translateX(-100%); padding-right:1em;}
+.single-post h5:before {counter-increment: h5; content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "."; position: absolute; transform: translateX(-100%); padding-right:1em;}
+.single-post h6:before {counter-increment: h6; content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "." counter(h6) "."; position: absolute; transform: translateX(-100%); padding-right:1em;}
+
+.single-post h2.nocount:before, h3.nocount:before, h4.nocount:before, h5.nocount:before, h6.nocount:before { content: ""; counter-increment: none }
+
 @tailwind screens;
 
 @screen md {
@@ -485,10 +528,9 @@ figure > img {
   * on large screen display four research projects per row
   */
   .research-display {
-    @apply bg-black border border-solid border-black;
     display:grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-column-gap: 1px;
+    grid-column-gap: 10px;
   }
 }
 
