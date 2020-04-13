@@ -16,7 +16,7 @@ description: "Posts tags"
 
 {% set tagPosts = collections[ tag ] %}
 
-<div class="text-sm font-light mb-4 pb-4">
+<div class="text-sm font-mono font-light mb-4 pb-4">
   {% for tag, number in collections.tagList %}
     {% set tagPath = "/tags/" + tag | slug + "/" %}
     {% if tag != 'posts' and tag != 'all' %}
@@ -38,15 +38,15 @@ description: "Posts tags"
           </span><span class="rounded-r-sm inline-block ml-0 px-2 py-1 border-t border-b border-r">{{ number }}</span>
         </div>
         #}
-        <button class="post-tag shadow-none bg-gray-500">
+        <button class="post-tag bg-white border-2 border-black">
           <a href="/tags/{{ tag | slug }}">
           #{{ tag }}<sup>{{ number }}</sup>
           </a>
         </button>
       {% else %}
-        <button class="post-tag shadow-none hover:bg-gray-500">
+        <button class="post-tag hover:bg-black hover:text-white">
           <a href="/tags/{{ tag | slug }}">
-          #{{ tag }}<sup>{{ number }}</sup>
+          #{{ tag }}<sup class="font-extrabold">{{ number }}</sup>
           </a>
         </button>
       {% endif %}
