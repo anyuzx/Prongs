@@ -8,6 +8,14 @@ layout: layouts/photo.njk
 permalink: /photos/{{ photo.public_id.split("/")[1] | slug }}/
 ---
 
+{% set triangleRight %}
+  {% include "../_includes/svg/triangle-right.svg" %}
+{% endset %}
+
+{% set triangleLeft %}
+  {% include "../_includes/svg/triangle-left.svg" %}
+{% endset %}
+
 {% set cloudinary_url = "https://res.cloudinary.com/" + site.CLOUDINARY + "/image/upload" %}
 {% set photoTags = photo.tags %}
 
@@ -40,18 +48,32 @@ permalink: /photos/{{ photo.public_id.split("/")[1] | slug }}/
                 alt="{{ photo.context.custom.alt }}" class="mb-2 shadow-lg">
             {% endif %}
         </picture>
-        <div class="flex mb-4 font-bold text-2xl">
+        <div class="flex text-sm font-mono mb-4">
             {% if pagination.previousPageHref %}
-            <a class="mr-auto" href="{{ pagination.previousPageHref }}">&#8249;</a>
+              <a class="inline-flex items-center mr-auto" href="{{ pagination.previousPageHref }}">
+                <span>
+                  {{ triangleLeft | svgo | safe }}
+                </span>
+                <span>
+                  prev
+                </span>
+              </a>
             {% endif %}
             {% if pagination.nextPageHref %}
-            <a class="ml-auto" href="{{ pagination.nextPageHref }}">&#8250;</a>
+            <a class="inline-flex items-center ml-auto" href="{{ pagination.nextPageHref }}">
+              <span>
+                next
+              </span>
+              <span>
+                {{ triangleRight | svgo | safe }}
+              </span>
+            </a>
             {% endif %}
         </div>
         <div class="sm:flex items-start justify-between">
             <div class="text-left sm:w-3/4">
                 {% if photo.context.custom.caption %}
-                <div class="font-black">{{ photo.context.custom.caption | title }}</div>
+                <div class="mb-2 font-black">{{ photo.context.custom.caption | title }}</div>
                 {% endif %}
                 {% if photo.context.custom.alt %}
                 <div class="mb-2">{{ photo.context.custom.alt }}</div>
