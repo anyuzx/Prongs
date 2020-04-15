@@ -8,6 +8,8 @@ tags:
     - python
 ---
 
+[[toc]]
+
 <a href="https://colab.research.google.com/drive/1U_-J6ZHPbRkWGz97sfJ9isDSfqHvGd91">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" style="margin-left:unset;margin-right:unset;" alt="Open In Colab"/>
 </a>
