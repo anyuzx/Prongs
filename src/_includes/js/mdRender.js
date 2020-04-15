@@ -10,6 +10,9 @@ const markdownItSup = require('markdown-it-sup');
 const markdownItIns = require('markdown-it-ins');
 const markdownItMark = require('markdown-it-mark');
 const markdownItAbbr = require('markdown-it-abbr');
+const markdownItAttr = require('markdown-it-attrs');
+const markdownItKbd = require('markdown-it-kbd');
+const markdownItTOC = require('markdown-it-toc-done-right');
 
 const hljs = require("highlight.js");
 
@@ -58,7 +61,10 @@ customMarkdownIt
   .use(markdownItSup)
   .use(markdownItIns)
   .use(markdownItMark)
-  .use(markdownItAbbr);
+  .use(markdownItAbbr)
+  .use(markdownItAttr)
+  .use(markdownItKbd)
+  .use(markdownItTOC);
 
 /*
 // Remember old renderer, if overridden, or proxy to default renderer
