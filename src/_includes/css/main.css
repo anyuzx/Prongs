@@ -1,55 +1,8 @@
 @tailwind base;
 
-/*
- * Use Inter font https://rsms.me/inter/
- */
-
-/*
-@font-face {
-  font-family: 'Inter';
-  font-style:  normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url("https://rsms.me/inter/font-files/Inter-Light.woff2?v=3.12") format("woff2"),
-       url("https://rsms.me/inter/font-files/Inter-Light.woff?v=3.12") format("woff");
-}
-@font-face {
-  font-family: 'Inter';
-  font-style:  normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("https://rsms.me/inter/font-files/Inter-Regular.woff2?v=3.12") format("woff2"),
-       url("https://rsms.me/inter/font-files/Inter-Regular.woff?v=3.12") format("woff");
-}
-@font-face {
-  font-family: 'Inter';
-  font-style:  italic;
-  font-weight: 400;
-  font-display: swap;
-  src: url("https://rsms.me/inter/font-files/Inter-Italic.woff2?v=3.12") format("woff2"),
-       url("https://rsms.me/inter/font-files/Inter-Italic.woff?v=3.12") format("woff");
-}
-@font-face {
-  font-family: 'Inter';
-  font-style:  normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("https://rsms.me/inter/font-files/Inter-Medium.woff2?v=3.12") format("woff2"),
-       url("https://rsms.me/inter/font-files/Inter-Medium.woff?v=3.12") format("woff");
-}
-@font-face {
-  font-family: 'Inter';
-  font-style:  normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url("https://rsms.me/inter/font-files/Inter-Bold.woff2?v=3.12") format("woff2"),
-       url("https://rsms.me/inter/font-files/Inter-Bold.woff?v=3.12") format("woff");
-}
-*/
-
 /* -------------------------------------------------------
-Variable font.
-Usage:
+User Inter font https://rsms.me/inter/
+Both standard font and variable font
 */
 
 html { font-family: 'Inter', sans-serif; }
@@ -97,6 +50,10 @@ html { font-family: 'Inter', sans-serif; }
   src: url("https://rsms.me/inter/font-files/Inter-Bold.woff2?v=3.12") format("woff2"),
        url("https://rsms.me/inter/font-files/Inter-Bold.woff?v=3.12") format("woff");
 }
+
+/**
+Variable font
+ */
 @font-face {
   font-family: 'Inter var';
   font-weight: 100 900;
@@ -154,6 +111,7 @@ explicitly, e.g.
   src: url("https://rsms.me/inter/font-files/Inter.var.woff2?v=3.12") format("woff2");
 }
 
+
 /*
  * under line for a tag
  */
@@ -201,10 +159,12 @@ article ol {
  * fluid svg
  */
 
+/*
 svg {
   width: 100%;
   height: 100%;
 }
+*/
 
 svg > * {
   @apply fill-current;
@@ -399,6 +359,33 @@ figure > img {
   @apply mr-2;
 }
 
+/*
+style the table of contents
+ */
+.table-of-contents {
+  @apply invisible h-0 sticky leading-none text-sm;
+  top: 5.3em;
+}
+
+.table-of-contents > ol {
+  @apply inline-block border border-black px-6 py-2 rounded-sm;
+  transform: translateX(calc(-100% - (768px - 640px) / 2 - 4em))translateY(-1.3em);
+  width: calc(((100vw - 850px) / 2));
+  max-width: 300px;
+}
+
+.table-of-contents ol {
+  list-style-type: disc;
+}
+
+.table-of-contents a {
+  @apply no-underline;
+}
+
+.table-of-contents li.active-toc > a {
+  @apply font-black;
+}
+
 @tailwind utilities;
 
 .unactive-nav {
@@ -545,6 +532,7 @@ figure > img {
 
 .single-post h2.nocount:before, h3.nocount:before, h4.nocount:before, h5.nocount:before, h6.nocount:before { content: ""; counter-increment: none }
 
+
 @tailwind screens;
 
 @screen md {
@@ -578,6 +566,43 @@ figure > img {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-column-gap: 10px;
   }
+
+  /* adjust heading so that the heading is not hinderred when anchored */
+
+  .single-post h2 {
+    @apply -mt-16 border-t-16 border-solid border-transparent;
+    -webkit-background-clip:padding-box;
+    -moz-background-clip:padding;
+    background-clip:padding-box;
+  }
+
+  .single-post h3 {
+    @apply -mt-16 border-t-16 border-solid border-transparent;
+    -webkit-background-clip:padding-box;
+    -moz-background-clip:padding;
+    background-clip:padding-box;
+  }
+
+  .single-post h4 {
+    @apply -mt-16 border-t-16 border-solid border-transparent;
+    -webkit-background-clip:padding-box;
+    -moz-background-clip:padding;
+    background-clip:padding-box;
+  }
+
+  .single-post h5 {
+    @apply -mt-16 border-t-16 border-solid border-transparent;
+    -webkit-background-clip:padding-box;
+    -moz-background-clip:padding;
+    background-clip:padding-box;
+  }
+
+  .single-post h6 {
+    @apply -mt-16 border-t-16 border-solid border-transparent;
+    -webkit-background-clip:padding-box;
+    -moz-background-clip:padding;
+    background-clip:padding-box;
+  }
 }
 
 @screen sm {
@@ -593,5 +618,11 @@ figure > img {
 
   .photoExif > div {
     @apply mr-0;
+  }
+}
+
+@screen xl {
+  .table-of-contents {
+    @apply visible;
   }
 }
