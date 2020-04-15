@@ -1,9 +1,13 @@
+{% set scrollActiveTOC %}
+  {% include "../js/scrollActiveTOC.js" %}
+{% endset %}
+
 {% extends "layouts/base.njk" %}
 {% set pageType = "post" %}
 
 {% block head %}
 {# include prismjs theme css file #}
-<link rel="stylesheet" type="text/css" href="/_includes/css/atom-one-light.css">
+<link rel="stylesheet" type="text/css" href="/_includes/css/dracula.css">
 
 {# include katex css file #}
 {% if disableKatex %}
@@ -15,8 +19,12 @@
 .katex { font-size: 1.1em; }
 </style>
 {% endif %}
-
+{# include javscript for scroll active table of contents #}
+<script>
+  {{ scrollActiveTOC | safe }}
+</script>
 {% endblock %}
+
 {% block content %}
 <article class="single-post">
   {% if image %}
@@ -27,7 +35,7 @@
   </header>
   {% endif %}
   <header>
-    <h1 class="capitalize text-4xl text-left leading-normal">{{ title }}</h1>
+    <h1 class="capitalize text-4xl text-left leading-snug">{{ title }}</h1>
     <div class="flex justify-between text-sm">
       <div class="uppercase self-center font-light">
         {% dayjs page.date, 'MMM DD, YYYY' %}
