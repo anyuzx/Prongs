@@ -5,6 +5,7 @@ User Inter font https://rsms.me/inter/
 Both standard font and variable font
 */
 
+/*
 html { font-family: 'Inter', sans-serif; }
 @supports (font-variation-settings: normal) {
   html { font-family: 'Inter var', sans-serif; }
@@ -54,6 +55,7 @@ html { font-family: 'Inter', sans-serif; }
 /**
 Variable font
  */
+/*
 @font-face {
   font-family: 'Inter var';
   font-weight: 100 900;
@@ -70,8 +72,10 @@ Variable font
   font-display: swap;
   src: url("https://rsms.me/inter/font-files/Inter-italic.var.woff2?v=3.12") format("woff2");
 }
+*/
 
 /* Legacy naming compatibility */
+/*
 @font-face {
   font-family: 'Inter var alt';
   font-weight: 100 900;
@@ -88,7 +92,7 @@ Variable font
   font-display: swap;
   src: url("https://rsms.me/inter/font-files/Inter-italic.var.woff2?v=3.12") format("woff2");
 }
-
+*/
 
 /* --------------------------------------------------------------------------
 [EXPERIMENTAL] Multi-axis, single variable font.
@@ -103,6 +107,8 @@ explicitly, e.g.
   .italic { font-variation-settings: "slnt" 10deg }
 
 */
+
+/*
 @font-face {
   font-family: 'Inter var experimental';
   font-weight: 100 900;
@@ -110,6 +116,7 @@ explicitly, e.g.
   font-display: swap;
   src: url("https://rsms.me/inter/font-files/Inter.var.woff2?v=3.12") format("woff2");
 }
+*/
 
 
 /*
@@ -363,18 +370,23 @@ figure > img {
 style the table of contents
  */
 .table-of-contents {
-  @apply invisible h-0 sticky leading-none text-sm;
+  @apply invisible h-0 sticky text-sm text-gray-500 font-medium;
 }
 
 .table-of-contents > ol {
-  @apply inline-block list-inside border-t-2 border-r-2 border-double border-black p-2;
+  @apply inline-block list-inside p-2;
+  border-right: 1px solid #edf2f7;
   transform: translateX(calc(-100% - (768px - 640px) / 2 - 4em))translateY(-1.3em);
   width: calc(((100vw - 850px) / 2));
   max-width: 300px;
 }
 
 .table-of-contents ol {
-  list-style-type: disc;
+  list-style-type: none;
+}
+
+.table-of-contents li > ol {
+  margin-left: 2em;
 }
 
 .table-of-contents a {
@@ -382,7 +394,7 @@ style the table of contents
 }
 
 .table-of-contents li.active-toc > a {
-  @apply font-black;
+  @apply text-black;
 }
 
 @tailwind utilities;
