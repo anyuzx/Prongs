@@ -99,7 +99,7 @@ I recommend to use `import` to load the `prism.js` module in order to use [**bab
 Now we have loaded the **markdown-it**, the `body` can be translated to `HTML` using,
 
 ```js
-const bodyRendered = customMarkdownIt.render(entry.getIn(["data", "body"]));
+const bodyRendered = customMarkdownIt.render(body || '');
 ```
 
 To render `bodyRendered`, we have to use `dangerouslySetInnerHTML` which is provided by React to parse a raw `HTML` string into the DOM. Finally, the codes for the template are,
@@ -128,7 +128,7 @@ var Post = createClass({
 CMS.registerPreviewTemplate('posts', Post);
 ```
 
-Note that there is a new line in the end. There, we use the method `registerPreviewTemplate` to register our template `Post` to be used for the CMS collection named `posts`.
+Note that there is a new line in the end. There, we use the method `registerPreviewTemplate` to register the template `Post` to be used for the CMS collection named `posts`.
 
 ## Pre-compile the template
 
@@ -168,7 +168,7 @@ export default {
 * Set the format to be `esm` tells the **rollup.js** to bundle the code as an ES module.
 * I use the [**babel-plugin-prismjs**](https://github.com/mAAdhaTTah/babel-plugin-prismjs) to handle the dependencies of **prism.js**.
 
-The perform the bundling, one can either use `rollup --config` in the terminal if **rollup.js** is installed globally or add it as a `npm` script. The config above tells the **rollup.js** to generate the file `dist/admin/preview.js`. 
+To perform the bundling, one can either use `rollup --config` in the terminal if **rollup.js** is installed globally or add it as a `npm` script. The config above tells the **rollup.js** to generate the file `dist/admin/preview.js`. 
 
 To use the template, the final step is to include it as a `<script type=module>` tag. Add the following in the `<head>` section in your `admin/index.html`,
 
