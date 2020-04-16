@@ -3,7 +3,8 @@ module.exports = {
     fontFamily: {
       'sans': ['Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"'],
       'serif': ['Georgia, Cambria, "Times New Roman", Times, serif'],
-      'mono': ['"Fira Code", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace']
+      'mono': ['"Fira Code", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace'],
+      'system-sans': ['system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"']
     },
     extend: {
       borderWidth: {

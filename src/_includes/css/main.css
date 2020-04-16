@@ -229,7 +229,7 @@ figure > img {
 }
 
 .post-item .post-info > div > time {
-  @apply mr-2;
+  @apply mr-2 font-system-sans;
   font-variant-numeric: tabular-nums;
   letter-spacing:-.012em;
 }
