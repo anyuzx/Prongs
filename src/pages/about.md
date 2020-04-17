@@ -29,10 +29,6 @@ My research methods are theoretical and computational, involving equilibrium and
 
 #### Colophon
 
-::: note
-Writing contents and photos on this site are copyrighted. Feel free to contact me if you have any questions.
-:::
-
 * I occasionally [blog](/posts) about side projects, interesting problems encountered in my research and other stuff. My old blog is [here](https://biophyenvpol.wordpress.com/).
 
 * I like to take [photos](/photos). You can also check my [instagram](https://www.instagram.com/guang_shi_stefan/).
