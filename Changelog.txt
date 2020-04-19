@@ -56,3 +56,21 @@ Changelog 2020/04/12 Version 0.65
 Feature:
 
 - use Inter variable font
+
+Changelog 2020/04/19 Version 0.7
+
+Feature:
+
+- new style for photo information box
+  - add border for each box
+  - replace old unicode for `s`, `mm`
+  - use IBM Plex Mono for displaying Exif information
+- redesign the website logo
+  - the name and logo is combined into one single svg file
+  - use **Teko** font for name
+  - the 时 logo is completely redesigned in inkscape
+- new style for fenced code block
+  - new syntax color scheme: Atelier Forest Light https://atelierbram.github.io/syntax-highlighting/atelier-schemes/
+  - new block style
+  - new font - IBM Plex Mono
+  
