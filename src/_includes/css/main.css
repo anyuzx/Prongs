@@ -127,18 +127,19 @@ article a {
 }
 
 article a:hover {
-  @apply bg-black text-white;
+  @apply no-underline;
 }
 
 /*
  * add border to code blocks
  */
 article pre {
-  @apply rounded-sm shadow-inner;
+  @apply border-t border-b border-gray-600;
+  border-color: #d8d8dc;
 }
 
 article :not(pre) > code {
-  font-family: 'Fira Code','Roboto Mono',Menlo,monospace;
+  font-family: 'IBM Plex Mono', 'Fira Code','Roboto Mono',Menlo,monospace;
   @apply rounded-sm;
   background-color: #F0F0F4;
   padding: 0.05rem;
@@ -171,11 +172,11 @@ svg {
   width: 100%;
   height: 100%;
 }
-*/
 
 svg > * {
   @apply fill-current;
 }
+*/
 
 figcaption {
   @apply text-center text-sm p-4;
@@ -189,6 +190,10 @@ img {
 
 figure > img {
   @apply mb-0;
+}
+
+blockquote {
+  @apply italic;
 }
 
 @tailwind components;
@@ -354,12 +359,17 @@ figure > img {
 */
 
 .photoExifBox{
-  @apply border border-black p-2;
+  @apply border border-black p-1 items-center justify-between mb-0 mt-4 flex text-sm;
+}
+
+.photoExifBoxHeader {
+  @apply font-medium flex-grow;
 }
 
 .photoExif {
-  @apply flex text-gray-700;
-  font-variant:unicase;
+  @apply flex text-gray-700 font-mono;
+  font-variant:slashed-zero;
+  word-spacing: -0.3em;
 }
 
 .photoExif > div {
@@ -377,7 +387,7 @@ style the table of contents
   @apply inline-block list-inside p-2;
   border-right: 1px solid #edf2f7;
   transform: translateX(calc(-100% - (768px - 640px) / 2 - 4em))translateY(-1.3em);
-  width: calc(((100vw - 850px) / 2));
+  width: calc(((100vw - 870px) / 2));
   max-width: 300px;
 }
 
@@ -620,15 +630,26 @@ style the table of contents
   /*
   * on large screen display the photo EXIF on 2x2 grids
   */
+  .photoExifBox {
+    @apply block p-0 mt-0;
+  }
+
+  .photoExifBoxHeader {
+    @apply border-t border-l border-r border-gray-500 text-center;
+  }
+
+  .photoExifBoxHeader2 {
+    @apply border-l border-r border-gray-500 px-1;
+  }
+
   .photoExif {
-    @apply text-gray-700;
+    @apply text-gray-700 border-t border-l border-gray-500;
     display:grid;
     grid-template-columns: 1fr 1fr;
-    font-variant:unicase;
   }
 
   .photoExif > div {
-    @apply mr-0;
+    @apply mr-0 text-center p-1 border-b border-r border-gray-500;
   }
 }
 
