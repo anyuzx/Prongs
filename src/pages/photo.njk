@@ -78,34 +78,32 @@ permalink: /photos/{{ photo.public_id.split("/")[1] | slug }}/
                 {% if photo.context.custom.alt %}
                 <div class="mb-2">{{ photo.context.custom.alt }}</div>
                 {% endif %}
-                <div class="italic">&copy; {{ site.AUTHOR.NAME }} All copyrights reserved</div>
+                <div class="text-gray-700">&copy; {{ site.AUTHOR.NAME }} All copyrights reserved</div>
             </div>
-            <div class="photoExifBox mb-0 mt-4 sm:mt-0">
+            <div class="photoExifBox">
                 {# display camera model #}
                 {% if photo.context.custom.type === "digital" %}
                 {% if photo.image_metadata.Model %}
-                <div class="font-bold">{{ photo.image_metadata.Model }}</div>
+                <div class="photoExifBoxHeader">{{ photo.image_metadata.Model }}</div>
                 {% elif photo.context.custom.camera %}
-                <div class="font-bold">{{ photo.context.custom.camera }}</div>
+                <div class="photoExifBoxHeader">{{ photo.context.custom.camera }}</div>
                 {% endif %}
                 {% elif photo.context.custom.type === "film" %}
                 {% if photo.context.custom.camera %}
-                <div class="font-bold">{{ photo.context.custom.camera }}</div>
-                <div class="photoFilm">{{ photo.context.custom.film }}</div>
+                <div class="photoExifBoxHeader">{{ photo.context.custom.camera }}</div>
+                <div class="photoExifBoxHeader2">{{ photo.context.custom.film }}</div>
                 {% endif %}
                 {% else %}
                 {% if photo.image_metadata.Model %}
-                <div class="font-bold">{{ photo.image_metadata.Model }}</div>
+                <div class="photoExifBoxHeader">{{ photo.image_metadata.Model }}</div>
                 {% elif photo.context.custom.camera %}
-                <div class="font-bold">{{ photo.context.custom.camera }}</div>
+                <div class="photoExifBoxHeader">{{ photo.context.custom.camera }}</div>
                 {% endif %}
                 {% endif %}
                 {# display additional information EXIF #}
                 <div class="photoExif">
                     {% if photo.image_metadata.ShutterSpeedValue %}
-                    <div><span
-                            style="font-variant:diagonal-fractions;">{{ photo.image_metadata.ShutterSpeedValue }}</span>
-                        s</div>
+                    <div><span>{{ photo.image_metadata.ShutterSpeedValue }}</span> &#120268;</div>
                     {% endif %}
                     {% if photo.image_metadata.ApertureValue %}
                     <div>&#402;/{{ photo.image_metadata.ApertureValue }}</div>
@@ -114,7 +112,7 @@ permalink: /photos/{{ photo.public_id.split("/")[1] | slug }}/
                     <div>{{ photo.image_metadata.FocalLength.split(" ")[0] | round }} &#13212;</div>
                     {% endif %}
                     {% if photo.image_metadata.ISO %}
-                    <div>ISO {{ photo.image_metadata.ISO }}</div>
+                    <div>&#120232;&#120242;&#120238; {{ photo.image_metadata.ISO }}</div>
                     {% endif %}
                 </div>
             </div>
