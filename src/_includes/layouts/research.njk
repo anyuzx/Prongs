@@ -15,7 +15,7 @@
     {%- endif %}
       <h2 class="text-xl font-bold leading-tight text-left -mt-24 sm:-mt-20 border-t-24 sm:border-t-20 border-solid border-transparent" style="-webkit-background-clip:padding-box;-moz-background-clip:padding;background-clip:padding-box;">{{ project.data.title }}</h2>
       {% if project.data.image %}
-      <img src="{{ project.data.image.path }}" alt="{{ project.data.image.description }}" width="300" alt="illustration" class="float-none sm:float-right sm:mb-0">
+      <img src="{{ project.data.image.path }}" alt="{{ project.data.image.description }}" width="300" alt="illustration" class="float-none sm:float-right sm:mb-0 sm:mx-1">
       {% endif %}
       {{ project.templateContent | safe }}
     </article>
