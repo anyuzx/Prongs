@@ -122,6 +122,14 @@ explicitly, e.g.
 /*
  * under line for a tag
  */
+p a {
+  @apply underline;
+}
+
+p a:hover {
+  @apply no-underline;
+}
+
 article a {
   @apply underline;
 }
@@ -129,7 +137,6 @@ article a {
 article a:hover {
   @apply no-underline;
 }
-
 /*
  * add border to code blocks
  */

@@ -76,7 +76,7 @@ permalink: /photos/{{ photo.public_id.split("/")[1] | slug }}/
                 <div class="mb-2 font-black">{{ photo.context.custom.caption | title }}</div>
                 {% endif %}
                 {% if photo.context.custom.alt %}
-                <div class="mb-2">{{ photo.context.custom.alt }}</div>
+                <div class="mb-2">{{ photo.context.custom.alt | renderUsingMarkdown | safe }}</div>
                 {% endif %}
                 <div class="text-gray-700">&copy; {{ site.AUTHOR.NAME }} All copyrights reserved</div>
             </div>
