@@ -34,20 +34,20 @@
   <div class="p-4 flex justify-center items-center mx-auto" style="max-width:800px;">
     {% if site.FEED %}
       <a href="/{{ site.FEED.PATH }}" aria-label="RSS Feed" rel="noopener noreferrer" target="_blank" class="hover:bg-black hover:text-white p-1 rounded-sm">
-        <span>
+        <span class="fill-current">
           {{ rssLogo | svgo | safe }}
         </span>
       </a>
     {% endif %}
     {% if site.SOURCE_CODE %}
       <a href="{{ site.SOURCE_CODE }}" aria-label="Source Code" rel="noopener noreferrer" target="_blank" class="hover:bg-black hover:text-white p-1 rounded-sm">
-        <span>
+        <span class="fill-current">
           {{ sourcecodeLogo | svgo | safe }}
         </span>
       </a>
     {% endif %}
     <a href="https://github.com/{{ site.AUTHOR.GITHUB }}" aria-label="Github Page" rel="noopener noreferrer" target="_blank" class="hover:bg-black hover:text-white p-1 rounded-sm">
-      <span>
+      <span class="fill-current">
         {{ githubIcon | svgo | safe }}
       </span>
     </a>
@@ -60,20 +60,20 @@
     #}
     {% if site.AUTHOR.INSTAGRAM %}
     <a href="https://www.instagram.com/{{ site.AUTHOR.INSTAGRAM }}" aria-label="Instagram" rel="noopener noreferrer" target="_blank" class="hover:bg-black hover:text-white p-1 rounded-sm">
-      <span>
+      <span class="fill-current">
         {{ instagramIcon | svgo | safe }}
       </span>
     </a>
     {% endif %}
     {% if site.AUTHOR.TWITTER %}
     <a href="https://twitter.com/{{ site.AUTHOR.TWITTER }}" aria-label="Twitter" rel="noopener noreferrer" target="_blank" class="hover:bg-black hover:text-white p-1 rounded-sm">
-      <span>
+      <span class="fill-current">
         {{ twitterIcon | svgo | safe }}
       </span>
     </a>
     {% endif %}
     <a href="https://creativecommons.org/licenses/by-nc/4.0/" aria-label="Copyright information" rel="noopener noreferrer" target="_blank" class="inline-flex items-center hover:bg-black hover:text-white p-1 rounded-sm">
-      <span class="mr-1">
+      <span class="fill-current mr-1">
         {{ copyrightLogo | svgo | safe }}
       </span>
       <span class="leading-none"> 2019-2020 by {{ site.AUTHOR.NAME }}</span>
