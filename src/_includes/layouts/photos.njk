@@ -2,6 +2,10 @@
 
 {% set cloudinary_url = "https://res.cloudinary.com/" + site.CLOUDINARY + "/image/upload" %}
 
+{% block head %}
+<script src="/_includes/js/lazysizes.min.js" async></script>
+{% endblock %}
+
 {% block content %}
 {% for photo in collections.photos | reverse -%}
     {% set photoSlug = photo.public_id.split("/")[1] | slug %}
@@ -13,18 +17,17 @@
         <a href="/photos/{{ photoSlug }}">
             <picture>
                 <source
-                    srcset="{{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_800/{{ photo.public_id }}.webp 800w,
+                    data-srcset="{{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_800/{{ photo.public_id }}.webp 800w,
                             {{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_1600/{{ photo.public_id }}.webp 1600w"
                     type="image/webp">
                 <img
                     sizes="(max-width:650px) 100vw,
                         768px"
-                    srcset="{{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_800/{{ photo.public_id }}.jpg 800w,
+                    data-srcset="{{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_800/{{ photo.public_id }}.jpg 800w,
                             {{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_1600/{{ photo.public_id }}.jpg 1600w"
-                    src="{{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_1600/{{ photo.public_id }}.jpg"
+                    data-src="{{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_1600/{{ photo.public_id }}.jpg"
                     alt="{{ photo.context.custom.alt }}"
-                    class="shadow-lg"
-                    loading="lazy"
+                    class="shadow-lg lazyload"
                 >
             </picture>
         </a>
