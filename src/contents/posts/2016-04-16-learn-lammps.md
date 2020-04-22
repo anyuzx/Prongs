@@ -10,7 +10,7 @@ disableKatex: true
 ---
 
 
-This is a note about learning `LAMMPS` source codes. This note focuses on compute style of `Lammps` which is used to compute certain quantity during the simulation run. Of course you can as well compute these quantities in post-process, however it's usually faster to do it in the simulation since you can take advantage of the all the distance, forces, et al generated during the simulation instead of computing them again in post-process. I will go through the `LAMMPS` source code `compute_gyration.h` and `compute_gyration.cpp`. I am not very familiar with `c++`, so I will also explain some language related details which is what I learn when studying the code. Hope this article can be helpful when someone want to modify or make their own `Lammps` compute style.
+This is a note about learning [LAMMPS](https://lammps.sandia.gov/) source codes. This note focuses on compute style of LAMPPS which is used to compute certain quantity during the simulation run. Of course you can as well compute these quantities in post-process, however it's usually faster to do it in the simulation since you can take advantage of the all the distance, forces, et al generated during the simulation instead of computing them again in post-process. I will go through the `LAMMPS` source code `compute_gyration.h` and `compute_gyration.cpp`. I am not very familiar with `c++`, so I will also explain some language related details which is what I learn when studying the code. Hope this article can be helpful when someone want to modify or make their own `Lammps` compute style.
 
 ## `compute_gyration.h`
 
@@ -157,7 +157,7 @@ void ComputeGyration::init()
 }
 ```
 
-This part perform one time setup like initialization. Operator **->** is just a syntax sugar, `class->member` is equivalent with `(*class).member`. What `group->mass(igroup)` does is to call the member `mass()` function of class `group`, provided the group-ID, and return the total mass of this group. How value of `igroup` is set can be examined in `compute.cpp`. It's the second argument of compute style.
+This part perform one time setup like initialization. Operator `->` is just a syntax sugar, `class->member` is equivalent with `(*class).member`. What `group->mass(igroup)` does is to call the member `mass()` function of class `group`, provided the group-ID, and return the total mass of this group. How value of `igroup` is set can be examined in `compute.cpp`. It's the second argument of compute style.
 
 ```cpp
 double ComputeGyration::compute_scalar()
@@ -233,7 +233,7 @@ Here is the list of meaning of each variable
 
 Look at this line `domain->unmap(x[i],image[i],unwrap)`, `domain.cpp` tells that function `unmap` return the unwrapped coordination of atoms in `unwrap`. The following several lines calculate the [gyration tensor](https://en.wikipedia.org/wiki/Gyration_tensor). The MPI code `MPI_Allreduce(rg,vector,6,MPI_DOUBLE,MPI_SUM,world)` sums all the six components of `rg` calculated by each processor, store the value in `vector` and then distribute `vector` to all the processors. Refer to this [article](http://mpitutorial.com/tutorials/mpi-reduce-and-allreduce/) for details.
 
-Here are two good articles about understanding and hacking LAMMPS code.
+Unfortunately, there are only a few resources on LAMMPS source code on the Internet. Here are two good articles about understanding and hacking LAMMPS code.
 
 * [A dissection of LAMMPS classes - A Guide for Beginner LAMMPS Hackers](https://sites.google.com/site/scienceuprising/code-packages/lammps/a-dissection-of-lammps-classes#TOC-The-Atom-Class)
 * [How to Write Fix for LAMMPS](http://kirilllykov.github.io/blog/2012/10/13/writing-fixes-for-lammps/)
