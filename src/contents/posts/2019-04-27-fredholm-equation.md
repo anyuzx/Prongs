@@ -137,7 +137,7 @@ def NNETR(K, f, Delta, epsilon, alpha):
 
 <img src="https://i.imgur.com/DneADgt.png" width="480"/>
 
-* Compounding an exponential distribution with its rate parameter distributed according to a mixture distribution of two gamma distributions. Similar to the first example, we use $k(x,\theta)=\theta e^{-\theta x}$. But here we use $p(\theta)=q p(\theta\vert a_1)+(1-q)p(\theta\vert a_2)$ where $q$, $a_1$ and $a_2$ are parameters. It is clear that $p(\theta)$ is a mixture between two different gamma distributions such as it is a bimodal distribution. Following the first example, we have $f(x)=qf(x\vert a_1)+(1-q)f(x\vert a_2)$ where $f(x\vert a)=a(x+1)^{-(a+1)}$
+* Compounding an exponential distribution with its rate parameter distributed according to a mixture distribution of two gamma distributions. Similar to the first example, we use $k(x,\theta)=\theta e^{-\theta x}$. But here we use $p(\theta)=q p(\theta\vert a_1)+(1-q)p(\theta\vert a_2)$ where $q$, $a_1$ and $a_2$ are parameters. It is clear that $p(\theta)$ is a mixture between two different gamma distributions such as it is a bimodal distribution. Following the first example, we have $f(x)=qf(x\vert a_1)+(1-q)f(x\vert a_2)$ where $f(x\vert a)=a(x+1)^{-(a+1)}$.
 
 <img src="https://i.imgur.com/EeSepu1.png" width="480"/>
 
