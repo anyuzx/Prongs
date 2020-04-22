@@ -311,7 +311,8 @@ blockquote {
  * custom class big-box
  */
 .big-box {
-  @apply border-2 border-black mb-4 p-4 rounded-sm;
+  @apply mb-4 p-4 rounded-sm;
+  background: #0033710d;
 }
 
 .big-box *:last-child {
@@ -646,11 +647,11 @@ style the table of contents
   }
 
   .photoExifBoxHeader {
-    @apply border-t border-l border-r border-gray-500 text-center;
+    @apply border-t border-l border-r border-gray-500 text-center px-1;
   }
 
   .photoExifBoxHeader2 {
-    @apply border-l border-r border-gray-500 px-1;
+    @apply border-l border-r border-gray-500 px-1 text-center;
   }
 
   .photoExif {
