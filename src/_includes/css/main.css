@@ -142,7 +142,7 @@ article a:hover {
  */
 article pre {
   @apply border-t border-b border-gray-600;
-  border-color: #d8d8dc;
+  border-color: #000000;
 }
 
 article :not(pre) > code {
@@ -298,8 +298,8 @@ blockquote {
  */
 .note {
   @apply border-2 p-2;
-  border-color: #a6c8dd;
-  background-color: #e9f1f6;
+  border-color: #4e524c;
+  background-color: #FFFBF0;
   margin-bottom: 1.63rem;
 }
 
@@ -312,7 +312,7 @@ blockquote {
  */
 .big-box {
   @apply mb-4 p-4 rounded-sm;
-  background: #0033710d;
+  background: #F0F0F4;
 }
 
 .big-box *:last-child {
@@ -328,7 +328,7 @@ blockquote {
 */
 .section-header {
   @apply font-bold text-2xl border-b-2;
-  border-color: #003371;
+  border-color: #17184b;
   width: fit-content;
   width: -moz-fit-content;
 }
@@ -431,7 +431,7 @@ style the table of contents
   left: 0px;
   right: 0px;
   height: 2px;
-  background-color: #003371;
+  background-color: #17184b;
   transform: scaleX(0);
   transition: transform 0.5s ease;
 }
@@ -466,7 +466,7 @@ style the table of contents
   left: 0px;
   right: 0px;
   height: 2px;
-  background-color: #003371;
+  background-color: #17184b;
   transform: scaleX(1);
   transition: transform 0.5s ease;
 }
