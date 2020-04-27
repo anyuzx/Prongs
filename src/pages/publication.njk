@@ -5,8 +5,11 @@ title: Publication
 description: "A list of my academic publication"
 ---
 
+{% for year, publications in references | groupByEx("issued.0.year") -%}
+<h1 class="text-base mb-0">{{ year }}</h1>
+<hr>
 <ol class="list-outside list-none ml-0">
-{% for publication in publicationList | reverse -%}
+  {% for publication in publications %}
   <li class="mb-8 border-l-4 pl-2">
     <div class="mb-2 capitalize font-medium">
     <a href="https://doi.org/{{ publication.DOI }}">{{ publication.title }}</a>
@@ -27,9 +30,9 @@ description: "A list of my academic publication"
         {% endif %}
       {% endif %}
     {% endfor %}
-    <span class="italic">{{ publication["container-title"] }}</span><span> ({{ publication.issued["date-parts"][0][0] }})</span>
+    <span class="italic">{{ publication["container-title"] }}</span><span> ({{ publication["issued"]["0"]["year"] }})</span>
     </div>
-  </li>
-  <div></div>
-{%- endfor %}
+    </li>
+    {% endfor %}
 </ol>
+{%- endfor %}

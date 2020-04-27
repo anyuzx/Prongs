@@ -1,0 +1,89 @@
+---
+references:
+- id: Thirumalai2017
+  type: article-journal
+  author:
+  - family: Thirumalai
+    given: D.
+  - family: Shi
+    given: Guang
+  issued:
+  - year: 2017
+    month: 2
+  title: Chromatin is stretched but intact when the nucleus is squeezed through constrictions
+  container-title: Biophysical Journal
+  publisher: Elsevier BV
+  page: 411-412
+  volume: '112'
+  issue: '3'
+  URL: https://doi.org/10.1016/j.bpj.2016.11.902
+  DOI: 10.1016/j.bpj.2016.11.902
+
+- id: Shi2018
+  type: article-journal
+  author:
+  - family: Shi
+    given: Guang
+  - family: Liu
+    given: Lei
+  - family: Hyeon
+    given: Changbong
+  - family: Thirumalai
+    given: D.
+  issued:
+  - year: 2018
+    month: 8
+  title: Interphase human chromosome exhibits out of equilibrium glassy dynamics
+  container-title: Nature Communications
+  publisher: Springer Science; Business Media LLC
+  volume: '9'
+  issue: '1'
+  URL: https://doi.org/10.1038/s41467-018-05606-6
+  DOI: 10.1038/s41467-018-05606-6
+
+- id: Liu2018
+  type: article-journal
+  author:
+  - family: Liu
+    given: Lei
+  - family: Shi
+    given: Guang
+  - family: Thirumalai
+    given: D.
+  - family: Hyeon
+    given: Changbong
+  editor:
+  - family: Ioshikhes
+    given: Ilya
+  issued:
+  - year: 2018
+    month: 12
+  title: Chain organization of human interphase chromosome determines the spatiotemporal
+    dynamics of chromatin loci
+  container-title: PLOS Computational Biology
+  publisher: Public Library of Science (PLoS)
+  page: e1006617
+  volume: '14'
+  issue: '12'
+  URL: https://doi.org/10.1371/journal.pcbi.1006617
+  DOI: 10.1371/journal.pcbi.1006617
+
+- id: Shi2019
+  type: article-journal
+  author:
+  - family: Shi
+    given: Guang
+  - family: Thirumalai
+    given: D.
+  issued:
+  - year: 2019
+    month: 8
+  title: Conformational heterogeneity in human interphase chromosome organization
+    reconciles the FISH and hi-c paradox
+  container-title: Nature Communications
+  publisher: Springer Science; Business Media LLC
+  volume: '10'
+  issue: '1'
+  URL: https://doi.org/10.1038/s41467-019-11897-0
+  DOI: 10.1038/s41467-019-11897-0
+...
