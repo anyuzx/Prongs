@@ -12,7 +12,7 @@
       <span class="font-medium ml-3 uppercase" style="color:#003371;">{{ site.TITLE }}</span>
       #}
     </a>
-    <div class="flex flex-grow justify-center sm:justify-end text-gray-700">
+    <div class="flex flex-grow justify-center sm:justify-end">
       {% for nav in navigation.items -%}
         {% if loop.last and page.url.startsWith(nav.url) %}
           <a class="active-nav inline-block" href="{{ nav.url }}">{{ nav.title }}</a>
