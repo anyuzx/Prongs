@@ -20,7 +20,7 @@
 - [ ] add in-site search
 - [x] Netlify CMS
 - [x] inline critical CSS (need improvement)
-- [ ] abstract tag style to a single class
+~~- [ ] abstract tag style to a single class~~
 - [x] fix the non-equal width for home page research project card on mobile
 - [x] allow disable katex in the front-matter (useful when the post does not contain mathematical expression)
 - [x] fix bug (using 11ty serve sometimes fails to recompile the css when changes are made)
@@ -32,5 +32,7 @@
   - [ ] write a note/post on this
 - [x] customize preview template for Netlify CMS
   - [x] write about how to use markdown-it and prismjs with custom preview template
-- [ ] table of contents for post
+- [x] table of contents for post
 - [x] numbering headings for post
+- [ ] automatic publication page generation process
+- [x] Image lazy loading for page `/photos`
