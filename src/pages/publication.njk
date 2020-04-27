@@ -1,0 +1,35 @@
+---
+layout: layouts/default.njk
+permalink: /publication/index.html
+title: Publication
+description: "A list of my academic publication"
+---
+
+<ol class="list-outside list-none ml-0">
+{% for publication in publicationList | reverse -%}
+  <li class="mb-8 border-l-4 pl-2">
+    <div class="mb-2 capitalize font-medium">
+    <a href="https://doi.org/{{ publication.DOI }}">{{ publication.title }}</a>
+    </div>
+    <div class="text-sm">
+    {% for author in publication.author %}
+      {% if author.family == "Shi" %}
+        {%  if loop.last %}
+          <span style="color:#19448e">{{ author.family }}, {{ author.given }}.</span>
+        {% else %}
+          <span style="color:#19448e">{{ author.family }}, {{ author.given }}., </span>
+        {% endif %}
+      {% else %}
+        {% if loop.last %}
+          <span>{{ author.family }}, {{ author.given }}.</span>
+        {% else %}
+          <span>{{ author.family }}, {{ author.given }}., </span>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+    <span class="italic">{{ publication["container-title"] }}</span><span> ({{ publication.issued["date-parts"][0][0] }})</span>
+    </div>
+  </li>
+  <div></div>
+{%- endfor %}
+</ol>
