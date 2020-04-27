@@ -73,4 +73,25 @@ Feature:
   - new syntax color scheme: Atelier Forest Light https://atelierbram.github.io/syntax-highlighting/atelier-schemes/
   - new block style
   - new font - IBM Plex Mono
-  
+
+---
+
+Changelog 2020/04/25 Version 0.8
+
+Feature:
+
+- Now the /photos page use lazy loading for images. This feature is
+implemented using [lazyload](https://github.com/verlok/lazyload)
+  - First 4 images are loaded instantly. The rest are lazy loading
+  - Compatible with <picture> element and webp format
+  - Use a low-resolution blackwhite low quality images as placeholder. Utilize
+  the cloudinary feature
+- New way to generate publication page
+  - First generate `.bib` file for the list of publications
+  - Use	`pandoc-citeproc` to convert the `.bib` file to `.yaml` format. Then
+  use the generated YAML file as the 11ty template data file.
+  - add a custom filter to be able to group the data by keys and sort by keys
+  - In the template `publication.njk`, loop through each publication items and
+  markup each item as like.
+- Change the site logo/icon's fill color
+- Some minor changes
