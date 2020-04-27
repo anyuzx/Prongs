@@ -11,6 +11,9 @@ const mdRender = require('./src/_includes/js/mdRender.js');
 const applyTypeset = require('./src/_includes/js/typeset.js')({ disable: ['smallCaps'] });
 const htmlmin = require('./src/_includes/js/html-minify.js');
 
+// support YAML as data file format
+const yaml = require('js-yaml');
+
 // initialize SVGO
 var svgo = new SVGO({plugins: [{removeXMLNS: true}]});
 
@@ -43,6 +46,25 @@ module.exports = function(config) {
 
   // add filter to render markdown
   config.addNunjucksFilter("renderUsingMarkdown", rawString => mdRender.render(rawString));
+
+  // add filter to groupby attribute of datafile
+  config.addNunjucksFilter("groupByEx", function (arr, key) {
+      const result = {};
+      arr.forEach(item => {
+          const keys = key.split('.');
+          const value = keys.reduce((object, key) => object[key], item);
+
+          (result[value] || (result[value] = [])).push(item);
+      });
+
+      // now we need sort by year
+      // use Map not Object since the integer key in Object can not be sorted
+      let orderedResult = new Map([]);
+      Object.keys(result).sort().reverse().forEach(function(key) {
+        orderedResult.set(key, result[key])
+      })
+      return orderedResult;
+  });
 
   // add filter to minimize svg using svgo
   config.addNunjucksAsyncFilter("svgo", async(svgContent, callback) => {
@@ -84,6 +106,9 @@ module.exports = function(config) {
 
   // use typeset
   config.addTransform("typeset", applyTypeset);
+
+  // support YAML format
+  config.addDataExtension("yaml", contents => yaml.safeLoad(contents));
 
   return {
     markdownTemplateEngine: "njk",
