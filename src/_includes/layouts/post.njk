@@ -37,8 +37,8 @@
   <header>
     <h1 class="capitalize text-4xl text-left leading-snug">{{ title }}</h1>
     <div class="flex justify-between text-sm">
-      <div class="uppercase self-center font-light">
-        {% dayjs page.date, 'MMM DD, YYYY' %}
+      <div class="self-center font-light font-mono">
+      {% dayjs page.date, 'MMM DD, YYYY' %} by {{ site.AUTHOR.NAME }}
       </div>
       <div class="self-center">
         {%- for tag in tags %}
