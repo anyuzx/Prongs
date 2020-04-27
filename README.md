@@ -18,6 +18,7 @@ This documentation mainly serves for self use. However, I hope anyone interested
 * Netlify CMS with support of custom syntax highlight and math equation
 * Math equation support using Katex
 * RSS feed
+* Image Lazy Loading
 
 ## Instructions
 ---
