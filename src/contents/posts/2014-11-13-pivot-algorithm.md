@@ -8,6 +8,7 @@ tags:
   - pinned
   - algorithm
   - random walk
+  - simulation
 ---
 
 Pivot algorithm is best Monte Carlo algorithm known so far used for generating canonical ensemble of self-avoiding random walks (fixed number of steps). Originally it is for the random walk on a lattice, but it also can be modified for continuous random walk. Recently I encountered a problem where I need to generate self-avoiding chain configurations.
