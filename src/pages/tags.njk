@@ -21,26 +21,9 @@ description: "Posts tags"
     {% set tagPath = "/tags/" + tag | slug + "/" %}
     {% if tag != 'posts' and tag != 'all' %}
       {% if page.url == tagPath %}
-        {#
-        <div class="inline-block mr-2 mb-2">
-          <span class="rounded-l-sm inline-block bg-gray-500 mr-0 px-2 py-1 border-t border-b border-l">
-            <a href="/tags/{{ tag | slug }}">
-            #{{ tag }}
-            </a>
-          </span><span class="rounded-r-sm inline-block ml-0 px-2 py-1 border-t border-b border-r">{{ number }}</span>
-        </div>
-      {% else %}
-        <div class="inline-block mr-2 mb-2">
-          <span class="rounded-l-sm inline-block bg-gray-200 hover:bg-gray-500 mr-0 px-2 py-1 border-t border-b border-l">
-            <a href="/tags/{{ tag | slug }}">
-            #{{ tag }}
-            </a>
-          </span><span class="rounded-r-sm inline-block ml-0 px-2 py-1 border-t border-b border-r">{{ number }}</span>
-        </div>
-        #}
-        <button class="post-tag bg-white border-2 border-black">
+        <button class="post-tag bg-black text-white">
           <a href="/tags/{{ tag | slug }}">
-          {{ tag }}<sup>{{ number }}</sup>
+          #{{ tag }}<sup class="font-extrabold">{{ number }}</sup>
           </a>
         </button>
       {% else %}
