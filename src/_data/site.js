@@ -5,7 +5,7 @@
 //  site.TITLE, site.DESCRIPTION, etc
 
 module.exports = {
-  "TITLE": "Guang Shi", // site title, this is used across the site. For instance the name appeared in the browser tab will be [page_name] | [site_title]
+  "TITLE": "guangshi.io", // site title, this is used across the site. For instance the name appeared in the browser tab will be [page_name] | [site_title]
   "DESCRIPTION": "Guang Shi's personal site. Learn about my research projects, read my blog posts and see my photos.", // site description, used in meta head for SEO purpose
   "URL": "https://www.guangshi.io", // absolute url for the site
   "BUILD_TIME" : new Date(), // build time for the site
