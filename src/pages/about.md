@@ -29,7 +29,7 @@ I also love to take [photos](/photos). I primarily take [films but sometimes dig
 
 * The site favicon is the character of my last name **时** written in a Chinese traditional calligraphy - [**篆书**](https://en.wikipedia.org/wiki/Seal_script). Made using Inkscape.
 
-* **Writing contents and photos on this site are copyrighted**. Feel free to contact me if you want to use any contents.
+* **Writings** on this site are under [Creative Commons license](https://creativecommons.org/licenses/by-nc/4.0/) unless stated otherwise. Photos are copyrighted. Feel free to contact me if you want to use any contents.
 
 ---
 
