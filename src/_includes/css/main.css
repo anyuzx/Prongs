@@ -293,6 +293,7 @@ blockquote {
   @apply no-underline;
 }
 
+
 /*
  * custom class note
  */
@@ -346,15 +347,16 @@ blockquote {
 }
 
 .research-item {
-  @apply flex flex-col justify-between bg-white p-2 border border-solid border-black; 
+  @apply flex flex-col justify-between; 
 }
 
 .research-item h2 {
-  @apply mb-0 font-medium leading-tight text-base;
+  @apply mb-0 font-medium leading-tight text-base flex-grow border-l border-r border-t border-black text-center p-2;
+  background-color: #fffbf0;
 }
 
 .research-item figure {
-  @apply m-0 relative;
+  @apply m-0 relative border border-black;
   padding-top: 100%;
 }
 
