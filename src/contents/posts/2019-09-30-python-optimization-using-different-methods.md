@@ -2,8 +2,7 @@
 slug: optimizing-python-code-computing-pair-wise-distances-part-1
 title: Optimizing python code for computations of pair-wise distances - Part I
 date: 2019-09-30
-excerpt: >-
-    In this series of posts, using calculation of pair-wise distances under periodic boundary condition as an example, I show several different methods to optimize Python codes. The performances from different methods are benchmarked for comparison.
+excerpt: "In this series of posts, using calculation of pair-wise distances under periodic boundary condition as an example, I show several different methods to optimize Python codes. The performances from different methods are benchmarked for comparison."
 tags:
     - python
 ---

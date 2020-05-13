@@ -3,12 +3,11 @@ slug: customize-netlify-cms-preview
 title: Customize Netlify CMS preview with Markdown-it and Prism.js
 date: 2019-08-26T03:40:47.249Z
 disableKatex: true
-excerpt: >-
-  In this post, I will show how to use the API provided by Netlify CMS to give
+excerpt: "In this post, I will show how to use the API provided by Netlify CMS to give
   the preview pane the ability to render math expression and highlighting
   syntax. The post has three parts 1) How to write a simple React component 2)
   How to use markdown-it and prism.js in the template, and 3) How to pre-compile
-  the template and use it
+  the template and use it"
 tags:
   - javascript
 ---

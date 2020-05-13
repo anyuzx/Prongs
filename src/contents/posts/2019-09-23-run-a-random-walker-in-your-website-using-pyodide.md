@@ -5,7 +5,7 @@ date: 2019-09-23
 image:
   path: /assets/images/random-walker.svg
   description: a two-dimensional random walker trajectory
-excerpt: Ever wondering is it possible embed scientific python codes and let user interact with it directly in your website? In this post, I demonstrate how to use **Pyodide** to execute python code inside the browser using an example of 2D random walker.
+excerpt: "Ever wondering is it possible embed scientific python codes and let user interact with it directly in your website? In this post, I demonstrate how to use **Pyodide** to execute python code inside the browser using an example of 2D random walker."
 tags:
   - python
   - pyodide
