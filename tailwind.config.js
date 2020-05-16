@@ -1,7 +1,7 @@
 module.exports = {
   theme: {
     fontFamily: {
-      'sans': ['Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"'],
+      'sans': ['system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"'],
       'serif': ['Georgia, Cambria, "Times New Roman", Times, serif'],
       'mono': ['"IBM Plex Mono", "Fira Code", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace'],
       'system-sans': ['system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"']
@@ -17,7 +17,12 @@ module.exports = {
   },
   variants: {
     textDecoration: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
-    borderWidth: ['responsive']
+    borderWidth: ['responsive'],
+    backgroundColor: ['responsive', 'hover', 'focus', 'active', 'group-hover', 'dark', 'dark-hover', 'dark-group-hover', 'dark-even', 'dark-odd'],
+    borderColor: ['responsive', 'hover', 'focus', 'active', 'group-hover','dark', 'dark-focus', 'dark-focus-within'],
+    textColor: ['responsive', 'hover', 'focus', 'active', 'group-hover','dark', 'dark-hover', 'dark-active', 'dark-placeholder']
   },
-  plugins: []
+  plugins: [
+    require('tailwindcss-dark-mode')()
+  ]
 }
