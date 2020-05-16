@@ -170,6 +170,10 @@ article ol {
   @apply list-decimal;
 }
 
+article :last-child {
+  @apply mb-0
+}
+
 /*
  * fluid svg
  */
@@ -352,7 +356,7 @@ blockquote {
 
 .research-item h2 {
   @apply mb-0 font-medium leading-tight text-base flex-grow border-l border-r border-t border-black text-center p-2;
-  background-color: #fffbf0;
+  background-color: #f0f0f4;
 }
 
 .research-item figure {
