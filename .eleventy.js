@@ -3,7 +3,7 @@ const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const dayjs = require("dayjs");
 const SVGO = require("svgo");
-const inclusiveLangPlugin = require("@11ty/eleventy-plugin-inclusive-language");
+//const inclusiveLangPlugin = require("@11ty/eleventy-plugin-inclusive-language");
 //const lazyImagesPlugin = require('eleventy-plugin-lazyimages');
 
 // local library/modules
@@ -75,7 +75,7 @@ module.exports = function(config) {
   // add plugins
   //config.addPlugin(syntaxHighlight);
   config.addPlugin(pluginRss);
-  config.addPlugin(inclusiveLangPlugin);
+  //config.addPlugin(inclusiveLangPlugin);
   //config.addPlugin(lazyImagesPlugin);
 
   // add passthrough copy
