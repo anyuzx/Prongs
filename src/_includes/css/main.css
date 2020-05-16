@@ -170,10 +170,6 @@ article ol {
   @apply list-decimal;
 }
 
-article :last-child {
-  @apply mb-0
-}
-
 /*
  * fluid svg
  */

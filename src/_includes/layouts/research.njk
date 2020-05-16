@@ -1,5 +1,13 @@
 {% extends "layouts/base.njk" %}
 
+{% block head %}
+  <style>
+  article p:last-child {
+   margin-bottom:0;
+  }
+  </style>
+{% endblock %}
+
 {% block content %}
 {%- for project in collections.research | reverse -%}
   {% if project.fileSlug === "summary" %}
