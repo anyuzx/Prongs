@@ -2,9 +2,11 @@ var critical = require('critical')
 var fg = require('fast-glob')
 
 var htmlSources = fg.sync("dist/**/*.html")
+console.log(htmlSources)
 
 function startNewJob () {
   const source = htmlSources.pop()
+  console.log(source)
   if (!source) {
     return Promise.resolve()
   }
