@@ -35,10 +35,6 @@ htmlSources.forEach(function(item){
 */
 
 Promise.all([
-  startNewJob(),
-  startNewJob(),
-  startNewJob(),
-  startNewJob(),
   startNewJob()
 ])
 .then(()=>{
