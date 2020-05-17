@@ -1,11 +1,11 @@
-const typeset = require('typeset');
+const typeset = require('typeset')
 
 module.exports = (options) => {
-  return function applyTypeset(content, outputPath) {
+  return function applyTypeset (content, outputPath) {
     if (outputPath && outputPath.endsWith('.html')) {
-      const result = typeset(content, options);
-      return result;
+      const result = typeset(content, options)
+      return result
     }
-    return content;
+    return content
   }
 }
