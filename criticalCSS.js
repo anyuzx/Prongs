@@ -21,8 +21,9 @@ function startNewJob () {
     console.log("inline critical CSS for "+source+" succeed!")
     return startNewJob()
   })
-  .catch(() => {
+  .catch(error => {
     console.log("inline critical CSS for "+source+" failed!")
+    console.log(error)
   })
 }
 /*
@@ -47,3 +48,6 @@ Promise.all([
 .then(()=>{
   console.log('all done!')
 })
+  .catch(error => {
+    console.log(error)
+  })
