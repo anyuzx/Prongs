@@ -1,7 +1,7 @@
 var critical = require('critical')
 var fg = require('fast-glob')
 
-var htmlSources = fg.sync('dist/**/*.html')
+var htmlSources = fg.sync("dist/**/*.html")
 
 function startNewJob () {
   const source = htmlSources.pop()
@@ -16,7 +16,7 @@ function startNewJob () {
     }
   })
     .then(() => {
-      console.log('inline critical CSS for "+source+" succeed!')
+      console.log("inline critical CSS for "+source+" succeed!")
       return startNewJob()
     })
 }
