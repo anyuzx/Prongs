@@ -75,3 +75,6 @@ Sessionx.vim
 tags
 # Persistent undo
 [._]*.un~
+
+.eslintrc.json
+.jshintrc
