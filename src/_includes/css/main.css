@@ -1,123 +1,112 @@
 @tailwind base;
 
-/* -------------------------------------------------------
-User Inter font https://rsms.me/inter/
-Both standard font and variable font
-*/
-
 /*
-html { font-family: 'Inter', sans-serif; }
-@supports (font-variation-settings: normal) {
-  html { font-family: 'Inter var', sans-serif; }
-}
-
-@font-face {
-  font-family: 'Inter';
-  font-style:  normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url("https://rsms.me/inter/font-files/Inter-Light.woff2?v=3.12") format("woff2"),
-       url("https://rsms.me/inter/font-files/Inter-Light.woff?v=3.12") format("woff");
-}
-@font-face {
-  font-family: 'Inter';
-  font-style:  normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("https://rsms.me/inter/font-files/Inter-Regular.woff2?v=3.12") format("woff2"),
-       url("https://rsms.me/inter/font-files/Inter-Regular.woff?v=3.12") format("woff");
-}
-@font-face {
-  font-family: 'Inter';
-  font-style:  italic;
-  font-weight: 400;
-  font-display: swap;
-  src: url("https://rsms.me/inter/font-files/Inter-Italic.woff2?v=3.12") format("woff2"),
-       url("https://rsms.me/inter/font-files/Inter-Italic.woff?v=3.12") format("woff");
-}
-@font-face {
-  font-family: 'Inter';
-  font-style:  normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("https://rsms.me/inter/font-files/Inter-Medium.woff2?v=3.12") format("woff2"),
-       url("https://rsms.me/inter/font-files/Inter-Medium.woff?v=3.12") format("woff");
-}
-@font-face {
-  font-family: 'Inter';
-  font-style:  normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url("https://rsms.me/inter/font-files/Inter-Bold.woff2?v=3.12") format("woff2"),
-       url("https://rsms.me/inter/font-files/Inter-Bold.woff?v=3.12") format("woff");
-}
-
-/**
-Variable font
+ * add base styles for typography
  */
-/*
-@font-face {
-  font-family: 'Inter var';
-  font-weight: 100 900;
-  font-style: normal;
-  font-named-instance: 'Regular';
-  font-display: swap;
-  src: url("https://rsms.me/inter/font-files/Inter-roman.var.woff2?v=3.12") format("woff2");
+p {
+  @apply mb-6;
 }
-@font-face {
-  font-family: 'Inter var';
-  font-weight: 100 900;
-  font-style: italic;
-  font-named-instance: 'Italic';
-  font-display: swap;
-  src: url("https://rsms.me/inter/font-files/Inter-italic.var.woff2?v=3.12") format("woff2");
+
+p :last-child {
+  @apply mb-0;
 }
-*/
 
-/* Legacy naming compatibility */
-/*
-@font-face {
-  font-family: 'Inter var alt';
-  font-weight: 100 900;
-  font-style: normal;
-  font-named-instance: 'Regular';
-  font-display: swap;
-  src: url("https://rsms.me/inter/font-files/Inter-roman.var.woff2?v=3.12") format("woff2");
+ul, ol {
+  @apply ml-6 mb-6 list-outside;
 }
-@font-face {
-  font-family: 'Inter var alt';
-  font-weight: 100 900;
-  font-style: italic;
-  font-named-instance: 'Italic';
-  font-display: swap;
-  src: url("https://rsms.me/inter/font-files/Inter-italic.var.woff2?v=3.12") format("woff2");
+
+li {
+  @apply mb-3;
 }
-*/
 
-/* --------------------------------------------------------------------------
-[EXPERIMENTAL] Multi-axis, single variable font.
-
-Slant axis is not yet widely supported (as of February 2019) and thus this
-multi-axis single variable font is opt-in rather than the default.
-
-When using this, you will probably need to set font-variation-settings
-explicitly, e.g.
-
-  * { font-variation-settings: "slnt" 0deg }
-  .italic { font-variation-settings: "slnt" 10deg }
-
-*/
-
-/*
-@font-face {
-  font-family: 'Inter var experimental';
-  font-weight: 100 900;
-  font-style: oblique 0deg 10deg;
-  font-display: swap;
-  src: url("https://rsms.me/inter/font-files/Inter.var.woff2?v=3.12") format("woff2");
+li :last-child {
+  @apply mb-0;
 }
-*/
 
+li>p {
+  @apply mb-3;
+}
+
+li>ul {
+  @apply mt-3
+}
+
+hr {
+  @apply h-px bg-darkblue;
+  border: none;
+  margin-bottom: calc(1.5rem - 1px);
+}
+
+code {
+  @apply text-sm
+}
+
+img {
+  @apply mb-6 mx-auto max-w-full;
+  max-height: 70vh;
+}
+
+figure {
+  @apply mb-6 mx-auto;
+}
+
+figure > img {
+  @apply mb-0;
+}
+
+figure > figcaption {
+  @apply text-center text-sm text-gray-600 mt-4;
+}
+
+blockquote {
+  @apply ml-6 mr-6 mb-6 px-4 py-2 text-lg border-l-4 border-darkblue italic;
+}
+
+blockquote :last-child {
+  @apply mb-0;
+}
+
+pre {
+  @apply mb-6 text-sm;
+}
+
+h1 {
+  @apply mb-6 text-2xl font-black;
+}
+
+h2 {
+  @apply mb-6 text-xl font-semibold;
+}
+
+h3 {
+  @apply mb-6 text-lg font-medium;
+}
+
+h4, h5, h6 {
+  @apply mb-6 text-base font-bold;
+}
+
+table {
+  @apply mb-6 w-full border-collapse;
+}
+
+td, th {
+  @apply text-center border-b border-lightgray px-4 pt-3 nums-tabular;
+  padding-bottom: calc(0.75rem - 1px);
+}
+
+
+td, th :first-child {
+  @apply pl-0;
+}
+
+td, th :last-child {
+  @apply pr-0;
+}
+
+th {
+  @apply font-bold;
+}
 
 /*
  * under line for a tag
@@ -141,8 +130,7 @@ article a:hover {
  * add border to code blocks
  */
 article pre {
-  @apply border-t border-b border-gray-600;
-  border-color: #000000;
+  @apply border-t border-b border-darkblue;
 }
 
 article :not(pre) > code {
@@ -185,23 +173,6 @@ svg > * {
 }
 */
 
-figcaption {
-  @apply text-center text-sm p-4;
-  color: dimgrey;
-}
-
-img {
-  max-width: 600px;
-  max-height: 600px;
-}
-
-figure > img {
-  @apply mb-0;
-}
-
-blockquote {
-  @apply italic;
-}
 
 @tailwind components;
 
@@ -241,7 +212,7 @@ blockquote {
 }
 
 .post-item .post-info > div > time {
-  @apply mr-2 font-system-sans;
+  @apply mr-2 font-sans;
   font-variant-numeric: tabular-nums;
   letter-spacing:-.012em;
 }
@@ -351,7 +322,7 @@ blockquote {
 }
 
 .research-item h2 {
-  @apply mb-0 font-medium leading-tight text-base flex-grow border-l border-r border-t border-black text-center p-2;
+  @apply mb-0 font-medium text-base leading-tight flex-grow border-l border-r border-t border-black text-center p-2;
   background-color: #f0f0f4;
 }
 
