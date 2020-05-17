@@ -75,7 +75,7 @@ permalink: /photos/{{ photo.public_id.split("/")[1] | slug }}/
         <div class="sm:flex items-start justify-between">
             <div class="text-left sm:w-3/4">
                 {% if photo.context.custom.caption %}
-                <div class="mb-2 font-black">{{ photo.context.custom.caption | title }}</div>
+                <div class="capitalize mb-2 font-black">{{ photo.context.custom.caption }}</div>
                 {% endif %}
                 {% if photo.context.custom.alt %}
                 <div class="mb-2">{{ photo.context.custom.alt | renderUsingMarkdown | safe }}</div>
