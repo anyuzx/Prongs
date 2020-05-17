@@ -21,6 +21,9 @@ function startNewJob () {
     console.log("inline critical CSS for "+source+" succeed!")
     return startNewJob()
   })
+  .catch(() => {
+    console.log("inline critical CSS for "+source+" failed!")
+  })
 }
 /*
 htmlSources.forEach(function(item){
@@ -35,6 +38,10 @@ htmlSources.forEach(function(item){
 */
 
 Promise.all([
+  startNewJob(),
+  startNewJob(),
+  startNewJob(),
+  startNewJob(),
   startNewJob()
 ])
 .then(()=>{
