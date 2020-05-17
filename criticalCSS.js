@@ -15,11 +15,22 @@ function startNewJob () {
       html: source
     }
   })
-    .then(() => {
-      console.log("inline critical CSS for "+source+" succeed!")
-      return startNewJob()
-    })
+  .then(()=>{
+    console.log("inline critical CSS for "+source+" succeed!")
+    return startNewJob()
+  })
 }
+/*
+htmlSources.forEach(function(item){
+  promises.push(critical.generate({
+    inline: true,
+    src: item,
+    target: {
+      html: item
+    }
+  }))
+})
+*/
 
 Promise.all([
   startNewJob(),
@@ -28,6 +39,6 @@ Promise.all([
   startNewJob(),
   startNewJob()
 ])
-  .then(() => {
-    console.log('all done!')
-  })
+.then(()=>{
+  console.log('all done!')
+})
