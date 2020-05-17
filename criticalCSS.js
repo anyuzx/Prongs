@@ -24,6 +24,7 @@ function startNewJob () {
   .catch(error => {
     console.log("inline critical CSS for "+source+" failed!")
     console.log(error)
+    return startNewJob()
   })
 }
 /*
