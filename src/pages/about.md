@@ -27,9 +27,9 @@ Asides from my academic research, I like coding, math, data analysis, and visual
 
 I also love to take [photos](/photos). I primarily take [films but sometimes digital](https://en.wikipedia.org/wiki/Digital_versus_film_photography) as well. I currently have a [Nikon F3HP](https://en.wikipedia.org/wiki/Nikon_F3), a [Canon EOS 620](https://en.wikipedia.org/wiki/Canon_EOS_650), and a [GR III](https://en.wikipedia.org/wiki/Ricoh_GR_(large_sensor_compact_camera)#Ricoh_GR_III). My favourite photography subject is landscape. It can be either nature or man-made landscape, or [contemporary landscape photography](https://www.google.com/search?q=contemporary+landscape+photography&tbm=isch&ved=2ahUKEwi4yIr9uIbpAhUFeK0KHZ_9Ba8Q2-cCegQIABAA&oq=contempolandscape+photography&gs_lcp=CgNpbWcQARgAMgYIABAHEB4yCAgAEAcQBRAeMggIABAIEAcQHlDbK1iKQWD4RmgBcAB4AYABhQKIAd8IkgEFNS4xLjOYAQCgAQGqAQtnd3Mtd2l6LWltZw&sclient=img&ei=062lXviSJ4XwtQWf-5f4Cg&bih=1241&biw=2052&rlz=1C5CHFA_enUS729US730). My favourite photographers are [Stephen Shore](http://stephenshore.net/index.php) and [Alex Webb](https://www.webbnorriswebb.co/). 
 
-* The site favicon is the character of my last name **时** written in a Chinese traditional calligraphy - [**篆书**](https://en.wikipedia.org/wiki/Seal_script). Made using Inkscape.
+* The site favicon is the character of my last name 时 written in a Chinese traditional calligraphy - [篆书](https://en.wikipedia.org/wiki/Seal_script). Made using Inkscape.
 
-* **Writings** on this site are under [Creative Commons license](https://creativecommons.org/licenses/by-nc/4.0/) unless stated otherwise. Photos are copyrighted. Feel free to contact me if you want to use any contents.
+* Writings on this site are under [Creative Commons license](https://creativecommons.org/licenses/by-nc/4.0/) unless stated otherwise. Photos are copyrighted. Feel free to contact me if you want to use any contents.
 
 ---
 
