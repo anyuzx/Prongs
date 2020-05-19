@@ -8,7 +8,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="/_includes/css/main.css">
+    {% if site.ENV == "production" %}
+      <style></style>
+    {% elif site.ENV == "development" %}
+      <link rel="stylesheet" type="text/css" href="/_includes/css/main.css">
+    {% endif %}
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
@@ -37,16 +41,18 @@
     {% endif %}
     <!-- end of google analytics -->
     <!--<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400&family=Inter:wght@200..900&display=swap" rel="stylesheet">-->
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <!--<link href="https://fonts.googleapis.com/css2?family=Teko&text=Guang%20Shi&display=swap" rel="stylesheet">-->
     {#
     <style>
     {% injectTypography %}body p{letter-spacing:-0.011em;}figure{margin-left:auto;margin-right:auto}img{margin-left:auto;margin-right:auto}
     </style>
     #}
+    {#
     <style>
       {{ typesetCSS | safe }}
     </style>
+    #}
     {% block head %}
     {% endblock %}
   </head>

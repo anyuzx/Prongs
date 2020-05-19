@@ -10,6 +10,7 @@ const SVGO = require("svgo");
 const mdRender = require('./src/_includes/js/mdRender.js');
 const applyTypeset = require('./src/_includes/js/typeset.js')({ disable: ['smallCaps'] });
 const htmlmin = require('./src/_includes/js/html-minify.js');
+const purgeCSS = require('./src/_includes/js/purgecss.js');
 
 // support YAML as data file format
 const yaml = require('js-yaml');
@@ -79,7 +80,7 @@ module.exports = function(config) {
   //config.addPlugin(lazyImagesPlugin);
 
   // add passthrough copy
-  config.addPassthroughCopy("src/_includes/css");
+  //config.addPassthroughCopy("src/_includes/css");
   config.addPassthroughCopy("src/assets");
   config.addPassthroughCopy("src/site.webmanifest");
   config.addPassthroughCopy("src/_redirects");
@@ -92,20 +93,23 @@ module.exports = function(config) {
 
   // Shortcodes
   // shortcode for injecting typography css
-  config.addShortcode("injectTypography", require('./src/_includes/js/typography.js'));
+  // config.addShortcode("injectTypography", require('./src/_includes/js/typography.js'));
   config.addShortcode("dayjs", function(date, format) {
     return dayjs(date).format(format);
   });
+
+  // use typeset
+  config.addTransform("typeset", applyTypeset);
 
   // add transform
   // used to post-process
   // apply html minification (only in production)
   if (env == "production") {
+    // purge css and inject to <head> in html
+    config.addTransform('purgeCSS', purgeCSS);
+    // minimizer html, including css and js
     config.addTransform("htmlmin", htmlmin);
   };
-
-  // use typeset
-  config.addTransform("typeset", applyTypeset);
 
   // support YAML format
   config.addDataExtension("yaml", contents => yaml.safeLoad(contents));
