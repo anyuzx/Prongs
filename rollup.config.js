@@ -1,8 +1,7 @@
-const builtins = require('rollup-plugin-node-builtins')
-const commonjs = require('rollup-plugin-commonjs')
-const nodeResolve = require('rollup-plugin-node-resolve')
-const json = require('rollup-plugin-json')
-const babel = require('rollup-plugin-babel')
+import builtins from 'rollup-plugin-node-builtins'
+import json from '@rollup/plugin-json'
+import commonjs from '@rollup/plugin-commonjs'
+import resolve from '@rollup/plugin-node-resolve'
 
 export default {
   input: 'src/admin/preview.js',
@@ -11,16 +10,9 @@ export default {
     format: 'esm'
   },
   plugins: [
-    nodeResolve({ browser: true }),
-    commonjs({ ignore: ['conditional-runtime-dependency'] }),
+    resolve({ browser: true, preferBuiltins: false}),
+    commonjs(),
     builtins(),
-    json(),
-    babel({
-      plugins: [
-        ['prismjs', {
-          languages: ['javascript', 'css', 'markup', 'python', 'clike']
-        }]
-      ]
-    })
+    json()
   ]
 }
