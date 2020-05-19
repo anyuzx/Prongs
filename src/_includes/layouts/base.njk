@@ -8,7 +8,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="/_includes/css/main.css">
+    {% if site.ENV == "production" %}
+      <style></style>
+    {% elif site.ENV == "development" %}
+      <link rel="stylesheet" type="text/css" href="/_includes/css/main.css">
+    {% endif %}
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
@@ -44,9 +48,11 @@
     {% injectTypography %}body p{letter-spacing:-0.011em;}figure{margin-left:auto;margin-right:auto}img{margin-left:auto;margin-right:auto}
     </style>
     #}
+    {#
     <style>
       {{ typesetCSS | safe }}
     </style>
+    #}
     {% block head %}
     {% endblock %}
   </head>
