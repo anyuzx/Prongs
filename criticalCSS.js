@@ -11,6 +11,7 @@ function startNewJob () {
     return Promise.resolve()
   }
   return critical.generate({
+    css: ['dist/_includes/css/main.css', 'dist/_includes/css/atelier-forest-light.css'],
     inline: true,
     src: source,
     target: {
@@ -21,9 +22,9 @@ function startNewJob () {
     console.log("inline critical CSS for "+source+" succeed!")
     return startNewJob()
   })
-  .catch(error => {
+  .catch(err => {
     console.log("inline critical CSS for "+source+" failed!")
-    console.log(error)
+    console.log(err)
     return startNewJob()
   })
 }
