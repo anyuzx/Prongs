@@ -11,12 +11,11 @@ permalink: admin/index.html
   </head>
   <body>
     <!-- Include the script that builds the page and powers Netlify CMS -->
-    <script src="https://unpkg.com/netlify-cms@^2.9.7/dist/netlify-cms.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
     <script type="module" src="/admin/preview.js"></script>
     <script>
       CMS.registerPreviewStyle("/_includes/css/main.css");
-      CMS.registerPreviewStyle("/_includes/css/prism-sulphurpool.css");
-      {#CMS.registerPreviewStyle(`{% injectTypography %}`, { raw: true });#}
+      CMS.registerPreviewStyle("/_includes/css/atelier-forest-light.css");
       CMS.registerPreviewStyle("https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css");
     </script>
     <!--
