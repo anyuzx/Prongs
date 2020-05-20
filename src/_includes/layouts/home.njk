@@ -18,7 +18,7 @@
 {{ content | safe }}
 {# research section #}
 <section class="mb-8">
-  <h1 class="section-header">Research Projects</h1>
+  <h1 class="section-header text-base">Research Projects</h1>
   <div class="research-display">
     {% for project in collections.research | reverse -%}
       {% if project.fileSlug !== "summary" -%}
@@ -34,7 +34,7 @@
 </section>
 {# posts section #}
 <section class="mb-8">
-  <h1 class="section-header">Latest Posts</h1>
+  <h1 class="section-header text-base">Latest Posts</h1>
   {{ postList.items(collections.postsLatest) }}
 </section>
 {% endblock %}

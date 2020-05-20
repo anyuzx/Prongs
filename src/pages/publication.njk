@@ -6,7 +6,7 @@ description: "A list of my academic publication"
 ---
 
 <section class="mb-20">
-<h1 class="text-xl">Publication</h1>
+<h1 class="text-base">Publication</h1>
 {% for year, publications in references | groupByEx("issued.0.year") -%}
 <h2 class="text-base mb-0">{{ year }}</h2>
 <hr>
@@ -20,9 +20,9 @@ description: "A list of my academic publication"
     {% for author in publication.author %}
       {% if author.family == "Shi" %}
         {%  if loop.last %}
-          <span style="color:#19448e">{{ author.family }}, {{ author.given }}.</span>
+          <span class="text-darkblue">{{ author.family }}, {{ author.given }}.</span>
         {% else %}
-          <span style="color:#19448e">{{ author.family }}, {{ author.given }}., </span>
+          <span class="text-darkblue">{{ author.family }}, {{ author.given }}., </span>
         {% endif %}
       {% else %}
         {% if loop.last %}
@@ -41,15 +41,15 @@ description: "A list of my academic publication"
 </section>
 
 <section>
-<h1 class="text-xl">Talks and Posters</h1>
+<h1 class="text-base">Talks and Posters</h1>
 <ol class="list-outside list-none ml-0">
   <li>
-  <span class="py-0 px-1 text-sm uppercase" style="background-color:#edf2f7;">Talk</span>
+  <span class="py-0 px-1 text-sm uppercase bg-lightblue">Talk</span>
   <span class="font-medium">A Polymer Model for predicting three-dimensional organization change from Structural Variations</span>
   <span class="italic">CSHL Genome Organization & Nuclear Function, 2020</span>
   </li>
   <li>
-  <span class="py-0 px-1 text-sm uppercase" style="background-color:#edf2f7;">Poster</span>
+  <span class="py-0 px-1 text-sm uppercase bg-lightblue">Poster</span>
   <span class="font-medium">Interphase Human Chromosome Exhibits Out Of Equilibrium Glassy Dynamics</span>
   <span class="italic">CSHL Single Biomolecules, 2018</span>
   </li>

@@ -43,7 +43,6 @@ code {
 
 img {
   @apply mb-6 mx-auto max-w-full;
-  max-height: 70vh;
 }
 
 figure {
@@ -55,7 +54,7 @@ figure > img {
 }
 
 figure > figcaption {
-  @apply text-center text-sm text-gray-600 mt-4;
+  @apply text-center text-sm text-darkblue mt-4;
 }
 
 blockquote {
@@ -134,8 +133,7 @@ article pre {
 }
 
 article :not(pre) > code {
-  font-family: 'IBM Plex Mono', 'Fira Code','Roboto Mono',Menlo,monospace;
-  @apply rounded-sm;
+  @apply rounded-sm font-mono;
   background-color: #F0F0F4;
   padding: 0.05rem;
 }
@@ -212,9 +210,9 @@ svg > * {
 }
 
 .post-item .post-info > div > time {
-  @apply mr-2 font-sans;
+  @apply mr-2;
   font-variant-numeric: tabular-nums;
-  letter-spacing:-.012em;
+  letter-spacing: -.012em;
 }
 
 .post-item .post-excerpt {
@@ -269,10 +267,7 @@ svg > * {
  * custom class note
  */
 .note {
-  @apply border-2 p-2;
-  border-color: #4e524c;
-  background-color: #FFFBF0;
-  margin-bottom: 1.63rem;
+  @apply border-2 p-2 border-darkgray bg-lightyellow mb-6;
 }
 
 .note *:last-child {
@@ -283,8 +278,7 @@ svg > * {
  * custom class big-box
  */
 .big-box {
-  @apply mb-4 p-4 rounded-sm;
-  background: #F0F0F4;
+  @apply mb-4 p-4 rounded-sm bg-lightgray;
 }
 
 .big-box *:last-child {
@@ -299,8 +293,7 @@ svg > * {
 * used for styling the header for non-article section
 */
 .section-header {
-  @apply font-bold text-2xl border-b-2;
-  border-color: #17184b;
+  @apply font-bold text-2xl border-b-2 border-darkblue;
   width: fit-content;
   width: -moz-fit-content;
 }
@@ -322,8 +315,7 @@ svg > * {
 }
 
 .research-item h2 {
-  @apply mb-0 font-medium text-base leading-tight flex-grow border-l border-r border-t border-black text-center p-2;
-  background-color: #f0f0f4;
+  @apply mb-0 font-medium text-base leading-tight flex-grow border-l border-r border-t border-black text-center p-2 bg-lightgray;
 }
 
 .research-item figure {
@@ -399,12 +391,12 @@ style the table of contents
 }
 
 .unactive-nav::before, .unactive-nav::after {
+  @apply bg-darkblue;
   content: '';
   position: absolute;
   left: 0px;
   right: 0px;
   height: 2px;
-  background-color: #17184b;
   transform: scaleX(0);
   transition: transform 0.5s ease;
 }
@@ -434,12 +426,12 @@ style the table of contents
 }
 
 .active-nav::before, .active-nav::after {
+  @apply bg-darkblue;
   content: '';
   position: absolute;
   left: 0px;
   right: 0px;
   height: 2px;
-  background-color: #17184b;
   transform: scaleX(1);
   transition: transform 0.5s ease;
 }
