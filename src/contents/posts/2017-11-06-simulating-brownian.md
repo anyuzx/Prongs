@@ -1,5 +1,5 @@
 ---
-title: "Simulating Brownian Dynamics (overdamped Langevin Dynamics) using LAMMPS"
+title: "Simulating Brownian Dynamics (Overdamped Langevin Dynamics) using LAMMPS"
 date: 2017-11-06
 excerpt: "Writing a overdamped Brownian Dynamics fix for LAMMPS. LAMMPS is a very powerful Molecular Dynamics simulation software I use in my daily research. In our research group, we mainly run Langevin Dynamics (LD) or Brownian Dynamics (BD) simulation. However, for some reason, LAMMPS doesn't provide a way to do Brownian Dynamics (BD) simulation. Both the LD and BD can be used to sample correct canonical ensemble, which sometimes also be called NVT ensemble"
 categories:

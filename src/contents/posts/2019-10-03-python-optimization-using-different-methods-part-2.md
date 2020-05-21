@@ -1,13 +1,11 @@
 ---
 slug: optimizing-python-code-computing-pair-wise-distances-part-2
-title: Optimizing python code for computations of pair-wise distances - Part II
+title: Optimizing Python code for computations of pair-wise distances - Part II
 date: 2019-10-08
 excerpt: "This is part II of a series of three posts about optimizing python code. The particular example given is the computation of pair-wise distances under periodic boundary condition which is an essential part of molecular dynamics simulations. In this post, I show how to use Numpy to do the computation."
 tags:
     - python
 ---
-
-[[toc]]
 
 <a href="https://colab.research.google.com/drive/13UebfR7OBscub3HfKTIrAK87n7811L9q#scrollTo=PoRnx0QLIeva">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" style="margin-left:unset;margin-right:unset;" alt="Open In Colab"/>

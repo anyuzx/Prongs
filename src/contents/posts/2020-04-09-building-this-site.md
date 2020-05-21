@@ -1,6 +1,6 @@
 ---
 slug: building-this-site
-title: Building this site
+title: Making this site
 date: 2020-04-09
 disableKatex: true
 excerpt: "This site was built around September 2019. Two months before then, I knew absolutely nothing about Javascript, HTML, and CSS. Now I can say I know something about HTML and CSS and still too little about Javascript."

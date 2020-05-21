@@ -1,10 +1,11 @@
 ---
 slug: optimizing-python-code-computing-pair-wise-distances-part-3
-title: Optimizing python code for computations of pair-wise distances - Part III
+title: Optimizing Python code for computations of pair-wise distances - Part III
 date: 2019-10-17
 excerpt: "This is part III of a series of three posts about optimizing python code. The particular example given is the computation of pair-wise distances under periodic boundary condition which is an essential part of molecular dynamics simulations. In this post, I show how to use Numpy to do the computation."
 tags:
     - python
+TOC: true
 ---
 
 [[toc]]
@@ -82,7 +83,7 @@ def pdist_numba_serial(positions, l):
 Using Numba is *almost* (see blue box below) as simple as adding the decorator `@jit(nopython=True, fastmath=True)` to our function.
 
 ::: note
-Inside the function `pdist_numba_serial`, we basically copied the [codes](/posts/python-optimization-using-different-methods-part-2#naive-numpy-implementation) except the line `D = D - np.round(D / l)  * l` in the original code. Instead we need to use `np.round(D / l, 0, out)` which is pointed out [here](https://github.com/numba/numba/issues/2648)
+Inside the function `pdist_numba_serial`, we basically copied the [codes](/posts/python-optimization-using-different-methods-part-2#naive-numpy-implementation) except the line `D = D - np.round(D / l)  * l` in the original code. Instead we need to use `np.round(D / l, 0, out)` which is pointed out [in this github issue](https://github.com/numba/numba/issues/2648)
 :::
 
 ### Parallel Numba Implementation
@@ -197,11 +198,11 @@ with nogil, parallel():
 Everything else remains the same. Here I follow the [example](https://cython.readthedocs.io/en/latest/src/userguide/parallelism.html#cython.parallel.parallel) on Cython's official documentation.
 
 ::: note
-`schedule='dynamic'` allows the iterations in the loop are distributed through threads as request. Other options include `static`, `guided`, etc. See [here](https://cython.readthedocs.io/en/latest/src/userguide/parallelism.html#cython.parallel.prange) for full documentation.
+`schedule='dynamic'` allows the iterations in the loop are distributed through threads as request. Other options include `static`, `guided`, etc. See [full documentation](https://cython.readthedocs.io/en/latest/src/userguide/parallelism.html#cython.parallel.prange).
 :::
 
 ::: note
-I had some trouble compiling the parallel version directly in the Jupyter Notebook. Instead, it is compiled as a standalone module. The `.pyx` file and `setup.py` file can be found [here](https://gist.github.com/anyuzx/e8f8950ed6fcc901a80c65aec28aabba).
+I had some trouble compiling the parallel version directly in the Jupyter Notebook. Instead, it is compiled as a standalone module. The `.pyx` file and `setup.py` file can be found [in this gist](https://gist.github.com/anyuzx/e8f8950ed6fcc901a80c65aec28aabba).
 :::
 
 ### Benchmark
