@@ -1,21 +1,21 @@
 {
   "name": "Prongs",
-  "version": "0.7.0",
-  "description": "Personal site",
+  "version": "0.9.0",
+  "description": "Personal Site Built with Eleventy",
   "repository": {
     "type": "git",
     "url": "https://github.com/anyuzx/Prongs.git"
   },
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
     "clean": "rm -rf dist",
     "11ty:debug": "DEBUG=Eleventy* npx @11ty/eleventy --dryrun",
-    "build:css": "postcss src/_includes/css/*.css --dir dist/_includes/css --verbose",
     "build:11ty": "npx @11ty/eleventy",
-    "build": "ELEVENTY_ENV=production run-s clean cms:bundle build:css build:11ty",
-    "build:development": "ELEVENTY_ENV=development run-s clean build:css build:11ty",
-    "cms:precompile": "make-dir dist/admin && nunjucks-precompile src/_includes/layouts/post.njk > dist/admin/templates.js -i '\\.(njk|css|svg)$'",
-    "cms:bundle": "rollup --config"
+    "css:preprocess": "postcss src/_includes/css/*.css --dir dist/_includes/css --verbose",
+    "css:purge": "purgecss --config purgecss.config.js",
+    "cms:bundle": "rollup --config",
+    "build": "ELEVENTY_ENV=production run-s clean cms:bundle css:preprocess build:11ty css:purge",
+    "build:development": "ELEVENTY_ENV=development run-s clean css:preprocess build:11ty css:purge"
   },
   "keywords": [],
   "author": "Guang Shi",
@@ -80,6 +80,7 @@
     "rollup-plugin-babel": "^4.4.0",
     "tailwindcss": "^1.4.6",
     "tailwindcss-typography": "^3.1.0",
+    "terser": "^4.7.0",
     "typeset": "^0.2.9",
     "typography": "^0.16.19",
     "typography-theme-bootstrap": "^0.16.19"
