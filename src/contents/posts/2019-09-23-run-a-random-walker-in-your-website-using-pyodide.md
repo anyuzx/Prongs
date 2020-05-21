@@ -11,15 +11,10 @@ tags:
   - pyodide
   - javascript
   - random walk
+script:
+  link: https://cdn.plot.ly/plotly-latest.min.js
+  inline: js/random-walk-pyodide.js
 ---
-
-{% set randomWalkPyodide %}
-  {% include "js/random-walk-pyodide.js" %}
-{% endset %}
-
-{% block head %}
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-{% endblock %}
 
 ::: note
 Skip to the bottom of this page to see the [demonstration](#demonstration).
@@ -136,11 +131,11 @@ Since Pyodide uses WebAssembly, older browser cannot run the demonstration. You 
 :::
 
 <div class="flex flex-col sm:flex-row justify-center mb-4">
-  <button id="initPyodide" class="border border-black p-1 rounded-sm mr-2 bg-yellow-300">Initialize Pyodide</button>
-  <input id="stepNumber" type="number" value="100" placeholder="number of steps" class="border border-black p-1 rounded-sm mr-2">
-  <button id="reset" disabled class="border border-black p-1 rounded-sm opacity-50 cursor-not-allowed mr-2">Reset</button>
-  <button id="start" disabled class="border border-black p-1 rounded-sm opacity-50 cursor-not-allowed mr-2">Start</button>
-  <button id="pause" disabled class="border border-black p-1 rounded-sm opacity-50 cursor-not-allowed mr-2">Pause</button>
+  <button id="initPyodide" class="animate border border-black p-1 mr-2 bg-yellow-300"><span id="loadingIndicator" class="inline-block"></span><span>Initialize Pyodide</span></button>
+  <input id="stepNumber" type="number" value="100" placeholder="number of steps" class="border border-black p-1 mr-2">
+  <button id="reset" disabled class="border border-black p-1 opacity-50 cursor-not-allowed mr-2">Reset</button>
+  <button id="start" disabled class="border border-black p-1 opacity-50 cursor-not-allowed mr-2">Start</button>
+  <button id="pause" disabled class="border border-black p-1 opacity-50 cursor-not-allowed mr-2">Pause</button>
 </div>
 <figure id="plot_div">
 </figure>
@@ -156,7 +151,3 @@ Since Pyodide uses WebAssembly, older browser cannot run the demonstration. You 
 * [Pyodide documentation](https://pyodide.readthedocs.io/en/latest/)
 * [Pyodide notebook demo](https://alpha.iodide.io/notebooks/300/)
 * [Plotly.js animation examples](https://plot.ly/javascript/animations/)
-
-<script>
-  {{ randomWalkPyodide | safe }}
-</script>
