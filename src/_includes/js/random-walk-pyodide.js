@@ -127,12 +127,14 @@ function pauseAnimation() {
 // load numpy package
 // make buttonRunRandomWalk clickable
 function initPyodide() {
+  loadingIndicator.classList.add('mr-2', 'progressAnimate');
   loader.load()
     .then(e => {
       languagePluginLoader.then(() => {
         pyodide.loadPackage('numpy').then(() => {
           console.log("Numpy is now available");
           // reset styles of buttons
+          loadingIndicator.classList.remove('mr-2', 'progressAnimate');
           buttonReset.removeAttribute('disabled');
           buttonStart.removeAttribute('disabled');
           buttonPause.removeAttribute('disabled');
@@ -180,8 +182,9 @@ function runRandomWalk(stepNumber) {
 
 // create new loader object
 const loader = new ScriptLoader('/_includes/js/pyodide.js')
-// select buttons and input field
+// select buttons, loading indicator and input field
 const buttonInitPyodide = document.querySelector("#initPyodide");
+const loadingIndicator = document.querySelector('#loadingIndicator');
 const inputStepNumber = document.querySelector("#stepNumber");
 const buttonReset = document.querySelector("#reset");
 const buttonStart = document.querySelector("#start");
