@@ -636,3 +636,15 @@ style the table of contents
     top: 5.3em;
   }
 }
+
+.progressAnimate {
+  @apply inline-block border-2 border-black w-4 h-4 rounded-full align-text-bottom;
+  border-top-color: rgba(250,240,137,var(--bg-opacity));
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
