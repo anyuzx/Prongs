@@ -3,7 +3,6 @@ const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const dayjs = require("dayjs");
 const SVGO = require("svgo");
-//const inclusiveLangPlugin = require("@11ty/eleventy-plugin-inclusive-language");
 //const lazyImagesPlugin = require('eleventy-plugin-lazyimages');
 
 // local library/modules
@@ -11,6 +10,8 @@ const mdRender = require('./src/_includes/js/mdRender.js');
 const applyTypeset = require('./src/_includes/js/typeset.js')({ disable: ['smallCaps'] });
 const htmlmin = require('./src/_includes/js/html-minify.js');
 const purgeCSS = require('./src/_includes/js/purgecss.js');
+
+const Terser = require('terser'); // minify js code
 
 // support YAML as data file format
 const yaml = require('js-yaml');
@@ -73,10 +74,20 @@ module.exports = function(config) {
     callback(null, svgmin);
   })
 
+  // add filter to minimize javascript code
+  config.addNunjucksFilter("jsmin", function (code) {
+    let minified = Terser.minify(code);
+    if (minified.error) {
+      console.log("Terser error: ", minified.error);
+      return code;
+    }
+
+    return minified.code;
+  });
+
   // add plugins
   //config.addPlugin(syntaxHighlight);
   config.addPlugin(pluginRss);
-  //config.addPlugin(inclusiveLangPlugin);
   //config.addPlugin(lazyImagesPlugin);
 
   // add passthrough copy
@@ -87,7 +98,6 @@ module.exports = function(config) {
   config.addPassthroughCopy("src/admin/config.yml");
   config.addPassthroughCopy("src/_includes/js/pyodide.js");
   config.addPassthroughCopy("src/_includes/js/lazysizes.min.js");
-  //config.addPassthroughCopy("src/admin/preview.js");
 
   config.setLibrary("md", mdRender);
 
