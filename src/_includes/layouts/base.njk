@@ -1,12 +1,21 @@
+{% set loadServiceWorker %}
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+  navigator.serviceWorker.register('/service-worker.js');
+  });
+};
+{% endset %}
+
+
 <!DOCTYPE html>
 <html lang="en" class="h-full">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    {% if site.ENV == "production" %}
+    {% if site.ENV === "production" %}
       <style></style>
-    {% elif site.ENV == "development" %}
+    {% elif site.ENV === "development" %}
       <link rel="stylesheet" type="text/css" href="/_includes/css/main.css">
     {% endif %}
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
@@ -35,8 +44,7 @@
       </script>
     {% endif %}
     {# end of google analytics #}
-    {# google font #}
-    {#<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">#}
+    <script src="https://instant.page/5.0.1" type="module" integrity="sha384-0DvoZ9kNcB36fWcQApIMIGQoTzoBDYTQ85e8nmsfFOGz4RHAdUhADqJt4k3K2uLS"></script>
     {% block head %}
     {% endblock %}
   </head>
@@ -52,17 +60,11 @@
       {% include "partials/_footer.njk" %}
     {% endif %}
     {# include netlify cms for home page #}
-    {#
-    {% if pageType === 'home' %}
+    {% if site.ENABLE_NETLIFY_CMS and pageType === 'home' %}
       <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" async defer></script>
     {% endif %}
-    #}
     <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/service-worker.js');
-        });
-      };
+      {{ loadServiceWorker | jsmin | safe }}
     </script>
     {% block bodyend %}
     {% endblock %}
