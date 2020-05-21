@@ -22,3 +22,12 @@ collections:
       - {label: "Excerpt", name: "excerpt", widget: "markdown"}
       - {label: "Tags", name: "tags", widget: "list", allow_add: true, required: false}
       - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Table of Contents", name: "TOC", widget: "boolean", required: false}
+      - label: "Script"
+        name: "script"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - {label: "link", name: "link", widget: "text", required: false}
+          - {label: "inline", name: "inline", widget: "text", required: false}
