@@ -10,7 +10,7 @@
 
 {% block head %}
 <script>
-  {{ openPostExcerptJS | safe }}
+  {{ openPostExcerptJS | jsmin | safe }}
 </script>
 {% endblock %}
 
