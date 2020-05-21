@@ -24,5 +24,6 @@ module.exports = {
     'TWITTER': 'anyuzx', // author's twitter handler
     // 'ADDRESS': '' // author's address
   },
-  'CLOUDINARY': 'guangshi'
+  'CLOUDINARY': 'guangshi',
+  'ENABLE_NETLIFY_CMS': false
 }
