@@ -1,0 +1,106 @@
+/*
+Description: syntax color theme for highlight.js
+Date: 2020-05-22
+*/
+
+:root {
+    --base00: #fafafa;
+    --base01: #f0f0f1;
+    --base02: #e5e5e6;
+    --base03: #a0a1a7;
+    --base04: #696c77;
+    --base05: #383a42;
+    --base06: #202227;
+    --base07: #090a0b;
+    --base08: #ca1243;
+    --base09: #d43900;
+    --base0A: #9e6700;
+    --base0B: #2f8233;
+    --base0C: #0079b0;
+    --base0D: #3455db;
+    --base0E: #a626a4;
+    --base0F: #986801;
+}
+
+.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    color: var(--base07);
+    background: var(--base00);
+}
+
+.hljs-comment,
+.hljs-quote {
+    color: var(--base04);
+    font-style: italic;
+}
+
+.hljs-doctag,
+.hljs-keyword,
+.hljs-formula {
+    color: var(--base0E);
+}
+
+.hljs-section,
+.hljs-name,
+.hljs-selector-tag,
+.hljs-deletion,
+.hljs-subst {
+    color: var(--base08);
+}
+
+.hljs-literal {
+    color: var(--base0C);
+}
+
+.hljs-string,
+.hljs-regexp,
+.hljs-addition,
+.hljs-attribute,
+.hljs-meta-string {
+    color: var(--base0B);
+}
+
+.hljs-built_in,
+.hljs-class .hljs-title {
+    color: var(--base0A);
+}
+
+.hljs-attr,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-type,
+.hljs-selector-class,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-number {
+    color: var(--base0F);
+}
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-link,
+.hljs-meta,
+.hljs-selector-id,
+.hljs-title {
+    color: var(--base0D);
+}
+
+.hljs-params {
+    color: var(--base09)
+}
+
+.hljs-emphasis {
+    font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-title,
+.hljs-strong {
+    font-weight: bold;
+}
+
+.hljs-link {
+    text-decoration: underline;
+}
