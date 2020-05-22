@@ -304,10 +304,7 @@ svg > * {
 *
 */
 .research-display {
-  @apply rounded-sm;
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 10px;
+  @apply grid grid-cols-2 gap-3;
 }
 
 .research-item {
@@ -560,9 +557,7 @@ style the table of contents
   * on large screen display four research projects per row
   */
   .research-display {
-    display:grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-column-gap: 10px;
+    @apply grid grid-cols-4 gap-3;
   }
 
   /* adjust heading so that the heading is not hinderred when anchored */
@@ -620,9 +615,7 @@ style the table of contents
   }
 
   .photoExif {
-    @apply text-gray-700 border-t border-l border-gray-500;
-    display:grid;
-    grid-template-columns: 1fr 1fr;
+    @apply text-gray-700 border-t border-l border-gray-500 grid grid-cols-2;
   }
 
   .photoExif > div {
