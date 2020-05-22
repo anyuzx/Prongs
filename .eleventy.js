@@ -1,6 +1,5 @@
 // require the npm modules
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-const blogTools = require("eleventy-plugin-blog-tools");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const dayjs = require("dayjs");
 const SVGO = require("svgo");
@@ -101,7 +100,6 @@ module.exports = function(config) {
 
   // add plugins
   config.addPlugin(pluginRss);
-  config.addPlugin(blogTools);
 
   // add passthrough copy
   config.addPassthroughCopy("src/assets");
