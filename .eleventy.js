@@ -42,7 +42,6 @@ module.exports = function(config) {
     .reverse()
     .slice(0, 3);
   });
-  //config.addCollection("tagList", require("./src/_includes/js/getTagList.js"));
   config.addCollection("postByTag", require("./src/_includes/js/getPostByTag.js"));
   config.addCollection("categories", require("./src/_includes/js/getCategories.js"));
   config.addCollection("photos", require("./src/_includes/js/getPhotos.js"));
