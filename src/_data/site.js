@@ -15,7 +15,7 @@ module.exports = {
     'PATH': 'feed.xml', // name of the RSS feed file. The file should be in the root of the site
     'TITLE': 'Blog posts feed, by Guang Shi', // title for the RSS feed
   },
-  'GOOGLE_ANALYTICS': 'UA-139423558-3',
+  //'GOOGLE_ANALYTICS': 'UA-139423558-3',
   'AUTHOR': {
     'NAME': 'Guang Shi', // author name
     'GITHUB': 'anyuzx', // author's github username
