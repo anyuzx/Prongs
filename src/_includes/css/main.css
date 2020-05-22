@@ -128,13 +128,10 @@ article a:hover {
 /*
  * add border to code blocks
  */
-article pre {
-  @apply border-t border-b border-darkblue;
-}
 
 article :not(pre) > code {
   @apply rounded-sm font-mono;
-  background-color: #F0F0F4;
+  background-color: #fafafa;
   padding: 0.05rem;
 }
 
