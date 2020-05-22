@@ -1,5 +1,6 @@
 // require the npm modules
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const blogTools = require("eleventy-plugin-blog-tools");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const dayjs = require("dayjs");
 const SVGO = require("svgo");
@@ -42,12 +43,25 @@ module.exports = function(config) {
     .reverse()
     .slice(0, 3);
   });
-  config.addCollection("tagList", require("./src/_includes/js/getTagList.js"));
+  //config.addCollection("tagList", require("./src/_includes/js/getTagList.js"));
+  config.addCollection("postByTag", require("./src/_includes/js/getPostByTag.js"));
   config.addCollection("categories", require("./src/_includes/js/getCategories.js"));
   config.addCollection("photos", require("./src/_includes/js/getPhotos.js"));
 
   // add filter to render markdown
   config.addNunjucksFilter("renderUsingMarkdown", rawString => mdRender.render(rawString));
+
+  // add filter to sort by nested key, expanding the dictsort functionality
+  config.addNunjucksFilter("dictNestSortBy", function (value, key) {
+    var sorted = {};
+    Object.keys(value).sort(function(a, b){
+      return value[b][key] - value[a][key];
+    })
+    .forEach(function (key) {
+      sorted[key] = value[key];
+    });
+    return sorted;
+  });
 
   // add filter to groupby attribute of datafile
   config.addNunjucksFilter("groupByEx", function (arr, key) {
@@ -86,12 +100,10 @@ module.exports = function(config) {
   });
 
   // add plugins
-  //config.addPlugin(syntaxHighlight);
   config.addPlugin(pluginRss);
-  //config.addPlugin(lazyImagesPlugin);
+  config.addPlugin(blogTools);
 
   // add passthrough copy
-  //config.addPassthroughCopy("src/_includes/css");
   config.addPassthroughCopy("src/assets");
   config.addPassthroughCopy("src/site.webmanifest");
   config.addPassthroughCopy("src/_redirects");
