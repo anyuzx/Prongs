@@ -1,12 +1,8 @@
 ---
 pagination:
-  data: collections
+  data: collections.postByTag
   size: 1
   alias: tag
-  filter:
-    - all
-    - posts
-    - pinned
   addAllPagesToCollections: true
 permalink: /tags/{{ tag | slug }}/
 title: Tags
@@ -14,22 +10,22 @@ layout: layouts/tags.njk
 description: "Posts tags"
 ---
 
-{% set tagPosts = collections[ tag ] %}
+{% set tagPosts = collections.postByTag[ tag ][ 'posts' ] %}
 
 <div class="text-sm font-mono font-light mb-4 pb-4">
-  {% for tag, number in collections.tagList %}
+  {% for tag, tagInfo in collections.postByTag | dictNestSortBy('count') %}
     {% set tagPath = "/tags/" + tag | slug + "/" %}
     {% if tag != 'posts' and tag != 'all' %}
       {% if page.url == tagPath %}
         <button class="post-tag bg-black text-white">
           <a href="/tags/{{ tag | slug }}">
-          #{{ tag }}<sup class="font-extrabold">{{ number }}</sup>
+          #{{ tag }}<sup class="font-extrabold">{{ tagInfo['count'] }}</sup>
           </a>
         </button>
       {% else %}
         <button class="post-tag hover:bg-black hover:text-white">
           <a href="/tags/{{ tag | slug }}">
-          #{{ tag }}<sup class="font-extrabold">{{ number }}</sup>
+          #{{ tag }}<sup class="font-extrabold">{{ tagInfo['count'] }}</sup>
           </a>
         </button>
       {% endif %}
@@ -54,7 +50,7 @@ description: "Posts tags"
         </div>
       </div>
       <div id="post-excerpt-{{ loop.index }}" class="post-excerpt">
-        {{ post.data.excerpt | safe }}
+        {{ post.data.excerpt | renderUsingMarkdown | safe }}
       </div>
     </div>
   {%- endfor %}
