@@ -41,8 +41,8 @@
   <header>
     <h1 class="text-4xl text-left leading-snug">{{ title }}</h1>
     <div class="flex justify-between text-sm">
-      <div class="self-center font-light font-mono">
-      {% dayjs page.date, 'MMM DD, YYYY' %} by {{ site.AUTHOR.NAME }}
+      <div class="self-center">
+      {% dayjs page.date, 'MMM DD, YYYY' %}
       </div>
       <div class="self-center">
         {%- for tag in tags %}
