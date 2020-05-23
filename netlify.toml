@@ -7,3 +7,16 @@
   [plugins.inputs]
     checkPaths = ['/']
     resultMode = "warn"
+
+  package = "netlify-plugin-no-more-404"
+  [plugin.inputs]
+    on404 = "error"
+    cacheKey = "key1"
+    debugMode = false
+
+  package = "netlify-plugin-checklinks"
+  [plugin.inputs]
+    entryPoints = ["*.html"]
+    recursive = true
+    pretty = true
+    checkExternal = true
