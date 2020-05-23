@@ -19,7 +19,7 @@
       <article id="{{ project.data.title | slug }}" class="clearfix my-4 border border-black p-4">
       <h2 class="text-lg font-bold leading-tight text-left -mt-24 sm:-mt-32 border-t-24 sm:border-t-32 border-solid border-transparent" style="-webkit-background-clip:padding-box;-moz-background-clip:padding;background-clip:padding-box;">{{ project.data.title }}</h2>
       {% if project.data.image %}
-      <img src="{{ project.data.image.path }}" alt="{{ project.data.image.description }}" width="299" alt="illustration" class="float-none sm:float-right sm:mb-0 sm:mx-1">
+      <img src="{{ project.data.image.path }}" alt="{{ project.data.image.description }}" width="299" class="float-none sm:float-right sm:mb-0 sm:mx-1">
       {% endif %}
       {{ project.templateContent | safe }}
     </article>
