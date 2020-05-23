@@ -15,10 +15,10 @@
     cacheKey = "key1"
     debugMode = false
 
-[[plugins]]
-  package = "netlify-plugin-checklinks"
-  [plugins.inputs]
-    entryPoints = ["*.html"]
-    recursive = true
-    pretty = true
-    checkExternal = true
+#[[plugins]]
+#  package = "netlify-plugin-checklinks"
+#  [plugins.inputs]
+#    entryPoints = ["*.html"]
+#    recursive = true
+#    pretty = true
+#    checkExternal = true
