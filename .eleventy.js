@@ -3,6 +3,7 @@ const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const dayjs = require("dayjs");
 const SVGO = require("svgo");
+const Image = require("@11ty/eleventy-img");
 //const lazyImagesPlugin = require('eleventy-plugin-lazyimages');
 
 // local library/modules
@@ -80,8 +81,9 @@ module.exports = function(config) {
       return orderedResult;
   });
 
+
   // add filter to minimize svg using svgo
-  config.addNunjucksAsyncFilter("svgo", async(svgContent, callback) => {
+  config.addNunjucksAsyncFilter("svgo", async (svgContent, callback) => {
     var svgmin = await svgo.optimize(svgContent).then(({data}) => data);
     callback(null, svgmin);
   })
@@ -117,6 +119,26 @@ module.exports = function(config) {
     return dayjs(date).format(format);
   });
 
+  // add shortcode to transform image using eleventy-img
+  // follow example shown in https://github.com/11ty/eleventy-img
+  config.addNunjucksAsyncFilter("imageTransform", function (src, callback) {
+    let outputFormat = "webp";
+    Image(src, {
+      formats: [outputFormat],
+      // this uses the original image width
+      widths: [null],
+      // widths: [200] // output 200px maxwidth
+      // widths: [200, null] // output 200px and original width
+      urlPath: "/assets/images/",
+      outputDir: "./dist/assets/images/",
+      cacheDuration: "1d"
+    })
+      .then(function (res) {
+        let props = res[outputFormat].pop();
+        callback(null, props);
+      });
+  })
+
   // use typeset
   config.addTransform("typeset", applyTypeset);
 
@@ -134,7 +156,9 @@ module.exports = function(config) {
   config.addDataExtension("yaml", contents => yaml.safeLoad(contents));
 
   return {
+    dataTemplateEngine: "njk",
     markdownTemplateEngine: "njk",
+    htmlTemplateEngine: "njk",
     dir: {
       input: "src",
       output: "dist"
