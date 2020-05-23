@@ -95,3 +95,18 @@ implemented using [lazyload](https://github.com/verlok/lazyload)
   markup each item as like.
 - Change the site logo/icon's fill color
 - Some minor changes
+
+Changelog 2020/05/21 Version 0.9
+
+Feature:
+
+- use instangpage for faster page navigation
+- Refactor some CSS styling.
+- Refactor the CSS pipeline
+  - Postcss run
+  - Inline page-specific **purged** CSS styles for each page (put them in <style> tag in the head) through `_includes/js/purgecss.js` and Eleventy's transform API
+  - Generate a **purged** CSS file using purgecss's CLI function
+- Support `script` front-matter in markdown file. It can be used to add page specific script link or inline javascript code to the page
+- add javascript minify Nunjucks filter using `Terser`
+- rewrite the collection to collect posts by its tags. Can be used to generate tags page using pagination
+- Cleanup codes
