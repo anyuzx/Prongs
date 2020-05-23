@@ -11,7 +11,7 @@
     <section class="mb-24">
     {% endif %}
     {% if loop.index < 4 %}
-    <a href="/photos/{{ photoSlug }}">
+    <a href="/photos/{{ photoSlug }}/">
         <picture>
             <source
                 srcset="{{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_800/{{ photo.public_id }}.webp 800w,
@@ -29,7 +29,7 @@
         </picture>
     </a>
     {% else %}
-    <a href="/photos/{{ photoSlug }}">
+    <a href="/photos/{{ photoSlug }}/">
         <picture>
             <source
                 data-srcset="{{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_800/{{ photo.public_id }}.webp 800w,
@@ -48,16 +48,6 @@
         </picture>
     </a>
     {% endif %}
-        {#
-        <div class="flex items-end justify-end">
-            <span class="text-xs px-1 bg-gray-300 rounded-sm">{{ photo.context.custom.type | first | upper }}</span>
-            <div>
-                {% for tag in photo.tags %}
-                    <span class="text-xs px-1 bg-gray-300 rounded-sm">{{ tag }}</span>
-                {% endfor %}
-            </div>
-        </div>
-        #}
     </section>
 {%- endfor %}
 {% endblock %}
@@ -70,8 +60,5 @@
         // ... more custom settings?
     };
 </script>
-<script
-async
-src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@15.1.1/dist/lazyload.min.js"
-></script>
+<script async src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@15.1.1/dist/lazyload.min.js"></script>
 {% endblock %}
