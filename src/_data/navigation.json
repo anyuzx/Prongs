@@ -2,23 +2,23 @@
   "items": [
     {
       "title": "About",
-      "url": "/about"
+      "url": "/about/"
     },
     {
       "title": "Publication",
-      "url": "/publication"
+      "url": "/publication/"
     },
     {
       "title": "Research",
-      "url": "/research"
+      "url": "/research/"
     },
     {
       "title": "Posts",
-      "url": "/posts"
+      "url": "/posts/"
     },
     {
       "title": "Photos",
-      "url": "/photos"
+      "url": "/photos/"
     }
   ]
 }
