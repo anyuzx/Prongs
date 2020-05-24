@@ -3,8 +3,8 @@ title: 3D Reconstruction of Chromosomes
 permalink: false
 date: 2019-08-14
 image:
-  path: /assets/images/project-reconstruction-illustration.min.png
-  pathThumbnail: /assets/images/project-reconstruction-illustration.small.min.png
+  path: /assets/images/research/project-reconstruction-illustration.min.png
+  pathThumbnail: /assets/images/research/project-reconstruction-illustration.small.min.png
   description: Reconstructed 23 Human Chromosomes
 ---
 

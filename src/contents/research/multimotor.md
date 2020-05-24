@@ -3,8 +3,8 @@ title: Multi-motor System
 permalink: false
 date: 2019-08-13
 image:
-  path: /assets/images/project-motor-illustration.min.png
-  pathThumbnail: /assets/images/project-motor-illustration.small.min.png
+  path: /assets/images/research/project-motor-illustration.min.png
+  pathThumbnail: /assets/images/research/project-motor-illustration.small.min.png
   description: multiple molecular motors share a cargo
 ---
 

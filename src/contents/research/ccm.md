@@ -3,8 +3,8 @@ title: Copolymer Chromosome Model
 permalink: false
 date: 2019-08-14
 image:
-  path: /assets/images/project-ccm-illustration.min.png
-  pathThumbnail: /assets/images/project-ccm-illustration.small.min.png
+  path: /assets/images/research/project-ccm-illustration.min.png
+  pathThumbnail: /assets/images/research/project-ccm-illustration.small.min.png
   description: folding process of copolymer chromosome model
 ---
 

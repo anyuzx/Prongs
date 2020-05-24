@@ -3,8 +3,8 @@ title: FISH-Hi-C Paradox
 permalink: false
 date: 2019-08-14
 image:
-  path: /assets/images/project-heterogeneity-illustration.min.png
-  pathThumbnail: /assets/images/project-heterogeneity-illustration.small.min.png
+  path: /assets/images/research/project-heterogeneity-illustration.min.png
+  pathThumbnail: /assets/images/research/project-heterogeneity-illustration.small.min.png
   description: Genomic Folding Landscape
 ---
 
