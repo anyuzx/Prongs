@@ -57,6 +57,7 @@
     "cloudinary": "^1.21.0",
     "cssnano": "^4.1.10",
     "dayjs": "^1.8.27",
+    "eleventy-plugin-pwa": "^1.0.8",
     "highlight.js": "^10.0.3",
     "htm": "^3.0.4",
     "html-minifier": "^4.0.0",
