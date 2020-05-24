@@ -22,3 +22,7 @@
 #    recursive = true
 #    pretty = true
 #    checkExternal = true
+
+[[redirects]]
+  from = "https://guangshi.netlify.com/"
+  to = "https://www.guangshi.io/"
