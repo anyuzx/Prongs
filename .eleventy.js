@@ -1,9 +1,11 @@
 // require the npm modules
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
+const pluginPWA = require("eleventy-plugin-pwa");
 const dayjs = require("dayjs");
 const SVGO = require("svgo");
 const Image = require("@11ty/eleventy-img");
+const sharp = require("sharp");
 //const lazyImagesPlugin = require('eleventy-plugin-lazyimages');
 
 // local library/modules
@@ -22,6 +24,9 @@ var svgo = new SVGO({plugins: [{removeXMLNS: true}]});
 
 // define environment variable
 let env = process.env.ELEVENTY_ENV;
+
+const SOURCE_DIR = './src';
+const PUBLISH_DIR = './dist';
 
 // config for eleventy starts from here
 module.exports = function(config) {
@@ -99,13 +104,19 @@ module.exports = function(config) {
     return minified.code;
   });
 
+  // add filter to determine a image file's format
+  config.addNunjucksAsyncFilter("whichImageFormat", function (src, callback) {
+    sharp(SOURCE_DIR + src).metadata().then(res => {callback(null, res.format)})
+  })
+
   // add plugins
   config.addPlugin(pluginRss);
+  config.addPlugin(pluginPWA);
 
   // add passthrough copy
   config.addPassthroughCopy("src/assets");
   config.addPassthroughCopy("src/site.webmanifest");
-  config.addPassthroughCopy("src/_redirects");
+  //config.addPassthroughCopy("src/_redirects");
   config.addPassthroughCopy("src/admin/config.yml");
   config.addPassthroughCopy("src/_includes/js/pyodide.js");
   config.addPassthroughCopy("src/_includes/js/lazysizes.min.js");
@@ -160,8 +171,8 @@ module.exports = function(config) {
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
     dir: {
-      input: "src",
-      output: "dist"
+      input: SOURCE_DIR,
+      output: PUBLISH_DIR
     }
   }
 }
