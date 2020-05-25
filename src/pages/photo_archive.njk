@@ -1,0 +1,35 @@
+---
+layout: layouts/photo_archive.njk
+permalink: /photos/archive/index.html
+title: "Photos (Archive)"
+description: "Archive of Guang Shi's photos"
+---
+
+{% set cloudinary_url = "https://res.cloudinary.com/" + site.CLOUDINARY + "/image/upload" %}
+
+{% for photo in collections.photos | reverse -%}
+  {% set photoSlug = photo.public_id.split("/")[1] | slug %}
+  <div class="flex items-center justify-center">
+  {% if photo.context.custom.panorama === "True" %}
+    <a href="/photos/{{ photoSlug }}/">
+  {% else %}
+    <a href="/photos/{{ photoSlug }}/" class="h-full">
+  {% endif %}
+        <picture>
+            <source
+                srcset="{{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_250/{{ photo.public_id }}.webp 250w,
+                        {{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_500/{{ photo.public_id }}.webp 500w"
+                type="image/webp">
+                <img
+                sizes="(max-width:500px) 100vw,
+                    250px"
+                srcset="{{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_250/{{ photo.public_id }}.jpg 250w,
+                        {{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_500/{{ photo.public_id }}.jpg 500w"
+                src="{{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_500/{{ photo.public_id }}.jpg"
+                alt="{{ photo.context.custom.alt }}"
+                class="shadow-lg max-h-full mb-0"
+            >
+        </picture>
+    </a>
+  </div>
+{%- endfor %}

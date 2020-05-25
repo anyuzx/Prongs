@@ -1,0 +1,11 @@
+---
+wide: true
+---
+
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+<section class="grid gap-4 mb-6" style="grid-template-columns:repeat(auto-fit,minmax(250px,1fr));grid-auto-rows:167px;">
+    {{ content | safe }}
+</section>
+{% endblock %}
