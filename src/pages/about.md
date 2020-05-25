@@ -30,6 +30,8 @@ I also love to take [photos](/photos/). I primarily take [films but sometimes di
 
 * Writings on this site are under [Creative Commons license](https://creativecommons.org/licenses/by-nc/4.0/) unless stated otherwise. Photos are copyrighted. Feel free to contact me if you want to use any contents.
 
+* The design of this website is heavily influenced by [macwright.org](https://macwright.org/). Credit to [@tmcw](https://twitter.com/tmcw)
+
 ---
 
 **You can find me here**
