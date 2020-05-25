@@ -14,7 +14,11 @@ description: "A list of my academic publication"
   {% for publication in publications %}
   <li class="mb-8">
     <div class="mb-2 capitalize font-medium">
-    <a href="https://doi.org/{{ publication.DOI }}">{{ publication.title }}</a>
+    {% if publication.DOI %}
+      <a href="https://doi.org/{{ publication.DOI }}">{{ publication.title }}</a>
+    {% else %}
+      <span>{{ publication.title }}</span>
+      {% endif %}
     </div>
     <div class="text-sm">
     {% for author in publication.author %}
