@@ -3,14 +3,15 @@
 {% endset %}
 
 <div class="nav-fixed bg-white">
-  <nav class="sm:flex items-center m-auto px-4 py-4" style="max-width:800px" id="head-navigation">
+  {% if wide %}
+    <nav class="sm:flex items-center m-auto py-4 w-full px-4" id="head-navigation">
+  {% else %}
+    <nav class="sm:flex items-center m-auto py-4 w-full max-w-screen-md px-4 md:px-0" id="head-navigation">
+  {% endif %}
     <a href="/" class="flex items-center justify-center mb-3 sm:mb-0">
       <span style="font-size:1.4em;">
         {{ logo | svgo | safe }}
       </span>
-      {#
-      <span class="font-medium ml-3 uppercase" style="color:#003371;">{{ site.TITLE }}</span>
-      #}
     </a>
     <div class="flex flex-grow justify-center sm:justify-end">
       {% for nav in navigation.items -%}

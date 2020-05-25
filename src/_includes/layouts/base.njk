@@ -51,7 +51,11 @@ if ('serviceWorker' in navigator) {
     {% ifAsync not disableNavigation %}
       {% include "partials/_nav.njk" %}
     {% endif %}
-    <main class="sm:mx-auto px-4 pt-24 sm:pt-20 flex-grow flex-shrink-0 w-full" style="max-width:800px">
+    {% if wide %}
+      <main class="sm:mx-auto pt-24 sm:pt-20 flex-grow flex-shrink-0 px-4 w-full">
+    {% else %}
+      <main class="sm:mx-auto pt-24 sm:pt-20 flex-grow flex-shrink-0 w-full max-w-screen-md px-4 md:px-0">
+    {% endif %}
     {% block content %}
     {% endblock %}
     </main>
