@@ -132,8 +132,7 @@ Since Pyodide uses WebAssembly, older browser cannot run the demonstration. You 
 
 <div class="flex flex-col sm:flex-row justify-center mb-4">
   <button id="initPyodide" class="animate border border-black p-1 mr-2 bg-yellow-300"><span id="loadingIndicator" class="inline-block"></span><span>Initialize Pyodide</span></button>
-  <label for="stepNumber">Step Number</label>
-  <input id="stepNumber" type="number" value="100" placeholder="number of steps" class="border border-black p-1 mr-2">
+  <input id="stepNumber" type="number" value="100" aria-label="number of steps" placeholder="number of steps" class="border border-black p-1 mr-2">
   <button id="reset" disabled class="border border-black p-1 opacity-50 cursor-not-allowed mr-2">Reset</button>
   <button id="start" disabled class="border border-black p-1 opacity-50 cursor-not-allowed mr-2">Start</button>
   <button id="pause" disabled class="border border-black p-1 opacity-50 cursor-not-allowed mr-2">Pause</button>
