@@ -1,8 +1,16 @@
+{% set archiveLogo %}
+  {% include "svg/archive.svg" %}
+{% endset %}
+
 {% extends "layouts/base.njk" %}
 
 {% set cloudinary_url = "https://res.cloudinary.com/" + site.CLOUDINARY + "/image/upload" %}
 
 {% block content %}
+<a href="/photos/archive/" class="border border-darkblue inline-flex items-center mb-4 p-2">
+  <span class="mr-1">{{ archiveLogo | svgo | safe }}</span>
+  <span>Archive</span>
+</a>
 {% for photo in collections.photos | reverse -%}
     {% set photoSlug = photo.public_id.split("/")[1] | slug %}
     {% if loop.last %}
