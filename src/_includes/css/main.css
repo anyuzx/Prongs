@@ -7,19 +7,24 @@ p {
   @apply mb-6;
 }
 
-p :last-child {
+p:last-child {
   @apply mb-0;
+}
+
+a {
+  @apply inline-block;
 }
 
 ul, ol {
   @apply ml-6 mb-6 list-outside;
 }
 
+
 li {
   @apply mb-3;
 }
 
-li :last-child {
+li:last-child {
   @apply mb-0;
 }
 
@@ -86,7 +91,7 @@ h4, h5, h6 {
 }
 
 table {
-  @apply mb-6 w-full border-collapse;
+  @apply mb-6 w-full border-collapse table-auto;
 }
 
 td, th {
@@ -95,11 +100,11 @@ td, th {
 }
 
 
-td, th :first-child {
+td, th:first-child {
   @apply pl-0;
 }
 
-td, th :last-child {
+td, th:last-child {
   @apply pr-0;
 }
 
@@ -107,15 +112,16 @@ th {
   @apply font-bold;
 }
 
-/*
- * under line for a tag
- */
-p a {
-  @apply underline;
+details {
+  @apply mb-6 p-2 border border-darkblue;
 }
 
-p a:hover {
-  @apply no-underline;
+details > *:last-child {
+  @apply mb-0;
+}
+
+details summary {
+  @apply outline-none;
 }
 
 article a {
@@ -125,9 +131,6 @@ article a {
 article a:hover {
   @apply no-underline;
 }
-/*
- * add border to code blocks
- */
 
 article :not(pre) > code {
   @apply rounded-sm font-mono;
@@ -142,9 +145,6 @@ article h1:not(pre) > code, h2:not(pre) > code, h3:not(pre) > code, h4:not(pre) 
   background: unset;
 }
 
-/*
- * add bullet to list
- */
 article ul {
   @apply list-disc;
 }
@@ -524,6 +524,14 @@ style the table of contents
 
 .single-post h2.nocount:before, h3.nocount:before, h4.nocount:before, h5.nocount:before, h6.nocount:before { content: ""; counter-increment: none }
 
+.post-button {
+  @apply mb-6 p-4 w-full font-bold;
+  background-color: #e0e0e7;
+}
+
+.post-button a {
+  @apply no-underline;
+}
 
 @tailwind screens;
 
