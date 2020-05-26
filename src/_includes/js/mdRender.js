@@ -65,20 +65,20 @@ customMarkdownIt
       }
     }
   })
-  .use(require('markdown-it-container'), 'button', {
+  .use(require('markdown-it-container'), 'linkButton', {
 
     validate: function (params) {
-      return params.trim().match(/^button$|\s+(.*)$/)
+      return params.trim().match(/^linkButton\s+(.*)$/)
     },
 
     render: function (tokens, idx) {
-      var m = tokens[idx].info.trim().match(/^button$|\s+(.*)$/)
+      var m = tokens[idx].info.trim().match(/^linkButton\s+(.*)$/)
 
       if (tokens[idx].nesting === 1) {
         if (m[1] === undefined) {
-          return "<button class='post-button'>"
+          return "<button class='linkButton'>"
         } else {
-          return `<button class="post-button" onClick="${customMarkdownIt.utils.escapeHtml(m[1])}">`
+          return `<button class="linkButton" onClick="location.href='${customMarkdownIt.utils.escapeHtml(m[1])}'">`
         }
       } else {
         return '</button>\n'
