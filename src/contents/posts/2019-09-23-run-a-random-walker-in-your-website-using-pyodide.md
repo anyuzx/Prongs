@@ -16,7 +16,7 @@ script:
   inline: js/random-walk-pyodide.js
 ---
 
-::: button location.href='#demonstration'
+::: linkButton #demonstration
 Skip to the bottom of this page to see the demonstration
 :::
 
