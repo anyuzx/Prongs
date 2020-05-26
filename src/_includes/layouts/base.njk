@@ -8,7 +8,7 @@ if ('serviceWorker' in navigator) {
 
 
 <!DOCTYPE html>
-<html lang="en" class="h-full">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,14 +47,14 @@ if ('serviceWorker' in navigator) {
     {% block head %}
     {% endblock %}
   </head>
-  <body class="antialiased text-black h-full flex flex-col">
+  <body class="antialiased min-h-screen flex flex-col">
     {% ifAsync not disableNavigation %}
       {% include "partials/_nav.njk" %}
     {% endif %}
     {% if wide %}
-      <main class="sm:mx-auto pt-24 sm:pt-20 flex-grow flex-shrink-0 px-4 w-full">
+      <main class="mx-auto pt-32 sm:pt-20 flex-1 px-4 w-full">
     {% else %}
-      <main class="sm:mx-auto pt-24 sm:pt-20 flex-grow flex-shrink-0 w-full max-w-screen-md px-4 md:px-0">
+      <main class="mx-auto pt-32 sm:pt-20 flex-1 w-full max-w-screen-md px-4 md:px-0">
     {% endif %}
     {% block content %}
     {% endblock %}

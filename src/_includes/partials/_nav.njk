@@ -4,26 +4,35 @@
 
 <div class="nav-fixed bg-white">
   {% if wide %}
-    <nav class="sm:flex items-center m-auto py-4 w-full px-4" id="head-navigation">
+    <nav class="border-b-2 border-lightblue flex flex-col items-center justify-between sm:flex-row m-auto py-4 w-full px-4" id="head-navigation">
   {% else %}
-    <nav class="sm:flex items-center m-auto py-4 w-full max-w-screen-md px-4 md:px-0" id="head-navigation">
+    <nav class="border-b-2 border-lightblue flex flex-col items-center justify-between sm:flex-row m-auto py-4 w-full max-w-screen-md px-4 md:px-0" id="head-navigation">
   {% endif %}
-    <a href="/" class="flex items-center justify-center mb-3 sm:mb-0">
-      <span style="font-size:1.4em;">
-        {{ logo | svgo | safe }}
-      </span>
-    </a>
-    <div class="flex flex-grow justify-center sm:justify-end">
+    <div class="mb-3 sm:mb-0">
+      <a href="/">
+        <span class="block w-24">
+          {{ logo | svgo | safe }}
+        </span>
+      </a>
+    </div>
+    <div>
       {% for nav in navigation.items -%}
-        {% if loop.last and page.url.startsWith(nav.url) %}
-          <a class="active-nav inline-block" href="{{ nav.url }}">{{ nav.title }}</a>
-        {% elif loop.last and not page.url.startsWith(nav.url) %}
-          <a class="unactive-nav inline-block" href="{{ nav.url }}">{{ nav.title }}</a>
-        {% elif not loop.last and page.url.startsWith(nav.url) %}
-          <a class="mr-3 active-nav inline-block" href="{{ nav.url }}">{{ nav.title }}</a>
-        {% elif not loop.last and not page.url.startsWith(nav.url) %}
-          <a class="mr-3 unactive-nav inline-block" href="{{ nav.url }}">{{ nav.title }}</a>
+        {% if page.url.startsWith(nav.url) %}
+          <a class="active-nav mr-3 last:mr-0" href="{{ nav.url }}">{{ nav.title }}</a>
+        {% else %}
+          <a class="unactive-nav mr-3 last:mr-0" href="{{ nav.url }}">{{ nav.title }}</a>
         {% endif %}
+        {#
+        {% if loop.last and page.url.startsWith(nav.url) %}
+          <a class="active-nav" href="{{ nav.url }}">{{ nav.title }}</a>
+        {% elif loop.last and not page.url.startsWith(nav.url) %}
+          <a class="unactive-nav" href="{{ nav.url }}">{{ nav.title }}</a>
+        {% elif not loop.last and page.url.startsWith(nav.url) %}
+          <a class="mr-3 active-nav" href="{{ nav.url }}">{{ nav.title }}</a>
+        {% elif not loop.last and not page.url.startsWith(nav.url) %}
+          <a class="mr-3 unactive-nav" href="{{ nav.url }}">{{ nav.title }}</a>
+        {% endif %}
+        #}
       {%- endfor %}
     </div>
   </nav>

@@ -245,6 +245,18 @@ svg > * {
 }
 
 /*
+* ICON BUTTON
+*/
+
+.f-icon {
+  @apply p-4 fill-current
+}
+
+.f-icon:hover {
+  @apply bg-black text-white;
+}
+
+/*
  * custom class tag
  */
 .post-tag {
