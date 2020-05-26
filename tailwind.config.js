@@ -190,7 +190,8 @@ module.exports = {
     fontVariantNumeric: ['responsive'],
     fontVariantLigatures: ['responsive'],
     textRendering: ['responsive'],
-    margin: ['responsive', 'last']
+    margin: ['responsive', 'last'],
+    boxShadow: ['responsive', 'active', 'hover', 'focus', 'group-hover']
   },
   plugins: [
     require('tailwindcss-dark-mode')(),
