@@ -16,7 +16,7 @@ We applied the theory to the latest experimental measurements and found that the
 
 ### Publication
 
-* **Shi, G.**, & Thirumalai, D. (2019). [Conformational Heterogeneity in Human Interphase Chromosome Organization Reconciles the FISH and Hi-C Paradox](https://www.nature.com/articles/s41467-019-11897-0). *Nature Communication*, 10(1), 3894.
+* [Conformational Heterogeneity in Human Interphase Chromosome Organization Reconciles the FISH and Hi-C Paradox](https://www.nature.com/articles/s41467-019-11897-0) **Shi, G.**, & Thirumalai, D. (2019) *Nature Communication*, 10(1), 3894.
 
 ### Resources
 

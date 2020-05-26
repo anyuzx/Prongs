@@ -14,4 +14,4 @@ Using CCM, we predicted that chromatin exhibits glassy dynamics with coherent mo
 
 ### Publication
 
-* **Shi, G.**, Liu, L., Hyeon, C., & Thirumalai, D. (2018). [Interphase human chromosome exhibits out of equilibrium glassy dynamics](https://www.nature.com/articles/s41467-018-05606-6). *Nature communications*, 9(1), 3161.
+* [Interphase human chromosome exhibits out of equilibrium glassy dynamics](https://www.nature.com/articles/s41467-018-05606-6) **Shi, G.**, Liu, L., Hyeon, C., & Thirumalai, D. (2018). *Nature communications*, 9(1), 3161.
