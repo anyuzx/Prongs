@@ -13,8 +13,7 @@ tags:
 
 In this series of posts, several different Python implementations are provided to compute the pair-wise distances in a periodic boundary condition. The performances of each method are benchmarked for comparison. I will investigate the following methods.
 
-::: note
-**Article Series**
+::: collapse **Article Series**
 
 * Part I: Python implementation only using built-in libraries (you are here)
 

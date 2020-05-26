@@ -11,8 +11,7 @@ tags:
   <img src="https://colab.research.google.com/assets/colab-badge.svg" style="margin-left:unset;margin-right:unset;" alt="Open In Colab"/>
 </a>
 
-::: note
-**Article Series**
+::: collapse **Article Series**
 
 * Part I: [Python implementation only using built-in libraries](/posts/python-optimization-using-different-methods)
 

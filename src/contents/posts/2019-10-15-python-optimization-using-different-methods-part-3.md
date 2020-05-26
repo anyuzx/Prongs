@@ -14,8 +14,7 @@ TOC: true
   <img src="https://colab.research.google.com/assets/colab-badge.svg" style="margin-left:unset;margin-right:unset;" alt="Open In Colab"/>
 </a>
 
-::: note
-**Article Series**
+::: collapse **Article Series**
 
 * Part I: [Python implementation only using built-in libraries](/posts/python-optimization-using-different-methods)
 
@@ -26,8 +25,8 @@ TOC: true
 
 This is Part III of a series of three posts. In [Part I](/posts/python-optimization-using-different-methods) and [II](/posts/python-optimization-using-different-methods-part-2), I discussed pure python and numpy implementations of performing pair-wise distances under a periodic condition, respectively. In this post, I show how to use [Numba](http://numba.pydata.org/) and [Cython](https://cython.org/) to further speed up the python codes.
 
-::: note
-Skip to see the [summary of benchmark results](#summing-up).
+::: button location.href='#summing-up'
+Skip to see the summary of benchmark results
 :::
 
 At some point, the optimized python codes are not *strictly* python codes anymore. For instance, in this post, using Cython, we can make our codes very efficient. However, strictly speaking, Cython is *not* Python. It is a superset of Python, which means that any Python code can be compiled as Cython code but not vice versa. To see the performance boost, one needs to write Cython codes. So what is stopping you to just write C++/C codes instead and be done with it? I believe there is always some balance between the performance of the codes and the effort you put into writing the codes. As I will show here, using Numba or writing Cython codes is straightforward if you are familiar with Python. Hence, I always prefer to optimize the Python codes rather than rewrite it in C/C++ because it is more cost-effective for me.

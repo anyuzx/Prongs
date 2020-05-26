@@ -16,8 +16,8 @@ script:
   inline: js/random-walk-pyodide.js
 ---
 
-::: note
-Skip to the bottom of this page to see the [demonstration](#demonstration).
+::: button location.href='#demonstration'
+Skip to the bottom of this page to see the demonstration
 :::
 
 Since I got this site running, I have been wanting to be able to embed some kind of interactive plot in my blog post. For instance, say I want the user to be able to perform some machine learning computations and then visualize the result. Currently, there are a few options to achieve this,
