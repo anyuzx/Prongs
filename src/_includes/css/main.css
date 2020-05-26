@@ -11,10 +11,6 @@ p:last-child {
   @apply mb-0;
 }
 
-a {
-  @apply inline-block;
-}
-
 ul, ol {
   @apply ml-6 mb-6 list-outside;
 }
@@ -524,13 +520,20 @@ style the table of contents
 
 .single-post h2.nocount:before, h3.nocount:before, h4.nocount:before, h5.nocount:before, h6.nocount:before { content: ""; counter-increment: none }
 
-.post-button {
-  @apply mb-6 p-4 w-full font-bold;
-  background-color: #e0e0e7;
+.linkButton {
+  @apply mb-6 p-4 w-full font-bold bg-lightgray;
 }
 
-.post-button a {
+.linkButton a {
   @apply no-underline;
+}
+
+.linkButton:hover {
+  @apply bg-darkblue text-white;
+}
+
+.linkButton:active {
+  @apply shadow-inner;
 }
 
 @tailwind screens;
