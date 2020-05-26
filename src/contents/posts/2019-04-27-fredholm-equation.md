@@ -131,18 +131,18 @@ def NNETR(K, f, Delta, epsilon, alpha):
 
 * Compounding an exponential distribution with its rate parameter distributed according to a gamma distribution yields a Lomax distribution $f(x)=a(x+1)^{-(a+1)}$, supported on $(0,\infty)$, with $a>0$. $k(x,\theta)=\theta e^{-\theta x}$ is an exponential density and $p(\theta) = \Gamma(a)^{-1}\theta^{a-1}e^{-\theta}$ is a gamma density.
 
-<img src="https://i.imgur.com/w4vOe0G.png" width="480"/>
+<img src="https://res.cloudinary.com/guangshi/image/upload/c_scale,q_auto:good,w_960/v1590469254/posts/t0vb1tc7zfy2z8tolsis.png" width="480" alt="Example #1: comparison between true and NNETR solution"/>
 
 * Compounding a Gaussian distribution with mean distributed according to another Gaussian distribution yields (again) a Gaussian distribution $f(x)=\mathcal{N}(a,b^2+\sigma^2)$. $k(x\vert\mu)=\mathcal{N}(\mu,\sigma^2)$ and $p(\mu)=\mathcal{N}(a,b^2)$
 
-<img src="https://i.imgur.com/DneADgt.png" width="480"/>
+<img src="https://res.cloudinary.com/guangshi/image/upload/c_scale,q_auto:good,w_960/v1590469282/posts/dwmvldqeb5cuz9nsn2v8.png" width="480" alt="Example #2: comparison between true and NNETR solution"/>
 
 * Compounding an exponential distribution with its rate parameter distributed according to a mixture distribution of two gamma distributions. Similar to the first example, we use $k(x,\theta)=\theta e^{-\theta x}$. But here we use $p(\theta)=q p(\theta\vert a_1)+(1-q)p(\theta\vert a_2)$ where $q$, $a_1$ and $a_2$ are parameters. It is clear that $p(\theta)$ is a mixture between two different gamma distributions such as it is a bimodal distribution. Following the first example, we have $f(x)=qf(x\vert a_1)+(1-q)f(x\vert a_2)$ where $f(x\vert a)=a(x+1)^{-(a+1)}$.
 
-<img src="https://i.imgur.com/EeSepu1.png" width="480"/>
+<img src="https://res.cloudinary.com/guangshi/image/upload/c_scale,q_auto:good,w_960/v1590469303/posts/nbu6xdyvdocnqpqkvekr.png" width="480" alt="Example #3: comparison between true and NNETR solution"/>
 
 * Compounding an exponential distribution with its rate parameter distributed as a discrete distribution.
 
-<img src="https://i.imgur.com/2qBwaZs.png" width="480"/>
+<img src="https://res.cloudinary.com/guangshi/image/upload/c_scale,q_auto:good,w_960/v1590469327/posts/utwtqnwzm7mqcnfh8wew.png" width="480" alt="Example #4: comparison between true and NNETR solution"/>
 
 [^1]: Haskell, Karen H., and Richard J. Hanson. "An algorithm for linear least squares problems with equality and nonnegativity constraints." Mathematical Programming 21.1 (1981): 98-118.

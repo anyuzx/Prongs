@@ -24,7 +24,7 @@ The first thing I did is to learn how to use [Jekyll](https://jekyllrb.com/). I 
 
 Starting from scratch, *very slowly*, I started to build my personal site using Nuxt.js. I quickly realized that it might not be suitable for my purpose. There are mainly two reasons for this:
 
-* There is no standard or easy way to incorporate the content from my markdown files to the page rendering. All the methods I found online feel like a hack and it suffers the problem of loading all the posts together for every single page! This issue is also addressed [here](https://suxin.space/notes/nuxt-bloated-markdown-blogs/).
+* There is no standard or easy way to incorporate the content from my markdown files to the page rendering. All the methods I found online feel like a hack and it suffers the problem of loading all the posts together for every single page! This issue is also addressed [in this blog post](https://suxin.space/notes/nuxt-bloated-markdown-blogs/).
 
 * Although nuxt.js does have a static site generation mode, the pre-rendered page bundle still includes a bunch of client-side Javascript codes, which in my case are not necessary at all. These client-side JS are there for so-called hydration which take over the site once the first-load is completed. However, for my personal site on which 99% percent of the pages is just static content, these JS are **100%** unnecessary. It also makes the site bloated significantly, an aspect I hate. Unfortunately, at least currently, there is [no **full** static generation mode](https://github.com/nuxt/rfcs/issues/22#issuecomment-563274603).
 
@@ -45,4 +45,4 @@ I guess the lesson I learned is, **do not make things overcomplicated**.
 [^1]: https://github.com/11ty/eleventy-base-blog
 [^2]: https://github.com/philhawksworth/eleventyone
 [^3]: https://github.com/hankchizljaw/hylia
-[^4]: The source code of this site is [here](https://github.com/anyuzx/Prongs)
+[^4]: The source code of this site is on [github](https://github.com/anyuzx/Prongs)

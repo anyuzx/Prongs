@@ -83,7 +83,7 @@ class ComputeGyration : public Compute {
   double masstotal;
 ```
 
-You can see there is a overal structure in the above code `class A : public B`. This basically means that our derived class A will inherit all the public and protected member of class B. More details can be found [here](http://www.tutorialspoint.com/cplusplus/cpp_inheritance.htm), [here](http://stackoverflow.com/questions/374399/why-do-we-actually-need-private-or-protected-inheritance-in-c/374423#374423) and [here](http://stackoverflow.com/questions/860339/difference-between-private-public-and-protected-inheritance)
+You can see there is a overal structure in the above code `class A : public B`. This basically means that our derived class A will inherit all the public and protected member of class B [^1][^2][^3].
 
 Next, we declare two types of member of our derived class, `public` and `private`. `public` is the member we want the other code can access to and `private` is the member which is only used in the derived class scope. Now let's look at the public class member. Note that there is no type declaration of class member `ComputeGyration` and `~ComputeGyration`. They are called [_Class Constructor_](http://www.tutorialspoint.com/cplusplus/cpp_constructor_destructor.htm) and [_Class Destructor_](http://www.tutorialspoint.com/cplusplus/cpp_constructor_destructor.htm). They are usually used to set up the initial values for certain member variables as we can see later in `compute_gyration.cpp`. Note that for some compute style such as `compute_msd.h`, the destructor is virtual, that is `virtual ~ComputeMSD` instead of just `~ComputeMSD`. This is because class `ComputeMSD` is also inherited by derive class `ComputeMSDNonGauss`. So you need to decalre the base destructor as being virtual. Look at this [page](http://stackoverflow.com/questions/461203/when-to-use-virtual-destructors) for more details. Now let's move forward.
 
@@ -93,7 +93,7 @@ Next, we declare two types of member of our derived class, `public` and `private
   void compute_vector();
 ```
 
-here all the function `init`, `compute_scalar` and `compute_vector` all are the base class member which are already defined in `compute.h`. However they are all virtual functions, which means that they can be overrided in the derived class, here it is the `ComputeGyration`. [This](http://stackoverflow.com/questions/2391679/why-do-we-need-virtual-methods-in-c) and [this](http://nrecursions.blogspot.in/2015/06/so-why-do-we-need-virtual-functions.html) pages provide some basic explanations for the use of virtual functions. Here is a list shown in LAMMPS documentation of **some examples** of the virtual functions you can use in your derived class.
+here all the function `init`, `compute_scalar` and `compute_vector` all are the base class member which are already defined in `compute.h`. However they are all virtual functions [^4][^5], which means that they can be overrided in the derived class, here it is the `ComputeGyration`. Here is a list shown in LAMMPS documentation of **some examples** of the virtual functions you can use in your derived class.
 
 ![Virtual function list of compute.h](https://tva1.sinaimg.cn/large/006y8mN6ly1g7ak3jbwv6j30qm0kjwil.jpg)
 
@@ -148,7 +148,7 @@ ComputeGyration::~ComputeGyration()
 }
 ```
 
-The above code speficy destructor that is what will be excuted when class `ComputeGyration` goes out of scope or is deleted. In this case, it delete the gyration tensor vector defined above. The syntax of **delete** operator for array is `delete [] vector`. For details of **new** and **delete** can be found [here](http://www.tutorialspoint.com/cplusplus/cpp_dynamic_memory.htm).
+The above code specify destructor that is what will be excuted when class `ComputeGyration` goes out of scope or is deleted. In this case, it delete the gyration tensor vector defined above. The syntax of **delete** operator for array is `delete [] vector`. See [details](http://www.tutorialspoint.com/cplusplus/cpp_dynamic_memory.htm) of **new** and **delete**.
 
 ```cpp
 void ComputeGyration::init()
@@ -237,3 +237,9 @@ Unfortunately, there are only a few resources on LAMMPS source code on the Inter
 
 * [A dissection of LAMMPS classes - A Guide for Beginner LAMMPS Hackers](https://sites.google.com/site/scienceuprising/code-packages/lammps/a-dissection-of-lammps-classes#TOC-The-Atom-Class)
 * [How to Write Fix for LAMMPS](http://kirilllykov.github.io/blog/2012/10/13/writing-fixes-for-lammps/)
+
+[^1]: http://www.tutorialspoint.com/cplusplus/cpp_inheritance.htm
+[^2]: http://stackoverflow.com/questions/374399/why-do-we-actually-need-private-or-protected-inheritance-in-c/374423#374423
+[^3]: http://stackoverflow.com/questions/860339/difference-between-private-public-and-protected-inheritance
+[^4]: http://stackoverflow.com/questions/2391679/why-do-we-need-virtual-methods-in-c
+[^5]: http://nrecursions.blogspot.in/2015/06/so-why-do-we-need-virtual-functions.html 

@@ -34,7 +34,7 @@ Some references on Pivot algorithm
 
 ## Python Implementation Using Numpy and Scipy
 
-The implement of this algorithm in `Python` is very straightforward. The raw file can be found [here](https://gist.github.com/anyuzx/91ffa2ea98ceea1abba5f70cbc83b307)
+The implement of this algorithm in `Python` is very straightforward. You can download [raw file](https://gist.github.com/anyuzx/91ffa2ea98ceea1abba5f70cbc83b307).
 
 ```python
 import numpy as np
@@ -130,7 +130,7 @@ Name the file `c_lattice_SAW.cpp`. Here we define a function called `c_lattice_S
 * The `C++` code in this case is not a complete program. It doesn't have `main` function.
 :::
 
-The whole `C++` code can be found [here](https://gist.github.com/anyuzx/fdd27b467c273665328955fbc111dfeb). Beside our plain `C` code, we also need a header file `c_lattice_SAW.h`.
+The whole `C++` code can be found in this [gist](https://gist.github.com/anyuzx/fdd27b467c273665328955fbc111dfeb). Beside our plain `C` code, we also need a header file `c_lattice_SAW.h`.
 
 ```cpp
 void c_lattice_SAW(double* chain, int N, double l0, int ve, int t);

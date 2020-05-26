@@ -45,7 +45,7 @@ I have been experimenting with Pyodide for a few days. In this post, I would lik
 * calculate the random walk trajectory in the browser on the fly
 * animate the generated trajectory of the random walk
 
-In this example, I will use python code to generate the trajectory of a simple 2D random walker and use [plotly.js](https://plot.ly/javascript/) to handle the visualization.
+In this example, I will use python code to generate the trajectory of a simple 2D random walker and use [plotly.js](https://plotly.com/javascript/) to handle the visualization.
 
 
 ## Python code for 2D random walker 
@@ -116,7 +116,7 @@ The communication between python and javascript is two-way, meaning that we can 
 
 Once we get the calculated positions `x` and `y`, we can use plotly.js to plot the result. Fortunately, plotly.js provides a relative simple API for animation. One can also use [Bokeh](https://bokeh.pydata.org/en/latest/index.html), [D3](https://d3js.org/), or any other web visualization tool out there. It is even possible to do the visualization in python directly since Pyodide also work with Matplotlib. However, at this stage, I think it is more straight forward to use a javascript library to handle the visualization since it is designed to manipulate DOM (HTML) after all.
 
-I don't want to make this post super long, thus I won't go into very details of the visualization part. The full javascript code we need to load in the page can be found [here](https://gist.github.com/anyuzx/d60d45e3202a081f79c39ed57e19fb28). The file includes the code for fetching gist, visualization using plotly.js, Pyodide code and event handlers for buttons.
+I don't want to make this post super long, thus I won't go into very details of the visualization part. The full javascript code we need to load in the page can be found in this [gist](https://gist.github.com/anyuzx/d60d45e3202a081f79c39ed57e19fb28). The file includes the code for fetching gist, visualization using plotly.js, Pyodide code and event handlers for buttons.
 
 
 ## Demonstration
