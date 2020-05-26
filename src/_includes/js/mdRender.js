@@ -39,6 +39,16 @@ customMarkdownIt
   .use(markdownImplicitFigure, {
     figcaption: true
   })
+  .use(markdownItAnchor)
+  .use(markdownItEmoji)
+  .use(markdownItSub)
+  .use(markdownItSup)
+  .use(markdownItIns)
+  .use(markdownItMark)
+  .use(markdownItAbbr)
+  .use(markdownItAttr)
+  .use(markdownItKbd)
+  .use(markdownItTOC)
   .use(markdownItContainer, 'note')
   .use(markdownItContainer, 'collapse', {
     validate: function (params) {
@@ -55,15 +65,25 @@ customMarkdownIt
       }
     }
   })
-  .use(markdownItAnchor)
-  .use(markdownItEmoji)
-  .use(markdownItSub)
-  .use(markdownItSup)
-  .use(markdownItIns)
-  .use(markdownItMark)
-  .use(markdownItAbbr)
-  .use(markdownItAttr)
-  .use(markdownItKbd)
-  .use(markdownItTOC)
+  .use(require('markdown-it-container'), 'button', {
+
+    validate: function (params) {
+      return params.trim().match(/^button$|\s+(.*)$/)
+    },
+
+    render: function (tokens, idx) {
+      var m = tokens[idx].info.trim().match(/^button$|\s+(.*)$/)
+
+      if (tokens[idx].nesting === 1) {
+        if (m[1] === undefined) {
+          return "<button class='post-button'>"
+        } else {
+          return `<button class="post-button" onClick="${customMarkdownIt.utils.escapeHtml(m[1])}">`
+        }
+      } else {
+        return '</button>\n'
+      }
+    }
+  })
 
 module.exports = customMarkdownIt
