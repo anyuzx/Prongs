@@ -6,19 +6,22 @@ description: "A list of my academic publication"
 ---
 
 <section class="mb-20">
-<h1 class="text-base">Publication</h1>
-{% for year, publications in references | groupByEx("issued.0.year") -%}
-<h2 class="text-base mb-0">{{ year }}</h2>
+<h1 class="text-lg font-light mb-4">Publication</h1>
+{#{% for year, publications in publications.references | groupByEx("issued.0.year") -%}#}
+{% for year, publications in getPublications | groupByEx("issued.date-parts.0.0") %}
+<h2 class="text-base mb-0 mt-4">{{ year }}</h2>
 <hr>
 <ol class="list-outside list-none ml-0">
   {% for publication in publications %}
   <li class="mb-8">
-    <div class="mb-2 capitalize font-medium">
+    <div class="mb-2">
+    <span class="capitalize font-medium">{{ publication.title }}</span>
+    {% if publication.subtype === "preprint" %}
+      <span class="uppercase py-0 px-1 text-sm bg-lightblue">preprint</span>
+    {% endif %}
     {% if publication.DOI %}
-      <a href="https://doi.org/{{ publication.DOI }}">{{ publication.title }}</a>
-    {% else %}
-      <span>{{ publication.title }}</span>
-      {% endif %}
+      <a href="https://doi.org/{{ publication.DOI }}" class="no-underline">&#8599;</a>
+    {% endif %}
     </div>
     <div class="text-sm">
     {% for author in publication.author %}
@@ -36,7 +39,7 @@ description: "A list of my academic publication"
         {% endif %}
       {% endif %}
     {% endfor %}
-    <span class="italic">{{ publication["container-title"] }}</span><span> ({{ publication["issued"]["0"]["year"] }})</span>
+    <span class="italic">{{ publication["container-title"] }}</span><span> ({{ publication["issued"]["date-parts"][0][0] }})</span>
     </div>
     </li>
     {% endfor %}
@@ -45,22 +48,43 @@ description: "A list of my academic publication"
 </section>
 
 <section>
-<h1 class="text-base">Talks and Posters</h1>
+<h1 class="text-lg font-light mb-4">Talks and Posters</h1>
 <ol class="list-outside list-none ml-0">
-  <li>
+<li class="mb-8">
+<div class="mb-2 capitalize">
   <span class="py-0 px-1 text-sm uppercase bg-lightblue">Talk</span>
   <span class="font-medium">A Polymer Model for predicting three-dimensional organization change from Structural Variations</span>
+  </div>
+  <div class="text-sm">
   <span class="italic">CSHL Genome Organization & Nuclear Function, 2020</span>
+  </div>
   </li>
-  <li>
+<li class="mb-8">
+<div class="mb-2 capitalize">
+  <span class="py-0 px-1 text-sm uppercase bg-lightblue">Talk</span>
+  <span class="font-medium">Conformational heterogeneity in human interphase chromosome organization reconciles the FISH and Hi-C paradox</span>
+  </div>
+  <div class="text-sm">
+  <span class="italic">APS March Meeting, 2020.</span><span> (<strong>CANCELLED</strong>)</span> <a href="https://absuploads.aps.org/presentation.cfm?pid=16316">SLIDES</a>
+  </div>
+  </li>
+  <li class="mb-8">
+<div class="mb-2 capitalize">
   <span class="py-0 px-1 text-sm uppercase bg-lightblue">Poster</span>
   <span class="font-medium">Interphase Human Chromosome Exhibits Out Of Equilibrium Glassy Dynamics</span>
+  </div>
+  <div class="text-sm">
   <span class="italic">CSHL Single Biomolecules, 2018</span>
+  </div>
   </li>
-  <li>
+  <li class="mb-8">
+<div class="mb-2 capitalize">
   <span class="py-0 px-1 text-sm uppercase" style="background-color:#edf2f7;">Poster</span>
   <span class="font-medium">Glass-like dynamics in the folded state of human interphase chromosome</span>
+  </div>
+  <div class="text-sm">
   <span class="italic">APS March Meeting, 2017</span>
+  </div>
   </li>
 </ol>
 </section>
