@@ -114,9 +114,8 @@ module.exports = function(config) {
   config.addPlugin(pluginPWA);
 
   // add passthrough copy
-  config.addPassthroughCopy("src/assets");
-  config.addPassthroughCopy("src/site.webmanifest");
-  //config.addPassthroughCopy("src/_redirects");
+  config.addPassthroughCopy({"src/assets/favicon/*": "/"});
+  config.addPassthroughCopy("src/assets/images");
   config.addPassthroughCopy("src/admin/config.yml");
   config.addPassthroughCopy("src/_includes/js/pyodide.js");
   config.addPassthroughCopy("src/_includes/js/lazysizes.min.js");
