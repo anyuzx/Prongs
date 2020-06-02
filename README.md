@@ -17,4 +17,4 @@ This repository containts the source code for my personal site. The site is buil
 * Math equation support using Katex
 * RSS feed
 * Image Lazy Loading
-* Publication page generated through `.bib` file
+* Automatc publication page generated from a list of DOI
