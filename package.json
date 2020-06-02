@@ -10,12 +10,14 @@
   "scripts": {
     "clean": "rm -rf dist",
     "11ty:debug": "DEBUG=Eleventy* npx @11ty/eleventy --dryrun",
+    "serve": "npx @11ty/eleventy --serve",
     "build:11ty": "npx @11ty/eleventy",
     "css:preprocess": "postcss src/_includes/css/*.css --dir dist/_includes/css --verbose",
     "css:purge": "purgecss --config purgecss.config.js",
     "cms:bundle": "rollup --config",
     "build": "ELEVENTY_ENV=production run-s clean cms:bundle css:preprocess build:11ty css:purge",
-    "build:development": "ELEVENTY_ENV=development run-s clean css:preprocess build:11ty css:purge"
+    "build:development": "ELEVENTY_ENV=development run-s clean css:preprocess build:11ty css:purge",
+    "build:serve": "ELEVENTY_ENV=development run-s clean css:preprocess serve css:purge"
   },
   "keywords": [],
   "author": "Guang Shi",
@@ -54,6 +56,7 @@
     "@iktakahiro/markdown-it-katex": "^3.1.0",
     "@rollup/plugin-commonjs": "^11.1.0",
     "babel-plugin-prismjs": "^2.0.1",
+    "citation-js": "^0.5.0-alpha.5",
     "cloudinary": "^1.21.0",
     "cssnano": "^4.1.10",
     "dayjs": "^1.8.27",
@@ -81,6 +84,7 @@
     "netlify-plugin-a11y": "0.0.11",
     "rollup": "^2.10.2",
     "rollup-plugin-babel": "^4.4.0",
+    "shelljs": "^0.8.4",
     "tailwindcss": "^1.4.6",
     "tailwindcss-typography": "^3.1.0",
     "terser": "^4.7.0",
