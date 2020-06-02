@@ -1,45 +1,98 @@
 @tailwind base;
 
+:root {
+    --base00: #fafafa;
+    --base01: #f0f0f1;
+    --base02: #e5e5e6;
+    --base03: #a0a1a7;
+    --base04: #696c77;
+    --base05: #383a42;
+    --base06: #202227;
+    --base07: #090a0b;
+    --base08: #9A394F;
+    --base09: #8E615F;
+    --base0A: #5A6940;
+    --base0B: #306754;
+    --base0C: #005A8D;
+    --base0D: #395DB2;
+    --base0E: #5F549B;
+    --base0F: #A03C6D;
+
+    --base08L: #C6697F;
+    --base08D: #722436;
+    --base09L: #D19D9A;
+    --base09D: #512623;
+    --base0AL: #C8EA8C;
+    --base0AD: #1C2806;
+    --base0BL: #59A88C;
+    --base0BD: #495E57;
+    --base0CL: #6EB5DD;
+    --base0CD: #003351;
+    --base0DL: #2A5ED6;
+    --base0DD: #193370;
+    --base0EL: #8375CE;
+    --base0ED: #4434A3;
+    --base0FL: #A07087;
+    --base0FD: #77013A;
+
+    --content-link-color: #2a55b2;
+}
+
+
 /*
  * add base styles for typography
  */
-p {
-  @apply mb-6;
+
+html,body {
+  font-size: 16px;
+  line-height: 1.6;
 }
 
-p:last-child {
-  @apply mb-0;
+.flow {
+  --flow-space: 1em;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  --flow-space: 2em;
+}
+
+h1 {
+  @apply text-2xl font-black;
+}
+
+h2 {
+  @apply text-lg font-bold;
+}
+
+h3,h4,h5,h6 {
+  @apply text-base font-semibold;
 }
 
 ul, ol {
-  @apply ml-6 mb-6 list-outside;
+  @apply ml-6 list-outside;
 }
 
+ul {
+  @apply list-disc;
+}
+
+ol {
+  @apply list-decimal;
+}
 
 li {
-  @apply mb-3;
+  @apply my-2;
 }
+
 
 li:last-child {
   @apply mb-0;
 }
 
-li>p {
-  @apply mb-3;
-}
-
-li>ul {
-  @apply mt-3
-}
-
 hr {
-  @apply h-px bg-darkblue;
-  border: none;
-  margin-bottom: calc(1.5rem - 1px);
-}
-
-code {
-  @apply text-sm
+  @apply border-t border-darkblue;
+  --flow-space: 2rem;
+  margin-bottom: 2rem;
 }
 
 img {
@@ -47,7 +100,9 @@ img {
 }
 
 figure {
-  @apply mb-6 mx-auto;
+  @apply mx-auto;
+  --flow-space: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 figure > img {
@@ -59,31 +114,11 @@ figure > figcaption {
 }
 
 blockquote {
-  @apply ml-6 mr-6 mb-6 px-4 py-2 text-lg border-l-4 border-darkblue italic;
+  @apply my-6 px-4 text-base border-l-4 border-double border-darkblue italic;
 }
 
 blockquote :last-child {
   @apply mb-0;
-}
-
-pre {
-  @apply mb-6 text-sm;
-}
-
-h1 {
-  @apply mb-6 text-2xl font-black;
-}
-
-h2 {
-  @apply mb-6 text-xl font-semibold;
-}
-
-h3 {
-  @apply mb-6 text-lg font-medium;
-}
-
-h4, h5, h6 {
-  @apply mb-6 text-base font-bold;
 }
 
 table {
@@ -91,17 +126,8 @@ table {
 }
 
 td, th {
-  @apply text-center border-b border-lightgray px-4 pt-3 nums-tabular;
+  @apply text-center border-b border-lightgray pt-3 nums-tabular;
   padding-bottom: calc(0.75rem - 1px);
-}
-
-
-td, th:first-child {
-  @apply pl-0;
-}
-
-td, th:last-child {
-  @apply pr-0;
 }
 
 th {
@@ -120,33 +146,37 @@ details summary {
   @apply outline-none;
 }
 
-article a {
+a {
   @apply underline;
+  /*color: var(--content-link-color);*/
 }
 
-article a:hover {
+.footnote-ref a {
   @apply no-underline;
 }
 
-article :not(pre) > code {
-  @apply rounded-sm font-mono;
-  background-color: #fafafa;
-  padding: 0.05rem;
+a:hover {
+  @apply no-underline;
 }
 
-article h1:not(pre) > code, h2:not(pre) > code, h3:not(pre) > code, h4:not(pre) > code, h5:not(pre) > code, h6:not(pre) > code {
+pre, code {
+  @apply font-mono;
+}
+
+pre.hljs {
+  @apply my-6 px-12 py-8 overflow-auto;
+  box-sizing: border-box;
+  border-right: 3rem solid transparent;
+}
+
+code {
+  @apply text-sm;
+}
+
+
+h1:not(pre) > code, h2:not(pre) > code, h3:not(pre) > code, h4:not(pre) > code, h5:not(pre) > code, h6:not(pre) > code {
   font-size: inherit;
   font-weight: inherit;
-  padding: unset;
-  background: unset;
-}
-
-article ul {
-  @apply list-disc;
-}
-
-article ol {
-  @apply list-decimal;
 }
 
 /*
@@ -166,6 +196,14 @@ svg > * {
 
 
 @tailwind components;
+
+/* define .flow utility class */
+/* see this article https://24ways.org/2018/managing-flow-and-rhythm-with-css-custom-properties/ */
+
+
+.flow > * + * {
+  margin-top: var(--flow-space);
+}
 
 /* Custom class from here */
 /*
@@ -249,7 +287,7 @@ svg > * {
 */
 
 .f-icon {
-  @apply p-4 fill-current
+  @apply p-4 fill-current;
 }
 
 .f-icon:hover {
@@ -272,7 +310,7 @@ svg > * {
  * custom class note
  */
 .note {
-  @apply border-2 p-2 border-darkgray bg-lightyellow mb-6;
+  @apply border-2 px-3 py-2 border-darkgray bg-lightyellow my-6;
 }
 
 .note *:last-child {
@@ -308,28 +346,28 @@ svg > * {
 * use CSS grid
 *
 */
-.research-display {
+.research-card-display {
   @apply grid grid-cols-2 gap-3;
 }
 
-.research-item {
-  @apply flex flex-col justify-between; 
+.research-card {
+  @apply flex flex-col justify-between border-2 border-black; 
 }
 
-.research-item h2 {
-  @apply mb-0 font-medium text-base leading-tight flex-grow border-l border-r border-t border-black text-center p-2 bg-lightgray;
+.research-card > .research-title {
+  @apply text-base m-0 leading-tight flex-grow text-center p-2 bg-lightgray;
 }
 
-.research-item figure {
-  @apply m-0 relative border border-black;
+.research-card > .research-figure {
+  @apply m-0 relative;
   padding-top: 100%;
 }
 
-.research-item figure > img {
+.research-card > .research-figure > img {
   @apply absolute h-full inset-0 object-contain;
 }
 
-.research-item.group:hover {
+.research-card.group:hover {
   box-shadow:0 3px 3px -2px rgba(0,0,0,.2), 0 3px 4px 0 rgba(0,0,0,.14), 0 1px 8px 0 rgba(0,0,0,.12);
 }
 
@@ -359,7 +397,7 @@ svg > * {
 style the table of contents
  */
 .table-of-contents {
-  @apply invisible h-0 sticky text-sm text-gray-500 font-medium;
+  @apply invisible h-0 sticky text-sm font-medium;
 }
 
 .table-of-contents > ol {
@@ -382,8 +420,11 @@ style the table of contents
   @apply no-underline;
 }
 
-.table-of-contents li.active-toc > a {
-  @apply text-black;
+.table-of-contents li.active-toc:before {
+  content: "\002192";
+  position: absolute;
+  transform: translateX(-100%);
+  padding-right: 0.5rem;
 }
 
 @tailwind utilities;
@@ -501,51 +542,55 @@ style the table of contents
 }
 
 /*
- * style .single-post class
+ * style .number-heading class
  */
 
-.single-post {
+.number-heading {
   counter-reset: h2;
 }
 
-.single-post h2 {
+.number-heading h2 {
   counter-reset: h3;
 }
 
-.single-post h3 {
+.number-heading h3 {
   counter-reset: h4;
 }
 
-.single-post h4 {
+.number-heading h4 {
   counter-reset: h5;
 }
 
-.single-post h5 {
+.number-heading h5 {
   counter-reset: h6;
 }
 
-.single-post h2:before {counter-increment: h2; content: counter(h2) "."; position: absolute; transform: translateX(-100%); padding-right:1em;}
-.single-post h3:before {counter-increment: h3; content: counter(h2) "." counter(h3) "."; position: absolute; transform: translateX(-100%); padding-right:1em;}
-.single-post h4:before {counter-increment: h4; content: counter(h2) "." counter(h3) "." counter(h4) "."; position: absolute; transform: translateX(-100%); padding-right:1em;}
-.single-post h5:before {counter-increment: h5; content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "."; position: absolute; transform: translateX(-100%); padding-right:1em;}
-.single-post h6:before {counter-increment: h6; content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "." counter(h6) "."; position: absolute; transform: translateX(-100%); padding-right:1em;}
+.number-heading h2:before {counter-increment: h2; content: counter(h2) "."; position: absolute; transform: translateX(-100%); padding-right:1em; color: var(--base03);}
+.number-heading h3:before {counter-increment: h3; content: counter(h2) "." counter(h3) "."; position: absolute; transform: translateX(-100%); padding-right:1em; color: var(--base03);}
+.number-heading h4:before {counter-increment: h4; content: counter(h2) "." counter(h3) "." counter(h4) "."; position: absolute; transform: translateX(-100%); padding-right:1em; color: var(--base03);}
+.number-heading h5:before {counter-increment: h5; content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "."; position: absolute; transform: translateX(-100%); padding-right:1em; color: var(--base03);}
+.number-heading h6:before {counter-increment: h6; content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "." counter(h6) "."; position: absolute; transform: translateX(-100%); padding-right:1em; color: var(--base03);}
 
-.single-post h2.nocount:before, h3.nocount:before, h4.nocount:before, h5.nocount:before, h6.nocount:before { content: ""; counter-increment: none }
+.number-heading h2.nocount:before, h3.nocount:before, h4.nocount:before, h5.nocount:before, h6.nocount:before { content: ""; counter-increment: none }
 
-.linkButton {
-  @apply mb-6 p-4 w-full font-bold bg-lightgray;
+.l-button {
+  @apply block my-6 p-4 w-full font-bold bg-lightgray text-center fill-current;
 }
 
-.linkButton a {
-  @apply no-underline;
+.l-button > *:last-child {
+  @apply mb-0;
 }
 
-.linkButton:hover {
+.l-button:first-child {
+  @apply mt-0;
+}
+
+.l-button:hover {
   @apply bg-darkblue text-white;
 }
 
-.linkButton:active {
-  @apply shadow-inner;
+a.l-button {
+  @apply no-underline text-black;
 }
 
 @tailwind screens;
@@ -560,28 +605,18 @@ style the table of contents
     width: 768px;
     position: relative;
   }
-
-  article.single-post pre {
-    left: 50%;
-    right: 50%;
-    margin-left: -384px;
-    margin-right: -384px;
-    max-width: 768px;
-    width: 768px;
-    position: relative;
-  }
 }
 
 @screen sm {
   /*
   * on large screen display four research projects per row
   */
-  .research-display {
+  .research-card-display {
     @apply grid grid-cols-4 gap-3;
   }
 
   /* adjust heading so that the heading is not hinderred when anchored */
-
+  /*
   .single-post h2 {
     @apply -mt-16 border-t-16 border-solid border-transparent;
     -webkit-background-clip:padding-box;
@@ -616,6 +651,7 @@ style the table of contents
     -moz-background-clip:padding;
     background-clip:padding-box;
   }
+  */
 }
 
 @screen sm {

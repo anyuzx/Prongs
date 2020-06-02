@@ -3,31 +3,16 @@ Description: syntax color theme for highlight.js
 Date: 2020-05-22
 */
 
-:root {
-    --base00: #fafafa;
-    --base01: #f0f0f1;
-    --base02: #e5e5e6;
-    --base03: #a0a1a7;
-    --base04: #696c77;
-    --base05: #383a42;
-    --base06: #202227;
-    --base07: #090a0b;
-    --base08: #A73836;
-    --base09: #8a3b00;
-    --base0A: #474b42;
-    --base0B: #2F5D50;
-    --base0C: #426579;
-    --base0D: #165e83;
-    --base0E: #7a4171;
-    --base0F: #6f4b3e;
-}
-
-.hljs {
-    display: block;
-    overflow-x: auto;
-    padding: 0.5em;
+pre.hljs {
     color: var(--base07);
     background: var(--base00);
+}
+
+:not(pre) > code {
+    border-width: 1px;
+    background-color: var(--base00);
+    border-color: var(--base01);
+    padding: 0.1rem;
 }
 
 .hljs-comment,
