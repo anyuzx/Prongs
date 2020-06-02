@@ -38,7 +38,7 @@ description: "Posts tags"
   {% for post in tagPosts | reverse -%}
     <div class="post-item" id="post-{{ loop.index }}">
       <div class="post-info">
-        <a href="{{ post.url }}">
+        <a href="{{ post.url }}" class="no-underline">
           {{ post.data.title }}
         </a>
         <div>
