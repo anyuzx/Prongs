@@ -15,24 +15,17 @@
         </span>
       </a>
     </div>
-    <div>
+    <ul class="flex list-none space-x-5">
       {% for nav in navigation.items -%}
         {% if page.url.startsWith(nav.url) %}
-          <a class="active-nav mr-3 last:mr-0" href="{{ nav.url }}">{{ nav.title }}</a>
+          <li class="m-0">
+            <a class="active-nav no-underline text-black py-1" href="{{ nav.url }}">{{ nav.title }}</a>
+          </li>
         {% else %}
-          <a class="unactive-nav mr-3 last:mr-0" href="{{ nav.url }}">{{ nav.title }}</a>
+          <li class="m-0">
+            <a class="unactive-nav no-underline text-black py-1" href="{{ nav.url }}">{{ nav.title }}</a>
+          </li>
         {% endif %}
-        {#
-        {% if loop.last and page.url.startsWith(nav.url) %}
-          <a class="active-nav" href="{{ nav.url }}">{{ nav.title }}</a>
-        {% elif loop.last and not page.url.startsWith(nav.url) %}
-          <a class="unactive-nav" href="{{ nav.url }}">{{ nav.title }}</a>
-        {% elif not loop.last and page.url.startsWith(nav.url) %}
-          <a class="mr-3 active-nav" href="{{ nav.url }}">{{ nav.title }}</a>
-        {% elif not loop.last and not page.url.startsWith(nav.url) %}
-          <a class="mr-3 unactive-nav" href="{{ nav.url }}">{{ nav.title }}</a>
-        {% endif %}
-        #}
       {%- endfor %}
     </div>
   </nav>
