@@ -52,7 +52,7 @@ permalink: /photos/{{ photo.public_id.split("/")[1] | slug }}/
         </picture>
         <div class="flex text-sm font-mono mb-4">
             {% if pagination.previousPageHref %}
-              <a class="inline-flex items-center mr-auto" href="{{ pagination.previousPageHref }}">
+              <a class="inline-flex items-center mr-auto no-underline" href="{{ pagination.previousPageHref }}">
                 <span>
                   {{ triangleLeft | svgo | safe }}
                 </span>
@@ -62,7 +62,7 @@ permalink: /photos/{{ photo.public_id.split("/")[1] | slug }}/
               </a>
             {% endif %}
             {% if pagination.nextPageHref %}
-            <a class="inline-flex items-center ml-auto" href="{{ pagination.nextPageHref }}">
+            <a class="inline-flex items-center ml-auto no-underline" href="{{ pagination.nextPageHref }}">
               <span>
                 next
               </span>
@@ -75,10 +75,10 @@ permalink: /photos/{{ photo.public_id.split("/")[1] | slug }}/
         <div class="sm:flex items-start justify-between">
             <div class="text-left sm:w-3/4">
                 {% if photo.context.custom.caption %}
-                <div class="capitalize mb-2 font-black">{{ photo.context.custom.caption }}</div>
+                <h1 class="capitalize mb-2 text-base">{{ photo.context.custom.caption }}</h1>
                 {% endif %}
                 {% if photo.context.custom.alt %}
-                <div class="mb-2">{{ photo.context.custom.alt | renderUsingMarkdown | safe }}</div>
+                  <div class="mb-4">{{ photo.context.custom.alt | renderUsingMarkdown | safe }}</div>
                 {% endif %}
                 <div class="text-gray-700">&copy; {{ site.AUTHOR.NAME }} All Copyrights Reserved</div>
             </div>
