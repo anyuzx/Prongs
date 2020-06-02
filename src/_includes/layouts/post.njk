@@ -30,7 +30,11 @@
 {% endblock %}
 
 {% block content %}
-<article class="single-post">
+{% if numberHeading %}
+  <article class="single-post number-heading">
+{% else %}
+  <article class="single-post">
+{% endif %}
   {% if image %}
   <header>
     <figure>
@@ -39,7 +43,7 @@
   </header>
   {% endif %}
   <header>
-    <h1 class="text-4xl text-left leading-snug">{{ title }}</h1>
+    <h1 class="mb-6">{{ title }}</h1>
     <div class="flex justify-between text-sm">
       <div class="self-center">
       {% dayjs page.date, 'MMM DD, YYYY' %}
@@ -55,8 +59,8 @@
       </div>
     </div>
   </header>
-  <hr class="my-4 bg-black" style="height:3px">
-  <main class="mx-auto" style="max-width:40em;">
+  <hr class="my-4 bg-black border-0" style="height:3px">
+  <main class="mx-auto flow" style="max-width:40em;">
     {{ content | safe }}
   </main>
 </article>

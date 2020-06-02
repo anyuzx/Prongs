@@ -17,14 +17,14 @@
 {% block content %}
 {{ content | safe }}
 {# research section #}
-<section class="mb-8">
-  <h1 class="section-header text-base">Research Projects</h1>
-  <div class="research-display">
+<section class="my-8">
+  <h1 class="text-lg mb-4 font-light">Research Projects</h1>
+  <div class="research-card-display">
     {% for project in collections.research | reverse -%}
       {% if project.fileSlug !== "summary" -%}
-        <a href="/research#{{ project.data.title | slug }}" class="research-item group">
+        <a href="/research#{{ project.data.title | slug }}" class="research-card divide-y group no-underline text-black border">
           <h2 class="research-title">{{ project.data.title }}</h2>
-          <figure>
+          <figure class="research-figure">
             <img src="{{ project.data.image.pathThumbnail }}" alt="{{ project.data.image.description }}">
           </figure>
         </a>
@@ -33,8 +33,8 @@
   </div>
 </section>
 {# posts section #}
-<section class="mb-8">
-  <h1 class="section-header text-base">Latest Posts</h1>
+<section class="my-8">
+  <h1 class="text-lg font-light mb-4">Latest Posts</h1>
   {{ postList.items(collections.postsLatest) }}
 </section>
 {% endblock %}
