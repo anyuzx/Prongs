@@ -3,7 +3,7 @@
   {% for post in collection -%}
     <div class="post-item" id="post-{{ loop.index }}">
       <div class="post-info">
-        <a href="{{ post.url }}">
+        <a href="{{ post.url }}" class="no-underline text-black">
           {{ post.data.title }}
         </a>
         <div>
