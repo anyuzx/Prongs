@@ -40,7 +40,7 @@ The second reason is the one which eventually leads to me realizing that using a
 
 With the limited knowledge of Javascript I learned from trying Nuxt.js and the help from a few starter source codes [^1][^2][^3], it didn't take much time for me to set up this site using 11ty and get it running [^4].
 
-As for the design of this site, I end up choosing the [tailwindcss](https://tailwindcss.com/) since it is a low-level CSS framework, thus allows me to design the site to my liking easily.
+As for the design of this site, I am heavily influenced by Tom MacWright's [personal site](https://macwright.org/). I hope to talk about this more in details in the future. For this site's CSS, I end up choosing the [tailwindcss](https://tailwindcss.com/) since it is a low-level CSS framework, which allows me to acheive the look I want without much effort.
 
 I guess the lesson I learned is, **do not make things overcomplicated**.
 
