@@ -10,6 +10,8 @@ module.exports = async function purgeStyles (content, outputPath) {
                 extension: 'html'
             }],
             css: ['dist/_includes/css/main.css', 'dist/_includes/css/highlight.css', 'dist/_includes/css/typeset.css'],
+            keyframes: true,
+            variables: true,
             // This is the function used to extract class names from your templates
             defaultExtractor: content => {
                 // Capture as liberally as possible, including things like `h-(screen-1.5)`
