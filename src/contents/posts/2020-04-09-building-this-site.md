@@ -36,6 +36,8 @@ The second reason is the one which eventually leads to me realizing that using a
 
 * Third, similar to Jekyll, it put all your contents into `collections` which can then be used and referred anywhere in the templates.
 
+* Fourth. _Eleventy has a powerful functionality called [JavaScript Data Files](https://www.11ty.dev/docs/data-js/) which allows one to be able to get any data into the build process (as long as you can write it in JavaScript). For instance, [retrieving the bibliographic information from a DOI and use them in the template/layouts](/posts/automatic-publication-page/)_
+
 With the limited knowledge of Javascript I learned from trying Nuxt.js and the help from a few starter source codes [^1][^2][^3], it didn't take much time for me to set up this site using 11ty and get it running [^4].
 
 As for the design of this site, I end up choosing the [tailwindcss](https://tailwindcss.com/) since it is a low-level CSS framework, thus allows me to design the site to my liking easily.
