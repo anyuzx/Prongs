@@ -1,0 +1,10 @@
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+  <article>
+    {% include 'partials/_aboutCard.njk' %}
+  <section class="mt-8 flow b-text">
+  {{ content | safe }}
+  </section>
+  </article>
+{% endblock %}

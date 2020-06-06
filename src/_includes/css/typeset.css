@@ -1,15 +1,15 @@
-/* Small caps */
-.small-caps {font-variant: all-small-caps;}
+/*
+ Small Capitals
+ https://en.wikipedia.org/wiki/Small_caps 
+*/
 
-/* Double quote (") marks */
-.pull-double{margin-left:-.46em}
-.push-double{margin-right:.46em}
+.small-caps {font-variant: small-caps;}
 
-/* Single quote (') marks */
-.pull-single{margin-left:-.27em}
-.push-single{margin-right:.27em}
+/*
+ Optical margin alignment for particular letters 
+ https://en.wikipedia.org/wiki/Optical_margin_alignment
+*/
 
-/* Optical margin alignment for particular letters */
 .pull-T, .pull-V, .pull-W, .pull-Y {margin-left: -0.07em}
 .push-T, .push-V, .push-W, .push-Y {margin-right: 0.07em}
 
@@ -19,3 +19,18 @@
 .pull-A {margin-left: -0.03em}
 .push-A {margin-right: 0.03em}
 
+/* 
+ Quotation mark 
+ https://en.wikipedia.org/wiki/Quotation_mark) 
+*/
+
+/* Single quotation marks (') */
+.pull-single{margin-left:-.27em}
+.push-single{margin-right:.27em}
+
+.pull-double, .push-double,
+.pull-single, .push-single {display: inline-block}
+
+/* Double quotation marks (") */
+.pull-double{margin-left:-.46em}
+.push-double{margin-right:.46em}

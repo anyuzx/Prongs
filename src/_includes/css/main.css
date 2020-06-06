@@ -34,8 +34,6 @@
     --base0ED: #4434A3;
     --base0FL: #A07087;
     --base0FD: #77013A;
-
-    --content-link-color: #2a55b2;
 }
 
 
@@ -147,15 +145,6 @@ details summary {
 }
 
 a {
-  @apply underline;
-  /*color: var(--content-link-color);*/
-}
-
-.footnote-ref a {
-  @apply no-underline;
-}
-
-a:hover {
   @apply no-underline;
 }
 
@@ -591,6 +580,57 @@ style the table of contents
 
 a.l-button {
   @apply no-underline text-black;
+}
+
+.b-text a:after {
+  color: #C32136;
+  content: "\0000B0";
+  font-size: 0.9em;
+  top: -0.15em;
+  position: relative;
+  margin-left: 0.1em;
+  font-feature-settings: "caps";
+  font-variant-numeric: normal;
+}
+
+.b-text a:hover {
+  @apply bg-gao rounded-sm;
+}
+
+.b-text a.clear-after:after {
+  content: none;
+}
+
+.footnote-ref a:after {
+  content: none;
+}
+
+.footnotes a:after {
+  content: none;
+}
+
+.table-of-contents a:after {
+  content: none;
+}
+
+.tab-pane {
+  @apply hidden;
+}
+
+.tab-pane.tab-active {
+  @apply block;
+}
+
+.nav-tab li {
+  @apply cursor-pointer;
+}
+
+.nav-tab li > a {
+  @apply pointer-events-none;
+}
+
+.nav-tab .tab-active {
+  @apply border-b-2 border-black;
 }
 
 @tailwind screens;

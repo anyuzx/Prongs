@@ -1,12 +1,8 @@
 ---
-layout: layouts/default.njk
+layout: layouts/about.njk
 permalink: /about/index.html
 title: About
-image:
-    path: /assets/images/my-photo.jpg
-    description: guang-shi-photo
-    caption: Central Park, NYC
-description: "A brief about myself page"
+description: "About Page"
 ---
 
 Hi, I'm Guang Shi (时光). I'm currently a postdoctoral fellow in [Thirumalai's group](https://sites.cns.utexas.edu/thirumalai/home) at the University of Texas at Austin. I work on developing physical models (both theoretical and computational) for living system. Currently, my research focuses on the physical modelling of chromatin folding and molecular motors.

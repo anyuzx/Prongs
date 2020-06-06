@@ -12,8 +12,10 @@ tags:
   - javascript
   - random walk
 script:
-  link: https://cdn.plot.ly/plotly-latest.min.js
-  inline: js/random-walk-pyodide.js
+  - src: https://cdn.plot.ly/plotly-latest.min.js
+    link: true
+  - src: js/random-walk-pyodide.js
+    inline: true
 ---
 
 ::: anchorButton #demonstration

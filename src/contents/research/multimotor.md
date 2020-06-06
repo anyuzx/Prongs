@@ -6,6 +6,7 @@ image:
   path: /assets/images/research/project-motor-illustration.min.png
   pathThumbnail: /assets/images/research/project-motor-illustration.small.min.png
   description: multiple molecular motors share a cargo
+order: 5
 ---
 
 Motors in vivo often work in tandem - multiple motors share cargo of the same kind or even different kind. It is unclear multiple motors work as a team and conﬂicting results of the velocity of the multi-motor system have been reported.

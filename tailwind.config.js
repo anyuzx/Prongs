@@ -68,7 +68,8 @@ module.exports = {
         'darkgray': '#4e524c',
         'lightgray': '#f0f0f4',
         'lightyellow': '#fffbf0',
-        'lightblue': '#edf2f7'
+        'lightblue': '#edf2f7',
+        'gao': '#F2ECDE',
       },
       fontFamily: {
       'serif': ['"Iowan Old Style"', '"Apple Garamond"', 'Baskerville', '"Times New Roman"', '"Droid Serif"', 'Times', '"Source Serif Pro"', 'serif', '"Apple Color Emoji"', '"Segoe UI Emoji"', '"Segoe UI Symbol"'],

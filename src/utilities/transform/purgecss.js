@@ -2,11 +2,11 @@ const { PurgeCSS } = require('purgecss')
 
 const pattern = /<style>.*?<\/style>/s;
 
-module.exports = async function purgeStyles (content, outputPath) {
+module.exports = async function purgeStyles (pagecontent, outputPath) {
     if(outputPath && outputPath.endsWith(".html")) {
         const purgeCSSResult = await new PurgeCSS().purge({
             content: [{
-                raw: content,
+                raw: pagecontent,
                 extension: 'html'
             }],
             css: ['dist/_includes/css/main.css', 'dist/_includes/css/highlight.css', 'dist/_includes/css/typeset.css'],
@@ -28,7 +28,7 @@ module.exports = async function purgeStyles (content, outputPath) {
                }, '')
             })
         
-        return content.replace(pattern, `<style>${purgeCSSResult}</style>`)
+        return pagecontent.replace(pattern, `<style>${purgeCSSResult}</style>`)
     }
-    return content
+    return pagecontent
 }

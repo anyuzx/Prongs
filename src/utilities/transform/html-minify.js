@@ -7,7 +7,9 @@ module.exports = function(content, outputPath) {
       removeComments: true,
       collapseWhitespace: true,
       minifyJS: true,
-      minifyCSS: true
+      minifyCSS: true,
+      sortAttributes: true,
+      sortClassName: true,
     });
     return minified;
   }

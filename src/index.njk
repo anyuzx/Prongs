@@ -1,0 +1,43 @@
+---
+layout: layouts/default.njk
+permalink: index.html
+script:
+    - src: js/openPostExcerpt.js
+      inline: true
+---
+
+{% import "macros/_postList.njk" as postList %}
+{% import "macros/_researchCard.njk" as researchCard %}
+
+{% set pageType = 'home' %}
+
+{# news section #}
+{% for new in getNews %}
+  {% if new.link %}
+   {% if loop.first %}
+    <a class="flex items-center mb-6 p-4 w-full bg-lightgray fill-current hover:bg-darkblue hover:text-white" href="{{ new.link }}"><span class="mr-4" style="color:#c53d43">NEW</span><span class="flex-1 text-left">{{ new.text | inlineRenderUsingMarkdown | safe }}</span><span>↗</span></a>
+   {% else %}
+    <a class="flex items-center my-6 p-4 w-full bg-lightgray fill-current hover:bg-darkblue hover:text-white" href="{{ new.link }}"><span class="mr-4" style="color:#c53d43">NEW</span><span class="flex-1 text-left">{{ new.text | inlineRenderUsingMarkdown | safe }}</span><span>↗</span></a>
+   {% endif %}
+  {% else %}
+   <div class="flex items-center my-6 p-4 w-full bg-lightgray fill-current"><span style="color:#c53d43">NEW</span><span>{{ new.text | inlineRenderUsingMarkdown | safe }}</span></div>
+  {% endif %}
+{% endfor %}
+
+{# research section #}
+<section class="my-8">
+  <h1 class="text-lg mb-4 font-light">Research Projects</h1>
+  <div class="research-card-display">
+    {% for project in collections.research | reverse -%}
+      {% if project.fileSlug !== "summary" -%}
+        {{ researchCard.display(project) }}
+      {%- endif %}
+    {%- endfor %}
+  </div>
+</section>
+
+{# posts section #}
+<section class="my-8">
+  <h1 class="text-lg font-light mb-4">Latest Posts</h1>
+  {{ postList.items(collections.postsLatest) }}
+</section>

@@ -1,6 +1,15 @@
 ---
-layout: layouts/posts.njk
+layout: layouts/default.njk
 permalink: /posts/index.html
 title: Posts
-description: "My posts list"
+description: My posts list
+script:
+  - src: js/openPostExcerpt.js
+    inline: true
 ---
+
+{% import "macros/_postList.njk" as postList %}
+
+<section>
+  {{ postList.items(collections.posts) }}
+</section>

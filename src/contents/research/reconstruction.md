@@ -6,6 +6,7 @@ image:
   path: /assets/images/research/project-reconstruction-illustration.min.png
   pathThumbnail: /assets/images/research/project-reconstruction-illustration.small.min.png
   description: Reconstructed 23 Human Chromosomes
+order: 2
 ---
 
 How to go from measured contact map to three-dimensional structure of a chromosome is an unsolved problem. Solving such an inverse problem is hard because there is no direct mapping between the contact map and 3D structure due to the heterogeneity of cell populations.

@@ -5,25 +5,31 @@
 //  site.TITLE, site.DESCRIPTION, etc
 
 module.exports = {
-  'TITLE': 'guangshi.io', // site title, this is used across the site. For instance the name appeared in the browser tab will be [page_name] | [site_title]
-  'DESCRIPTION': "Guang Shi's personal site. Learn about my research projects, read my blog posts and see my photos.", // site description, used in meta head for SEO purpose
-  'URL': 'https://www.guangshi.io', // absolute url for the site
-  'BUILD_TIME' : new Date(), // build time for the site
+  TITLE: 'guangshi.io', // site title, this is used across the site. For instance the name appeared in the browser tab will be [page_name] | [site_title]
+  DESCRIPTION: "Guang Shi's personal site. Research, blog and photography", // site description, used in meta head for SEO purpose
+  URL: 'https://www.guangshi.io', // absolute url for the site
+  BUILD_TIME: new Date(), // build time for the site
   //'SOURCE_CODE': 'https://github.com/anyuzx/Prongs', // the github repo of the source code
-  'ENV': process.env.ELEVENTY_ENV, // environment variable can be accessed in templates https://www.11ty.io/docs/data-js/#example%3A-exposing-environment-variables
-  'FEED': {
-    'PATH': 'feed.xml', // name of the RSS feed file. The file should be in the root of the site
-    'TITLE': 'Blog posts feed, by Guang Shi', // title for the RSS feed
+  ENV: process.env.ELEVENTY_ENV, // environment variable can be accessed in templates https://www.11ty.io/docs/data-js/#example%3A-exposing-environment-variables
+  FEED: {
+    PATH: 'feed.xml', // name of the RSS feed file. The file should be in the root of the site
+    TITLE: 'Blog posts feed, by Guang Shi', // title for the RSS feed
   },
   //'GOOGLE_ANALYTICS': 'UA-139423558-3',
-  'AUTHOR': {
-    'NAME': 'Guang Shi', // author name
-    'GITHUB': 'anyuzx', // author's github username
-    'EMAIL': 'guang.shi.gs@gmail.com', // author's email address
-    'INSTAGRAM': 'guang_shi_stefan', // author's instagram
-    'TWITTER': 'anyuzx', // author's twitter handler
+  AUTHOR: {
+    NAME: 'Guang Shi', // author name
+    GITHUB: 'anyuzx', // author's github username
+    EMAIL: 'guang.shi.gs@gmail.com', // author's email address
+    INSTAGRAM: 'guang_shi_stefan', // author's instagram
+    TWITTER: 'anyuzx', // author's twitter handler
+    GOOGLE_SCHOLAR: 'https://scholar.google.com/citations?user=JMf5dv8AAAAJ&hl=en', // google scholar profile
+    SHORT_BIO: 'I am a biophysicist trained in using physics-based computational and theoretical method to study the structure of dynamics of interphase chromosomes',
+    TITLE: 'Postdoctoral Researcher',
+    SECOND_TITLE: 'Thirumalai Lab @ UT Austin',
+    PHOTO: '/assets/images/my-photo.jpg',
     // 'ADDRESS': '' // author's address
   },
-  'CLOUDINARY': 'guangshi',
-  'ENABLE_NETLIFY_CMS': false
+  CLOUDINARY: 'guangshi',
+  ENABLE_NETLIFY_CMS: false,
+  INSTANT_PAGE: true,
 }

@@ -1,24 +1,22 @@
-{
-  "items": [
-    {
-      "title": "About",
-      "url": "/about/"
-    },
-    {
-      "title": "Publication",
-      "url": "/publication/"
-    },
-    {
-      "title": "Research",
-      "url": "/research/"
-    },
-    {
-      "title": "Posts",
-      "url": "/posts/"
-    },
-    {
-      "title": "Photos",
-      "url": "/photos/"
-    }
-  ]
-}
+[
+  {
+    "title": "About",
+    "url": "/about/"
+  },
+  {
+    "title": "Publication",
+    "url": "/publication/"
+  },
+  {
+    "title": "Research",
+    "url": "/research/"
+  },
+  {
+    "title": "Posts",
+    "url": "/posts/"
+  },
+  {
+    "title": "Photos",
+    "url": "/photos/"
+  }
+]

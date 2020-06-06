@@ -23,7 +23,7 @@
 {# include javscript for scroll active table of contents #}
 {% if TOC %}
 <script>
-  {{ scrollActiveTOC | safe }}
+  {{ scrollActiveTOC | jsmin | safe }}
 </script>
 {% endif %}
 
@@ -60,24 +60,8 @@
     </div>
   </header>
   <hr class="my-4 bg-black border-0" style="height:3px">
-  <main class="mx-auto flow" style="max-width:40em;">
+  <main class="mx-auto flow b-text" style="max-width:40em;">
     {{ content | safe }}
   </main>
 </article>
-{% endblock %}
-
-{% block bodyend %}
-{% if script %}
-  {% if script.link %}
-    <script src={{ script.link }}></script>
-  {% endif %}
-  {% if script.inline %}
-    {% set scriptRAW %}
-      {% include script.inline %}
-    {% endset %}
-    <script>
-      {{ scriptRAW | jsmin | safe }}
-    </script>
-  {% endif %}
-{% endif %}
 {% endblock %}

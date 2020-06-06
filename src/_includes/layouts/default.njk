@@ -1,13 +1,5 @@
 {% extends "layouts/base.njk" %}
 
 {% block content %}
-<article class="flow">
-{% if image %}
-  <figure class="mx-auto" style="max-width:600px">
-    <img src="{{ image.path }}" alt="{{ image.description }}">
-    <figcaption class="text-center">{{ image.caption }}</figcaption>
-  </figure>
-{% endif %}
-{{ content | safe }}
-</article>
+  {{ content | safe }}
 {% endblock %}

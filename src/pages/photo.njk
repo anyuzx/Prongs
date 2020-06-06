@@ -4,7 +4,7 @@ pagination:
     size: 1
     alias: photo
     addAllPagesToCollections: true
-layout: layouts/photo.njk
+layout: layouts/default.njk
 permalink: /photos/{{ photo.public_id.split("/")[1] | slug }}/
 ---
 
@@ -20,11 +20,7 @@ permalink: /photos/{{ photo.public_id.split("/")[1] | slug }}/
 {% set photoTags = photo.tags %}
 
 {% for photo in pagination.items -%}
-{% if loop.last %}
-<section class="mb-8">
-    {% else %}
-    <section class="mb-8">
-        {% endif %}
+<article class="mb-8">
         <picture>
             {% if photo.context.custom.panorama === 'True' %}
             <source srcset="{{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_800/{{ photo.public_id }}.webp 800w,
@@ -72,7 +68,7 @@ permalink: /photos/{{ photo.public_id.split("/")[1] | slug }}/
             </a>
             {% endif %}
         </div>
-        <div class="sm:flex items-start justify-between">
+        <div class="sm:flex items-start justify-between b-text">
             <div class="text-left sm:w-3/4">
                 {% if photo.context.custom.caption %}
                 <h1 class="capitalize mb-2 text-base">{{ photo.context.custom.caption }}</h1>

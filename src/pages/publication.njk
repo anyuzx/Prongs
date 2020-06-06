@@ -2,12 +2,21 @@
 layout: layouts/default.njk
 permalink: /publication/index.html
 title: Publication
-description: "A list of my academic publication"
+description: A list of my academic publication
+script:
+  - src: js/tabs.js
+    inline: true
 ---
 
-<section class="mb-20">
-<h1 class="text-lg font-light mb-4">Publication</h1>
-{#{% for year, publications in publications.references | groupByEx("issued.0.year") -%}#}
+<nav class="nav-tab">
+  <ul class="flex justify-center sm:justify-start list-none m-0 mb-8 space-x-8">
+    <li class="font-light m-0 text-lg tab-active"><a href="#publications">Publications</a></li>
+    <li class="font-light m-0 text-lg"><a href="#talks">Talks & Posters</a></li>
+  </ul>
+</nav>
+
+
+<section class="tab-pane tab-active" id="publications">
 {% for year, publications in getPublications | groupByEx("issued.date-parts.0.0") %}
 <h2 class="text-base mb-0 mt-4">{{ year }}</h2>
 <hr>
@@ -47,8 +56,8 @@ description: "A list of my academic publication"
 {%- endfor %}
 </section>
 
-<section>
-<h1 class="text-lg font-light mb-4">Talks and Posters</h1>
+<section class="tab-pane" id="talks">
+{#<h1 class="text-lg font-light mb-4">Talks and Posters</h1>#}
 <ol class="list-outside list-none ml-0">
 <li class="mb-8">
 <div class="mb-2 capitalize">

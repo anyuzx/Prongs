@@ -6,9 +6,14 @@ pagination:
   addAllPagesToCollections: true
 permalink: /tags/{{ tag | slug }}/
 title: Tags
-layout: layouts/tags.njk
+layout: layouts/default.njk
 description: "Posts tags"
+script:
+  - src: js/openPostExcerpt.js
+    inline: true
 ---
+
+{% set pageType = "tags" %}
 
 {% set tagPosts = collections.postByTag[ tag ][ 'posts' ] %}
 

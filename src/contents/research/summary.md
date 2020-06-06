@@ -2,6 +2,7 @@
 title: Research Overview
 permalink: false
 date: 2019-08-15
+order: 1
 ---
 
 Chromosomes, which are extremely long complexes formed by DNA and proteins, are essential components of heredity. Cellular functions, such as transcription, are determined by the three-dimensional organization of chromosomes and the associated dynamics. Recent experimental advances have given impetus to create models that could quantitatively describe the physics of chromosome architecture. With chromosome’s polymeric nature being a potential determinant of its biophysical property, theoretical and computational models for chromosomes have provided many insights into genome organization. Most of my research work focuses on developing new polymer-physics based theoretical and computational models to investigate the genome organization and dynamics.

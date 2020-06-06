@@ -6,6 +6,7 @@ image:
   path: /assets/images/research/project-heterogeneity-illustration.min.png
   pathThumbnail: /assets/images/research/project-heterogeneity-illustration.small.min.png
   description: Genomic Folding Landscape
+order: 3
 ---
 
 Hi-C experiments infer the contact probabilities between loci separated by varying genome lengths. Contact probability should decrease as the spatial distance between two loci increases. However, studies comparing Hi-C and FISH data show that in some cases the distance between one pair of loci, with larger Hi-C readout, is paradoxically larger compared to another pair with a smaller value of the contact probability.

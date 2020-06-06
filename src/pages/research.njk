@@ -1,0 +1,23 @@
+---
+layout: layouts/default.njk
+permalink: /research/index.html
+title: Research
+description: Guang Shi's research projects
+---
+
+{%- for project in collections.research | sort_array(['data', 'order']) -%}
+  {% if project.fileSlug === "summary" %}
+    <article class="mb-4 p-4 bg-lightgray flow b-text">
+      <h1 class="mt-0">{{ project.data.title }}</h1>
+      {{ project.templateContent | safe }}
+    </article>
+  {% else %}
+    <article id="{{ project.data.title | slug }}" class="clearfix my-4 border border-black p-4 flow b-text">
+      <h2>{{ project.data.title }}</h2>
+      {% if project.data.image %}
+        <img src="{{ project.data.image.path }}" alt="{{ project.data.image.description }}" width="299" class="float-none sm:float-right sm:mb-0 sm:mx-1">
+      {% endif %}
+      {{ project.templateContent | safe }}
+    </article>
+  {% endif %}
+{% endfor %}

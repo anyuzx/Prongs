@@ -1,7 +1,7 @@
 // https://github.com/developit/htm
 // import htm from 'https://unpkg.com/htm?module'
 import htm from 'htm'
-const mdRender = require('../_includes/js/mdRender.js')
+const mdRender = require('../utilities/lib/mdRender.js')
 //import mdRender from './util.js';
 // 'h' here is short hand for React.createElement
 const html = htm.bind(h)

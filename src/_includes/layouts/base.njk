@@ -1,23 +1,30 @@
+{# include javascript code for load service worker #}
 {% set loadServiceWorker %}
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-  navigator.serviceWorker.register('/service-worker.js');
-  });
-};
+  {% include "js/loadServiceWorker.js" %}
 {% endset %}
 
 
 <!DOCTYPE html>
-<html lang="en">
+{# change the default language of the page, useful for post in chinese #}
+{% if language === 'Chinese' or language === 'chinese' %}
+  <html lang="zh">
+{% else %}
+  <html lang="en">
+{% endif %}
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    {# leave a placeholder for injecting purged css in the production mode #}
+    {# link to external main.css in the development mode #}
     {% if site.ENV === "production" %}
       <style></style>
     {% elif site.ENV === "development" %}
-      <link rel="stylesheet" type="text/css" href="/_includes/css/main.css">
+      <link rel="stylesheet" href="/_includes/css/main.css">
     {% endif %}
+
+    {# use favicon #}
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -25,9 +32,19 @@ if ('serviceWorker' in navigator) {
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
+
+    {# inject description/title/excerpt #}
+    {# Use description/title/excerpt if they are defined in the front matter in the page template #}
+    {# otherwise use the site wide title and description #}
     <meta name="description" content="{%- if description -%}{{ description }} | {{ site.DESCRIPTION }}{%- elif excerpt -%}{{ excerpt }} | {{ site.DESCRIPTION}}{%- else -%}{{ site.DESCRIPTION }}{%- endif -%}">
     <title>{%- if title -%}{{ title }} | {{ site.TITLE }}{%- else -%}{{ site.TITLE }}{%- endif -%}</title>
-    <link rel="alternate" href="/{{ site.FEED.PATH }}" title="{{ site.FEED.TITLE }}" type="application/atom+xml">
+
+    {# link for RSS/ATOM feed #}
+    <link rel="alternate" type="application/atom+xml" title="{{ site.FEED.TITLE }}" href="/{{ site.FEED.PATH }}">
+
+    {# add canoncial link #}
+    <link href={{ site.URL + page.url }} rel="canonical">
+
     {# only include google analytics if it is defined in site.js and the environment is production #}
     {% if site.ENV == "production" and site.GOOGLE_ANALYTICS %}
       <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.GOOGLE_ANALYTICS }}"></script>
@@ -39,32 +56,109 @@ if ('serviceWorker' in navigator) {
       </script>
     {% endif %}
     {# end of google analytics #}
+
+    {# include netlify cms for home page #}
+    {% if site.ENABLE_NETLIFY_CMS and pageType === 'home' %}
+      <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
+    {% endif %}
+
+    {# load instant page if enabled in global data site.js #}
+    {% if site.INSTANT_PAGE %}
+      <script defer src="//instant.page/5.1.0" type="module" integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
+    {% endif %}
+
+    {# inject link script tag if defined in the front matter #}
+    {# inline script if defined in the front matter #}
+    {% if script %}
+      {% for item in script %}
+        {% if item.link %}
+          {% if item.head %}
+            {% if item.async %}
+              <script src="{{ item.src }}" async></script>
+            {% elif item.defer %}
+              <script src="{{ item.src }}" defer></script>
+            {% else %}
+              <script src="{{ item.src }}"></script>
+            {% endif %}
+          {% endif %}
+        {% elif item.inline %}
+          {% if item.head %}
+            {% set scriptRaw %}
+              {% include item.src %}
+            {% endset %}
+            <script>
+              {{ scriptRaw | jsmin | safe }}
+            </script>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+
+    {# define a block named head #}
+    {# can be used in the child template/layout #}
     {% block head %}
     {% endblock %}
   </head>
+
   <body class="antialiased min-h-screen flex flex-col">
+    {# disable navigation bar if disableNavigation is set to false in the front matter #}
     {% ifAsync not disableNavigation %}
       {% include "partials/_nav.njk" %}
     {% endif %}
+
+    {# layout has default and wide mode. Wide mode has width equal to the screen #}
     {% if wide %}
       <main class="mx-auto pt-32 sm:pt-20 flex-1 px-4 w-full">
     {% else %}
       <main class="mx-auto pt-32 sm:pt-20 flex-1 w-full max-w-screen-md px-4 md:px-0">
     {% endif %}
+
+    {# define a block named content #}
     {% block content %}
     {% endblock %}
+
     </main>
+
+    {# disbale footer if disableFooter is set to false in the front matter #}
     {% ifAsync not disableFooter %}
       {% include "partials/_footer.njk" %}
     {% endif %}
-    {# include netlify cms for home page #}
-    {% if site.ENABLE_NETLIFY_CMS and pageType === 'home' %}
-      <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" async defer></script>
-    {% endif %}
+
+    {# use service worker. Inline load service worker script #}
     <script>
       {{ loadServiceWorker | jsmin | safe }}
     </script>
-    <script src="//instant.page/5.0.1" type="module" integrity="sha384-0DvoZ9kNcB36fWcQApIMIGQoTzoBDYTQ85e8nmsfFOGz4RHAdUhADqJt4k3K2uLS"></script>
+
+    {# inline script if it is defined in the front matter #}
+    {% if script %}
+      {% for item in script %}
+        {% if item.link %}
+          {% if item.head %}
+          {% else %}
+            {% if item.async %}
+              <script src="{{ item.src }}" async></script>
+            {% elif item.defer %}
+              <script src="{{ item.src }}" defer></script>
+            {% else %}
+              <script src="{{ item.src }}"></script>
+            {% endif %}
+          {% endif %}
+        {% elif item.inline %}
+          {%if head %}
+          {% else %}
+            {% set scriptRaw %}
+              {% include item.src %}
+            {% endset %}
+            <script>
+              {{ scriptRaw | jsmin | safe }}
+            </script>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+
+    {# define block bodyend #}
+    {# can be used to inject content just before the closing of body tag #}
     {% block bodyend %}
     {% endblock %}
   </body>

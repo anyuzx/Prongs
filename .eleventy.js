@@ -1,30 +1,20 @@
 // require the npm modules
-const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const pluginPWA = require("eleventy-plugin-pwa");
-const dayjs = require("dayjs");
-const SVGO = require("svgo");
-const Image = require("@11ty/eleventy-img");
-const sharp = require("sharp");
-//const lazyImagesPlugin = require('eleventy-plugin-lazyimages');
 
 // local library/modules
-const mdRender = require('./src/_includes/js/mdRender.js');
-const applyTypeset = require('./src/_includes/js/typeset.js')({ disable: ['smallCaps'] });
-const htmlmin = require('./src/_includes/js/html-minify.js');
-const purgeCSS = require('./src/_includes/js/purgecss.js');
-
-const Terser = require('terser'); // minify js code
+const mdRender = require('./src/utilities/lib/mdRender.js');
+const typeset = require('./src/utilities/transform/typeset.js')()
+const htmlmin = require('./src/utilities/transform/html-minify.js');
+const purgeCSS = require('./src/utilities/transform/purgecss.js');
 
 // support YAML as data file format
 const yaml = require('js-yaml');
 
-// initialize SVGO
-var svgo = new SVGO({plugins: [{removeXMLNS: true}]});
-
 // define environment variable
 let env = process.env.ELEVENTY_ENV;
 
+// define constant for source and publish directory
 const SOURCE_DIR = './src';
 const PUBLISH_DIR = './dist';
 
@@ -48,66 +38,22 @@ module.exports = function(config) {
     .reverse()
     .slice(0, 3);
   });
-  config.addCollection("postByTag", require("./src/_includes/js/getPostByTag.js"));
-  config.addCollection("categories", require("./src/_includes/js/getCategories.js"));
-  config.addCollection("photos", require("./src/_includes/js/getPhotos.js"));
-
+  config.addCollection("postByTag", require("./src/utilities/collections/getPostByTag.js"));
+  config.addCollection("categories", require("./src/utilities/collections/getCategories.js"));
+  config.addCollection("photos", require("./src/utilities/collections/getPhotos.js"));
   // add filter to render markdown
   config.addNunjucksFilter("renderUsingMarkdown", rawString => mdRender.render(rawString));
-
-  // add filter to sort by nested key, expanding the dictsort functionality
-  config.addNunjucksFilter("dictNestSortBy", function (value, key) {
-    var sorted = {};
-    Object.keys(value).sort(function(a, b){
-      return value[b][key] - value[a][key];
-    })
-    .forEach(function (key) {
-      sorted[key] = value[key];
-    });
-    return sorted;
-  });
-
-  // add filter to groupby attribute of datafile
-  config.addNunjucksFilter("groupByEx", function (arr, key) {
-      const result = {};
-      arr.forEach(item => {
-          const keys = key.split('.');
-          const value = keys.reduce((object, key) => object[key], item);
-
-          (result[value] || (result[value] = [])).push(item);
-      });
-
-      // now we need sort by year
-      // use Map not Object since the integer key in Object can not be sorted
-      let orderedResult = new Map([]);
-      Object.keys(result).sort().reverse().forEach(function(key) {
-        orderedResult.set(key, result[key])
-      })
-      return orderedResult;
-  });
-
-
+  config.addNunjucksFilter("inlineRenderUsingMarkdown", rawString => mdRender.renderInline(rawString));
+  // add filter to sort array by nested key, expanding the sort functionality
+  config.addNunjucksFilter("sort_array", require("./src/utilities/filters/sort_array.js"));
+  // add filter to sort dictionary by nested key, expanding the dictsort functionality
+  config.addNunjucksFilter("dictNestSortBy", require('./src/utilities/filters/dictNestSortBy.js'));
+  // add filter to group by attribute
+  config.addNunjucksFilter("groupByEx", require('./src/utilities/filters/groupByEx.js'));
   // add filter to minimize svg using svgo
-  config.addNunjucksAsyncFilter("svgo", async (svgContent, callback) => {
-    var svgmin = await svgo.optimize(svgContent).then(({data}) => data);
-    callback(null, svgmin);
-  })
-
+  config.addNunjucksAsyncFilter("svgo", require('./src/utilities/filters/svgo.js'));
   // add filter to minimize javascript code
-  config.addNunjucksFilter("jsmin", function (code) {
-    let minified = Terser.minify(code);
-    if (minified.error) {
-      console.log("Terser error: ", minified.error);
-      return code;
-    }
-
-    return minified.code;
-  });
-
-  // add filter to determine a image file's format
-  config.addNunjucksAsyncFilter("whichImageFormat", function (src, callback) {
-    sharp(SOURCE_DIR + src).metadata().then(res => {callback(null, res.format)})
-  })
+  config.addNunjucksFilter("jsmin", require('./src/utilities/filters/jsmin.js'));
 
   // add plugins
   config.addPlugin(pluginRss);
@@ -118,41 +64,16 @@ module.exports = function(config) {
   config.addPassthroughCopy("src/assets/images");
   config.addPassthroughCopy("src/admin/config.yml");
   config.addPassthroughCopy("src/_includes/js/pyodide.js");
-  config.addPassthroughCopy("src/_includes/js/lazysizes.min.js");
 
   config.setLibrary("md", mdRender);
 
   // Shortcodes
   // shortcode for injecting typography css
-  // config.addShortcode("injectTypography", require('./src/_includes/js/typography.js'));
-  config.addShortcode("dayjs", function(date, format) {
-    return dayjs(date).format(format);
-  });
-
-  // add shortcode to transform image using eleventy-img
-  // follow example shown in https://github.com/11ty/eleventy-img
-  config.addNunjucksAsyncFilter("imageTransform", function (src, callback) {
-    let outputFormat = "webp";
-    Image(src, {
-      formats: [outputFormat],
-      // this uses the original image width
-      widths: [null],
-      // widths: [200] // output 200px maxwidth
-      // widths: [200, null] // output 200px and original width
-      urlPath: "/assets/images/",
-      outputDir: "./dist/assets/images/",
-      cacheDuration: "1d"
-    })
-      .then(function (res) {
-        let props = res[outputFormat].pop();
-        callback(null, props);
-      });
-  })
-
-  // use typeset
-  config.addTransform("typeset", applyTypeset);
+  config.addShortcode("dayjs", require('./src/utilities/shortcodes/dayjs.js'));
 
   // add transform
+  // use typeset
+  config.addTransform("typeset", typeset);
   // used to post-process
   // apply html minification (only in production)
   if (env == "production") {

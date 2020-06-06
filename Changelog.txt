@@ -110,3 +110,10 @@ Feature:
 - add javascript minify Nunjucks filter using `Terser`
 - rewrite the collection to collect posts by its tags. Can be used to generate tags page using pagination
 - Cleanup codes
+
+
+Changelog 2020/05/25 Version 0.9.5
+
+Feature:
+
+- new photos archive page where each photo is displayed on a grid, small.

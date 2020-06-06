@@ -6,6 +6,7 @@ image:
   path: /assets/images/research/project-ccm-illustration.min.png
   pathThumbnail: /assets/images/research/project-ccm-illustration.small.min.png
   description: folding process of copolymer chromosome model
+order: 4
 ---
 
 Fingerprints of the three-dimensional organization of genomes have emerged using advances in Hi-C and imaging techniques (see the [review](https://www.ncbi.nlm.nih.gov/pubmed/30367165)). However, genome dynamics is poorly understood. We created the chromosome copolymer model by representing chromosomes as a copolymer with two epigenetic loci types corresponding to euchromatin (active) and heterochromatin (inactive). Using novel clustering techniques, we established quantitatively that the simulated contact maps and topologically associating domains (TADs) for chromosomes 5 and 10 and those inferred from Hi-C experiments are in excellent agreement.

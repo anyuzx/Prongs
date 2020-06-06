@@ -7,7 +7,7 @@ tags:
     - python
 ---
 
-<a href="https://colab.research.google.com/drive/13UebfR7OBscub3HfKTIrAK87n7811L9q#scrollTo=PoRnx0QLIeva">
+<a class="clear-after" href="https://colab.research.google.com/drive/13UebfR7OBscub3HfKTIrAK87n7811L9q#scrollTo=PoRnx0QLIeva">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" style="margin-left:unset;margin-right:unset;" alt="Open In Colab"/>
 </a>
 

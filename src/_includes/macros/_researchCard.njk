@@ -1,0 +1,8 @@
+{% macro display(project) %}
+<a href="/research/#{{ project.data.title | slug }}" class="research-card divide-y group no-underline text-black border">
+    <h2 class="research-title">{{ project.data.title }}</h2>
+    <figure class="research-figure">
+    <img src="{{ project.data.image.pathThumbnail }}" alt="{{ project.data.image.description }}">
+    </figure>
+</a>
+{% endmacro %}
