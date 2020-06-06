@@ -20,7 +20,7 @@ script:
 {% set cloudinary_url = "https://res.cloudinary.com/" + site.CLOUDINARY + "/image/upload" %}
 
 <a href="/photos/archive/" class="border border-darkblue inline-flex items-center mb-4 no-underline px-3 py-2">
-  <span class="mr-1">{{ archiveLogo | svgo | safe }}</span>
+  <span class="mr-2 block w-4">{{ archiveLogo | svgo | safe }}</span>
   <span>Archive</span>
 </a>
 {% for photo in collections.photos | reverse -%}
@@ -31,7 +31,7 @@ script:
     <section class="mb-24">
     {% endif %}
     {% if loop.index < 4 %}
-    <a href="/photos/{{ photoSlug }}/">
+    <a href="/photos/{{ photoSlug }}/" alt="photo: {{ photo.context.custom.caption }}">
         <picture>
             <source
                 srcset="{{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_800/{{ photo.public_id }}.webp 800w,

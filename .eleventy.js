@@ -4,7 +4,7 @@ const pluginPWA = require("eleventy-plugin-pwa");
 
 // local library/modules
 const mdRender = require('./src/utilities/lib/mdRender.js');
-const typeset = require('./src/utilities/transform/typeset.js')()
+const typeset = require('./src/utilities/transform/typeset.js')({ disable: ['smallCaps'] });
 const htmlmin = require('./src/utilities/transform/html-minify.js');
 const purgeCSS = require('./src/utilities/transform/purgecss.js');
 
