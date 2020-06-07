@@ -54,6 +54,8 @@ module.exports = function(config) {
   config.addNunjucksAsyncFilter("svgo", require('./src/utilities/filters/svgo.js'));
   // add filter to minimize javascript code
   config.addNunjucksFilter("jsmin", require('./src/utilities/filters/jsmin.js'));
+  // add filter to get the last updated date from a collection
+  config.addNunjucksFilter("collectionLastUpdatedDate", require('./src/utilities/filters/collectionLastUpdatedDate.js'));
 
   // add plugins
   config.addPlugin(pluginRss);
