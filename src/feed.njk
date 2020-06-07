@@ -5,22 +5,22 @@ permalink: "{{ site.FEED.PATH }}"
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>{{ site.TITLE }} - Blog Posts</title>
   <subtitle>{{ site.DESCRIPTION }}</subtitle>
-  <link href="{{ site.URL }}/{{ site.FEED.PATH }}" rel="self"/>
+  <link href="{{ site.URL }}{{ site.FEED.PATH }}" rel="self"/>
   <link href="{{ site.URL }}"/>
-  <updated>{{ collections.posts | rssLastUpdatedDate }}</updated>
-  <id>{{ site.URL }}</id>
+  <updated>{{ collections.posts | collectionLastUpdatedDate }}</updated>
+  <id>{{ site.URL }}/</id>
   <author>
     <name>{{ site.AUTHOR.NAME }}</name>
   </author>
   {%- for post in collections.posts %}
-  {% set absolutePostUrl %}{{ post.url | url | absoluteUrl(site.url) }}{% endset %}
+  {% set absolutePostUrl %}{{ post.url | url | absoluteUrl(site.URL) }}{% endset %}
   <entry>
     <title>{{ post.data.title }}</title>
     <link href="{{ absolutePostUrl }}"/>
     <updated>{{ post.date | rssDate }}</updated>
     <id>{{ absolutePostUrl }}</id>
     <content type="html"><![CDATA[
-      {{ post.templateContent | safe }}
+      {{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) | safe }}
     ]]></content>
   </entry>
   {%- endfor %}
