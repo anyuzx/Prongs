@@ -72,6 +72,8 @@ module.exports = function(config) {
   // Shortcodes
   // shortcode for injecting typography css
   config.addShortcode("dayjs", require('./src/utilities/shortcodes/dayjs.js'));
+  // shortcode for code highlighting
+  config.addPairedShortcode("codeHighlight", require('./src/utilities/shortcodes/codeHighlight.js'));
 
   // add transform
   // use typeset
