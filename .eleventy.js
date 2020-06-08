@@ -74,6 +74,8 @@ module.exports = function(config) {
   config.addShortcode("dayjs", require('./src/utilities/shortcodes/dayjs.js'));
   // shortcode for code highlighting
   config.addPairedShortcode("codeHighlight", require('./src/utilities/shortcodes/codeHighlight.js'));
+  // shortcode for insert cloudinary responsive image markup
+  config.addShortcode("responImg", require('./src/utilities/shortcodes/responImg.js'));
 
   // add transform
   // use typeset
