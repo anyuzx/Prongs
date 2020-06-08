@@ -1,5 +1,39 @@
 {% extends "layouts/base.njk" %}
 
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block bodyopen %}
+  <body class="antialiased min-h-screen flex flex-col">
+{% endblock %}
+
+{% block body %}
+
+{# disable navigation bar if disableNavigation is set to false in the front matter #}
+{% ifAsync not disableNavigation %}
+  {% include "partials/_nav.njk" %}
+{% endif %}
+
+{# layout has default and wide mode. Wide mode has width equal to the screen #}
+{% if wide %}
+  <main class="mx-auto pt-32 sm:pt-20 flex-1 px-4 w-full">
+{% else %}
+  <main class="mx-auto pt-32 sm:pt-20 flex-1 w-full max-w-screen-md px-4 md:px-0">
+{% endif %}
+
 {% block content %}
   {{ content | safe }}
+{% endblock %}
+</main>
+
+{# disbale footer if disableFooter is set to false in the front matter #}
+{% ifAsync not disableFooter %}
+  {% include "partials/_footer.njk" %}
+{% endif %}
+
+{% endblock %}
+
+{% block bodyclose %}
+{{ super() }}
 {% endblock %}

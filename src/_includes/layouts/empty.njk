@@ -1,0 +1,16 @@
+{% extends "layouts/base.njk" %}
+
+{% block head %}
+{{ super() }}
+{% if codeHighlighting and site.ENV === 'development' %}
+  <link rel="stylesheet" type="text/css" href="/_includes/css/highlight.css">
+{% endif %}
+{% endblock %}
+
+{% block body %}
+{{ content | safe }}
+{% endblock %}
+
+{% block bodyclose %}
+{{ super() }}
+{% endblock %}
