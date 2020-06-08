@@ -1,13 +1,33 @@
 ---
 title: Page Not Found!
 permalink: 404.html
-layout: layouts/default.njk
-disableNavigation: true
+layout: layouts/empty.njk
+codeHighlighting: true
+script:
+  - src: https://cdn.rawgit.com/arose/ngl/v2.0.0-dev.31/dist/ngl.js 
+    link: true
+    head: true
+  - src: js/initNGL.js
+    inline: true
+    head: true
 ---
 
-{% block content %}
-<h1 class="text-center">{{ title }}</h1>
-<p class="text-center">
-Return to <a href="{{ "/" }}">Homepage</a>
-</p>
-{% endblock %}
+<main class="b-text">
+<section class="flow mt-10">
+  <h1 class="text-center">{{ title }}</h1>
+  <p class="text-center">Return to <a href="/">Homepage</a></p>
+</section>
+<section style="width:50vw;height:50vh;margin:0 auto;position:absolute;left:50%;top:50%;margin-left:-25vw;margin-top:-25vh;">
+  <div id="NGLviewport" style="width:100%;height:100%" class="border-2 border-darkblue"></div>
+  <p class="text-xs text-gray-500 text-right font-mono">Powered by <a href="https://github.com/arose/ngl" rel="noreferrer">NGL</a></p>
+  <div>
+    {% set snippet -%}
+    {%- include "js/initNGL.js" -%} {# note we need to control whitespaces #}
+    {%- endset -%}
+    
+    {% codeHighlight "js" %}
+    {{- snippet | safe -}}
+    {% endcodeHighlight %}
+  </div>
+</section>
+</main>
