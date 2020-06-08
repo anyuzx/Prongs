@@ -416,6 +416,17 @@ style the table of contents
   padding-right: 0.5rem;
 }
 
+.img-fullwidth {
+  width:98vw;
+  position:relative;
+  left:50%;
+  right:50%;
+  margin-left:-49vw;
+  margin-right:-49vw;
+  max-width:unset;
+  max-height:unset
+}
+
 @tailwind utilities;
 
 .unactive-nav {
