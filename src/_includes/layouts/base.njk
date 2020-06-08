@@ -103,76 +103,46 @@
   {% block bodyopen %}
   <body class="antialiased">
   {% endblock %}
-  {#
-  <body class="antialiased min-h-screen flex flex-col">
-  #}
-    {# disable navigation bar if disableNavigation is set to false in the front matter #}
-    {#
-    {% ifAsync not disableNavigation %}
-      {% include "partials/_nav.njk" %}
-    {% endif %}
-#}
-    {# layout has default and wide mode. Wide mode has width equal to the screen #}
-    {#
-    {% if wide %}
-      <main class="mx-auto pt-32 sm:pt-20 flex-1 px-4 w-full">
-    {% else %}
-      <main class="mx-auto pt-32 sm:pt-20 flex-1 w-full max-w-screen-md px-4 md:px-0">
-    {% endif %}
-#}
-    {# define a block named content #}
-    {#
-    {% block content %}
-    {% endblock %}
 
-    </main>
-#}
-    {# disbale footer if disableFooter is set to false in the front matter #}
-    {#
-    {% ifAsync not disableFooter %}
-      {% include "partials/_footer.njk" %}
-    {% endif %}
-    #}
+  {% block body %}
+  {% endblock %}
 
-    {% block body %}
-    {% endblock %}
+  {# use service worker. Inline load service worker script #}
+  <script>
+    {{ loadServiceWorker | jsmin | safe }}
+  </script>
 
-    {# use service worker. Inline load service worker script #}
-    <script>
-      {{ loadServiceWorker | jsmin | safe }}
-    </script>
-
-    {# inline script if it is defined in the front matter #}
-    {% if script %}
-      {% for item in script %}
-        {% if item.link %}
-          {% if item.head %}
+  {# inline script if it is defined in the front matter #}
+  {% if script %}
+    {% for item in script %}
+      {% if item.link %}
+        {% if item.head %}
+        {% else %}
+          {% if item.async %}
+            <script src="{{ item.src }}" async></script>
+          {% elif item.defer %}
+            <script src="{{ item.src }}" defer></script>
           {% else %}
-            {% if item.async %}
-              <script src="{{ item.src }}" async></script>
-            {% elif item.defer %}
-              <script src="{{ item.src }}" defer></script>
-            {% else %}
-              <script src="{{ item.src }}"></script>
-            {% endif %}
-          {% endif %}
-        {% elif item.inline %}
-          {%if head %}
-          {% else %}
-            {% set scriptRaw %}
-              {% include item.src %}
-            {% endset %}
-            <script>
-              {{ scriptRaw | jsmin | safe }}
-            </script>
+            <script src="{{ item.src }}"></script>
           {% endif %}
         {% endif %}
-      {% endfor %}
-    {% endif %}
+      {% elif item.inline %}
+        {%if head %}
+        {% else %}
+          {% set scriptRaw %}
+            {% include item.src %}
+          {% endset %}
+          <script>
+            {{ scriptRaw | jsmin | safe }}
+          </script>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
 
-    {# define block bodyend #}
-    {# can be used to inject content just before the closing of body tag #}
-    {% block bodyclose %}
-    {% endblock %}
+  {# define block bodyend #}
+  {# can be used to inject content just before the closing of body tag #}
+  {% block bodyclose %}
+  {% endblock %}
   </body>
 </html>
