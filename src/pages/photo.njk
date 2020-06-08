@@ -23,9 +23,9 @@ permalink: /photos/{{ photo.public_id.split("/")[1] | slug }}/
 <article class="mb-8">
         <picture>
             {% if photo.context.custom.panorama === 'True' %}
-            {% responImg photo.public_id, photo.context.custom.alt, "(max-width:650px) 100vw, 1600px", 1600, [800,1600,3200], ['mb-2','shadow-lg','img-fullwidth'], 'guangshi' %}
+            {% responImg photo.public_id, photo.context.custom.caption, "(max-width:650px) 100vw, 1600px", 1600, [800,1600,3200], ['mb-2','shadow-lg','img-fullwidth'], 'guangshi' %}
             {% else %}
-            {% responImg photo.public_id, photo.context.custom.alt, "(max-width:650px) 100vw, 800px", 1600, [800,1600], ['mb-2','shadow-lg'], 'guangshi' %}
+            {% responImg photo.public_id, photo.context.custom.caption, "(max-width:650px) 100vw, 800px", 1600, [800,1600], ['mb-2','shadow-lg'], 'guangshi' %}
             {% endif %}
         </picture>
         <div class="flex text-sm font-mono mb-4">

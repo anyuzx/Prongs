@@ -15,7 +15,7 @@ description: "Archive of Guang Shi's photos"
   {% else %}
     <a href="/photos/{{ photoSlug }}/" class="h-full">
   {% endif %}
-        {% responImg photo.public_id, photo.context.custom.alt, "(max-width:500px) 100vw,250px", 500, [250,500], ['shadow-lg','max-h-full','mb-0'], 'guangshi' %}
+        {% responImg photo.public_id, photo.context.custom.caption, "(max-width:500px) 100vw,250px", 500, [250,500], ['shadow-lg','max-h-full','mb-0'], 'guangshi' %}
     </a>
   </div>
 {%- endfor %}
