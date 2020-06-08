@@ -25,47 +25,14 @@ script:
 </a>
 {% for photo in collections.photos | reverse -%}
     {% set photoSlug = photo.public_id.split("/")[1] | slug %}
-    {% if loop.last %}
-    <section class="mb-8">
-    {% else %}
-    <section class="mb-24">
-    {% endif %}
+    <section class="mb-48">
     {% if loop.index < 4 %}
     <a href="/photos/{{ photoSlug }}/" alt="photo: {{ photo.context.custom.caption }}">
-        <picture>
-            <source
-                srcset="{{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_800/{{ photo.public_id }}.webp 800w,
-                        {{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_1600/{{ photo.public_id }}.webp 1600w"
-                type="image/webp">
-                <img
-                sizes="(max-width:650px) 100vw,
-                    768px"
-                srcset="{{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_800/{{ photo.public_id }}.jpg 800w,
-                        {{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_1600/{{ photo.public_id }}.jpg 1600w"
-                src="{{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_1600/{{ photo.public_id }}.jpg"
-                alt="{{ photo.context.custom.alt }}"
-                class="shadow-lg"
-            >
-        </picture>
+        {% responImg photo.public_id, photo.context.custom.alt, "(max-width):650px 100vw, 800px", 1600, [800,1600], ['shadow-lg'], 'guangshi' %}
     </a>
     {% else %}
     <a href="/photos/{{ photoSlug }}/">
-        <picture>
-            <source
-                data-srcset="{{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_800/{{ photo.public_id }}.webp 800w,
-                        {{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_1600/{{ photo.public_id }}.webp 1600w"
-                type="image/webp">
-                <img
-                src="{{ cloudinary_url }}/e_blur:1000,f_auto,q_0,w_1600/e_grayscale/{{ photo.public_id }}.jpg"
-                data-sizes="(max-width:650px) 100vw,
-                    768px"
-                data-srcset="{{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_800/{{ photo.public_id }}.jpg 800w,
-                        {{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_1600/{{ photo.public_id }}.jpg 1600w"
-                data-src="{{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_1600/{{ photo.public_id }}.jpg"
-                alt="{{ photo.context.custom.alt }}"
-                class="shadow-lg lazy"
-            >
-        </picture>
+        {% responImg photo.public_id, photo.context.custom.alt, "(max-width):650px 100vw, 800px", 1600, [800,1600], ['shadow-lg', 'lazy'], 'guangshi' %}
     </a>
     {% endif %}
     </section>

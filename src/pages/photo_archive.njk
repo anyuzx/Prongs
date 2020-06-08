@@ -15,21 +15,7 @@ description: "Archive of Guang Shi's photos"
   {% else %}
     <a href="/photos/{{ photoSlug }}/" class="h-full">
   {% endif %}
-        <picture>
-            <source
-                srcset="{{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_250/{{ photo.public_id }}.webp 250w,
-                        {{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_500/{{ photo.public_id }}.webp 500w"
-                type="image/webp">
-                <img
-                sizes="(max-width:500px) 100vw,
-                    250px"
-                srcset="{{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_250/{{ photo.public_id }}.jpg 250w,
-                        {{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_500/{{ photo.public_id }}.jpg 500w"
-                src="{{ cloudinary_url }}/c_scale,f_auto,q_auto:good,w_500/{{ photo.public_id }}.jpg"
-                alt="{{ photo.context.custom.alt }}"
-                class="shadow-lg max-h-full mb-0"
-            >
-        </picture>
+        {% responImg photo.public_id, photo.context.custom.alt, "(max-width:500px) 100vw,250px", 500, [250,500], ['shadow-lg','max-h-full','mb-0'], 'guangshi' %}
     </a>
   </div>
 {%- endfor %}
