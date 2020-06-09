@@ -31,7 +31,7 @@ permalink: /photos/{{ photo.public_id.split("/")[1] | slug }}/
         <div class="flex text-sm font-mono mb-4">
             {% if pagination.previousPageHref %}
               <a class="inline-flex items-center mr-auto no-underline" href="{{ pagination.previousPageHref }}">
-                <span>
+                <span class="w-4">
                   {{ triangleLeft | svgo | safe }}
                 </span>
                 <span>
@@ -44,7 +44,7 @@ permalink: /photos/{{ photo.public_id.split("/")[1] | slug }}/
               <span>
                 next
               </span>
-              <span>
+              <span class="w-4">
                 {{ triangleRight | svgo | safe }}
               </span>
             </a>
