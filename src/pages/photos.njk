@@ -1,5 +1,6 @@
 ---
 layout: layouts/default.njk
+wide: true
 permalink: /photos/index.html
 title: Photos
 description: A collection of Guang Shi's photos
@@ -28,11 +29,11 @@ script:
     <section class="mb-48">
     {% if loop.index < 4 %}
     <a href="/photos/{{ photoSlug }}/" alt="photo: {{ photo.context.custom.caption }}">
-        {% responImg photo.public_id, photo.context.custom.caption, "(max-width):650px 100vw, 800px", 1600, [800,1600], ['shadow-lg'], 'guangshi' %}
+        {% responImg photo.public_id, photo.context.custom.caption, "(max-width:650px) 100vw, (max-width:1980px) 800px, 1280px", 2400, [800,1600,2400], ['shadow-lg'], 'guangshi' %}
     </a>
     {% else %}
     <a href="/photos/{{ photoSlug }}/">
-        {% responImg photo.public_id, photo.context.custom.caption, "(max-width):650px 100vw, 800px", 1600, [800,1600], ['shadow-lg', 'lazy'], 'guangshi' %}
+        {% responImg photo.public_id, photo.context.custom.caption, "(max-width:650px) 100vw, (max-width:1980px) 800px, 1280px", 2400, [800,1600,2400], ['shadow-lg', 'lazy'], 'guangshi' %}
     </a>
     {% endif %}
     </section>
