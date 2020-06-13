@@ -7,12 +7,6 @@
 
 
 {% block head %}
-{#
-{% if site.ENV == "development" %}
-  <link rel="stylesheet" type="text/css" href="/_includes/css/highlight.css">
-{% endif %}
-#}
-
 {# include katex css file #}
 {% if disableKatex %}
 {% else %}
@@ -63,8 +57,8 @@
     </div>
   </header>
   <hr class="my-4 bg-black border-0" style="height:3px">
-  <main class="mx-auto flow b-text" style="max-width:40em;">
+  <section class="mx-auto flow b-text" style="max-width:40rem;">
     {{ content | safe }}
-  </main>
+  </section>
 </article>
 {% endblock %}
