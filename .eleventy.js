@@ -4,7 +4,7 @@ const pluginPWA = require("eleventy-plugin-pwa");
 
 // local library/modules
 const mdRender = require('./src/utilities/lib/mdRender.js');
-const typeset = require('./src/utilities/transform/typeset.js')({ disable: ['smallCaps'] });
+const typeset = require('./src/utilities/transform/typeset.js')({ only: '.b-text'});
 const htmlmin = require('./src/utilities/transform/html-minify.js');
 const purgeCSS = require('./src/utilities/transform/purgecss.js');
 
@@ -56,6 +56,8 @@ module.exports = function(config) {
   config.addNunjucksFilter("jsmin", require('./src/utilities/filters/jsmin.js'));
   // add filter to get the last updated date from a collection
   config.addNunjucksFilter("collectionLastUpdatedDate", require('./src/utilities/filters/collectionLastUpdatedDate.js'));
+  // add filter to extract the excerpt of the post
+  config.addNunjucksFilter("excerpt", require('./src/utilities/filters/excerpt'));
 
   // add plugins
   config.addPlugin(pluginRss);
@@ -66,6 +68,7 @@ module.exports = function(config) {
   config.addPassthroughCopy("src/assets/images");
   config.addPassthroughCopy("src/admin/config.yml");
   config.addPassthroughCopy("src/_includes/js/pyodide.js");
+  config.addPassthroughCopy("src/_includes/fonts");
 
   config.setLibrary("md", mdRender);
 
