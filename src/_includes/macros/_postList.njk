@@ -1,26 +1,24 @@
-{% macro items(collection) %}
-<div>
-  {% for post in collection -%}
-    <div class="post-item" id="post-{{ loop.index }}">
-      <div class="post-info">
-        <a href="{{ post.url }}" class="no-underline">
-          {{ post.data.title }}
-        </a>
-        <div>
-          <time>
-            {% dayjs post.date, 'YYYY-MM-DD' %}
-          </time>
-          <button class="plus-minus" id="post-toggle-{{ loop.index }}" aria-label="Open excerpt of this post" onclick="openExcerpt(this, &apos;post-excerpt-{{ loop.index }}&apos;)">
-          </button>
-        </div>
-      </div>
-      <div id="post-excerpt-{{ loop.index }}" class="post-excerpt">
-        {# use excerpt filter #}
-        {{ post | excerpt | safe }}
+{% macro list(collection) %}
+{% for post in collection -%}
+  <div class="post-item" id="post-{{ loop.index }}">
+    <div class="post-info">
+      <a href="{{ post.url }}" class="no-underline">
+        {{ post.data.title }}
+      </a>
+      <div>
+        <time>
+          {% dayjs post.date, 'YYYY-MM-DD' %}
+        </time>
+        <button class="plus-minus" id="post-toggle-{{ loop.index }}" aria-label="Open excerpt of this post" onclick="openExcerpt(this, &apos;post-excerpt-{{ loop.index }}&apos;)">
+        </button>
       </div>
     </div>
-  {%- endfor %}
-</div>
+    <div id="post-excerpt-{{ loop.index }}" class="post-excerpt">
+      {# use excerpt filter #}
+      {{ post | excerpt | safe }}
+    </div>
+  </div>
+{%- endfor %}
 {% endmacro %}
 
 
