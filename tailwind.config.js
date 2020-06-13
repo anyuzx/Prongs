@@ -74,7 +74,6 @@ module.exports = {
         'lightgray': '#f0f0f4',
         'lightyellow': '#fffbf0',
         'lightblue': '#edf2f7',
-        'gao': '#F2ECDE',
       },
       fontFamily: {
       'primary': ['Inter','system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', '"Noto Sans"', 'sans-serif', '"Apple Color Emoji"', '"Segoe UI Emoji"', '"Segoe UI Symbol"', '"Noto Color Emoji"'],
