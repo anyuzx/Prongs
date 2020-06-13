@@ -11,5 +11,5 @@ script:
 {% import "macros/_postList.njk" as postList %}
 
 <section>
-  {{ postList.items(collections.posts) }}
+  {{ postList.list(collections.posts) }}
 </section>

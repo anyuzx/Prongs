@@ -41,28 +41,5 @@ script:
 </div>
 
 <section class="mb-8">
-  {{ postList.items(tagPosts) }}
-{#
-  <div>
-  {% for post in tagPosts | reverse -%}
-    <div class="post-item" id="post-{{ loop.index }}">
-      <div class="post-info">
-        <a href="{{ post.url }}" class="no-underline">
-          {{ post.data.title }}
-        </a>
-        <div>
-          <time>
-            {% dayjs post.date, 'YYYY-MM-DD' %}
-          </time>
-          <button class="plus-minus" id="post-toggle-{{ loop.index }}" aria-label="Open excerpt of this post" onclick="openExcerpt(this, &apos;post-excerpt-{{ loop.index }}&apos;)">
-          </button>
-        </div>
-      </div>
-      <div id="post-excerpt-{{ loop.index }}" class="post-excerpt">
-        {{ post.data.excerpt | renderUsingMarkdown | safe }}
-      </div>
-    </div>
-  {%- endfor %}
-  </div>
- #}
+  {{ postList.list(tagPosts) }}
 </section>
