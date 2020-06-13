@@ -60,7 +60,7 @@
 }
 
 .post-item .post-excerpt > *:first-child {
-  @apply border-t-2 border-lightblue mt-2 pt-2;
+  @apply border-t-2 border-lightgray mt-2 pt-2;
 }
 
 .post-item .post-excerpt > *:last-child {
@@ -143,7 +143,7 @@
 * used for styling the header for non-article section
 */
 .section-header {
-  @apply font-bold text-2xl border-b-2 border-darkblue;
+  @apply font-bold text-2xl border-b-2 border-darkergray;
   width: fit-content;
   width: -moz-fit-content;
 }
@@ -252,7 +252,7 @@ style the table of contents
 }
 
 .unactive-nav::before, .unactive-nav::after {
-  @apply bg-darkblue;
+  @apply bg-darkergray;
   content: '';
   position: absolute;
   left: 0px;
@@ -287,7 +287,7 @@ style the table of contents
 }
 
 .active-nav::before, .active-nav::after {
-  @apply bg-darkblue;
+  @apply bg-darkergray;
   content: '';
   position: absolute;
   left: 0px;
@@ -404,7 +404,7 @@ style the table of contents
 }
 
 .l-button:hover {
-  @apply bg-darkblue text-white;
+  @apply bg-darkergray text-white;
 }
 
 a.l-button {
@@ -423,7 +423,7 @@ a.l-button {
 }
 
 .b-text a:hover {
-  @apply bg-gao rounded-sm;
+  @apply bg-darkyellow rounded-sm;
 }
 
 .b-text a.clear-after:after {

@@ -64,16 +64,12 @@ module.exports = {
         '32': '8rem'
       },
       colors: {
-        'primary': '#5C77A5',
-        'lightShade': '#F5F4F5',
-        'lightAccent': '#8CABC3',
-        'darkAccent': '#425066',
-        'darkShade': '#293248',
         'darkblue': '#17184b',
-        'darkgray': '#4e524c',
+        'darkgray': '#3D3B4F',
+        'darkergray': '#161823',
         'lightgray': '#f0f0f4',
         'lightyellow': '#fffbf0',
-        'lightblue': '#edf2f7',
+        'darkyellow': '#F2ECDE'
       },
       fontFamily: {
       'primary': ['Inter','system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', '"Noto Sans"', 'sans-serif', '"Apple Color Emoji"', '"Segoe UI Emoji"', '"Segoe UI Symbol"', '"Noto Color Emoji"'],

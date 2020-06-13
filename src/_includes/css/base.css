@@ -68,7 +68,7 @@ li:last-child {
 }
 
 hr {
-  @apply border-t border-darkblue;
+  @apply border-t border-darkergray;
   --flow-space: 2em;
   margin-bottom: 2em;
 }
@@ -88,11 +88,11 @@ figure > img {
 }
 
 figure > figcaption {
-  @apply text-center text-sm text-darkblue mt-4;
+  @apply text-center text-sm text-darkergray mt-4;
 }
 
 blockquote {
-  @apply my-6 px-4 text-base border-l-4 border-double border-darkblue italic;
+  @apply my-6 px-4 text-base border-l-4 border-double border-darkergray italic;
 }
 
 blockquote :last-child {
@@ -113,7 +113,7 @@ th {
 }
 
 details {
-  @apply mb-6 p-2 border border-darkblue;
+  @apply mb-6 p-2 border border-darkergray;
 }
 
 details > *:last-child {

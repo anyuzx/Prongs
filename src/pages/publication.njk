@@ -26,7 +26,7 @@ script:
     <div class="mb-2">
     <span class="capitalize font-medium">{{ publication.title }}</span>
     {% if publication.subtype === "preprint" %}
-      <span class="uppercase py-0 px-1 text-sm bg-lightblue">preprint</span>
+      <span class="uppercase py-0 px-1 text-sm bg-lightgray">preprint</span>
     {% endif %}
     {% if publication.DOI %}
       <a href="https://doi.org/{{ publication.DOI }}" class="no-underline">&#8599;</a>
@@ -36,9 +36,9 @@ script:
     {% for author in publication.author %}
       {% if author.family == "Shi" %}
         {%  if loop.last %}
-          <span class="text-darkblue">{{ author.family }}, {{ author.given }}.</span>
+          <span class="text-darkergray">{{ author.family }}, {{ author.given }}.</span>
         {% else %}
-          <span class="text-darkblue">{{ author.family }}, {{ author.given }}., </span>
+          <span class="text-darkergray">{{ author.family }}, {{ author.given }}., </span>
         {% endif %}
       {% else %}
         {% if loop.last %}
@@ -61,7 +61,7 @@ script:
 <ol class="list-outside list-none ml-0">
 <li class="mb-8">
 <div class="mb-2 capitalize">
-  <span class="py-0 px-1 text-sm uppercase bg-lightblue">Talk</span>
+  <span class="py-0 px-1 text-sm uppercase bg-lightgray">Talk</span>
   <span class="font-medium">A Polymer Model for predicting three-dimensional organization change from Structural Variations</span>
   </div>
   <div class="text-sm">
@@ -70,7 +70,7 @@ script:
   </li>
 <li class="mb-8">
 <div class="mb-2 capitalize">
-  <span class="py-0 px-1 text-sm uppercase bg-lightblue">Talk</span>
+  <span class="py-0 px-1 text-sm uppercase bg-lightgray">Talk</span>
   <span class="font-medium">Conformational heterogeneity in human interphase chromosome organization reconciles the FISH and Hi-C paradox</span>
   </div>
   <div class="text-sm">
@@ -79,7 +79,7 @@ script:
 </li>
 <li class="mb-8">
 <div class="mb-2 capitalize">
-  <span class="py-0 px-1 text-sm uppercase bg-lightblue">Talk</span>
+  <span class="py-0 px-1 text-sm uppercase bg-lightgray">Talk</span>
   <span class="font-medium">Conformational Heterogeneity of Human Interphase Chromosomes</span>
   </div>
   <div class="text-sm">
@@ -88,7 +88,7 @@ script:
 </li>
 <li class="mb-8">
 <div class="mb-2 capitalize">
-  <span class="py-0 px-1 text-sm uppercase bg-lightblue">Poster</span>
+  <span class="py-0 px-1 text-sm uppercase bg-lightgray">Poster</span>
   <span class="font-medium">Interphase Human Chromosome Exhibits Out Of Equilibrium Glassy Dynamics</span>
   </div>
   <div class="text-sm">
