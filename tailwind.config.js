@@ -64,6 +64,11 @@ module.exports = {
         '32': '8rem'
       },
       colors: {
+        'primary': '#5C77A5',
+        'lightShade': '#F5F4F5',
+        'lightAccent': '#8CABC3',
+        'darkAccent': '#425066',
+        'darkShade': '#293248',
         'darkblue': '#17184b',
         'darkgray': '#4e524c',
         'lightgray': '#f0f0f4',
@@ -72,8 +77,14 @@ module.exports = {
         'gao': '#F2ECDE',
       },
       fontFamily: {
+      'primary': ['Inter','system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', '"Noto Sans"', 'sans-serif', '"Apple Color Emoji"', '"Segoe UI Emoji"', '"Segoe UI Symbol"', '"Noto Color Emoji"'],
+      'secondary': ['Overpass','Inter','system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', '"Noto Sans"', 'sans-serif', '"Apple Color Emoji"', '"Segoe UI Emoji"', '"Segoe UI Symbol"', '"Noto Color Emoji"'],
+      'sans': ['Inter','system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', '"Noto Sans"', 'sans-serif', '"Apple Color Emoji"', '"Segoe UI Emoji"', '"Segoe UI Symbol"', '"Noto Color Emoji"'],
       'serif': ['"Iowan Old Style"', '"Apple Garamond"', 'Baskerville', '"Times New Roman"', '"Droid Serif"', 'Times', '"Source Serif Pro"', 'serif', '"Apple Color Emoji"', '"Segoe UI Emoji"', '"Segoe UI Symbol"'],
       'mono': ['SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace']
+      },
+      screens: {
+        "xxl": "1920px"
       }
     }
   },
