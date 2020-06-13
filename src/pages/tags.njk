@@ -13,9 +13,11 @@ script:
     inline: true
 ---
 
+{% import "macros/_postList.njk" as postList %}
+
 {% set pageType = "tags" %}
 
-{% set tagPosts = collections.postByTag[ tag ][ 'posts' ] %}
+{% set tagPosts = collections.postByTag[ tag ][ 'posts' ] | reverse %}
 
 <div class="text-sm font-mono font-light mb-4 pb-4">
   {% for tag, tagInfo in collections.postByTag | dictNestSortBy('count') %}
@@ -39,6 +41,8 @@ script:
 </div>
 
 <section class="mb-8">
+  {{ postList.items(tagPosts) }}
+{#
   <div>
   {% for post in tagPosts | reverse -%}
     <div class="post-item" id="post-{{ loop.index }}">
@@ -60,4 +64,5 @@ script:
     </div>
   {%- endfor %}
   </div>
+ #}
 </section>
