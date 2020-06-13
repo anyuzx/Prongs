@@ -204,7 +204,7 @@
 style the table of contents
  */
 .table-of-contents {
-  @apply invisible h-0 sticky text-sm font-medium;
+  @apply invisible h-0 sticky text-sm font-medium font-secondary;
 }
 
 .table-of-contents > ol {
