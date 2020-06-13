@@ -43,7 +43,7 @@
     <title>{%- if title -%}{{ title }} | {{ site.TITLE }}{%- else -%}{{ site.TITLE }}{%- endif -%}</title>
 
     {# link for RSS/ATOM feed #}
-    <link rel="alternate" type="application/atom+xml" title="{{ site.FEED.TITLE }}" href="/{{ site.FEED.PATH }}">
+    <link rel="alternate" type="application/atom+xml" title="{{ site.FEED.TITLE }}" href="{{ site.FEED.PATH }}">
 
     {# add canoncial link #}
     <link href={{ site.URL + page.url }} rel="canonical">
