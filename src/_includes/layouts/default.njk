@@ -16,8 +16,10 @@
 {% endif %}
 
 {# layout has default and wide mode. Wide mode has width equal to the screen #}
-{% if wide %}
+{% if full %}
   <main class="mx-auto pt-32 sm:pt-20 flex-1 px-4 w-full">
+{% elif wide %}
+  <main class="mx-auto pt-32 sm:pt-20 flex-1 w-full max-w-screen-md xxl:max-w-screen-xl px-4 md:px-0">
 {% else %}
   <main class="mx-auto pt-32 sm:pt-20 flex-1 w-full max-w-screen-md px-4 md:px-0">
 {% endif %}
