@@ -3,7 +3,7 @@
   {% for post in collection -%}
     <div class="post-item" id="post-{{ loop.index }}">
       <div class="post-info">
-        <a href="{{ post.url }}" class="no-underline text-black">
+        <a href="{{ post.url }}" class="no-underline">
           {{ post.data.title }}
         </a>
         <div>
@@ -15,7 +15,8 @@
         </div>
       </div>
       <div id="post-excerpt-{{ loop.index }}" class="post-excerpt">
-        {{ post.data.excerpt | renderUsingMarkdown | safe }}
+        {# use excerpt filter #}
+        {{ post | excerpt | safe }}
       </div>
     </div>
   {%- endfor %}
