@@ -1,203 +1,21 @@
-@tailwind base;
-
-:root {
-    --base00: #fafafa;
-    --base01: #f0f0f1;
-    --base02: #e5e5e6;
-    --base03: #a0a1a7;
-    --base04: #696c77;
-    --base05: #383a42;
-    --base06: #202227;
-    --base07: #090a0b;
-    --base08: #9A394F;
-    --base09: #8E615F;
-    --base0A: #5A6940;
-    --base0B: #306754;
-    --base0C: #005A8D;
-    --base0D: #395DB2;
-    --base0E: #5F549B;
-    --base0F: #A03C6D;
-
-    --base08L: #C6697F;
-    --base08D: #722436;
-    --base09L: #D19D9A;
-    --base09D: #512623;
-    --base0AL: #C8EA8C;
-    --base0AD: #1C2806;
-    --base0BL: #59A88C;
-    --base0BD: #495E57;
-    --base0CL: #6EB5DD;
-    --base0CD: #003351;
-    --base0DL: #2A5ED6;
-    --base0DD: #193370;
-    --base0EL: #8375CE;
-    --base0ED: #4434A3;
-    --base0FL: #A07087;
-    --base0FD: #77013A;
-}
-
-
-/*
- * add base styles for typography
- */
-
-html,body {
-  font-size: 16px;
-  line-height: 1.6;
-}
-
-.flow {
-  --flow-space: 1em;
-}
-
-h1,h2,h3,h4,h5,h6 {
-  --flow-space: 2em;
-}
-
-h1 {
-  @apply text-2xl font-black;
-}
-
-h2 {
-  @apply text-lg font-bold;
-}
-
-h3,h4,h5,h6 {
-  @apply text-base font-semibold;
-}
-
-ul, ol {
-  @apply ml-6 list-outside;
-}
-
-ul {
-  @apply list-disc;
-}
-
-ol {
-  @apply list-decimal;
-}
-
-li {
-  @apply my-2;
-}
-
-
-li:last-child {
-  @apply mb-0;
-}
-
-hr {
-  @apply border-t border-darkblue;
-  --flow-space: 2rem;
-  margin-bottom: 2rem;
-}
-
-img {
-  @apply mb-6 mx-auto max-w-full;
-}
-
-figure {
-  @apply mx-auto;
-  --flow-space: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
-figure > img {
-  @apply mb-0;
-}
-
-figure > figcaption {
-  @apply text-center text-sm text-darkblue mt-4;
-}
-
-blockquote {
-  @apply my-6 px-4 text-base border-l-4 border-double border-darkblue italic;
-}
-
-blockquote :last-child {
-  @apply mb-0;
-}
-
-table {
-  @apply mb-6 w-full border-collapse table-auto;
-}
-
-td, th {
-  @apply text-center border-b border-lightgray pt-3 nums-tabular;
-  padding-bottom: calc(0.75rem - 1px);
-}
-
-th {
-  @apply font-bold;
-}
-
-details {
-  @apply mb-6 p-2 border border-darkblue;
-}
-
-details > *:last-child {
-  @apply mb-0;
-}
-
-details summary {
-  @apply outline-none;
-}
-
-a {
-  @apply no-underline;
-}
-
-pre, code {
-  @apply font-mono;
-}
-
-pre.hljs {
-  @apply my-6 px-12 py-8 overflow-auto;
-  box-sizing: border-box;
-  border-right: 3rem solid transparent;
-}
-
-code {
-  @apply text-sm;
-}
-
-
-h1:not(pre) > code, h2:not(pre) > code, h3:not(pre) > code, h4:not(pre) > code, h5:not(pre) > code, h6:not(pre) > code {
-  font-size: inherit;
-  font-weight: inherit;
-}
-
-/*
- * fluid svg
- */
-
-/*
-svg {
-  width: 100%;
-  height: 100%;
-}
-
-svg > * {
-  @apply fill-current;
-}
-*/
-
-
-@tailwind components;
+@import "./font.css";
+@import "./color.css";
+@import "./highlight.css";
+@import "./typeset.css";
+@import "tailwindcss/base";
+@import "./base.css";
+@import "tailwindcss/components";
 
 /* define .flow utility class */
 /* see this article https://24ways.org/2018/managing-flow-and-rhythm-with-css-custom-properties/ */
 
-
+/*
 .flow > * + * {
   margin-top: var(--flow-space);
 }
+*/
 
 /* Custom class from here */
-/*
- * Add some base styles
- */
 
 /*
  * Style post list
@@ -236,16 +54,16 @@ svg > * {
 }
 
 .post-item .post-excerpt {
-  @apply overflow-hidden text-gray-700;
+  @apply overflow-hidden text-gray-700 italic;
   max-height: 0px;
   transition: max-height 0.5s ease-in-out;
 }
 
-.post-item .post-excerpt > p:first-child {
-  @apply border-t mt-2 pt-2;
+.post-item .post-excerpt > *:first-child {
+  @apply border-t-2 border-lightblue mt-2 pt-2;
 }
 
-.post-item .post-excerpt > p:last-child {
+.post-item .post-excerpt > *:last-child {
   @apply mb-0;
 }
 
@@ -344,7 +162,7 @@ svg > * {
 }
 
 .research-card > .research-title {
-  @apply text-base m-0 leading-tight flex-grow text-center p-2 bg-lightgray;
+  @apply text-base m-0 leading-tight flex-grow text-center p-2 bg-lightgray font-primary font-medium;
 }
 
 .research-card > .research-figure {
