@@ -79,7 +79,7 @@ customMarkdownIt
   .use(markdownImplicitFigure, {
     figcaption: true
   })
-  .use(markdownItAnchor)
+  .use(markdownItAnchor, { permalink: true, permalinkSymbol: "#" })
   .use(markdownItEmoji)
   .use(markdownItSub)
   .use(markdownItSup)

@@ -6,17 +6,7 @@
 @import "./base.css";
 @import "tailwindcss/components";
 
-/* define .flow utility class */
-/* see this article https://24ways.org/2018/managing-flow-and-rhythm-with-css-custom-properties/ */
-
-/*
-.flow > * + * {
-  margin-top: var(--flow-space);
-}
-*/
-
 /* Custom class from here */
-
 /*
  * Style post list
  * There are two basic styles of listing post
@@ -209,7 +199,7 @@ style the table of contents
 
 .table-of-contents > ol {
   @apply inline-block list-inside p-2;
-  border-right: 1px solid #edf2f7;
+  border-right: 1px solid theme('colors.lightgray');
   transform: translateX(calc(-100% - (768px - 640px) / 2 - 4em))translateY(-1.3em);
   width: calc(((100vw - 870px) / 2));
   max-width: 300px;
@@ -320,13 +310,11 @@ style the table of contents
   height: 0.5em;
   min-width: 0.5em;
   min-height: 0.5em;
-  /* Vertical line */
-  /* horizontal line */
 }
 .plus-minus:before, .plus-minus:after {
   content: "";
   position: absolute;
-  background-color: black;
+  background-color: theme('colors.darkgray');
   transition: transform 0.25s ease-out;
 }
 .plus-minus:before {
@@ -383,13 +371,70 @@ style the table of contents
   counter-reset: h6;
 }
 
-.number-heading h2:before {counter-increment: h2; content: counter(h2) "."; position: absolute; transform: translateX(-100%); padding-right:1em; color: var(--base03);}
-.number-heading h3:before {counter-increment: h3; content: counter(h2) "." counter(h3) "."; position: absolute; transform: translateX(-100%); padding-right:1em; color: var(--base03);}
-.number-heading h4:before {counter-increment: h4; content: counter(h2) "." counter(h3) "." counter(h4) "."; position: absolute; transform: translateX(-100%); padding-right:1em; color: var(--base03);}
-.number-heading h5:before {counter-increment: h5; content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "."; position: absolute; transform: translateX(-100%); padding-right:1em; color: var(--base03);}
-.number-heading h6:before {counter-increment: h6; content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "." counter(h6) "."; position: absolute; transform: translateX(-100%); padding-right:1em; color: var(--base03);}
+.number-heading h2:before {counter-increment: h2; content: counter(h2) "."; position: absolute; transform: translateX(-100%); padding-right:1em; color: theme('colors.darkgray');}
+.number-heading h3:before {counter-increment: h3; content: counter(h2) "." counter(h3) "."; position: absolute; transform: translateX(-100%); padding-right:1em; color: theme('colors.darkgray');}
+.number-heading h4:before {counter-increment: h4; content: counter(h2) "." counter(h3) "." counter(h4) "."; position: absolute; transform: translateX(-100%); padding-right:1em; color: theme('colors.darkgray');}
+.number-heading h5:before {counter-increment: h5; content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "."; position: absolute; transform: translateX(-100%); padding-right:1em; color: theme('colors.darkgray');}
+.number-heading h6:before {counter-increment: h6; content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "." counter(h6) "."; position: absolute; transform: translateX(-100%); padding-right:1em; color: theme('colors.darkgray');}
 
 .number-heading h2.nocount:before, h3.nocount:before, h4.nocount:before, h5.nocount:before, h6.nocount:before { content: ""; counter-increment: none }
+
+/*
+ * style .anchor-heading class
+ */
+
+h2 > a.header-anchor {
+  display: none;
+}
+h3 > a.header-anchor {
+  display: none;
+}
+h4 > a.header-anchor {
+  display: none;
+}
+h5 > a.header-anchor {
+  display: none;
+}
+h6 > a.header-anchor {
+  display: none;
+}
+h2 > a.header-anchor:after {
+  content: none;
+}
+h3 > a.header-anchor:after {
+  content: none;
+}
+h4 > a.header-anchor:after {
+  content: none;
+}
+h5 > a.header-anchor:after {
+  content: none;
+}
+h6 > a.header-anchor:after {
+  content: none;
+}
+h2:hover > a.header-anchor {
+  display: inline;
+  color: theme('colors.darkgray');
+}
+h3:hover > a.header-anchor {
+  display: inline;
+  color: theme('colors.darkgray');
+}
+h4:hover > a.header-anchor {
+  display: inline;
+  color: theme('colors.darkgray');
+}
+h5:hover > a.header-anchor {
+  display: inline;
+  color: theme('colors.darkgray');
+}
+h6:hover > a.header-anchor {
+  display: inline;
+  color: theme('colors.darkgray');
+}
+
+/* styles for button */
 
 .l-button {
   @apply block my-6 p-4 w-full font-bold bg-lightgray text-center fill-current;
