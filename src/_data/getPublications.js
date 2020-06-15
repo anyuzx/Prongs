@@ -9,7 +9,7 @@ async function getBib (doi) {
   return response.data
 }
 
-const doiList = require('../contents/DOI.json')
+const doiList = require('../contents/publications/publication_doi.json')
 
 module.exports = function() {
   return Promise.all(doiList.map(getBib))
