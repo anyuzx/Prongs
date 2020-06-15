@@ -88,7 +88,7 @@
 }
 
 .f-icon:hover {
-  @apply bg-black text-white;
+  @apply bg-darkergray text-white;
 }
 
 /*

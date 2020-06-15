@@ -48,7 +48,7 @@
       <div class="self-center">
         {%- for tag in tags %}
           {% if tag !== "pinned" %}
-            <a class="mx-1 p-1 font-mono hover:bg-black hover:text-white" href="/tags/{{ tag | slug }}">
+            <a class="mx-1 p-1 font-mono hover:bg-darkergray hover:text-white" href="/tags/{{ tag | slug }}">
             #{{ tag }}
             </a>
           {% endif %}
@@ -56,7 +56,7 @@
       </div>
     </div>
   </header>
-  <hr class="my-4 bg-black border-0" style="height:3px">
+  <hr class="my-4 bg-darkergray border-0" style="height:3px">
   <section class="mx-auto flow b-text" style="max-width:40rem;">
     {{ content | safe }}
   </section>

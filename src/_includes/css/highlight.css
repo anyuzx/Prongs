@@ -4,13 +4,13 @@ Date: 2020-05-22
 */
 
 pre.hljs {
+    @apply bg-lightgray;
     color: var(--base07);
-    background: var(--base00);
 }
 
 :not(pre) > code {
+    @apply bg-lightgray;
     border-width: 1px;
-    background-color: var(--base00);
     border-color: var(--base01);
     padding: 0.1rem;
 }
