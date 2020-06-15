@@ -17,6 +17,7 @@ script:
 
 
 <section class="tab-pane tab-active" id="publications">
+<p class="font-semibold font-secondary text-lg italic">List of my publications. Check my <a href="{{ site.AUTHOR.GOOGLE_SCHOLAR }}">google scholar page</a></p>
 {% for year, publications in getPublications | groupByEx("issued.date-parts.0.0") %}
 <h2 class="text-base mb-0 mt-4">{{ year }}</h2>
 <hr>
@@ -57,52 +58,19 @@ script:
 </section>
 
 <section class="tab-pane" id="talks">
-{#<h1 class="text-lg font-light mb-4">Talks and Posters</h1>#}
-<ol class="list-outside list-none ml-0">
+<p class="font-semibold font-secondary text-lg italic">List of my talks and posters.</p>
+<ol class="list-outside list-none ml-0 mt-4">
+{% for item in getTalksPosters | sort(true, false, "date") %}
 <li class="mb-8">
-<div class="mb-2 capitalize">
-  <span class="py-0 px-1 text-sm uppercase bg-lightgray">Talk</span>
-  <span class="font-medium">A Polymer Model for predicting three-dimensional organization change from Structural Variations</span>
-  </div>
-  <div class="text-sm">
-  <span>CSHL Genome Organization & Nuclear Function, 2020</span>
-  </div>
-  </li>
-<li class="mb-8">
-<div class="mb-2 capitalize">
-  <span class="py-0 px-1 text-sm uppercase bg-lightgray">Talk</span>
-  <span class="font-medium">Conformational heterogeneity in human interphase chromosome organization reconciles the FISH and Hi-C paradox</span>
-  </div>
-  <div class="text-sm">
-  <span>APS March Meeting, 2020.</span><span> (<i>CANCELLED</i>)</span> <a href="https://absuploads.aps.org/presentation.cfm?pid=16316">SLIDES</a>
+  <div class="mb-2 capitalize">
+    <span class="py-0 px-1 text-sm uppercase bg-lightgray">{{ item.type }}</span>
+    <span class="font-medium">{{ item.title }}</span>
+    </div>
+    <div class="text-sm">
+    <span>{{ item.info | inlineRenderUsingMarkdown | safe }}. {% dayjs item.date, 'MMM, YYYY' %}</span>. 
+    {% if item.link %}<a href="{{ item.link.url }}">{{ item.link.title }}</a>{% endif %}
   </div>
 </li>
-<li class="mb-8">
-<div class="mb-2 capitalize">
-  <span class="py-0 px-1 text-sm uppercase bg-lightgray">Talk</span>
-  <span class="font-medium">Conformational Heterogeneity of Human Interphase Chromosomes</span>
-  </div>
-  <div class="text-sm">
-  <span>iPoLS Rice-UT Retreat. Nov, 2019.</span>
-  </div>
-</li>
-<li class="mb-8">
-<div class="mb-2 capitalize">
-  <span class="py-0 px-1 text-sm uppercase bg-lightgray">Poster</span>
-  <span class="font-medium">Interphase Human Chromosome Exhibits Out Of Equilibrium Glassy Dynamics</span>
-  </div>
-  <div class="text-sm">
-  <span>CSHL Single Biomolecules, 2018</span>
-  </div>
-  </li>
-  <li class="mb-8">
-<div class="mb-2 capitalize">
-  <span class="py-0 px-1 text-sm uppercase" style="background-color:#edf2f7;">Poster</span>
-  <span class="font-medium">Glass-like dynamics in the folded state of human interphase chromosome</span>
-  </div>
-  <div class="text-sm">
-  <span>APS March Meeting, 2017</span>
-  </div>
-  </li>
+{% endfor %}
 </ol>
 </section>

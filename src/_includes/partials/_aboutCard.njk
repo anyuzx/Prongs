@@ -1,4 +1,4 @@
-<section class="bg-lightyellow sm:flex p-2">
+<section class="bg-lightgray sm:float-left sm:mr-6 sm:w-3/5">
     <div class="p-2">
         <figure class="mb-0">
             <img src="{{ site.AUTHOR.PHOTO }}" alt="myself-photo">
@@ -6,14 +6,14 @@
     </div>
     <div class="p-2">
         <div class="mb-6">
-            <p class="font-bold">{{ site.AUTHOR.TITLE }}</p>
-            <p class="text-gray-600 mb-4">{{ site.AUTHOR.SECOND_TITLE }}</p>
+            <p class="font-bold font-secondary">{{ site.AUTHOR.TITLE }}</p>
+            <p class="text-darkgray mb-4">{{ site.AUTHOR.SECOND_TITLE }}</p>
             <p>{{ site.AUTHOR.SHORT_BIO }}</p>
         </div>
         <div class="text-sm font-mono divide-x divide-white">
-            {%- if site.AUTHOR.TWITTER -%}<span class="inline-block bg-lightgray p-2 hover:bg-black hover:text-white"><a href="https://twitter.com/{{ site.AUTHOR.TWITTER }}">twitter</span>{%- endif -%}
-            {%- if site.AUTHOR.GOOGLE_SCHOLAR -%}<span class="inline-block bg-lightgray p-2 hover:bg-black hover:text-white"><a href={{ site.AUTHOR.GOOGLE_SCHOLAR }}>google scholar</span>{%- endif -%}
-            {%- if site.AUTHOR.GITHUB %}<span class="inline-block bg-lightgray p-2 hover:bg-black hover:text-white"><a href="https://github.com/{{ site.AUTHOR.GITHUB }}">github</span>{%- endif -%}
+            {%- if site.AUTHOR.TWITTER -%}<span class="inline-block bg-lightgray p-2 hover:bg-darkergray hover:text-white"><a href="https://twitter.com/{{ site.AUTHOR.TWITTER }}">twitter</span>{%- endif -%}
+            {%- if site.AUTHOR.GOOGLE_SCHOLAR -%}<span class="inline-block bg-lightgray p-2 hover:bg-darkergray hover:text-white"><a href={{ site.AUTHOR.GOOGLE_SCHOLAR }}>google scholar</span>{%- endif -%}
+            {%- if site.AUTHOR.GITHUB %}<span class="inline-block bg-lightgray p-2 hover:bg-darkergray hover:text-white"><a href="https://github.com/{{ site.AUTHOR.GITHUB }}">github</span>{%- endif -%}
         </div>
     </div>
 </section>
