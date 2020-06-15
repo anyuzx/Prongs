@@ -2,6 +2,9 @@
 title: 将杀戮的神话击得粉碎
 date: 2011-01-25
 excerpt: 电影不可饶恕的"影评" 原文发表在豆瓣上
+image:
+  path: /assets/images/posts/unforgiven.jpg
+  description: screen capture of movie unforgiven
 tags:
   - movies
   - 中文
