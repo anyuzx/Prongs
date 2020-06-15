@@ -28,12 +28,12 @@ script:
     {% set photoSlug = photo.public_id.split("/")[1] | slug %}
     <section class="mb-48">
     {% if loop.index < 4 %}
-    <a href="/photos/{{ photoSlug }}/" alt="photo: {{ photo.context.custom.caption }}">
-        {% responImg photo.public_id, photo.context.custom.caption, "(max-width:650px) 100vw, (max-width:1980px) 800px, 1280px", 2400, [800,1600,2400], ['shadow-lg'], 'guangshi' %}
+    <a href="/photos/{{ photoSlug }}/" alt="photo: {{ photo.context.custom.caption }}" class="block overflow-hidden">
+        {% responImg photo.public_id, photo.context.custom.caption, "(max-width:650px) 100vw, (max-width:1980px) 800px, 1280px", 2400, [800,1600,2400], ['shadow-lg','max-h-screen','ease-out','duration-500','transition-transform','transform','hover:scale-105'], 'guangshi' %}
     </a>
     {% else %}
-    <a href="/photos/{{ photoSlug }}/">
-        {% responImg photo.public_id, photo.context.custom.caption, "(max-width:650px) 100vw, (max-width:1980px) 800px, 1280px", 2400, [800,1600,2400], ['shadow-lg', 'lazy'], 'guangshi' %}
+    <a href="/photos/{{ photoSlug }}/" class="block overflow-hidden">
+        {% responImg photo.public_id, photo.context.custom.caption, "(max-width:650px) 100vw, (max-width:1980px) 800px, 1280px", 2400, [800,1600,2400], ['shadow-lg','max-h-screen','lazy','ease-out','duration-500','transition-transform','transform','hover:scale-105'], 'guangshi' %}
     </a>
     {% endif %}
     </section>
