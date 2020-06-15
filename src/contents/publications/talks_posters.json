@@ -1,0 +1,43 @@
+[
+    {
+        "title": "From Hi-C Contact Map to Three-dimensional Organization of Interphase Human Chromosomes",
+        "info": "MIT Genome Architecture and Function Virtual Workshop",
+        "date": "2020-06",
+        "type": "talk"
+    },
+    {
+        "title": "A Polymer Model For Predicating Three-Dimensional Organization Change From Structural Variations",
+        "info": "CSHL Genome Organization & Nuclear Function",
+        "date": "2020-05",
+        "type": "talk"
+    },
+    {
+        "title": "Conformational Heterogeneity In Human Interphase Chromosome Organization Reconciles The FISH And Hi-C Paradox",
+        "info": "APS March Meeting (_canceled_)",
+        "date": "2020-03",
+        "type": "talk",
+        "link": 
+            {
+                "title": "Slides",
+                "url": "https://absuploads.aps.org/presentation.cfm?pid=16316"
+            }
+    },
+    {
+        "title": "Conformational Heterogeneity Of Human Interphase Chromosomes",
+        "info": "iPoLS Rice-UT Retreat",
+        "date": "2019-11",
+        "type": "talk"
+    },
+    {
+        "title": "Interphase Human Chromosome Exhibits Out Of Equilibrium Glassy Dynamics",
+        "info": "CSHL Single Biomolecules",
+        "date": "2018-09",
+        "type": "poster"
+    },
+    {
+        "title": "Glass-Like Dynamics In The Folded State Of Human Interphase Chromosome",
+        "info": "APS March Meeting",
+        "date": "2017-03",
+        "type": "poster"
+    }
+]
