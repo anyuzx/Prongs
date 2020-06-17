@@ -1,95 +1,81 @@
-/* overpass-400 - latin */
 @font-face {
     font-family: 'Overpass';
     font-style: normal;
     font-weight: 400;
+    font-display: swap;
     src: local('Overpass Regular'), local('Overpass-Regular'),
         url('/_includes/fonts/overpass-regular-subset.woff2') format('woff2'),
-        /* Chrome 26+, Opera 23+, Firefox 39+ */
         url('/_includes/fonts/overpass-regular-subset.woff') format('woff');
-    /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
-/* overpass-700 - latin */
 @font-face {
     font-family: 'Overpass';
     font-style: normal;
     font-weight: 700;
+    font-display: swap;
     src: local('Overpass Bold'), local('Overpass-Bold'),
         url('/_includes/fonts/overpass-bold-subset.woff2') format('woff2'),
-        /* Chrome 26+, Opera 23+, Firefox 39+ */
         url('/_includes/fonts/overpass-bold-subset.woff') format('woff');
-    /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
-/* overpass-800 - latin */
 @font-face {
     font-family: 'Overpass';
     font-style: normal;
     font-weight: 800;
+    font-display: swap;
     src: local('Overpass ExtraBold'), local('Overpass-ExtraBold'),
         url('/_includes/fonts/overpass-extrabold-subset.woff2') format('woff2'),
-        /* Chrome 26+, Opera 23+, Firefox 39+ */
         url('/_includes/fonts/overpass-extrabold-subset.woff') format('woff');
-    /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
-/* overpass-900 - latin */
 @font-face {
     font-family: 'Overpass';
     font-style: normal;
     font-weight: 900;
+    font-display: swap;
     src: local('Overpass Black'), local('Overpass-Black'),
         url('/_includes/fonts/overpass-heavy-subset.woff2') format('woff2'),
-        /* Chrome 26+, Opera 23+, Firefox 39+ */
         url('/_includes/fonts/overpass-heavy-subset.woff') format('woff');
-    /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
-/* inter-500 - latin */
 
 @font-face {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
+    font-display: swap;
     src: local(''),
         url('/_includes/fonts/Inter-Medium-subset.woff2') format('woff2'),
         url('/_includes/fonts/Inter-Medium-subset.woff') format('woff');
 }
 
 
-/* inter-regular - latin */
 @font-face {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
+    font-display: swap;
     src: local(''),
         url('/_includes/fonts/Inter-Regular-subset.woff2') format('woff2'),
-        /* Chrome 26+, Opera 23+, Firefox 39+ */
         url('/_includes/fonts/Inter-Regular-subset.woff') format('woff');
-    /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
-/* inter-600 - latin */
 @font-face {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 600;
+    font-display: swap;
     src: local(''),
         url('/_includes/fonts/Inter-SemiBold-subset.woff2') format('woff2'),
-        /* Chrome 26+, Opera 23+, Firefox 39+ */
         url('/_includes/fonts/Inter-SemiBold-subset.woff') format('woff');
-    /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
-/* inter-700 - latin */
 @font-face {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
+    font-display: swap;
     src: local(''),
         url('/_includes/fonts/Inter-Bold-subset.woff2') format('woff2'),
-        /* Chrome 26+, Opera 23+, Firefox 39+ */
         url('/_includes/fonts/Inter-Bold-subset.woff') format('woff');
-    /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }

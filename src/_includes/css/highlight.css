@@ -8,6 +8,7 @@ pre.hljs {
     color: var(--base07);
 }
 
+/*! purgecss ignore */
 :not(pre) > code {
     @apply bg-lightgray;
     border-width: 1px;
