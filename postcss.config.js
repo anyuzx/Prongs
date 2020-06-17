@@ -1,12 +1,11 @@
 // configuration for postcss
 module.exports = {
-    plugins: [
-      require('postcss-import'),
-      require('tailwindcss'),
-      require('autoprefixer'),
-      /*require('postcss-csso'),*/
-      require('cssnano')({
-        preset: 'advanced'
-      })
-    ]
-  }
+  plugins: [
+    require('postcss-import'),
+    require('tailwindcss'),
+    require('autoprefixer'),
+    require('cssnano')({
+      preset: 'advanced'
+    })
+  ]
+}
