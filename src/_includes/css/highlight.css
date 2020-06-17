@@ -8,13 +8,14 @@ pre.hljs {
     color: var(--base07);
 }
 
-/*! purgecss ignore */
+/*! purgecss start ignore */
 :not(pre) > code {
     @apply bg-lightgray;
     border-width: 1px;
-    border-color: var(--base01);
+    border-color: var(--base02);
     padding: 0.1rem;
 }
+/*! purgecss end ignore */
 
 .hljs-comment,
 .hljs-quote {
