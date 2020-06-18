@@ -10,7 +10,7 @@
   --flow-space: 1em;
 }
 
-html,body {
+html {
   font-size: 1rem;
   line-height: 1.6;
   font-feature-settings:"ss01" on, "ss04" on;

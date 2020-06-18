@@ -95,7 +95,7 @@
  * custom class tag
  */
 .post-tag {
-  @apply py-1 px-2 m-1 bg-gray-200 font-light no-underline;
+  @apply py-1 px-2 m-1 bg-lightgray;
 }
 
 .post-tag a {

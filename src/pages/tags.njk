@@ -19,7 +19,7 @@ script:
 
 {% set tagPosts = collections.postByTag[ tag ][ 'posts' ] | reverse %}
 
-<div class="text-sm font-mono font-light mb-4 pb-4">
+<div class="text-sm font-mono mb-4 pb-4">
   {% for tag, tagInfo in collections.postByTag | dictNestSortBy('count') %}
     {% set tagPath = "/tags/" + tag | slug + "/" %}
     {% if tag != 'posts' and tag != 'all' %}
