@@ -8,12 +8,12 @@
     checkPaths = ['/']
     resultMode = "warn"
 
-[[plugins]]
-  package = "netlify-plugin-no-more-404"
-  [plugins.inputs]
-    on404 = "error"
-    cacheKey = "key1"
-    debugMode = false
+#[[plugins]]
+#  package = "netlify-plugin-no-more-404"
+#  [plugins.inputs]
+#    on404 = "error"
+#    cacheKey = "key1"
+#    debugMode = false
 
 #[[plugins]]
 #  package = "netlify-plugin-checklinks"
