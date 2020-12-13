@@ -4,8 +4,6 @@
 
 This repository containts the source code for my personal site. The site is built with Eleventy static site generator.
 
-> This file is in construction :construction:
-
 ## Features
 
 * sitemap
