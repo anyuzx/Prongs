@@ -20,7 +20,7 @@ script:
     <a class="flex items-center my-6 p-4 w-full bg-lightgray fill-current hover:bg-darkergray hover:text-white" href="{{ new.link }}"><span class="mr-4 text-red-700">NEW</span><span class="flex-1 text-left">{{ new.text | inlineRenderUsingMarkdown | safe }}</span><span>↗</span></a>
    {% endif %}
   {% else %}
-   <div class="flex items-center my-6 p-4 w-full bg-lightgray fill-current"><span style="color:#c53d43">NEW</span><span>{{ new.text | inlineRenderUsingMarkdown | safe }}</span></div>
+   <div class="flex items-center my-6 p-4 w-full bg-lightgray fill-current"><span class="mr-4 text-red-700">NEW</span><span>{{ new.text | inlineRenderUsingMarkdown | safe }}</span></div>
   {% endif %}
 {% endfor %}
 
