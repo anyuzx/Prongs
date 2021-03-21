@@ -1,5 +1,6 @@
 [
-    {"text": "Our [preprint](https://www.biorxiv.org/content/10.1101/2020.05.21.109421v2) on the HIPPS method for reconstructing 3D genome from experiment data is accepted in PRX (will appear soon)"},
+    {"text": "Our HIPPS-DIMES method for reconstructing 3D genome from experiment data is published in PRX",
+     "link": "https://journals.aps.org/prx/abstract/10.1103/PhysRevX.11.011051"},
     {"text": "Preprint on the polymer-based modeling of epigenetic spreading",
      "link": "https://www.biorxiv.org/content/10.1101/2021.01.18.427115v1.abstract"},
     {"text": "Preprint on the theory of condensin mediated loop extrusion",
