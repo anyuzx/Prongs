@@ -130,7 +130,9 @@ function initPyodide() {
   loadingIndicator.classList.add('mr-2', 'progressAnimate');
   loader.load()
     .then(e => {
-      loadPyodide.then(() => {
+      loadPyodide({
+	indexURL : "https://cdn.jsdelivr.net/pyodide/v0.17.0/full/"
+      }).then(() => {
         pyodide.loadPackage('numpy').then(() => {
           console.log("Numpy is now available");
           // reset styles of buttons
@@ -168,20 +170,21 @@ function runRandomWalk(stepNumber) {
     reset = false;
     randomWalkPromise = generateRandomWalk(stepNumber);
     randomWalkPromise.then(res => {
-      var [x,y] = res;
+      var [x,y] = res.toJs();
       initPlot(x,y);
       startAnimate(x,y);
     })
   } else {
     randomWalkPromise.then(res=> {
-      var [x,y] = res;
+      var [x,y] = res.toJs();
       startAnimate(x,y);
     })
   }
 }
 
 // create new loader object
-const loader = new ScriptLoader('/_includes/js/pyodide.js')
+//const loader = new ScriptLoader('/_includes/js/pyodide.js')
+const loader = new ScriptLoader('https://cdn.jsdelivr.net/pyodide/v0.17.0/full/pyodide.js')
 // select buttons, loading indicator and input field
 const buttonInitPyodide = document.querySelector("#initPyodide");
 const loadingIndicator = document.querySelector('#loadingIndicator');
