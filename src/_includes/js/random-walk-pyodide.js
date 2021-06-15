@@ -130,7 +130,7 @@ function initPyodide() {
   loadingIndicator.classList.add('mr-2', 'progressAnimate');
   loader.load()
     .then(e => {
-      languagePluginLoader.then(() => {
+      loadPyodide.then(() => {
         pyodide.loadPackage('numpy').then(() => {
           console.log("Numpy is now available");
           // reset styles of buttons
