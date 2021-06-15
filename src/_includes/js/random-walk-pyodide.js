@@ -157,7 +157,7 @@ function generateRandomWalk(stepNumber) {
   return gistFetchPromise
   .then(res => pyodide.runPython(res))
   .then(_ => {
-    return pyodide.globals.walk(stepNumber);
+    return pyodide.globals.get('walk')(stepNumber);
   })
 }
 
