@@ -11,6 +11,10 @@ tags:
 ---
 
 ::: note
+Update 2021.11.22. LAMMPS starts to support brownian dynamics officially in recent versions. See [this page](https://docs.lammps.org/fix_brownian.html) for the official `fix` command
+:::
+
+::: note
 This article was originally posted on my old [Wordpress blog](https://biophyenvpol.wordpress.com/2017/11/06/simulating-brownian-dynamics-overdamped-langevin-dynamics-using-lammps/).
 :::
 
