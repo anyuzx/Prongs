@@ -15,4 +15,4 @@ In this work, based on the theory proposed in our [recent study](https://www.nat
 
 ### Publication
 
-* [From Hi-C Contact Map to Three-dimensional Organization of Interphase Human Chromosomes](https://www.biorxiv.org/content/10.1101/2020.05.21.109421v1) **Shi, G.**, & Thirumalai, D. (2020). *bioRxiv* 2020.05.21.109421
+* [From Hi-C Contact Map to Three-dimensional Organization of Interphase Human Chromosomes](https://journals.aps.org/prx/abstract/10.1103/PhysRevX.11.011051) **Shi, G.**, & Thirumalai, D. (2020). *Physical Review X* 11.1 (2021): 011051.
