@@ -6,6 +6,7 @@ disableKatex: true
 excerpt: "A note on customize matplotlib style"
 tags:
     - python
+    - matplotlib
 ---
 
 This serves as a note for setting up my custom matplotlib style. This style features,
@@ -16,9 +17,7 @@ This serves as a note for setting up my custom matplotlib style. This style feat
 
 The content of the matplotlib style sheet file is the following,
 
-``` python
-# Latex with sans-serif fonts
-
+```python
 # Use LaTeX for math formatting
 text.usetex : True
 
@@ -79,12 +78,13 @@ savefig.pad_inches : 0.05
 ```
 
 However, there is a catch. When using LaTeX to render the text and math, if the file is saved as `pdf` format, the font is always embedded as 
-`Type 1` font. This cause missing font issue if opened by Adobe Illustrator or Inkscape, and the text won't be properly displayed. To resolve this,
+*Type 1* font. This cause missing font issue if opened by Adobe Illustrator or Inkscape, and the text won't be properly displayed. To resolve this,
 I found two methods:
 
 1. Save as `.svg` format. The output file can be properly opened by Adobe Illustrator and Inkscape
 2. Save as `.pdf` format, and then use `Ghostscript` to convert all text to outline. The command is the following,
-```
+
+```bash
 gs -o new.pdf -dNoOutputFonts -sDEVICE=pdfwrite old.pdf
 ```
 
@@ -93,7 +93,7 @@ LaTeX rendering and don't have missing font issue.
 
 Below are two examples of this custom style (both are slighted modified from the examples shown on the matplotlib documens),
 
-![Example 1](https://i.imgur.com/8lohvmA.png)
-![Example 2 with more equations rendering](https://i.imgur.com/XyidkIe.png)
+![Example 1](/assets/images/posts/custom_matplotlib_style.png)
+![Example 2 with more equations rendering](/assets/images/posts/custom_matplotlib_style_2.png)
 
 The script for generating these plots can be found [here](https://gist.github.com/anyuzx/329982b5d0510484b9b043a88ef294a3)
