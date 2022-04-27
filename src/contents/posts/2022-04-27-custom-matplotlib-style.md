@@ -73,10 +73,6 @@ ytick.minor.visible : True
 
 lines.markersize : 5.5
 
-# ensure the font is embedded in the pdf output
-pdf.fonttype : 42
-ps.fonttype : 42
-
 # Always save as 'tight'
 savefig.bbox : tight
 savefig.pad_inches : 0.05
