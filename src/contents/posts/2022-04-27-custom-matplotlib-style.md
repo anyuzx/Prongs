@@ -89,13 +89,13 @@ gs -o new.pdf -dNoOutputFonts -sDEVICE=pdfwrite old.pdf
 ```
 
 The issue with both of these methods is that you can not edit the text because the text is outlined. So far, I am not aware of any method that can do both
-LaTeX rendering and don't have missing font issue.
+LaTeX rendering and doesn't have missing font issue.
 
-Below are two examples of this custom style (both are slighted modified from the examples shown on the matplotlib documens),
+Below are two examples of this custom style (both are slighted modified from the examples shown on the matplotlib document),
 
 ![Example 1](/assets/images/posts/custom_matplotlib_style.png)
 
 
-![Example 2 with more equations rendering](/assets/images/posts/custom_matplotlib_style_2.png)
+![Example 2: More equations rendered using LaTeX](/assets/images/posts/custom_matplotlib_style_2.png)
 
 The script for generating these plots can be found [here](https://gist.github.com/anyuzx/329982b5d0510484b9b043a88ef294a3)
