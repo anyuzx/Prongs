@@ -91,7 +91,7 @@ gs -o new.pdf -dNoOutputFonts -sDEVICE=pdfwrite old.pdf
 The issue with both of these methods is that you can not edit the text because the text is outlined. So far, I am not aware of any method that can do both
 LaTeX rendering and doesn't have missing font issue.
 
-Below are two examples of this custom style (both are slighted modified from the examples shown on the matplotlib document),
+Below are two examples of this custom style (both are slighted modified from the examples shown on the matplotlib document). If they are too small, you can right click on them and open them in a new tab.
 
 ![Example 1](/assets/images/posts/custom_matplotlib_style.png)
 
