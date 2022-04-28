@@ -13,7 +13,7 @@ This serves as a note for setting up my custom matplotlib style. This style feat
 
 1. Combines the styles of `seaborn-deep`, `seaborn-ticks` (comes with seaborn library), and [`science`](https://github.com/garrettj403/SciencePlots)
 2. Render text and math using LaTeX
-3. Use font [CMU Bright](https://tug.org/FontCatalogue/computermodernbright/)
+3. Use font [CMU Bright](https://tug.org/FontCatalogue/computermodernbright/). I love this font!
 
 The content of the matplotlib style sheet file is the following,
 
