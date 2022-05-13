@@ -10,7 +10,7 @@ Hi, I'm Guang Shi (时光). I'm currently a postdoctoral fellow working with Dr.
 I grew up in Xi'an, China. I received my Bachelor's degree in physics from Nanjing University and got my Ph.D. in Biophysics from [Dr. D. Thirumalai's group](https://sites.cns.utexas.edu/thirumalai). 
 
 My current research focuses on,
-* [Theoretical and computational study of biomolecular condensates: microstructure, phase diagram, role of micro-phase separation and its internal dynamics]
+* Theoretical and computational study of biomolecular condensates: microstructure, phase diagram, role of micro-phase separation and its internal dynamics
 
 I have also worked on,
 * [The heterogeneity of chromosomes architecture and its role in their biological functions?](/research/#fish-hi-c-paradox)
