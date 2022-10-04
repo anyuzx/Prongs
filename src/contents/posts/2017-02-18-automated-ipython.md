@@ -106,7 +106,7 @@ def connect():
     print('LOCAL SSH TUNNELING PORT: {}\n'.format(port_local))
 
     ipython_local_command = "ssh -N -f -L localhost:{}:localhost:{} \
-                            gs27722@wel-145-31.cm.utexas.edu".format(port_local, port_remote)
+                            username@server".format(port_local, port_remote)
 
     subprocess.run(ipython_local_command, shell=True)
 
