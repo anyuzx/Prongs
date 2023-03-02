@@ -1,5 +1,23 @@
 [
     {
+        "title": "Liquid state theory of microstructure and local clustering of biomolecular condensates and its consequences on slow dynamics",
+        "info": "APS March Meeting",
+        "date": "2023-03",
+        "type": "talk"
+    },
+    {
+        "title": "Predicting 3D structural ensembles of chromatins from pairwise distances",
+        "info": "Multiscale Genome Organization (MGO) Webinar",
+        "date": "2022-11",
+        "type": "Invited Talk"
+    },
+    {
+        "title": "Data-driven reconstruction of 3D genome from experimental data",
+        "info": "Soft, Living, Active and Adaptive Matter (SLAAM) Seminar",
+        "date": "2022-09",
+        "type": "Invited Talk"
+    },
+    {
         "title": "Liquid state theory study of the microstructure and phase behavior of protein condensates",
         "info": "APS March Meeting",
         "date": "2022-03",
