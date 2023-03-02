@@ -5,9 +5,9 @@
 //  site.TITLE, site.DESCRIPTION, etc
 
 module.exports = {
-  TITLE: 'www.guangshi.io', // site title, this is used across the site. For instance the name appeared in the browser tab will be [page_name] | [site_title]
+  TITLE: 'www.shisguang.com', // site title, this is used across the site. For instance the name appeared in the browser tab will be [page_name] | [site_title]
   DESCRIPTION: "Guang Shi's personal site. Research, blog and photography", // site description, used in meta head for SEO purpose
-  URL: 'https://www.guangshi.io', // absolute url for the site
+  URL: 'https://www.shisguang.com', // absolute url for the site
   BUILD_TIME: new Date(), // build time for the site
   //'SOURCE_CODE': 'https://github.com/anyuzx/Prongs', // the github repo of the source code
   ENV: process.env.ELEVENTY_ENV, // environment variable can be accessed in templates https://www.11ty.io/docs/data-js/#example%3A-exposing-environment-variables
