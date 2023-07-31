@@ -30,7 +30,7 @@ script:
           </a>
         </button>
       {% else %}
-        <button class="post-tag hover:bg-darkergray hover:text-white">
+        <button class="post-tag hover:bg-darkergray">
           <a href="/tags/{{ tag | slug }}">
           #{{ tag }}<sup class="font-extrabold">{{ tagInfo['count'] }}</sup>
           </a>
