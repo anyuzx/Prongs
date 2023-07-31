@@ -48,7 +48,7 @@
       <div class="self-center">
         {%- for tag in tags %}
           {% if tag !== "pinned" %}
-            <a class="mx-1 p-1 font-mono hover:bg-darkergray hover:text-white" href="/tags/{{ tag | slug }}">
+            <a class="mx-1 p-1 font-mono hover:bg-darkergray" href="/tags/{{ tag | slug }}">
             #{{ tag }}
             </a>
           {% endif %}
