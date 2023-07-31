@@ -22,7 +22,7 @@
 }
 
 .post-item:hover {
-  @apply border-black;
+  @apply bg-darkergray;
 }
 
 .post-item .post-info {
