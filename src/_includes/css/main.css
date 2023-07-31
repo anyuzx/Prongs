@@ -88,7 +88,7 @@
 }
 
 .f-icon:hover {
-  @apply bg-darkergray text-white;
+  @apply bg-darkergray;
 }
 
 /*
@@ -449,7 +449,7 @@ h6:hover > a.header-anchor {
 }
 
 .l-button:hover {
-  @apply bg-darkergray text-white;
+  @apply bg-darkergray;
 }
 
 a.l-button {
