@@ -3,7 +3,7 @@ backend:
   branch: master # Branch to update (optional; defaults to master)
   squash_merges: true # squash all commits into a single commit
 publish_mode: editorial_workflow # allow direct push to github repository from CMS
-site_url: "https://www.guangshi.io"
+site_url: "https://www.shisguang.com"
 media_folder: "src/assets/images"
 public_folder: "assets/images"
 collections:
