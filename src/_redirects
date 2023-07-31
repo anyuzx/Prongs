@@ -1,5 +1,5 @@
 # These rules will change if you change your site’s custom domains or HTTPS settings
 
 # Redirect default Netlify subdomain to primary domain
-https://guangshi.netlify.com/* https://www.guangshi.io/:splat 301!
-https://guangshi.netlify.app/* https://www.guangshi.io/:splat 301!
+https://guangshi.netlify.com/* https://www.shisguang.com/:splat 301!
+https://guangshi.netlify.app/* https://www.shisguang.com/:splat 301!
