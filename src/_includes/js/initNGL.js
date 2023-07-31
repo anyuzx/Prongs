@@ -1,4 +1,3 @@
-// Reference: https://codepen.io/pen?template=JNLMXb
 // Create NGL Stage object
 var stage = new NGL.Stage("NGLviewport");
 
@@ -7,12 +6,17 @@ window.addEventListener("resize", function (event) {
     stage.handleResize();
 }, false);
 
-// set background to white
+// Set background to white
 stage.setParameters({
     backgroundColor: "white"
-})
-
-// load PDB entry 1CRN
-stage.loadFile("rcsb://1crn", {
-    defaultRepresentation: true
 });
+
+// PDB ID of the structure to load
+var pdbId = '6CO8';
+
+// Load the PDB entry
+stage.loadFile("rcsb://" + pdbId, { defaultAssembly: "BU1" })
+    .then(function(component) {
+        component.addRepresentation('cartoon', {sele: 'Polymer'});
+        stage.autoView();
+    });
