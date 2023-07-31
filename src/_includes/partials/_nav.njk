@@ -1,5 +1,5 @@
 {% set logo %}
-  {% include "../svg/logo-with-name-no-text.min.svg" %}
+  <span class="text-bold">Guang Shi</span>
 {% endset %}
 
 <div class="nav-fixed bg-lightergray">
@@ -13,7 +13,7 @@
     <div class="mb-3 sm:mb-0">
       <a href="/">
         <span class="block w-24">
-          {{ logo | svgo | safe }}
+          {{ logo | safe }}
         </span>
       </a>
     </div>
