@@ -88,7 +88,7 @@ figure > img {
 }
 
 figure > figcaption {
-  @apply text-center text-sm text-darkergray mt-4;
+  @apply text-center text-sm text-darkblue mt-4;
 }
 
 blockquote {
