@@ -37,9 +37,9 @@ script:
     {% for author in publication.author %}
       {% if author.family == "Shi" %}
         {%  if loop.last %}
-          <span class="text-darkergray">{{ author.family }}, {{ author.given }}.</span>
+          <span class="text-darkblue">{{ author.family }}, {{ author.given }}.</span>
         {% else %}
-          <span class="text-darkergray">{{ author.family }}, {{ author.given }}., </span>
+          <span class="text-darkblue">{{ author.family }}, {{ author.given }}., </span>
         {% endif %}
       {% else %}
         {% if loop.last %}
