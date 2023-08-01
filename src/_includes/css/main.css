@@ -241,8 +241,8 @@ style the table of contents
   position: relative;
 }
 
-.unactive-nav::before, .unactive-nav::after {
-  @apply bg-darkergray;
+.unactive-nav::after {
+  @apply bg-darkgray;
   content: '';
   position: absolute;
   left: 0px;
@@ -250,16 +250,6 @@ style the table of contents
   height: 2px;
   transform: scaleX(0);
   transition: transform 0.5s ease;
-}
-
-.unactive-nav::before {
-  top: 0;
-  transform-origin: center right;
-}
-
-.unactive-nav:hover::before {
-  transform-origin: center left;
-  transform: scaleX(1);
 }
 
 .unactive-nav::after {
@@ -276,8 +266,8 @@ style the table of contents
   position: relative;
 }
 
-.active-nav::before, .active-nav::after {
-  @apply bg-darkergray;
+.active-nav::after {
+  @apply bg-darkgray;
   content: '';
   position: absolute;
   left: 0px;
@@ -286,12 +276,6 @@ style the table of contents
   transform: scaleX(1);
   transition: transform 0.5s ease;
 }
-
-.active-nav::before {
-  top: 0;
-  transform-origin: center right;
-}
-
 
 .active-nav::after {
   bottom: 0;
