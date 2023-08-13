@@ -24,9 +24,9 @@ permalink: /photos/{{ photo.public_id.split("/")[1] | slug }}/
 <article class="mb-8">
         <picture>
             {% if photo.context.custom.panorama === 'True' %}
-            {% responImg photo.public_id, photo.context.custom.caption, "(max-width:650px) 100vw, (max-width:1980px) 800px, 1280px", 2400, [800,1600,2400,3200], ['mb-2','shadow-lg','max-h-screen','img-fullwidth'], 'guangshi' %}
+            {% responImg photo.public_id, photo.context.custom.caption, "(max-width:650px) 100vw, (max-width:1980px) 800px, 1280px", 2400, [800,1600,2400,3200], ['mb-2','shadow-lg','max-h-80screen','img-fullwidth'], 'guangshi' %}
             {% else %}
-            {% responImg photo.public_id, photo.context.custom.caption, "(max-width:650px) 100vw, (max-width:1980px) 800px, 1280px", 2400, [800,1600,2400], ['mb-2','shadow-lg','max-h-screen'], 'guangshi' %}
+            {% responImg photo.public_id, photo.context.custom.caption, "(max-width:650px) 100vw, (max-width:1980px) 800px, 1280px", 2400, [800,1600,2400], ['mb-2','shadow-lg','max-h-80screen'], 'guangshi' %}
             {% endif %}
         </picture>
         <div class="flex text-sm font-mono mb-4">
