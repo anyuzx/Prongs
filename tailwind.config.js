@@ -82,6 +82,9 @@ module.exports = {
       },
       screens: {
         "xxl": "1920px"
+      },
+      maxHeight: {
+        '80screen': '80vh'
       }
     }
   },
