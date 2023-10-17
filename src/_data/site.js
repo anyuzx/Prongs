@@ -23,9 +23,9 @@ module.exports = {
     //INSTAGRAM: 'guang_shi_stefan', // author's instagram
     TWITTER: 'anyuzx', // author's twitter handler
     GOOGLE_SCHOLAR: 'https://scholar.google.com/citations?user=JMf5dv8AAAAJ&hl=en', // google scholar profile
-    SHORT_BIO: 'Physics-based computational and theoretical method/model to study genome organization and biomolecular condensates',
+    SHORT_BIO: 'Physics of Living Systems',
     TITLE: 'Postdoctoral Researcher',
-    SECOND_TITLE: 'Ken Schweizer Lab @ University of Illinois at Urbana-Champaign',
+    SECOND_TITLE: 'Thirumalai Lab @ The University of Texas at Austin',
     PHOTO: '/assets/images/my-photo.jpg',
     // 'ADDRESS': '' // author's address
   },
