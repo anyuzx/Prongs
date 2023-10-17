@@ -17,7 +17,7 @@ script:
 
 
 <section class="tab-pane tab-active" id="publications">
-<p class="font-semibold font-secondary text-lg italic b-text">List of my publications. You can also check my <a href="{{ site.AUTHOR.GOOGLE_SCHOLAR }}">google scholar page</a></p>
+<p class="font-semibold font-secondary text-lg italic b-text">List of my publications. You can also check my <a href="{{ site.AUTHOR.GOOGLE_SCHOLAR }}">Google Scholar Page</a></p>
 {% for year, publications in getPublications | groupByEx("issued.date-parts.0.0") %}
 <h2 class="text-base mb-0 mt-4">{{ year }}</h2>
 <hr>
