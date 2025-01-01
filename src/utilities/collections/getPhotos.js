@@ -23,6 +23,7 @@ module.exports = async function (collection) {
           await new Promise((resolve, reject) => {
             cloudinary.api.resources(
               {
+                type: "upload",
                 resource_type: 'image',
                 prefix,
                 tags: true,
@@ -53,7 +54,7 @@ module.exports = async function (collection) {
       } while (nextCursor);
   
       return allResources;
-    }i
+    }
   
     /**
      * Fetch *detailed* information (with metadata) for a single resource
