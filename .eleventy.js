@@ -18,6 +18,9 @@ let env = process.env.ELEVENTY_ENV;
 const SOURCE_DIR = './src';
 const PUBLISH_DIR = './dist';
 
+// config dotenv to load .env
+require('dotenv').config();
+
 // config for eleventy starts from here
 module.exports = function(config) {
   // Filter source file names using a glob
