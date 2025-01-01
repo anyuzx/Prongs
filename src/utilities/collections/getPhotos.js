@@ -1,62 +1,107 @@
-module.exports = async function(collection) {
-    // require cloudinary node.js SDK
+// getPhotos.js
+module.exports = async function (collection) {
     const cloudinary = require('cloudinary').v2;
-
-    // function to fetch all photos in the folder guangshi.io
-    // return a promise to be used in asycn function
-    const getAllPhotosInfo = () => {
-        return new Promise(function(resolve, reject) {
+  
+    // 1. Configure Cloudinary if not already done in .env or global config
+    //    cloudinary.config({
+    //      cloud_name: 'YOUR_CLOUD_NAME',
+    //      api_key: 'YOUR_API_KEY',
+    //      api_secret: 'YOUR_API_SECRET'
+    //    });
+  
+    /**
+     * Fetch resources from Cloudinary in multiple pages if needed
+     * so we get ALL resources (not just the first 500).
+     */
+    async function fetchAllResources(prefix) {
+      let allResources = [];
+      let nextCursor = null;
+  
+      do {
+        // For each "page", call cloudinary.api.resources()
+        const { resources = [], rate_limit_allowed, rate_limit_reset_at, rate_limit_remaining, next_cursor } =
+          await new Promise((resolve, reject) => {
             cloudinary.api.resources(
-            {
-                type:"upload",
-                prefix:"guangshi.io",
+              {
+                resource_type: 'image',
+                prefix,
                 tags: true,
-                context:true,
-                max_results: 500
-            },
-            function(error, result){
+                context: true,
+                max_results: 500,
+                next_cursor: nextCursor,
+              },
+              (error, result) => {
+                if (error) return reject(error);
                 resolve(result);
-            }
+              }
             );
-        })
-    }
-
-    // function to fetch detailed information of a single photo
-    // public_id for the photo should be provided as the argument
-    const getSinglePhotoInfo = (public_id) => {
-        return new Promise(function(resolve, reject) {
-            cloudinary.api.resource(public_id, {image_metadata: true}, function (error, result) {
-            resolve(result);
-            });
+          });
+  
+        // Log rate-limit info for each chunk
+        console.log(
+          `\nFetched ${resources.length} resource(s) (cumulative: ${allResources.length + resources.length})`
+        );
+        console.log(
+          'Rate Limit Allowed:', rate_limit_allowed,
+          '\nRate Limit Reset At:', rate_limit_reset_at,
+          '\nRate Limit Remaining:', rate_limit_remaining
+        );
+  
+        // Add to the overall list
+        allResources = allResources.concat(resources);
+        nextCursor = next_cursor; // if `next_cursor` is set, loop again
+      } while (nextCursor);
+  
+      return allResources;
+    }i
+  
+    /**
+     * Fetch *detailed* information (with metadata) for a single resource
+     */
+    async function getSinglePhotoInfo(publicId) {
+      return new Promise((resolve, reject) => {
+        cloudinary.api.resource(publicId, { image_metadata: true }, (error, result) => {
+          if (error) {
+            return reject(error);
+          }
+          resolve(result);
         });
-    };
-
-    // wait for the getAllPhotosInfo to be resolved
-    var allPhotosInfo = await getAllPhotosInfo();
-    console.log("Rate Limit Allowed:",allPhotosInfo.rate_limit_allowed,
-    "\nRate Limit Reset At", allPhotosInfo.rate_limit_reset_at,
-    "\nRate Limit Remaining", allPhotosInfo.rate_limit_remaining);
-    // sort the array by upload date
-    allPhotosInfo.resources.sort(function(a,b){
-        var keyA = new Date(a.created_at),
-            keyB = new Date(b.created_at);
-        // compare the two dates
-        if(keyA < keyB) return -1;
-        if(keyA > keyB) return 1;
-        return 0;
+      });
+    }
+  
+    // 2. Fetch all top-level resources from the folder `guangshi.io`
+    let allResources;
+    try {
+      allResources = await fetchAllResources('guangshi.io');
+    } catch (err) {
+        console.error('Failed to fetch top-level resource list from Cloudinary. Full error below:');
+        console.error(err); // Log the entire object
+        // optionally: console.error(JSON.stringify(err, null, 2));
+        throw err; // or return [];
+    }
+  
+    // 3. Sort by creation date (ascending)
+    //    If you want descending (most recent first), reverse the sort comparison.
+    allResources.sort((a, b) => {
+      const dateA = new Date(a.created_at);
+      const dateB = new Date(b.created_at);
+      return dateA - dateB; // ascending
     });
-    // initiate an array for storing getSinglePhotoInfo promises
-    var photoArrayPromise = [];
-    // iterate all photos to fetch detailed information
-    allPhotosInfo.resources.forEach(function(item){
-        if (item.bytes > 0.0) {
-            photoArrayPromise.push(getSinglePhotoInfo(item.public_id))
-        }
-    });
-    // wait for all members of photoArrayPromise to be resolved
-    var photos = await Promise.all(photoArrayPromise);
-
-    // return the final result
-    // photos is an array whose element is object containing all information of each photo
+  
+    // 4. Fetch detailed info for each resource
+    //    (only if it has >0 bytes, which probably means it’s valid)
+    const photoArrayPromises = allResources
+      .filter((item) => item.bytes > 0)
+      .map((item) => getSinglePhotoInfo(item.public_id));
+  
+    let photos;
+    try {
+      photos = await Promise.all(photoArrayPromises);
+    } catch (err) {
+      console.error('Failed to fetch detailed info for some photos:', err.message);
+      throw err; // or return partial data if you like
+    }
+  
+    // 5. Return the final array of photo objects
     return photos;
-}
+  };
