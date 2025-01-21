@@ -12,10 +12,6 @@ module.exports = {
   //'SOURCE_CODE': 'https://github.com/anyuzx/Prongs', // the github repo of the source code
   ENV: process.env.ELEVENTY_ENV, // environment variable can be accessed in templates https://www.11ty.io/docs/data-js/#example%3A-exposing-environment-variables
   googleAnalyticsId: process.env.GOOGLE_ANALYTICS_ID, // environmetn variable for google analytics track id
-  FEED: {
-    PATH: 'feed.xml', // name of the RSS feed file. The file should be in the root of the site
-    TITLE: 'Blog posts feed, by Guang Shi', // title for the RSS feed
-  },
   //'GOOGLE_ANALYTICS': 'UA-139423558-3',
   AUTHOR: {
     NAME: 'Guang Shi', // author name
