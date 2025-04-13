@@ -26,4 +26,3 @@ I also love to take [photos](/photos/). I primarily take films but sometimes dig
 **You can find me here**
 
 * Personal Email: guang.shi.gs@gmail.com
-* Twitter: [@anyuzx](https://twitter.com/anyuzx)
