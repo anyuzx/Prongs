@@ -14,9 +14,6 @@
   {% include "../svg/instagram.svg" %}
 {% endset %}
 
-{% set twitterIcon %}
-  {% include "../svg/twitter.svg" %}
-{% endset %}
 
 <footer class="border-t-2 border-lightgray mt-10 bg-lightergray">
   <div class="py-4 flex justify-center items-center mx-auto max-w-screen-md w-full px-4 md:px-0">
@@ -50,13 +47,6 @@
     <a href="https://www.instagram.com/{{ site.AUTHOR.INSTAGRAM }}" aria-label="Instagram" rel="noopener noreferrer" target="_blank" class="f-icon">
       <span class="block w-4">
         {{ instagramIcon | svgo | safe }}
-      </span>
-    </a>
-    {% endif %}
-    {% if site.AUTHOR.TWITTER %}
-    <a href="https://twitter.com/{{ site.AUTHOR.TWITTER }}" aria-label="Twitter" rel="noopener noreferrer" target="_blank" class="f-icon">
-      <span class="block w-4">
-        {{ twitterIcon | svgo | safe }}
       </span>
     </a>
     {% endif %}
