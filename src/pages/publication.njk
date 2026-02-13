@@ -17,7 +17,7 @@ script:
 
 
 <section class="tab-pane tab-active" id="publications">
-<p class="font-semibold font-secondary text-lg italic b-text">List of my publications. You can also check my <a href="{{ site.AUTHOR.GOOGLE_SCHOLAR }}">Google Scholar Page</a></p>
+<p class="font-semibold font-secondary text-lg b-text"><a href="{{ site.AUTHOR.GOOGLE_SCHOLAR }}">Google Scholar</a></p>
 {% for year, publications in getPublications | groupByEx("issued.date-parts.0.0") %}
 <h2 class="text-base mb-0 mt-4">{{ year }}</h2>
 <hr>
@@ -58,7 +58,6 @@ script:
 </section>
 
 <section class="tab-pane" id="talks">
-<p class="font-semibold font-secondary text-lg italic">List of my talks and posters.</p>
 <ol class="list-outside list-none ml-0 mt-4">
 {% for item in getTalksPosters | sort(true, false, "date") %}
 <li class="mb-8">

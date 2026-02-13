@@ -19,9 +19,9 @@ module.exports = {
     EMAIL: 'guang.shi.gs@gmail.com', // author's email address
     //INSTAGRAM: 'guang_shi_stefan', // author's instagram
     GOOGLE_SCHOLAR: 'https://scholar.google.com/citations?user=JMf5dv8AAAAJ&hl=en', // google scholar profile
-    SHORT_BIO: 'Theoretical and Computational Biophysics',
-    TITLE: 'Postdoctoral Researcher',
-    SECOND_TITLE: 'Thirumalai Lab @ The University of Texas at Austin',
+    SHORT_BIO: 'Computational Biophysics and Biology',
+    TITLE: 'Research Associate',
+    //SECOND_TITLE: 'Thirumalai Lab @ The University of Texas at Austin',
     PHOTO: '/assets/images/my-photo.jpg',
     // 'ADDRESS': '' // author's address
   },
