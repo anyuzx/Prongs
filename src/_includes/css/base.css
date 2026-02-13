@@ -104,7 +104,7 @@ table {
 }
 
 td, th {
-  @apply text-center border-b border-lightgray pt-3 nums-tabular;
+  @apply text-center border-b border-lightgray pt-3 tabular-nums;
   padding-bottom: calc(theme('spacing.3') - theme('spacing.px'));
 }
 
