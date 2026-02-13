@@ -2,12 +2,6 @@
   publish = "dist"
   command = "npm run build:refresh-data"
 
-[[plugins]]
-  package = "netlify-plugin-a11y"
-  [plugins.inputs]
-    checkPaths = ['/']
-    resultMode = "warn"
-
 #[[plugins]]
 #  package = "netlify-plugin-no-more-404"
 #  [plugins.inputs]
