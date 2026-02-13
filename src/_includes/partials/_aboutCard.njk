@@ -1,18 +1,23 @@
-<section class="bg-lightgray sm:float-left sm:mr-6 sm:w-1/2">
-    <div class="p-2">
-        <figure class="mb-0">
-            <img src="{{ site.AUTHOR.PHOTO }}" alt="myself-photo">
-        </figure>
+<section class="border-2 border-lightgray bg-lightgray p-4">
+    <figure class="mb-4">
+        <img src="{{ site.AUTHOR.PHOTO }}" alt="{{ site.AUTHOR.NAME }}" class="mb-0 w-full">
+    </figure>
+
+    <div class="mb-5">
+        <h1 class="text-xl font-black font-secondary mb-1">{{ site.AUTHOR.NAME }}</h1>
+        <p class="font-semibold font-secondary mb-1">{{ site.AUTHOR.TITLE }}</p>
+        <p class="text-sm">{{ site.AUTHOR.SHORT_BIO }}</p>
     </div>
-    <div class="p-2">
-        <div class="mb-6">
-            <p class="font-bold font-secondary">{{ site.AUTHOR.TITLE }}</p>
-            <p class="text-darkgray mb-4">{{ site.AUTHOR.SECOND_TITLE }}</p>
-            <p>{{ site.AUTHOR.SHORT_BIO }}</p>
-        </div>
-        <div class="text-sm font-mono divide-x divide-white">
-            {%- if site.AUTHOR.GOOGLE_SCHOLAR -%}<span class="inline-block bg-lightgray p-2 hover:bg-darkergray"><a href={{ site.AUTHOR.GOOGLE_SCHOLAR }}>Google Scholar</span>{%- endif -%}
-            {%- if site.AUTHOR.GITHUB %}<span class="inline-block bg-lightgray p-2 hover:bg-darkergray"><a href="https://github.com/{{ site.AUTHOR.GITHUB }}">GitHub</span>{%- endif -%}
+
+    <div class="border-t-2 border-white pt-3">
+        <p class="text-xs uppercase tracking-wide text-darkgray font-semibold mb-2">Links</p>
+        <div class="flex flex-wrap gap-2 text-sm font-mono">
+            {%- if site.AUTHOR.GOOGLE_SCHOLAR -%}
+            <a href="{{ site.AUTHOR.GOOGLE_SCHOLAR }}" class="inline-block px-2 py-1 border border-darkgray hover:bg-darkergray" rel="noopener noreferrer" target="_blank">Google Scholar</a>
+            {%- endif -%}
+            {%- if site.AUTHOR.GITHUB -%}
+            <a href="https://github.com/{{ site.AUTHOR.GITHUB }}" class="inline-block px-2 py-1 border border-darkgray hover:bg-darkergray" rel="noopener noreferrer" target="_blank">GitHub</a>
+            {%- endif -%}
         </div>
     </div>
 </section>

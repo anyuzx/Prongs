@@ -1,10 +1,12 @@
 {% extends "layouts/default.njk" %}
 
 {% block content %}
-  <article>
-    {% include 'partials/_aboutCard.njk' %}
-  <section class="mt-8 flow b-text text-justify">
-  {{ content | safe }}
-  </section>
+  <article class="grid gap-8 md:grid-cols-12">
+    <aside class="md:col-span-4 lg:sticky lg:top-28 self-start">
+      {% include 'partials/_aboutCard.njk' %}
+    </aside>
+    <section class="md:col-span-8 flow b-text leading-relaxed">
+      {{ content | safe }}
+    </section>
   </article>
 {% endblock %}
