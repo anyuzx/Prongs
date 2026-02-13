@@ -34,5 +34,5 @@
   - [x] write about how to use markdown-it and prismjs with custom preview template
 - [x] table of contents for post
 - [x] numbering headings for post
-- [ ] automatic publication page generation process
+- [x] automatic publication page generation process
 - [x] Image lazy loading for page `/photos`
