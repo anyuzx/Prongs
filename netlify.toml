@@ -1,6 +1,6 @@
 [build]
   publish = "dist"
-  command = "npm run build"
+  command = "npm run build:refresh-data"
 
 [[plugins]]
   package = "netlify-plugin-a11y"

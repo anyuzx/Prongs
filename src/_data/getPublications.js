@@ -1,51 +1,66 @@
-const axios = require('axios');
+const fs = require("fs/promises");
+const path = require("path");
+const axios = require("axios");
 
-// Provide a polite and identifying User-Agent
 const headers = {
-  'Accept': 'application/vnd.citationstyles.csl+json',
-  'User-Agent': 'Prongs (personal website) (mailto:stefanshi1988@gmail.com)',
+  Accept: "application/vnd.citationstyles.csl+json",
+  "User-Agent": "Prongs (personal website) (mailto:stefanshi1988@gmail.com)"
 };
 
-// Load your list of DOIs (adjust the path as needed)
-const doiList = require('../contents/publications/publication_doi.json');
+const doiList = require("../contents/publications/publication_doi.json");
+const CACHE_PATH = path.join(__dirname, "../contents/publications/publication_data.json");
 
-/**
- * Fetch bibliography data for a single DOI, retrying if rate-limited.
- * @param {string} doi - The DOI to fetch
- * @param {number} retries - How many retries left for 429 errors
- * @returns {object} Parsed CSL JSON data or an { error: true } object on failure
- */
-async function getBib(doi, retries = 5) {
+function shouldFetchRemoteData() {
+  return process.env.FETCH_REMOTE_DATA === "1" || process.env.ELEVENTY_FETCH_REMOTE === "1";
+}
+
+function isValidPublication(item) {
+  return Boolean(
+    item &&
+      !item.error &&
+      Array.isArray(item.author) &&
+      item.issued &&
+      Array.isArray(item.issued["date-parts"]) &&
+      item.title
+  );
+}
+
+async function readCache() {
+  try {
+    const raw = await fs.readFile(CACHE_PATH, "utf8");
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
+async function writeCache(publications) {
+  await fs.mkdir(path.dirname(CACHE_PATH), { recursive: true });
+  await fs.writeFile(CACHE_PATH, `${JSON.stringify(publications, null, 2)}\n`, "utf8");
+}
+
+async function getBib(doi, retries = 2) {
   const url = `https://doi.org/${encodeURIComponent(doi)}`;
 
   try {
-    const response = await axios.get(url, { headers });
+    const response = await axios.get(url, { headers, timeout: 2500 });
     return response.data;
   } catch (error) {
-    // If we got a 429 (Too Many Requests) and still have retries
     if (error.response && error.response.status === 429 && retries > 0) {
-      const delay = (6 - retries) * 5000; // 5s, 10s, 15s, ...
-      console.warn(`Rate limited fetching ${doi}. Retrying in ${delay / 1000} seconds...`);
+      const delay = (3 - retries) * 2000;
       await new Promise((resolve) => setTimeout(resolve, delay));
-      return getBib(doi, retries - 1); // Retry
+      return getBib(doi, retries - 1);
     }
 
-    // For any other error (404, 500, etc.), log and return an error object
-    console.error(`Failed to fetch ${doi}:`, error.message);
     return {
       doi,
       error: true,
-      errorMessage: error.message,
+      errorMessage: error.message
     };
   }
 }
 
-/**
- * Breaks an array into smaller chunks of size `size`.
- * @param {Array} array - The array to chunk
- * @param {number} size - The chunk size
- * @returns {Array[]} An array of chunk arrays
- */
 function chunkArray(array, size) {
   const chunks = [];
   for (let i = 0; i < array.length; i += size) {
@@ -54,46 +69,24 @@ function chunkArray(array, size) {
   return chunks;
 }
 
-/**
- * Main function: fetch all publication DOIs in smaller batches to avoid rate-limiting.
- * Returns an array of publication data (some entries may have { error: true } if fetch failed).
- */
 module.exports = async function() {
-  try {
-    // Adjust batchSize as desired. Smaller = fewer parallel requests.
-    const batchSize = 3;
-    const chunks = chunkArray(doiList, batchSize);
-
-    const allResults = [];
-
-    // Process each chunk sequentially
-    for (const [index, chunk] of chunks.entries()) {
-      console.log(`\nFetching batch ${index + 1} of ${chunks.length}...`);
-
-      // We'll fetch each DOI in the chunk sequentially to be extra polite
-      // (You could do Promise.all(chunk.map(...)) if you want small concurrency.)
-      for (const doi of chunk) {
-        const result = await getBib(doi);
-        // If it’s an error object, we keep it in the array but mark it as error
-        allResults.push(result);
-
-        // Optional: Wait 1 second between each request
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-      }
-
-      // Optional: Wait 2 seconds between each batch
-      if (index < chunks.length - 1) {
-        await new Promise((resolve) => setTimeout(resolve, 2000));
-      }
-    }
-
-    // This is the array Eleventy sees as data (e.g. publications)
-    return allResults;
-
-  } catch (error) {
-    // If you want the build to fail upon any unhandled error, leave this throw in place
-    // If you prefer to skip the entire dataset on error, you could return an empty array or partial data
-    console.error('Error fetching publications:', error);
-    throw error;
+  const cached = await readCache();
+  if (!shouldFetchRemoteData()) {
+    return cached;
   }
+
+  const results = [];
+  const chunks = chunkArray(doiList, 5);
+  for (const chunk of chunks) {
+    const chunkResults = await Promise.all(chunk.map((doi) => getBib(doi)));
+    results.push(...chunkResults);
+  }
+
+  const publications = results.filter(isValidPublication);
+  if (publications.length > 0) {
+    await writeCache(publications);
+    return publications;
+  }
+
+  return cached;
 };

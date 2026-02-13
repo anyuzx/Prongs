@@ -1,108 +1,73 @@
-// getPhotos.js
-module.exports = async function (collection) {
-    const cloudinary = require('cloudinary').v2;
-  
-    // 1. Configure Cloudinary if not already done in .env or global config
-    //    cloudinary.config({
-    //      cloud_name: 'YOUR_CLOUD_NAME',
-    //      api_key: 'YOUR_API_KEY',
-    //      api_secret: 'YOUR_API_SECRET'
-    //    });
-  
-    /**
-     * Fetch resources from Cloudinary in multiple pages if needed
-     * so we get ALL resources (not just the first 500).
-     */
-    async function fetchAllResources(prefix) {
-      let allResources = [];
-      let nextCursor = null;
-  
-      do {
-        // For each "page", call cloudinary.api.resources()
-        const { resources = [], rate_limit_allowed, rate_limit_reset_at, rate_limit_remaining, next_cursor } =
-          await new Promise((resolve, reject) => {
-            cloudinary.api.resources(
-              {
-                type: "upload",
-                resource_type: 'image',
-                prefix,
-                tags: true,
-                context: true,
-                max_results: 500,
-                next_cursor: nextCursor,
-              },
-              (error, result) => {
-                if (error) return reject(error);
-                resolve(result);
-              }
-            );
-          });
-  
-        // Log rate-limit info for each chunk
-        console.log(
-          `\nFetched ${resources.length} resource(s) (cumulative: ${allResources.length + resources.length})`
-        );
-        console.log(
-          'Rate Limit Allowed:', rate_limit_allowed,
-          '\nRate Limit Reset At:', rate_limit_reset_at,
-          '\nRate Limit Remaining:', rate_limit_remaining
-        );
-  
-        // Add to the overall list
-        allResources = allResources.concat(resources);
-        nextCursor = next_cursor; // if `next_cursor` is set, loop again
-      } while (nextCursor);
-  
-      return allResources;
-    }
-  
-    /**
-     * Fetch *detailed* information (with metadata) for a single resource
-     */
-    async function getSinglePhotoInfo(publicId) {
-      return new Promise((resolve, reject) => {
-        cloudinary.api.resource(publicId, { image_metadata: true }, (error, result) => {
-          if (error) {
-            return reject(error);
-          }
-          resolve(result);
-        });
-      });
-    }
-  
-    // 2. Fetch all top-level resources from the folder `guangshi.io`
-    let allResources;
-    try {
-      allResources = await fetchAllResources('guangshi.io');
-    } catch (err) {
-        console.error('Failed to fetch top-level resource list from Cloudinary. Full error below:');
-        console.error(err); // Log the entire object
-        // optionally: console.error(JSON.stringify(err, null, 2));
-        throw err; // or return [];
-    }
-  
-    // 3. Sort by creation date (ascending)
-    //    If you want descending (most recent first), reverse the sort comparison.
-    allResources.sort((a, b) => {
-      const dateA = new Date(a.created_at);
-      const dateB = new Date(b.created_at);
-      return dateA - dateB; // ascending
+const fs = require("fs/promises");
+const path = require("path");
+const cloudinary = require("cloudinary").v2;
+
+const CACHE_PATH = path.join(__dirname, "../../contents/photos/cloudinary_photos.json");
+
+function shouldFetchRemoteData() {
+  return process.env.FETCH_REMOTE_DATA === "1" || process.env.ELEVENTY_FETCH_REMOTE === "1";
+}
+
+async function readCache() {
+  try {
+    const raw = await fs.readFile(CACHE_PATH, "utf8");
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
+async function writeCache(photos) {
+  await fs.mkdir(path.dirname(CACHE_PATH), { recursive: true });
+  await fs.writeFile(CACHE_PATH, `${JSON.stringify(photos, null, 2)}\n`, "utf8");
+}
+
+async function fetchAllResources(prefix) {
+  let allResources = [];
+  let nextCursor = null;
+
+  do {
+    const { resources = [], next_cursor } = await cloudinary.api.resources({
+      type: "upload",
+      resource_type: "image",
+      prefix,
+      tags: true,
+      context: true,
+      max_results: 500,
+      next_cursor: nextCursor
     });
-  
-    // 4. Fetch detailed info for each resource
-    //    (only if it has >0 bytes, which probably means it’s valid)
+
+    allResources = allResources.concat(resources);
+    nextCursor = next_cursor;
+  } while (nextCursor);
+
+  return allResources;
+}
+
+async function getSinglePhotoInfo(publicId) {
+  return cloudinary.api.resource(publicId, { image_metadata: true });
+}
+
+module.exports = async function getPhotos() {
+  const cached = await readCache();
+  if (!shouldFetchRemoteData()) {
+    return cached;
+  }
+
+  try {
+    const allResources = await fetchAllResources("guangshi.io");
+    allResources.sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
+
     const photoArrayPromises = allResources
       .filter((item) => item.bytes > 0)
       .map((item) => getSinglePhotoInfo(item.public_id));
-  
-    let photos;
-    try {
-      photos = await Promise.all(photoArrayPromises);
-    } catch (err) {
-      console.error('Failed to fetch detailed info for some photos:', err.message);
-      throw err; // or return partial data if you like
-    }
-  
-    // 5. Return the final array of photo objects
+    const photos = await Promise.all(photoArrayPromises);
+
+    await writeCache(photos);
     return photos;
-  };
+  } catch (error) {
+    console.error(`Failed to refresh Cloudinary photos: ${error.message}`);
+    return cached;
+  }
+};

@@ -16,3 +16,9 @@ This repository containts the source code for my personal site. The site is buil
 * RSS feed
 * Image Lazy Loading
 * Automatc publication page generated from a list of DOI
+
+## Development Notes
+
+* Requires Node.js `>=18` (Eleventy 3.x requirement).
+* `npm run build` and `npm run build:development` use cached remote data for publications/photos.
+* Run `npm run build:refresh-data` when you want to refresh publication and photo data from external APIs.

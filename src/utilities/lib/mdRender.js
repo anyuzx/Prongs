@@ -30,7 +30,7 @@ const registerLangs = (register) => register &&
 
 // Highlight with given language.
 const highlight = (code, lang) =>
-  maybe(() => hljs.highlight(lang || 'plaintext', code, true).value) || ''
+  maybe(() => hljs.highlight(code, { language: lang || 'plaintext', ignoreIllegals: true }).value) || ''
 
 // Highlight with given language or automatically.
 const highlightAuto = (code, lang) =>

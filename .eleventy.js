@@ -1,6 +1,6 @@
 // require the npm modules
 const pluginRss = require("@11ty/eleventy-plugin-rss");
-const pluginPWA = require("eleventy-plugin-pwa");
+const generateServiceWorker = require("./src/utilities/build/generateServiceWorker.js");
 
 // local library/modules
 const mdRender = require('./src/utilities/lib/mdRender.js');
@@ -64,7 +64,6 @@ module.exports = function(config) {
 
   // add plugins
   config.addPlugin(pluginRss);
-  config.addPlugin(pluginPWA);
 
   // add passthrough copy
   config.addPassthroughCopy({"src/assets/favicon/*": "/"});
@@ -95,8 +94,15 @@ module.exports = function(config) {
     config.addTransform("htmlmin", htmlmin);
   };
 
+  // generate a service worker after successful production builds
+  config.on("eleventy.after", async ({ dir }) => {
+    if (env === "production") {
+      await generateServiceWorker(dir.output);
+    }
+  });
+
   // support YAML format
-  config.addDataExtension("yaml", contents => yaml.safeLoad(contents));
+  config.addDataExtension("yaml", contents => yaml.load(contents));
 
   return {
     dataTemplateEngine: "njk",
