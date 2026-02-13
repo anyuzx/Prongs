@@ -117,3 +117,43 @@ Changelog 2020/05/25 Version 0.9.5
 Feature:
 
 - new photos archive page where each photo is displayed on a grid, small.
+
+---
+
+Changelog 2026/02/13 Version 1.0
+
+Feature:
+
+- Upgrade Eleventy from `0.11` to `3.1.2`.
+  - Update build/runtime dependencies and lockfile.
+  - Keep site build compatible with Node `>=18`.
+- Replace legacy `eleventy-plugin-pwa` with a native build hook using `workbox-build`.
+  - Add `src/utilities/build/generateServiceWorker.js`.
+  - Generate `service-worker.js` on `eleventy.after` in production builds.
+- Improve remote data workflow for publications/photos.
+  - Add cache-backed data loaders:
+    - `src/_data/getPublications.js`
+    - `src/utilities/collections/getPhotos.js`
+  - Add cache files:
+    - `src/contents/publications/publication_data.json`
+    - `src/contents/photos/cloudinary_photos.json`
+  - Add `build:refresh-data` script to force refresh from remote APIs.
+- Update deployment behavior for Netlify.
+  - Change build command in `netlify.toml` to `npm run build:refresh-data`.
+- Tailwind and Rollup modernization.
+  - Upgrade to `tailwindcss@3.4.x` and PostCSS 8 stack.
+  - Upgrade to `rollup@4.x` and modern Rollup plugins.
+  - Replace deprecated Node builtins plugin with `rollup-plugin-polyfill-node`.
+  - Refactor `tailwind.config.js`, `postcss.config.js`, and `rollup.config.js`.
+
+Fix:
+
+- Fix `/posts` list HTML nesting regression.
+  - Harden excerpt generation to plain-text safe output in `src/utilities/filters/excerpt.js`.
+  - Prevent malformed/truncated HTML in excerpts from breaking `<div class="post-item">` structure.
+- Improve production robustness.
+  - Update YAML loader usage: `yaml.safeLoad` -> `yaml.load`.
+  - Make HTML minify transform fail-open (warn and continue) on invalid page fragments.
+  - Update highlight.js API usage in markdown renderer to current signature.
+  - Update Tailwind utility usage (`nums-tabular` -> `tabular-nums`).
+
