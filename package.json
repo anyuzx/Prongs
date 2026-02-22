@@ -15,7 +15,7 @@
     "css:preprocess": "postcss src/_includes/css/main.css -o dist/_includes/css/main.css --verbose",
     "cms:bundle": "rollup --config",
     "build": "ELEVENTY_ENV=production run-s clean cms:bundle css:preprocess build:11ty",
-    "build:refresh-data": "FETCH_REMOTE_DATA=1 ELEVENTY_ENV=production run-s clean cms:bundle css:preprocess build:11ty",
+    "build:refresh-data": "FETCH_REMOTE_DATA=1 REQUIRE_REMOTE_DATA=1 ELEVENTY_ENV=production run-s clean cms:bundle css:preprocess build:11ty",
     "build:development": "ELEVENTY_ENV=development run-s clean css:preprocess build:11ty",
     "build:serve": "ELEVENTY_ENV=development run-s clean css:preprocess serve"
   },
