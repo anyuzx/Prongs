@@ -49,7 +49,7 @@
     "postcss-import": "^16.1.1",
     "posthtml": "^0.13.0",
     "posthtml-inline-assets": "^3.1.0",
-    "rollup": "^4.57.1",
+    "rollup": "^4.59.0",
     "rollup-plugin-polyfill-node": "^0.13.0",
     "tailwindcss": "^3.4.19",
     "watch": "^1.0.2"
