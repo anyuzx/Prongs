@@ -58,7 +58,7 @@
     "@11ty/eleventy-plugin-rss": "^2.0.4",
     "@babel/core": "^7.10.2",
     "@iktakahiro/markdown-it-katex": "^3.1.0",
-    "axios": "^1.13.5",
+    "axios": "^1.15.0",
     "babel-plugin-prismjs": "^2.0.1",
     "citation-js": "^0.5.0-alpha.5",
     "cloudinary": "^2.7.0",
