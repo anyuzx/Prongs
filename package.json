@@ -33,7 +33,7 @@
     "@rollup/plugin-node-resolve": "^16.0.3",
     "autoprefixer": "^10.4.24",
     "bl": "^4.0.3",
-    "critical": "^2.0.0-27",
+    "critical": "^8.0.0",
     "cssnano": "^7.1.2",
     "dotenv": "^16.4.7",
     "eslint": "^7.2.0",
