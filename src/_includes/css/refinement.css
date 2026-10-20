@@ -60,8 +60,9 @@ a.publication-title:hover, .publication-meta a:hover { text-decoration-color: cu
 .academic-about .b-text a::after { content: none; }
 .academic-news { margin-top: 1.25rem; }
 .academic-news h2 { margin-top: 0; margin-bottom: .65rem; }
-.news-list { margin: 0 0 0 1.5rem; list-style: disc; }
-.news-list li { margin-block: .4rem; line-height: 1.55; }
+.news-list { margin: 0; padding: 0; list-style: none; }
+.news-list li { display: grid; grid-template-columns: 5rem minmax(0, 1fr); align-items: baseline; column-gap: .75rem; margin-block: .4rem; line-height: 1.55; }
+.news-date { color: var(--site-muted); font-size: .875rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .news-list a { text-decoration-color: transparent; }
 .news-list a:hover { text-decoration-color: currentColor; }
 
@@ -83,10 +84,10 @@ a.publication-title:hover, .publication-meta a:hover { text-decoration-color: cu
 
 .post-item { margin: 0; padding-block: .5rem; border-bottom: 1px solid var(--site-rule); }
 .post-item:first-child { border-top: 1px solid var(--site-rule); }
-.post-info { display: flex; align-items: baseline; gap: 1.25rem; }
-.post-info > a { flex: 1; min-width: 0; font-weight: 500; line-height: 1.6; }
+.post-info { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; column-gap: 1.5rem; }
+.post-info > a { min-width: 0; font-weight: 500; line-height: 1.6; }
 .post-info > a:hover { color: var(--site-accent); text-decoration: underline; text-underline-offset: .2em; }
-.post-meta { display: flex; align-items: center; gap: .75rem; color: var(--site-muted); }
+.post-meta { display: flex; flex-shrink: 0; align-items: center; gap: .75rem; color: var(--site-muted); }
 .post-meta time { white-space: nowrap; font-size: .8125rem; font-variant-numeric: tabular-nums; }
 .post-excerpt { margin-top: .5rem; color: var(--site-muted); font-size: .9375rem; }
 .post-excerpt > :last-child { margin-bottom: 0; }
@@ -134,7 +135,7 @@ a.publication-title:hover, .publication-meta a:hover { text-decoration-color: cu
   .site-nav-links a { font-size: .9375rem; }
   .academic-profile { flex-direction: column; }
   .academic-profile__portrait { width: 112px; }
-  .post-info { align-items: flex-start; flex-direction: column; gap: .35rem; }
+  .post-info { grid-template-columns: minmax(0, 1fr); row-gap: .35rem; }
   .post-meta { width: 100%; justify-content: space-between; }
   .single-post pre.hljs { padding: 1.25rem; border-right-width: 0; }
 }

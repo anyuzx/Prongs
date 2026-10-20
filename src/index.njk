@@ -15,13 +15,16 @@ pageType: home
   <section class="academic-news" aria-labelledby="news-title">
     <h2 id="news-title">News</h2>
     <ul class="news-list">
-      {% for item in getNews %}
+      {% for item in getNews | sort(true, false, "date") %}
         <li>
+          <time class="news-date" datetime="{{ item.date }}">{% dayjs item.date, 'MMM YYYY' %}</time>
+          <span class="news-text">
           {% if item.link %}
             <a href="{{ item.link }}">{{ item.text | inlineRenderUsingMarkdown | safe }}</a>
           {% else %}
             {{ item.text | inlineRenderUsingMarkdown | safe }}
           {% endif %}
+          </span>
         </li>
       {% endfor %}
     </ul>

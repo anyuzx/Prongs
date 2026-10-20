@@ -40,7 +40,7 @@ script:
         </div>
         <div class="publication-meta">
           {% for author in publication.author %}
-            <span{% if author.family == "Shi" %} class="publication-author"{% endif %}>{{ author.family }}, {{ author.given }}.{% if not loop.last %}, {% endif %}</span>
+            <span{% if author.family == "Shi" and author.given == "Guang" %} class="publication-author"{% endif %}>{{ author.family }}{% if author.given %}, {{ author.given }}{% endif %}{% if not loop.last %}; {% endif %}</span>
           {% endfor %}
           <span class="italic">{{ publication["container-title"] }}</span><span> ({{ publication["issued"]["date-parts"][0][0] }})</span>
         </div>
