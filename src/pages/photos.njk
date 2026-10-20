@@ -36,8 +36,5 @@ script:
         {% responImg photo.public_id, photo.context.custom.caption, "(max-width:650px) 100vw, (max-width:1980px) 800px, 1280px", 2400, [800,1600,2400], ['gallery-image','lazy'], 'guangshi' %}
     </a>
     {% endif %}
-    {% if photo.context.custom.caption %}
-      <figcaption class="gallery-caption">{{ photo.context.custom.caption }}</figcaption>
-    {% endif %}
     </figure>
 {%- endfor %}
