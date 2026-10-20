@@ -4,7 +4,7 @@ I am a Research Associate in the Department of Chemistry at The University of Te
 
 I combine polymer physics, statistical mechanics, and data-driven inference to understand how molecular information shapes the structure, dynamics, and material properties of chromosomes and biomolecular condensates.
 
-**The 4D genome.** I developed HIPPS-DIMES, a maximum-entropy framework that reconstructs ensembles of three-dimensional chromosome structures from Hi-C or imaging data. I use the inferred interactions to connect chromosome organization with chromatin motion and local mechanical response, and collaborate on models linking simultaneous enhancer–promoter contacts to gene expression.
+**The 4D genome.** I developed [HIPPS-DIMES](https://github.com/anyuzx/HIPPS-DIMES), a maximum-entropy framework that reconstructs ensembles of three-dimensional chromosome structures from Hi-C or imaging data. I use the inferred interactions to connect chromosome organization with chromatin motion and local mechanical response, and collaborate on models linking simultaneous enhancer–promoter contacts to gene expression.
 
 <figure class="research-schematic">
   <picture>
