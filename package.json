@@ -30,7 +30,7 @@
     "@11ty/eleventy": "^3.1.2",
     "@fontsource-variable/noto-sans-sc": "5.3.1",
     "@fontsource-variable/noto-serif-sc": "5.3.1",
-    "@fullhuman/postcss-purgecss": "^2.2.0",
+    "@fullhuman/postcss-purgecss": "^8.0.0",
     "@rollup/plugin-commonjs": "^29.0.0",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
@@ -54,7 +54,7 @@
     "posthtml-inline-assets": "^3.1.0",
     "rollup": "^4.59.0",
     "rollup-plugin-polyfill-node": "^0.13.0",
-    "tailwindcss": "^3.4.19",
+    "tailwindcss": "^4.3.3",
     "watch": "^1.0.2"
   },
   "dependencies": {
