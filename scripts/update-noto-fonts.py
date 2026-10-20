@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 import re
 import subprocess
+import sys
 import tarfile
 import tempfile
 import urllib.request
@@ -211,6 +212,8 @@ def main():
         print(f"{family}: {len(files)} subsets, {sum(f['bytes'] for f in files):,} bytes")
         print(f"  Common: {details['common']['characterCount']} characters, {details['common']['bytes']:,} bytes")
     print(f"Stylesheet: {len(generated['fonts.css']):,} bytes")
+    # Preserve the homepage's tiny name subset when refreshing the CJK corpus.
+    subprocess.run([sys.executable, str(ROOT / "scripts/optimize-site-fonts.py")], check=True)
 
 
 if __name__ == "__main__":

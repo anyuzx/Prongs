@@ -7,6 +7,7 @@ const mdRender = require('./src/utilities/lib/mdRender.js');
 const typeset = require('./src/utilities/transform/typeset.js')({ only: '.b-text', disable: ['hyphenate'] });
 const htmlmin = require('./src/utilities/transform/html-minify.js');
 const purgeCSS = require('./src/utilities/transform/purgecss.js');
+const inlineChineseFonts = require('./src/utilities/transform/inlineChineseFonts.js');
 
 // support YAML as data file format
 const yaml = require('js-yaml');
@@ -92,6 +93,10 @@ module.exports = function(config) {
   if (env == "production") {
     // purge css and inject to <head> in html
     config.addTransform('purgeCSS', purgeCSS);
+  }
+  // Keep only font declarations needed by this page, after the CSS injection.
+  config.addTransform('inlineChineseFonts', inlineChineseFonts);
+  if (env == "production") {
     // minimizer html, including css and js
     config.addTransform("htmlmin", htmlmin);
   };

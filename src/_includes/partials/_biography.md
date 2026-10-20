@@ -8,7 +8,7 @@ I combine polymer physics, statistical mechanics, and data-driven inference to u
 
 <figure class="research-schematic">
   <picture>
-    <source srcset="/assets/images/research/hipps-dimes-1600.webp" type="image/webp">
+    <source srcset="/assets/images/research/hipps-dimes-400.webp 400w, /assets/images/research/hipps-dimes-800.webp 800w, /assets/images/research/hipps-dimes-1200.webp 1200w, /assets/images/research/hipps-dimes-1600.webp 1600w" sizes="(max-width: 800px) calc(100vw - 2rem), 768px" type="image/webp">
     <img src="/assets/images/research/hipps-dimes.jpg" width="3750" height="1313" loading="lazy" decoding="async" alt="Hi-C or imaging measurements provide pairwise distance constraints. Maximum-entropy inference yields a connectivity matrix used to sample chromosome structures and simulate locus trajectories.">
   </picture>
   <figcaption>From chromosome measurements to structural ensembles and dynamics.</figcaption>
@@ -18,7 +18,7 @@ I combine polymer physics, statistical mechanics, and data-driven inference to u
 
 <figure class="research-schematic">
   <picture>
-    <source srcset="/assets/images/research/condensates.webp" type="image/webp">
+    <source srcset="/assets/images/research/condensates-400.webp 400w, /assets/images/research/condensates-800.webp 800w, /assets/images/research/condensates-1200.webp 1200w, /assets/images/research/condensates.webp 1739w" sizes="(max-width: 800px) calc(100vw - 2rem), 768px" type="image/webp">
     <img src="/assets/images/research/condensates.png" width="1739" height="332" loading="lazy" decoding="async" alt="A sticker–spacer polymer model connects molecular sequence to phase behavior, internal condensate domains, and molecular diffusion.">
   </picture>
   <figcaption>How molecular sequence shapes condensate organization and transport.</figcaption>
