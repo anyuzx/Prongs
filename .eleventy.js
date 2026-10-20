@@ -4,7 +4,7 @@ const generateServiceWorker = require("./src/utilities/build/generateServiceWork
 
 // local library/modules
 const mdRender = require('./src/utilities/lib/mdRender.js');
-const typeset = require('./src/utilities/transform/typeset.js')({ only: '.b-text'});
+const typeset = require('./src/utilities/transform/typeset.js')({ only: '.b-text', disable: ['hyphenate'] });
 const htmlmin = require('./src/utilities/transform/html-minify.js');
 const purgeCSS = require('./src/utilities/transform/purgecss.js');
 

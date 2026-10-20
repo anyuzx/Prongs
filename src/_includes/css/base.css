@@ -23,11 +23,10 @@ h1,
 h2,
 h3,
 h4 {
-  /* Help prevent overflow of long words/names/URLs */
-  word-break: break-word;
-
-  /* Optional, not supported for all languages */
-  hyphens: auto;
+  /* Wrap at word boundaries; break unusually long URLs only to prevent overflow. */
+  word-break: normal;
+  overflow-wrap: break-word;
+  hyphens: none;
 }
 
 h1,h2,h3,h4,h5,h6 {
