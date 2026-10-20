@@ -1,14 +1,20 @@
-function openExcerpt(toggle, id) {
-  var elem = document.getElementById(id);
+// Excerpts remain readable when JavaScript is unavailable.
+(() => {
+  document.querySelectorAll("[data-excerpt-toggle]").forEach(toggle => {
+    const excerpt = document.getElementById(toggle.getAttribute("aria-controls"));
+    if (!excerpt) return;
 
-  toggle.classList.toggle("plus-minus-toggle");
+    const setExpanded = expanded => {
+      toggle.setAttribute("aria-expanded", String(expanded));
+      toggle.setAttribute("aria-label", `${expanded ? "Hide" : "Show"} excerpt: ${toggle.dataset.postTitle}`);
+      toggle.classList.toggle("plus-minus-toggle", expanded);
+      excerpt.hidden = !expanded;
+    };
 
-  let compStyles = window.getComputedStyle(elem);
-  let elemMaxHeight = compStyles.getPropertyValue("max-height");
-
-  if ((elemMaxHeight === "0px") || (elem.style.maxHeight === "0px")) {
-    elem.style.maxHeight = elem.scrollHeight + "px";
-  } else {
-    elem.style.maxHeight = "0px";
-  }
-}
+    setExpanded(false);
+    toggle.hidden = false;
+    toggle.addEventListener("click", () => {
+      setExpanded(toggle.getAttribute("aria-expanded") !== "true");
+    });
+  });
+})();

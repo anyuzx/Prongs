@@ -2,7 +2,7 @@
 layout: layouts/default.njk
 permalink: /posts/index.html
 title: Posts
-description: My posts list
+description: Notes on research, code, and other interests
 script:
   - src: js/openPostExcerpt.js
     inline: true
@@ -10,6 +10,11 @@ script:
 
 {% import "macros/_postList.njk" as postList %}
 
-<section>
+<header class="page-heading">
+  <h1>Posts</h1>
+  <p class="page-description">Notes on research, code, and other interests.</p>
+</header>
+
+<section class="post-list" aria-label="All posts">
   {{ postList.list(collections.posts) }}
 </section>

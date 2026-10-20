@@ -20,21 +20,24 @@ script:
 
 {% set cloudinary_url = "https://res.cloudinary.com/" + site.CLOUDINARY + "/image/upload" %}
 
-<a href="/photos/archive/" class="border border-darkergray inline-flex items-center mb-4 no-underline px-3 py-2">
-  <span class="mr-2 block w-4">{{ archiveLogo | svgo | safe }}</span>
-  <span>Archive</span>
-</a>
+<header class="page-heading gallery-heading">
+  <h1>Photos</h1>
+  <a href="/photos/archive/" class="gallery-archive">View archive <span aria-hidden="true">→</span></a>
+</header>
 {% for photo in collections.photos | reverse -%}
     {% set photoSlug = photo.public_id.split("/")[1] | slug %}
-    <section class="mb-48">
+    <figure class="gallery-entry">
     {% if loop.index < 4 %}
-    <a href="/photos/{{ photoSlug }}/" alt="photo: {{ photo.context.custom.caption }}" class="block overflow-hidden">
-        {% responImg photo.public_id, photo.context.custom.caption, "(max-width:650px) 100vw, (max-width:1980px) 800px, 1280px", 2400, [800,1600,2400], ['shadow-lg','max-h-80screen','ease-out','duration-500','transition-transform','transform','hover:scale-105'], 'guangshi' %}
+    <a href="/photos/{{ photoSlug }}/" class="block overflow-hidden">
+        {% responImg photo.public_id, photo.context.custom.caption, "(max-width:650px) 100vw, (max-width:1980px) 800px, 1280px", 2400, [800,1600,2400], ['gallery-image'], 'guangshi' %}
     </a>
     {% else %}
     <a href="/photos/{{ photoSlug }}/" class="block overflow-hidden">
-        {% responImg photo.public_id, photo.context.custom.caption, "(max-width:650px) 100vw, (max-width:1980px) 800px, 1280px", 2400, [800,1600,2400], ['shadow-lg','max-h-80screen','lazy','ease-out','duration-500','transition-transform','transform','hover:scale-105'], 'guangshi' %}
+        {% responImg photo.public_id, photo.context.custom.caption, "(max-width:650px) 100vw, (max-width:1980px) 800px, 1280px", 2400, [800,1600,2400], ['gallery-image','lazy'], 'guangshi' %}
     </a>
     {% endif %}
-    </section>
+    {% if photo.context.custom.caption %}
+      <figcaption class="gallery-caption">{{ photo.context.custom.caption }}</figcaption>
+    {% endif %}
+    </figure>
 {%- endfor %}

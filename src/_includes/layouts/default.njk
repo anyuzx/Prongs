@@ -5,10 +5,12 @@
 {% endblock %}
 
 {% block bodyopen %}
-  <body class="antialiased min-h-screen flex flex-col bg-lightergray">
+  <body class="site-body antialiased min-h-screen flex flex-col">
 {% endblock %}
 
 {% block body %}
+
+<a class="skip-link" href="#main-content">Skip to content</a>
 
 {# disable navigation bar if disableNavigation is set to false in the front matter #}
 {% ifAsync not disableNavigation %}
@@ -17,11 +19,11 @@
 
 {# layout has default and wide mode. Wide mode has width equal to the screen #}
 {% if full %}
-  <main class="mx-auto pt-32 sm:pt-20 flex-1 px-4 w-full">
+  <main id="main-content" tabindex="-1" class="site-main site-shell-full">
 {% elif wide %}
-  <main class="mx-auto pt-32 sm:pt-20 flex-1 w-full max-w-screen-md xxl:max-w-screen-lg px-4 md:px-0">
+  <main id="main-content" tabindex="-1" class="site-main site-shell-wide">
 {% else %}
-  <main class="mx-auto pt-32 sm:pt-20 flex-1 w-full max-w-screen-md px-4 md:px-0">
+  <main id="main-content" tabindex="-1" class="site-main">
 {% endif %}
 
 {% block content %}

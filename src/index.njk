@@ -1,47 +1,34 @@
 ---
 layout: layouts/default.njk
 permalink: index.html
-script:
-    - src: js/openPostExcerpt.js
-      inline: true
+pageType: home
 ---
 
-{% import "macros/_postList.njk" as postList %}
-{% import "macros/_researchCard.njk" as researchCard %}
-
-{% set pageType = 'home' %}
-
-{# news section #}
-{% for new in getNews %}
-  {% if new.link %}
-   {% if loop.first %}
-    <a class="flex items-center mb-6 p-4 w-full bg-lightgray fill-current hover:bg-darkergray" href="{{ new.link }}"><span class="mr-4 text-red-700">NEW</span><span class="flex-1 text-left">{{ new.text | inlineRenderUsingMarkdown | safe }}</span><span>↗</span></a>
-   {% else %}
-    <a class="flex items-center my-6 p-4 w-full bg-lightgray fill-current hover:bg-darkergray" href="{{ new.link }}"><span class="mr-4 text-red-700">NEW</span><span class="flex-1 text-left">{{ new.text | inlineRenderUsingMarkdown | safe }}</span><span>↗</span></a>
-   {% endif %}
-  {% else %}
-   <div class="flex items-center my-6 p-4 w-full bg-lightgray fill-current"><span class="mr-4 text-red-700">NEW</span><span>{{ new.text | inlineRenderUsingMarkdown | safe }}</span></div>
-  {% endif %}
-{% endfor %}
-
-{# comment out research section right now since it is not actively updated
-<section class="my-8">
-  <h1 class="mb-4">Research Projects</h1>
-  <div class="research-card-display">
-    {% for project in collections.research | reverse -%}
-      {% if project.fileSlug !== "summary" -%}
-        {{ researchCard.display(project) }}
-      {%- endif %}
-    {%- endfor %}
+<section class="home-intro" aria-labelledby="home-title">
+  <p class="eyebrow">{{ site.AUTHOR.SHORT_BIO }}</p>
+  <h1 id="home-title">{{ site.AUTHOR.NAME }}</h1>
+  <p class="intro-role">{{ site.AUTHOR.TITLE }}</p>
+  <p class="intro-description">I develop mechanistic and data-driven models to understand how biomolecular systems organize, assemble, and evolve.</p>
+  <div class="intro-links">
+    <a href="/about/">About me <span aria-hidden="true">→</span></a>
+    <a href="/publication/">Publications <span aria-hidden="true">→</span></a>
   </div>
 </section>
-#}
 
-{# posts section
-<section class="my-8">
-  <h1 class="mb-4">Latest Posts</h1>
-  <div>
-  {{ postList.list(collections.postsLatest) }}
-  </div>
+<section class="home-updates" aria-labelledby="updates-title">
+  <h2 id="updates-title" class="eyebrow">Latest updates</h2>
+  <ul class="news-list">
+    {% for item in getNews %}
+      <li class="news-item">
+        {% if item.link %}
+          <a class="news-link" href="{{ item.link }}">
+            <span>{{ item.text | inlineRenderUsingMarkdown | safe }}</span>
+            <span class="news-arrow" aria-hidden="true">↗</span>
+          </a>
+        {% else %}
+          <div class="news-link"><span>{{ item.text | inlineRenderUsingMarkdown | safe }}</span></div>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
 </section>
-#}
