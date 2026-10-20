@@ -10,6 +10,9 @@
     </div>
   </div>
   <figure class="academic-profile__portrait">
-    <img src="{{ site.AUTHOR.PHOTO }}" alt="Portrait of {{ site.AUTHOR.NAME }}">
+    <picture>
+      <source type="image/webp" srcset="/assets/images/my-photo-136.webp 136w, /assets/images/my-photo-272.webp 272w, /assets/images/my-photo-408.webp 408w" sizes="(max-width: 639px) 112px, 136px">
+      <img src="{{ site.AUTHOR.PHOTO }}" width="600" height="600" alt="Portrait of {{ site.AUTHOR.NAME }}" decoding="async">
+    </picture>
   </figure>
 </section>

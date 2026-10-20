@@ -17,7 +17,10 @@ module.exports = async function generateServiceWorker(outputDir) {
       globIgnores: [
         "assets/fonts/noto/**/*.woff2",
         "assets/fonts/noto/manifest.json",
-        "assets/fonts/noto/LICENSE-*.txt"
+        "assets/fonts/noto/LICENSE-*.txt",
+        // Retired families are no longer referenced by the site's styles.
+        "_includes/fonts/Inter-*",
+        "_includes/fonts/overpass-*"
       ],
       runtimeCaching: [{
         urlPattern: ({ url, sameOrigin }) => sameOrigin &&
