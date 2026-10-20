@@ -27,7 +27,7 @@ h1, h2, h3, h4, .site-nav a { hyphens: none; }
 .site-nav-links a::before { top: 0; }
 .site-nav-links a::after { bottom: 0; }
 .site-nav-links a:hover::before, .site-nav-links a:hover::after,
-.site-nav-links a[aria-current="page"]::before, .site-nav-links a[aria-current="page"]::after { transform: scaleX(1); }
+.site-nav-links a.active-nav::before, .site-nav-links a.active-nav::after { transform: scaleX(1); }
 .site-main { flex: 1; min-width: 0; padding-block: 1.3rem 2rem; }
 .site-shell-full { max-width: none; }
 .site-main [id] { scroll-margin-top: 5.5rem; }
