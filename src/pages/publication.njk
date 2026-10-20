@@ -1,75 +1,70 @@
 ---
 layout: layouts/default.njk
 permalink: /publication/index.html
-title: Publication
-description: A list of my academic publication
+title: Publications
+description: Publications, talks, and posters by Guang Shi
 script:
   - src: js/tabs.js
     inline: true
 ---
 
-<nav class="nav-tab font-secondary">
-  <ul class="flex justify-center sm:justify-start list-none m-0 mb-8 space-x-8">
-    <li class="font-black m-0 text-lg tab-active"><a href="#publications">Publications</a></li>
-    <li class="font-black m-0 text-lg"><a href="#talks">Talks & Posters</a></li>
-  </ul>
-</nav>
+<header class="page-heading">
+  <h1>Publications</h1>
+  <p class="page-description"><a href="{{ site.AUTHOR.GOOGLE_SCHOLAR }}">Google Scholar <span aria-hidden="true">↗</span></a></p>
+</header>
 
+<div class="publication-tabs">
+  <nav class="nav-tab" aria-label="Publication sections">
+    <div class="publication-tab-list">
+      <a class="publication-tab" id="publications-tab" href="#publications">Publications</a>
+      <a class="publication-tab" id="talks-tab" href="#talks">Talks &amp; Posters</a>
+    </div>
+  </nav>
 
-<section class="tab-pane tab-active" id="publications">
-<p class="font-semibold font-secondary text-lg b-text"><a href="{{ site.AUTHOR.GOOGLE_SCHOLAR }}">Google Scholar</a></p>
-{% for year, publications in getPublications | groupByEx("issued.date-parts.0.0") %}
-<h2 class="text-base mb-0 mt-4">{{ year }}</h2>
-<hr>
-<ol class="list-outside list-none ml-0">
-  {% for publication in publications %}
-  <li class="mb-8">
-    <div class="mb-2">
-    <span class="capitalize font-medium">{{ publication.title }}</span>
-    {% if publication.subtype === "preprint" %}
-      <span class="uppercase py-0 px-1 text-sm bg-lightgray">preprint</span>
-    {% endif %}
-    {% if publication.DOI %}
-      <a href="https://doi.org/{{ publication.DOI }}" class="no-underline">&#8599;</a>
-    {% endif %}
-    </div>
-    <div class="text-sm">
-    {% for author in publication.author %}
-      {% if author.family == "Shi" %}
-        {%  if loop.last %}
-          <span class="text-darkblue">{{ author.family }}, {{ author.given }}.</span>
-        {% else %}
-          <span class="text-darkblue">{{ author.family }}, {{ author.given }}., </span>
-        {% endif %}
-      {% else %}
-        {% if loop.last %}
-          <span>{{ author.family }}, {{ author.given }}.</span>
-        {% else %}
-          <span>{{ author.family }}, {{ author.given }}., </span>
-        {% endif %}
-      {% endif %}
-    {% endfor %}
-    <span class="italic">{{ publication["container-title"] }}</span><span> ({{ publication["issued"]["date-parts"][0][0] }})</span>
-    </div>
-    </li>
-    {% endfor %}
-</ol>
-{%- endfor %}
-</section>
+  <section class="tab-pane" id="publications" aria-labelledby="publications-heading">
+    <h2 class="publication-panel-heading" id="publications-heading">Publications</h2>
+    {% for year, publications in getPublications | groupByEx("issued.date-parts.0.0") %}
+    <h3 class="publication-year">{{ year }}</h3>
+    <ol class="publication-list list-none ml-0">
+      {% for publication in publications %}
+      <li class="publication-item">
+        <div class="publication-title-row">
+          {% if publication.DOI %}
+          <a class="publication-title" href="https://doi.org/{{ publication.DOI }}">{{ publication.title }} <span aria-hidden="true">↗</span></a>
+          {% else %}
+          <span class="publication-title">{{ publication.title }}</span>
+          {% endif %}
+          {% if publication.subtype === "preprint" %}
+          <span class="publication-badge">preprint</span>
+          {% endif %}
+        </div>
+        <div class="publication-meta">
+          {% for author in publication.author %}
+            <span{% if author.family == "Shi" %} class="publication-author"{% endif %}>{{ author.family }}, {{ author.given }}.{% if not loop.last %}, {% endif %}</span>
+          {% endfor %}
+          <span class="italic">{{ publication["container-title"] }}</span><span> ({{ publication["issued"]["date-parts"][0][0] }})</span>
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+    {%- endfor %}
+  </section>
 
-<section class="tab-pane" id="talks">
-<ol class="list-outside list-none ml-0 mt-4">
-{% for item in getTalksPosters | sort(true, false, "date") %}
-<li class="mb-8">
-  <div class="mb-2 capitalize">
-    <span class="py-0 px-1 text-sm uppercase bg-lightgray">{{ item.type }}</span>
-    <span class="font-medium">{{ item.title }}</span>
-    </div>
-    <div class="text-sm">
-    <span>{{ item.info | inlineRenderUsingMarkdown | safe }}. {% dayjs item.date, 'MMM, YYYY' %}</span>. 
-    {% if item.link %}<a href="{{ item.link.url }}">{{ item.link.title }}</a>{% endif %}
-  </div>
-</li>
-{% endfor %}
-</ol>
-</section>
+  <section class="tab-pane" id="talks" aria-labelledby="talks-heading">
+    <h2 class="publication-panel-heading" id="talks-heading">Talks &amp; Posters</h2>
+    <ol class="talk-list list-none ml-0">
+      {% for item in getTalksPosters | sort(true, false, "date") %}
+      <li class="talk-item">
+        <div class="publication-title-row">
+          <span class="publication-badge">{{ item.type }}</span>
+          <span class="publication-title">{{ item.title }}</span>
+        </div>
+        <div class="publication-meta">
+          <span>{{ item.info | inlineRenderUsingMarkdown | safe }}. {% dayjs item.date, 'MMM, YYYY' %}.</span>
+          {% if item.link %}<a href="{{ item.link.url }}">{{ item.link.title }}</a>{% endif %}
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+  </section>
+</div>

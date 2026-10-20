@@ -5,6 +5,7 @@
 @import "tailwindcss/base";
 @import "./base.css";
 @import "tailwindcss/components";
+@import "./refinement.css";
 
 /* Custom class from here */
 /*
@@ -17,46 +18,6 @@
  * Define post-info and post-excerpt
  * <a>, <time> and <button> tag are styled directly using css selector
  */
-.post-item {
-  @apply mb-0 py-2 border-t border-b border-transparent;
-}
-
-.post-item:hover {
-  @apply bg-darkergray;
-}
-
-.post-item .post-info {
-  @apply flex;
-}
-
-.post-item .post-info > a {
-  @apply w-3/5 font-medium truncate;
-}
-
-.post-item .post-info > div {
-  @apply w-2/5 inline-flex items-center justify-end;
-}
-
-.post-item .post-info > div > time {
-  @apply mr-2;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: -.012em;
-}
-
-.post-item .post-excerpt {
-  @apply overflow-hidden text-gray-700 italic;
-  max-height: 0px;
-  transition: max-height 0.5s ease-in-out;
-}
-
-.post-item .post-excerpt > *:first-child {
-  @apply border-t-2 border-lightgray mt-2 pt-2;
-}
-
-.post-item .post-excerpt > *:last-child {
-  @apply mb-0;
-}
-
 .post-card {
   @apply mb-6 p-2 rounded-sm block;
   background-color: #F0F0F4;
@@ -125,15 +86,11 @@
   @apply m-0;
 }
 
-.nav-fixed {
-  @apply inset-x-0 top-0 z-50 fixed;
-}
-
 /*
 * used for styling the header for non-article section
 */
 .section-header {
-  @apply font-bold text-2xl border-b-2 border-darkergray;
+  @apply font-semibold text-2xl border-b-2 border-darkergray;
   width: fit-content;
   width: -moz-fit-content;
 }
@@ -194,7 +151,7 @@
 style the table of contents
  */
 .table-of-contents {
-  @apply invisible h-0 sticky text-sm font-medium font-secondary;
+  @apply invisible h-0 sticky text-sm font-medium font-primary;
 }
 
 .table-of-contents > ol {
@@ -236,100 +193,6 @@ style the table of contents
 }
 
 @tailwind utilities;
-
-.unactive-nav {
-  position: relative;
-}
-
-.unactive-nav::after {
-  @apply bg-darkgray;
-  content: '';
-  position: absolute;
-  left: 0px;
-  right: 0px;
-  height: 2px;
-  transform: scaleX(0);
-  transition: transform 0.5s ease;
-}
-
-.unactive-nav::after {
-  bottom: 0;
-  transform-origin: center left;
-}
-
-.unactive-nav:hover::after {
-  transform-origin: center right;
-  transform: scaleX(1);
-}
-
-.active-nav {
-  position: relative;
-}
-
-.active-nav::after {
-  @apply bg-darkgray;
-  content: '';
-  position: absolute;
-  left: 0px;
-  right: 0px;
-  height: 2px;
-  transform: scaleX(1);
-  transition: transform 0.5s ease;
-}
-
-.active-nav::after {
-  bottom: 0;
-  transform-origin: center left;
-}
-
-
-
-/*
- * CSS plus/minus animation
- */
-
-.plus-minus {
-  position: relative;
-  width: 0.5em;
-  height: 0.5em;
-  min-width: 0.5em;
-  min-height: 0.5em;
-}
-.plus-minus:before, .plus-minus:after {
-  content: "";
-  position: absolute;
-  background-color: theme('colors.darkgray');
-  transition: transform 0.25s ease-out;
-}
-.plus-minus:before {
-  top: 0;
-  left: 50%;
-  width: 2px;
-  height: 100%;
-  margin-left: -1px;
-}
-.plus-minus:after {
-  top: 50%;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  margin-top: -1px;
-}
-.plus-minus:focus {
-  outline: none;
-}
-
-.plus-minus-toggle.plus-minus {
-  cursor: pointer;
-}
-
-.plus-minus-toggle.plus-minus:before {
-  transform: rotate(90deg);
-}
-
-.plus-minus-toggle.plus-minus:after {
-  transform: rotate(180deg);
-}
 
 /*
  * style .number-heading class
@@ -469,26 +332,6 @@ a.l-button {
 
 .table-of-contents a:after {
   content: none;
-}
-
-.tab-pane {
-  @apply hidden;
-}
-
-.tab-pane.tab-active {
-  @apply block;
-}
-
-.nav-tab li {
-  @apply cursor-pointer;
-}
-
-.nav-tab li > a {
-  @apply pointer-events-none;
-}
-
-.nav-tab .tab-active {
-  @apply border-b-2 border-black;
 }
 
 @tailwind screens;

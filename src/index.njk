@@ -1,47 +1,29 @@
 ---
 layout: layouts/default.njk
 permalink: index.html
-script:
-    - src: js/openPostExcerpt.js
-      inline: true
+title: About
+pageType: home
 ---
 
-{% import "macros/_postList.njk" as postList %}
-{% import "macros/_researchCard.njk" as researchCard %}
+<article class="academic-about">
+  {% include "partials/_aboutCard.njk" %}
+  {% set biography %}{% include "partials/_biography.md" %}{% endset %}
+  <section class="academic-about__content flow b-text">
+    {{ biography | renderUsingMarkdown | safe }}
+  </section>
 
-{% set pageType = 'home' %}
-
-{# news section #}
-{% for new in getNews %}
-  {% if new.link %}
-   {% if loop.first %}
-    <a class="flex items-center mb-6 p-4 w-full bg-lightgray fill-current hover:bg-darkergray" href="{{ new.link }}"><span class="mr-4 text-red-700">NEW</span><span class="flex-1 text-left">{{ new.text | inlineRenderUsingMarkdown | safe }}</span><span>↗</span></a>
-   {% else %}
-    <a class="flex items-center my-6 p-4 w-full bg-lightgray fill-current hover:bg-darkergray" href="{{ new.link }}"><span class="mr-4 text-red-700">NEW</span><span class="flex-1 text-left">{{ new.text | inlineRenderUsingMarkdown | safe }}</span><span>↗</span></a>
-   {% endif %}
-  {% else %}
-   <div class="flex items-center my-6 p-4 w-full bg-lightgray fill-current"><span class="mr-4 text-red-700">NEW</span><span>{{ new.text | inlineRenderUsingMarkdown | safe }}</span></div>
-  {% endif %}
-{% endfor %}
-
-{# comment out research section right now since it is not actively updated
-<section class="my-8">
-  <h1 class="mb-4">Research Projects</h1>
-  <div class="research-card-display">
-    {% for project in collections.research | reverse -%}
-      {% if project.fileSlug !== "summary" -%}
-        {{ researchCard.display(project) }}
-      {%- endif %}
-    {%- endfor %}
-  </div>
-</section>
-#}
-
-{# posts section
-<section class="my-8">
-  <h1 class="mb-4">Latest Posts</h1>
-  <div>
-  {{ postList.list(collections.postsLatest) }}
-  </div>
-</section>
-#}
+  <section class="academic-news" aria-labelledby="news-title">
+    <h2 id="news-title">News</h2>
+    <ul class="news-list">
+      {% for item in getNews %}
+        <li>
+          {% if item.link %}
+            <a href="{{ item.link }}">{{ item.text | inlineRenderUsingMarkdown | safe }}</a>
+          {% else %}
+            {{ item.text | inlineRenderUsingMarkdown | safe }}
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+</article>

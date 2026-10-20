@@ -5,7 +5,7 @@
 //  site.TITLE, site.DESCRIPTION, etc
 
 module.exports = {
-  TITLE: 'www.shisguang.com', // site title, this is used across the site. For instance the name appeared in the browser tab will be [page_name] | [site_title]
+  TITLE: 'Guang Shi', // site title, this is used across the site. For instance the name appeared in the browser tab will be [page_name] | [site_title]
   DESCRIPTION: "Guang Shi's personal site. Research, blog and photography", // site description, used in meta head for SEO purpose
   URL: 'https://www.shisguang.com', // absolute url for the site
   BUILD_TIME: new Date(), // build time for the site
@@ -20,7 +20,9 @@ module.exports = {
     //INSTAGRAM: 'guang_shi_stefan', // author's instagram
     GOOGLE_SCHOLAR: 'https://scholar.google.com/citations?user=JMf5dv8AAAAJ&hl=en', // google scholar profile
     SHORT_BIO: 'Computational Biophysics and Biology',
-    TITLE: 'Research Associate @ UT Austin',
+    TITLE: 'Research Associate',
+    DEPARTMENT: 'Department of Chemistry',
+    UNIVERSITY: 'The University of Texas at Austin',
     //SECOND_TITLE: 'Thirumalai Lab @ The University of Texas at Austin',
     PHOTO: '/assets/images/my-photo.jpg',
     // 'ADDRESS': '' // author's address

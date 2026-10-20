@@ -15,8 +15,10 @@
 {% endset %}
 
 
-<footer class="border-t-2 border-lightgray mt-10 bg-lightergray">
-  <div class="py-4 flex justify-center items-center mx-auto max-w-screen-md w-full px-4 md:px-0">
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <span class="footer-name">{{ site.AUTHOR.NAME }}</span>
+    <div class="footer-links">
     {% if site.FEED %}
       <a href="/{{ site.FEED.PATH }}" aria-label="RSS Feed" rel="noopener noreferrer" target="_blank" class="f-icon">
         <span class="block w-4">
@@ -27,7 +29,7 @@
     {% if site.SOURCE_CODE %}
       <a href="{{ site.SOURCE_CODE }}" aria-label="Source Code" rel="noopener noreferrer" target="_blank" class="f-icon">
         <span class="block w-4">
-          {{ sourcecodeLogo | svgo | safe }}
+          {{ githubIcon | svgo | safe }}
         </span>
       </a>
     {% endif %}
@@ -66,5 +68,6 @@
       </div>
     </div>
     #}
+    </div>
   </div>
 </footer>

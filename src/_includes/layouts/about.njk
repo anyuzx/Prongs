@@ -1,11 +1,9 @@
 {% extends "layouts/default.njk" %}
 
 {% block content %}
-  <article class="grid gap-8 md:grid-cols-12">
-    <aside class="md:col-span-4 lg:sticky lg:top-28 self-start">
-      {% include 'partials/_aboutCard.njk' %}
-    </aside>
-    <section class="md:col-span-8 flow b-text leading-relaxed">
+  <article class="academic-about">
+    {% include "partials/_aboutCard.njk" %}
+    <section class="academic-about__content flow b-text">
       {{ content | safe }}
     </section>
   </article>
