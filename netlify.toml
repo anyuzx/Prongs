@@ -1,6 +1,6 @@
 [build]
   publish = "dist"
-  command = "npm run build:refresh-data"
+  command = "npm run build:netlify"
 
 #[[plugins]]
 #  package = "netlify-plugin-no-more-404"

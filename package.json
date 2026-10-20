@@ -16,6 +16,7 @@
     "cms:bundle": "rollup --config",
     "fonts:bundle": "node src/utilities/build/copyChineseFonts.js",
     "build": "ELEVENTY_ENV=production run-s clean cms:bundle fonts:bundle css:preprocess build:11ty",
+    "build:netlify": "FETCH_REMOTE_DATA=1 REQUIRE_REMOTE_DATA=0 npm run build",
     "build:refresh-data": "FETCH_REMOTE_DATA=1 REQUIRE_REMOTE_DATA=1 ELEVENTY_ENV=production run-s clean cms:bundle fonts:bundle css:preprocess build:11ty",
     "build:development": "ELEVENTY_ENV=development run-s clean fonts:bundle css:preprocess build:11ty",
     "build:serve": "ELEVENTY_ENV=development run-s clean fonts:bundle css:preprocess serve"
