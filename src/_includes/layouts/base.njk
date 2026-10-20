@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 {# change the default language of the page, useful for post in chinese #}
 {% if language === 'Chinese' or language === 'chinese' %}
-  <html lang="zh">
+  <html lang="zh-Hans">
 {% else %}
   <html lang="en">
 {% endif %}
@@ -24,6 +24,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    {# Character subsets load only when text on the page needs them. #}
+    <link rel="stylesheet" href="/assets/fonts/noto/fonts.css">
 
     {# leave a placeholder for injecting purged css in the production mode #}
     {# link to external main.css in the development mode #}

@@ -27,11 +27,7 @@
 {% endblock %}
 
 {% block content %}
-{% if numberHeading %}
-  <article class="single-post number-heading">
-{% else %}
-  <article class="single-post">
-{% endif %}
+<article class="single-post{% if numberHeading %} number-heading{% endif %}{% if language === 'Chinese' or language === 'chinese' %} chinese-post{% endif %}">
   {% if image %}
   <header>
     <figure>

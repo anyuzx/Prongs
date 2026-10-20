@@ -34,7 +34,7 @@ h1, h2, h3, h4, .site-nav a { hyphens: none; }
 
 .academic-profile { display: flex; flex-direction: row; align-items: flex-start; justify-content: space-between; gap: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--site-rule); }
 .academic-profile__details { min-width: 0; flex: 1; }
-.academic-profile__name { margin: 0 0 .35rem; font-family: "Source Serif 4", Georgia, serif; font-size: clamp(1.75rem, 4vw, 2.15rem); font-weight: 600; line-height: 1.18; letter-spacing: -.025em; }
+.academic-profile__name { margin: 0 0 .35rem; font-family: "Source Serif 4", "Noto Serif SC", Georgia, serif; font-size: clamp(1.75rem, 4vw, 2.15rem); font-weight: 600; line-height: 1.18; letter-spacing: -.025em; }
 .academic-profile__role { margin: 0 0 .2rem; font-weight: 600; }
 .academic-profile__affiliation { margin: 0; line-height: 1.45; color: #4c505a; }
 .academic-profile__links { display: flex; flex-wrap: wrap; gap: .35rem 1.1rem; margin-top: .65rem; font-size: .94rem; }
@@ -101,6 +101,25 @@ a.publication-title:hover, .publication-meta a:hover { text-decoration-color: cu
 .gallery-entry { margin-bottom: 2rem; }
 .gallery-image { margin: 0 auto; max-height: 80vh; }
 .gallery-caption { margin-top: .5rem; color: var(--site-muted); font-size: .875rem; }
+
+/* Chinese long-form prose has its own reading rhythm. Keep the 40rem measure. */
+.chinese-post .b-text {
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  letter-spacing: normal;
+  text-align: left;
+  line-break: strict;
+}
+.chinese-post .b-text p,
+.chinese-post .b-text li {
+  word-break: normal;
+  overflow-wrap: break-word;
+  hyphens: none;
+}
+.chinese-post .b-text blockquote {
+  font-size: inherit;
+  line-height: inherit;
+}
 
 .site-footer { margin-top: 1rem; }
 .site-footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: .75rem; border-top: 1px solid #f1f1f2; color: var(--site-muted); }
