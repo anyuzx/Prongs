@@ -5,5 +5,6 @@ My research sits at the interface of physics, chemistry, machine learning, and b
 Current interests include:
 
 - 4D Genome
+- Generative model of 4D genomics
 - Biomolecular Condensates
 - Molecular Motors
