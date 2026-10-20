@@ -58,6 +58,11 @@ a.publication-title:hover, .publication-meta a:hover { text-decoration-color: cu
 .academic-about__content li:last-child { margin-bottom: 0; }
 .academic-about__content h2, .academic-news h2 { font-size: 1.25rem; margin-top: 1.25rem; }
 .academic-about .b-text a::after { content: none; }
+.research-schematic { margin: .75rem auto 1rem; }
+.research-schematic picture, .research-schematic img { display: block; }
+.research-schematic img { width: 100%; height: auto; margin: 0; }
+.research-schematic figcaption { margin-top: .4rem; text-align: left; font-size: .8125rem; line-height: 1.4; color: var(--site-muted); }
+.research-schematic figcaption a { white-space: nowrap; }
 .academic-news { margin-top: 1.25rem; }
 .academic-news h2 { margin-top: 0; margin-bottom: .65rem; }
 .news-list { margin: 0; padding: 0; list-style: none; }
