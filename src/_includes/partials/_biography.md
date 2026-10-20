@@ -25,5 +25,3 @@ I combine polymer physics, statistical mechanics, and data-driven inference to u
 </figure>
 
 **Generative genome modeling (ongoing).** I am developing models that generate chromosome ensembles from epigenomic and sequence features. In parallel, I am developing methods that combine population-level structural information with sparse single-cell contacts to infer individual cells' chromatin organization.
-
-My broader interests also include molecular motors.
