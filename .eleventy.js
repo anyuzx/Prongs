@@ -68,6 +68,8 @@ module.exports = function(config) {
   // add passthrough copy
   config.addPassthroughCopy({"src/assets/favicon/*": "/"});
   config.addPassthroughCopy("src/assets/images");
+  config.addPassthroughCopy("src/assets/fonts");
+  config.ignores.add("src/assets/fonts/**/*.md");
   config.addPassthroughCopy("src/admin/config.yml");
   config.addPassthroughCopy("src/_includes/js/pyodide.js");
   config.addPassthroughCopy("src/_includes/fonts");

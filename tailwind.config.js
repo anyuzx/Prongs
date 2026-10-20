@@ -27,6 +27,7 @@ module.exports = {
       fontFamily: {
         primary: [
           '"Source Sans 3"',
+          '"Noto Sans SC"',
           "system-ui",
           "-apple-system",
           "BlinkMacSystemFont",
@@ -43,12 +44,14 @@ module.exports = {
         ],
         secondary: [
           '"Source Serif 4"',
+          '"Noto Serif SC"',
           "Georgia",
           '"Times New Roman"',
           "serif"
         ],
         sans: [
           '"Source Sans 3"',
+          '"Noto Sans SC"',
           "system-ui",
           "-apple-system",
           "BlinkMacSystemFont",
@@ -65,6 +68,7 @@ module.exports = {
         ],
         serif: [
           '"Source Serif 4"',
+          '"Noto Serif SC"',
           "Georgia",
           '"Iowan Old Style"',
           '"Apple Garamond"',
