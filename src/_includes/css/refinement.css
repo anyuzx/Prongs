@@ -34,7 +34,7 @@ h1, h2, h3, h4, .site-nav a { hyphens: none; }
 
 .academic-profile { display: flex; flex-direction: row; align-items: flex-start; justify-content: space-between; gap: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--site-rule); }
 .academic-profile__details { min-width: 0; flex: 1; }
-.academic-profile__name { margin: 0 0 .35rem; font-family: Overpass, Inter, system-ui, sans-serif; font-size: clamp(1.75rem, 4vw, 2.15rem); font-weight: 800; line-height: 1.18; letter-spacing: -.025em; }
+.academic-profile__name { margin: 0 0 .35rem; font-family: "Source Serif 4", Georgia, serif; font-size: clamp(1.75rem, 4vw, 2.15rem); font-weight: 600; line-height: 1.18; letter-spacing: -.025em; }
 .academic-profile__role { margin: 0 0 .2rem; font-weight: 600; }
 .academic-profile__affiliation { margin: 0; line-height: 1.45; color: #4c505a; }
 .academic-profile__links { display: flex; flex-wrap: wrap; gap: .35rem 1.1rem; margin-top: .65rem; font-size: .94rem; }
@@ -66,13 +66,13 @@ a.publication-title:hover, .publication-meta a:hover { text-decoration-color: cu
 .news-list a:hover { text-decoration-color: currentColor; }
 
 .page-heading { margin-bottom: 1.15rem; }
-.page-heading h1, h1.page-heading { font-size: 1.6rem; line-height: 1.3; font-weight: 800; letter-spacing: -.015em; }
+.page-heading h1, h1.page-heading { font-size: 1.6rem; line-height: 1.3; font-weight: 600; letter-spacing: -.015em; }
 .page-description { margin-top: .35rem; color: var(--site-muted); font-size: .94rem; }
 .publication-tab-list { display: flex; flex-wrap: wrap; gap: 1.5rem; margin: 0 0 1rem; padding: 0; border-bottom: 1px solid var(--site-rule); }
 .publication-tab { display: inline-block; padding: .55rem 0; border-bottom: 2px solid transparent; color: var(--site-muted); font-weight: 600; }
 .publication-tab:hover, .publication-tab[aria-selected="true"] { color: var(--site-ink); border-color: var(--site-ink); }
 .tabs-enhanced .publication-panel-heading { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-.publication-year { margin: 1.5rem 0 .75rem; padding-bottom: .35rem; border-bottom: 1px solid var(--site-rule); font-size: 1.25rem; font-weight: 700; }
+.publication-year { margin: 1.5rem 0 .75rem; padding-bottom: .35rem; border-bottom: 1px solid var(--site-rule); font-size: 1.25rem; font-weight: 600; }
 .publication-list, .talk-list { margin: 0; list-style: none; }
 .publication-item, .talk-item { margin: 0 0 .75rem; padding-bottom: .75rem; border-bottom: 1px solid #eeeeef; }
 .publication-item:last-child, .talk-item:last-child { border-bottom: 0; }

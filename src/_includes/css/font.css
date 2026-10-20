@@ -1,81 +1,24 @@
+/* Self-hosted Adobe Source fonts; licenses are included beside the font files. */
 @font-face {
-    font-family: 'Overpass';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: local('Overpass Regular'), local('Overpass-Regular'),
-        url('/_includes/fonts/overpass-regular-subset.woff2') format('woff2'),
-        url('/_includes/fonts/overpass-regular-subset.woff') format('woff');
+  font-family: 'Source Sans 3';
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url('/_includes/fonts/source-sans-3-variable.woff2') format('woff2');
 }
 
 @font-face {
-    font-family: 'Overpass';
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    src: local('Overpass Bold'), local('Overpass-Bold'),
-        url('/_includes/fonts/overpass-bold-subset.woff2') format('woff2'),
-        url('/_includes/fonts/overpass-bold-subset.woff') format('woff');
+  font-family: 'Source Sans 3';
+  font-style: italic;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url('/_includes/fonts/source-sans-3-variable-italic.woff2') format('woff2');
 }
 
 @font-face {
-    font-family: 'Overpass';
-    font-style: normal;
-    font-weight: 800;
-    font-display: swap;
-    src: local('Overpass ExtraBold'), local('Overpass-ExtraBold'),
-        url('/_includes/fonts/overpass-extrabold-subset.woff2') format('woff2'),
-        url('/_includes/fonts/overpass-extrabold-subset.woff') format('woff');
-}
-
-@font-face {
-    font-family: 'Overpass';
-    font-style: normal;
-    font-weight: 900;
-    font-display: swap;
-    src: local('Overpass Black'), local('Overpass-Black'),
-        url('/_includes/fonts/overpass-heavy-subset.woff2') format('woff2'),
-        url('/_includes/fonts/overpass-heavy-subset.woff') format('woff');
-}
-
-
-@font-face {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 500;
-    font-display: swap;
-    src: local(''),
-        url('/_includes/fonts/Inter-Medium-subset.woff2') format('woff2'),
-        url('/_includes/fonts/Inter-Medium-subset.woff') format('woff');
-}
-
-
-@font-face {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: local(''),
-        url('/_includes/fonts/Inter-Regular-subset.woff2') format('woff2'),
-        url('/_includes/fonts/Inter-Regular-subset.woff') format('woff');
-}
-
-@font-face {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 600;
-    font-display: swap;
-    src: local(''),
-        url('/_includes/fonts/Inter-SemiBold-subset.woff2') format('woff2'),
-        url('/_includes/fonts/Inter-SemiBold-subset.woff') format('woff');
-}
-
-@font-face {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    src: local(''),
-        url('/_includes/fonts/Inter-Bold-subset.woff2') format('woff2'),
-        url('/_includes/fonts/Inter-Bold-subset.woff') format('woff');
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url('/_includes/fonts/source-serif-4-variable.woff2') format('woff2');
 }

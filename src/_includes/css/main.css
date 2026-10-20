@@ -90,7 +90,7 @@
 * used for styling the header for non-article section
 */
 .section-header {
-  @apply font-bold text-2xl border-b-2 border-darkergray;
+  @apply font-semibold text-2xl border-b-2 border-darkergray;
   width: fit-content;
   width: -moz-fit-content;
 }
@@ -151,7 +151,7 @@
 style the table of contents
  */
 .table-of-contents {
-  @apply invisible h-0 sticky text-sm font-medium font-secondary;
+  @apply invisible h-0 sticky text-sm font-medium font-primary;
 }
 
 .table-of-contents > ol {

@@ -26,7 +26,7 @@ module.exports = {
       },
       fontFamily: {
         primary: [
-          "Inter",
+          '"Source Sans 3"',
           "system-ui",
           "-apple-system",
           "BlinkMacSystemFont",
@@ -42,24 +42,13 @@ module.exports = {
           '"Noto Color Emoji"'
         ],
         secondary: [
-          "Overpass",
-          "Inter",
-          "system-ui",
-          "-apple-system",
-          "BlinkMacSystemFont",
-          '"Segoe UI"',
-          "Roboto",
-          '"Helvetica Neue"',
-          "Arial",
-          '"Noto Sans"',
-          "sans-serif",
-          '"Apple Color Emoji"',
-          '"Segoe UI Emoji"',
-          '"Segoe UI Symbol"',
-          '"Noto Color Emoji"'
+          '"Source Serif 4"',
+          "Georgia",
+          '"Times New Roman"',
+          "serif"
         ],
         sans: [
-          "Inter",
+          '"Source Sans 3"',
           "system-ui",
           "-apple-system",
           "BlinkMacSystemFont",
@@ -75,13 +64,14 @@ module.exports = {
           '"Noto Color Emoji"'
         ],
         serif: [
+          '"Source Serif 4"',
+          "Georgia",
           '"Iowan Old Style"',
           '"Apple Garamond"',
           "Baskerville",
           '"Times New Roman"',
           '"Droid Serif"',
           "Times",
-          '"Source Serif Pro"',
           "serif",
           '"Apple Color Emoji"',
           '"Segoe UI Emoji"',
