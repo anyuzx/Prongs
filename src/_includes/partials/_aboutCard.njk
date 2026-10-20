@@ -1,18 +1,15 @@
-<section class="profile-card">
-  <figure class="profile-portrait">
-    <img src="{{ site.AUTHOR.PHOTO }}" alt="{{ site.AUTHOR.NAME }}" class="profile-photo">
-  </figure>
-  <div class="profile-details">
-    <h1>{{ site.AUTHOR.NAME }}</h1>
-    <p class="profile-role">{{ site.AUTHOR.TITLE }}</p>
-    <p class="profile-bio">{{ site.AUTHOR.SHORT_BIO }}</p>
-    <div class="profile-links">
-      {% if site.AUTHOR.GOOGLE_SCHOLAR %}
-        <a href="{{ site.AUTHOR.GOOGLE_SCHOLAR }}" rel="noopener noreferrer" target="_blank">Google Scholar <span aria-hidden="true">↗</span></a>
-      {% endif %}
-      {% if site.AUTHOR.GITHUB %}
-        <a href="https://github.com/{{ site.AUTHOR.GITHUB }}" rel="noopener noreferrer" target="_blank">GitHub <span aria-hidden="true">↗</span></a>
-      {% endif %}
+<section class="academic-profile" aria-label="Academic profile">
+  <div class="academic-profile__details">
+    <h1 class="academic-profile__name">{{ site.AUTHOR.NAME }}</h1>
+    <p class="academic-profile__role">{{ site.AUTHOR.TITLE }}</p>
+    <p class="academic-profile__affiliation">{{ site.AUTHOR.DEPARTMENT }}<br>{{ site.AUTHOR.UNIVERSITY }}</p>
+    <div class="academic-profile__links" aria-label="Professional links">
+      <a href="mailto:{{ site.AUTHOR.EMAIL }}">Email</a>
+      <a href="{{ site.AUTHOR.GOOGLE_SCHOLAR }}" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+      <a href="https://github.com/{{ site.AUTHOR.GITHUB }}" target="_blank" rel="noopener noreferrer">GitHub</a>
     </div>
   </div>
+  <figure class="academic-profile__portrait">
+    <img src="{{ site.AUTHOR.PHOTO }}" alt="Portrait of {{ site.AUTHOR.NAME }}">
+  </figure>
 </section>

@@ -1,11 +1,9 @@
 {% extends "layouts/default.njk" %}
 
 {% block content %}
-  <article class="about-layout">
-    <aside>
-      {% include 'partials/_aboutCard.njk' %}
-    </aside>
-    <section class="about-copy flow b-text">
+  <article class="academic-about">
+    {% include "partials/_aboutCard.njk" %}
+    <section class="academic-about__content flow b-text">
       {{ content | safe }}
     </section>
   </article>

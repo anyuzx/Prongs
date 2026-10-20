@@ -1,10 +1,10 @@
 <header class="site-header">
   <nav class="site-nav{% if full %} site-shell-full{% elif wide %} site-shell-wide{% endif %}" id="head-navigation" aria-label="Main navigation">
-    <a class="site-name" href="/"{% if page.url === '/' %} aria-current="page"{% endif %}>{{ site.AUTHOR.NAME }}</a>
     <ul class="site-nav-links">
       {% for nav in navigation -%}
+        {% set active = (nav.url == '/' and (page.url == '/' or page.url == '/about/')) or (nav.url != '/' and page.url.startsWith(nav.url)) %}
         <li>
-          <a href="{{ nav.url }}"{% if page.url.startsWith(nav.url) %} aria-current="page"{% endif %}>{{ nav.title }}</a>
+          <a href="{{ nav.url }}"{% if active %} aria-current="page"{% endif %}>{{ nav.title }}</a>
         </li>
       {%- endfor %}
     </ul>

@@ -1,34 +1,29 @@
 ---
 layout: layouts/default.njk
 permalink: index.html
+title: About
 pageType: home
 ---
 
-<section class="home-intro" aria-labelledby="home-title">
-  <p class="eyebrow">{{ site.AUTHOR.SHORT_BIO }}</p>
-  <h1 id="home-title">{{ site.AUTHOR.NAME }}</h1>
-  <p class="intro-role">{{ site.AUTHOR.TITLE }}</p>
-  <p class="intro-description">I develop mechanistic and data-driven models to understand how biomolecular systems organize, assemble, and evolve.</p>
-  <div class="intro-links">
-    <a href="/about/">About me <span aria-hidden="true">→</span></a>
-    <a href="/publication/">Publications <span aria-hidden="true">→</span></a>
-  </div>
-</section>
+<article class="academic-about">
+  {% include "partials/_aboutCard.njk" %}
+  {% set biography %}{% include "partials/_biography.md" %}{% endset %}
+  <section class="academic-about__content flow b-text">
+    {{ biography | renderUsingMarkdown | safe }}
+  </section>
 
-<section class="home-updates" aria-labelledby="updates-title">
-  <h2 id="updates-title" class="eyebrow">Latest updates</h2>
-  <ul class="news-list">
-    {% for item in getNews %}
-      <li class="news-item">
-        {% if item.link %}
-          <a class="news-link" href="{{ item.link }}">
-            <span>{{ item.text | inlineRenderUsingMarkdown | safe }}</span>
-            <span class="news-arrow" aria-hidden="true">↗</span>
-          </a>
-        {% else %}
-          <div class="news-link"><span>{{ item.text | inlineRenderUsingMarkdown | safe }}</span></div>
-        {% endif %}
-      </li>
-    {% endfor %}
-  </ul>
-</section>
+  <section class="academic-news" aria-labelledby="news-title">
+    <h2 id="news-title">News</h2>
+    <ul class="news-list">
+      {% for item in getNews %}
+        <li>
+          {% if item.link %}
+            <a href="{{ item.link }}">{{ item.text | inlineRenderUsingMarkdown | safe }}</a>
+          {% else %}
+            {{ item.text | inlineRenderUsingMarkdown | safe }}
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+</article>
