@@ -1,4 +1,4 @@
-I'm Guang Shi (时光), a Research Associate in the Department of Chemistry at The University of Texas at Austin. I received my Ph.D. in biophysics from the University of Maryland, College Park, and have done postdoc studies at UT Austin and the University of Illinois at Urbana-Champaign.
+I am a Research Associate in the Department of Chemistry at The University of Texas at Austin. I received my Ph.D. in biophysics from the University of Maryland, College Park, and have done postdoc studies at UT Austin and the University of Illinois at Urbana-Champaign.
 
 ## Research
 
