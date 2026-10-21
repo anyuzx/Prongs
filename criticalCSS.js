@@ -1,10 +1,8 @@
-const critical = require("critical");
 const fg = require("fast-glob");
 
 const DEFAULT_HTML_GLOB = "dist/**/*.html";
 const DEFAULT_CSS_FILES = [
-  "dist/_includes/css/main.css",
-  "dist/_includes/css/atelier-forest-light.css"
+  "dist/_includes/css/main.css"
 ];
 const DEFAULT_CONCURRENCY = 5;
 
@@ -34,9 +32,9 @@ async function collectHtmlSources() {
   return fg(htmlGlob, { onlyFiles: true });
 }
 
-async function processOneFile(source, cssFiles) {
+async function processOneFile(source, cssFiles, generate) {
   try {
-    await critical.generate({
+    await generate({
       css: cssFiles,
       inline: true,
       src: source,
@@ -51,7 +49,7 @@ async function processOneFile(source, cssFiles) {
   }
 }
 
-async function runWorkerPool(sources, cssFiles, workerCount) {
+async function runWorkerPool(sources, cssFiles, workerCount, generate) {
   const results = new Array(sources.length);
   let cursor = 0;
 
@@ -62,7 +60,7 @@ async function runWorkerPool(sources, cssFiles, workerCount) {
       if (idx >= sources.length) {
         return;
       }
-      results[idx] = await processOneFile(sources[idx], cssFiles);
+      results[idx] = await processOneFile(sources[idx], cssFiles, generate);
     }
   }
 
@@ -84,7 +82,9 @@ async function main() {
   console.log(`[info] found ${sources.length} HTML files`);
   console.log(`[info] using concurrency=${concurrency}`);
 
-  const results = await runWorkerPool(sources, cssFiles, concurrency);
+  // Critical 8 is an ES module; load it only for this optional post-build step.
+  const { generate } = await import("critical");
+  const results = await runWorkerPool(sources, cssFiles, concurrency, generate);
   const failed = results.filter((x) => x && !x.success).length;
 
   if (failed > 0) {
@@ -96,8 +96,12 @@ async function main() {
   console.log("[done] all files processed successfully");
 }
 
-main().catch((error) => {
-  console.error("[fatal] critical CSS generation failed");
-  console.error(error);
-  process.exitCode = 1;
-});
+if (require.main === module) {
+  main().catch((error) => {
+    console.error("[fatal] critical CSS generation failed");
+    console.error(error);
+    process.exitCode = 1;
+  });
+}
+
+module.exports = { runWorkerPool };
