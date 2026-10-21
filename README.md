@@ -21,6 +21,8 @@ This repository containts the source code for my personal site. The site is buil
 
 * Requires Node.js `>=22.13.0`; Netlify uses Node 22. The optional Critical CSS tool also requires this version.
 * Run `npm test` to check photo refresh, font delivery, service-worker loading, and CSS/SVG build compatibility.
+* Security overrides keep all `lodash` and `serialize-javascript` copies on patched releases, including versions pinned by older build tools. The tests also exercise their injection protections through each consuming package.
+* Workbox 7.4.1 uses Rollup 4. The unused `netlify-plugin-a11y` package was removed to eliminate its obsolete Puppeteer/archive-extraction dependency chain; the Netlify Lighthouse integration is configured separately.
 * `npm run build` and `npm run build:development` use cached remote data for publications/photos.
 * Netlify runs `npm run build:netlify`: it runs the test suite, then attempts to refresh remote data but can deploy using the committed photo cache if Cloudinary is unavailable or rate-limited. The build logs the reason and cached photo count. Photo changes appear after a successful refresh.
 * Run `npm run build:refresh-data` for an explicit refresh of publication and photo data. This command stays strict: a failed Cloudinary request fails the build. Commit updated JSON caches after a successful local refresh so future deployments have a current fallback.
