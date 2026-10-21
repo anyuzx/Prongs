@@ -12,7 +12,10 @@ module.exports = async function purgeStyles (pagecontent, outputPath) {
             css: ['dist/_includes/css/main.css'],
             keyframes: true,
             variables: true,
-            whitelist: [':not(pre)>code'],
+            // Safelist tokens rather than the legacy full-selector whitelist.
+            safelist: { standard: ['code'], greedy: [/:focus-visible/] },
+            // Tabs and post excerpts update these attributes after the page loads.
+            dynamicAttributes: ['hidden', 'aria-selected', 'aria-expanded'],
             // This is the function used to extract class names from your templates
             defaultExtractor: content => {
                 // Capture as liberally as possible, including things like `h-(screen-1.5)`

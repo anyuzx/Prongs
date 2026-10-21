@@ -2,6 +2,9 @@
   publish = "dist"
   command = "npm run build:netlify"
 
+[build.environment]
+  NODE_VERSION = "22"
+
 #[[plugins]]
 #  package = "netlify-plugin-no-more-404"
 #  [plugins.inputs]

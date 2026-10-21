@@ -1,22 +1,14 @@
-const SVGO = require("svgo");
+const { optimize } = require("svgo");
 
-// initialize SVGO
-var svgo = new SVGO({
-    plugins: [{
-            removeXMLNS: true
-        },
-        {
-            removeDimensions: true
-        },
-        {
-            removeViewBox: false
-        }
-    ]
-});
-
-module.exports = async (svgContent, callback) => {
-    var svgmin = await svgo.optimize(svgContent).then(({
-        data
-    }) => data);
-    callback(null, svgmin);
-}
+module.exports = (svgContent, callback) => {
+  let data;
+  try {
+    ({ data } = optimize(svgContent, {
+      // SVGO 4 preserves viewBox by default; inline icons must remain scalable.
+      plugins: ["preset-default", "removeXMLNS", "removeDimensions"]
+    }));
+  } catch (error) {
+    return callback(error);
+  }
+  callback(null, data);
+};

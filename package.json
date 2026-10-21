@@ -16,28 +16,28 @@
     "cms:bundle": "rollup --config",
     "fonts:bundle": "node src/utilities/build/copyChineseFonts.js",
     "build": "ELEVENTY_ENV=production run-s clean cms:bundle fonts:bundle css:preprocess build:11ty",
-    "build:netlify": "FETCH_REMOTE_DATA=1 REQUIRE_REMOTE_DATA=0 npm run build",
+    "build:netlify": "npm test && FETCH_REMOTE_DATA=1 REQUIRE_REMOTE_DATA=0 npm run build",
     "build:refresh-data": "FETCH_REMOTE_DATA=1 REQUIRE_REMOTE_DATA=1 ELEVENTY_ENV=production run-s clean cms:bundle fonts:bundle css:preprocess build:11ty",
     "build:development": "ELEVENTY_ENV=development run-s clean fonts:bundle css:preprocess build:11ty",
-    "build:serve": "ELEVENTY_ENV=development run-s clean fonts:bundle css:preprocess serve"
+    "build:serve": "ELEVENTY_ENV=development run-s clean fonts:bundle css:preprocess serve",
+    "test": "node --test tests/*.test.js"
   },
   "keywords": [],
   "author": "Guang Shi",
   "engines": {
-    "node": ">=18"
+    "node": ">=22.13.0"
   },
   "license": "ISC",
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2",
     "@fontsource-variable/noto-sans-sc": "5.3.1",
     "@fontsource-variable/noto-serif-sc": "5.3.1",
-    "@fullhuman/postcss-purgecss": "^2.2.0",
     "@rollup/plugin-commonjs": "^29.0.0",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "autoprefixer": "^10.4.24",
     "bl": "^4.0.3",
-    "critical": "^2.0.0-27",
+    "critical": "^8.0.0",
     "cssnano": "^7.1.2",
     "dotenv": "^16.4.7",
     "eslint": "^7.2.0",
@@ -46,15 +46,18 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
+    "fast-glob": "^3.3.3",
     "minimist": "^1.2.5",
     "npm-run-all": "^4.1.5",
-    "postcss": "^8.5.6",
+    "postcss": "^8.5.26",
     "postcss-cli": "^11.0.1",
     "postcss-import": "^16.1.1",
     "posthtml": "^0.13.0",
     "posthtml-inline-assets": "^3.1.0",
+    "purgecss": "^8.0.0",
     "rollup": "^4.59.0",
     "rollup-plugin-polyfill-node": "^0.13.0",
+    "svgo": "^4.1.0",
     "tailwindcss": "^3.4.19",
     "watch": "^1.0.2"
   },
@@ -62,7 +65,7 @@
     "@11ty/eleventy-plugin-rss": "^2.0.4",
     "@babel/core": "^7.29.6",
     "@iktakahiro/markdown-it-katex": "^3.1.0",
-    "axios": "^1.18.0",
+    "axios": "^1.20.0",
     "babel-plugin-prismjs": "^2.0.1",
     "citation-js": "^0.5.0-alpha.5",
     "cloudinary": "^2.7.0",
@@ -71,10 +74,10 @@
     "htm": "^3.0.4",
     "html-minifier": "^4.0.0",
     "htmlparser2": "7.2.0",
-    "js-yaml": "^4.1.1",
+    "js-yaml": "^4.3.2",
     "make-dir": "^3.1.0",
     "make-dir-cli": "^4.0.0",
-    "markdown-it": "^14.2.0",
+    "markdown-it": "^14.3.3",
     "markdown-it-abbr": "^1.0.4",
     "markdown-it-anchor": "^5.3.0",
     "markdown-it-attrs": "^4.3.1",
@@ -100,5 +103,10 @@
   "resolutions": {
     "minimist": "^1.2.5"
   },
-  "preinstall": "npx npm-force-resolutions"
+  "preinstall": "npx npm-force-resolutions",
+  "overrides": {
+    "mocha": {
+      "js-yaml": "^4.3.2"
+    }
+  }
 }
