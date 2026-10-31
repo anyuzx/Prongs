@@ -87,8 +87,6 @@ a.publication-title:hover, .publication-meta a:hover { text-decoration-color: cu
 .publication-citations { display: flex; flex-direction: column; align-items: center; min-width: 4.75rem; color: var(--site-accent); line-height: 1.2; text-align: center; }
 .publication-citation-count { font-size: 1.2rem; font-weight: 600; font-variant-numeric: tabular-nums; }
 .publication-metric-label { margin-top: .1rem; font-size: .75rem; }
-.publication-metric-source { display: block; margin-top: .2rem; color: var(--site-muted); font-size: .6875rem; line-height: 1.3; white-space: nowrap; }
-.publication-citations:hover .publication-metric-source, a.publication-metric-source:hover { color: var(--site-accent); text-decoration: underline; text-underline-offset: .15em; }
 .publication-altmetric { flex: 0 0 3rem; text-align: center; }
 .publication-altmetric .altmetric-embed { min-height: 3rem; }
 .publication-altmetric .altmetric-embed img { width: 3rem; height: 3rem; margin: 0 auto; }

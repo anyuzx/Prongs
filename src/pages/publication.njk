@@ -54,18 +54,15 @@ script:
           <a class="publication-citations" href="{{ metric.url }}" aria-label="{{ metric.citations }} {% if metric.citations == 1 %}citation{% else %}citations{% endif %} on Google Scholar for {{ publication.title }}" title="Google Scholar · updated {% dayjs metric.updatedAt, 'MMM D, YYYY' %}">
             <span class="publication-citation-count">{{ metric.citations }}</span>
             <span class="publication-metric-label">{% if metric.citations == 1 %}citation{% else %}citations{% endif %}</span>
-            <span class="publication-metric-source">Google Scholar <span aria-hidden="true">↗</span></span>
           </a>
           {% else %}
           <a class="publication-citations" href="https://scholar.google.com/scholar?q={{ publication.title | urlencode }}" aria-label="Find citations on Google Scholar for {{ publication.title }}">
             <span class="publication-metric-label">View citations</span>
-            <span class="publication-metric-source">Google Scholar <span aria-hidden="true">↗</span></span>
           </a>
           {% endif %}
           {% if publication.DOI %}
           <div class="publication-altmetric">
             <div class="altmetric-embed" data-badge-type="donut" data-badge-popover="left" data-doi="{{ publication.DOI }}"></div>
-            <a class="publication-metric-source" href="https://www.altmetric.com/details.php?doi={{ publication.DOI | urlencode }}" aria-label="Altmetric attention details for {{ publication.title }}">Altmetric <span aria-hidden="true">↗</span></a>
           </div>
           {% endif %}
         </div>
