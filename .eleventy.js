@@ -54,6 +54,7 @@ module.exports = function(config) {
   config.addNunjucksFilter("dictNestSortBy", require('./src/utilities/filters/dictNestSortBy.js'));
   // add filter to group by attribute
   config.addNunjucksFilter("groupByEx", require('./src/utilities/filters/groupByEx.js'));
+  config.addNunjucksFilter("scholarTitle", require('./src/utilities/lib/scholarMetrics.js').normalizeTitle);
   // add filter to minimize svg using svgo
   config.addNunjucksAsyncFilter("svgo", require('./src/utilities/filters/svgo.js'));
   // add filter to minimize javascript code

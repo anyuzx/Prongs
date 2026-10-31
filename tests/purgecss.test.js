@@ -21,6 +21,7 @@ test('production CSS retains typography and interactive states while removing un
       .tabs-enhanced .publication-panel-heading { position: absolute; }
       .plus-minus[aria-expanded="true"]::before { transform: translate(-50%, -50%); }
       .table-of-contents li.active-toc::before { color: var(--ink); }
+      .publication-altmetric .altmetric-embed img { width: 3rem; height: 3rem; }
       :where(a, button, summary, [tabindex]):focus-visible { outline: 2px solid var(--ink); }
       [hidden] { display: none !important; }
       .unused-rule { color: red; }
@@ -30,6 +31,7 @@ test('production CSS retains typography and interactive states while removing un
       <a class="publication-tab">Publications</a><h2 class="publication-panel-heading">Papers</h2>
       <button class="plus-minus" aria-expanded="false">Expand</button>
       <ol class="table-of-contents"><li>Contents</li></ol>
+      <div class="publication-altmetric"><div class="altmetric-embed" data-doi="10.1234/fixture"></div></div>
       <script>container.classList.add("tabs-enhanced");tab.setAttribute("aria-selected", String(selected));
       toggle.setAttribute("aria-expanded", String(expanded));item.classList.add("active-toc");</script>
     </body></html>`;
@@ -48,6 +50,7 @@ test('production CSS retains typography and interactive states while removing un
       '.tabs-enhanced .publication-panel-heading',
       '.plus-minus[aria-expanded="true"]::before',
       '.table-of-contents li.active-toc::before',
+      '.publication-altmetric .altmetric-embed img',
       '[hidden]'
     ]) assert.ok(selectors.includes(selector), `Missing ${selector}`);
     assert.ok(selectors.some(selector => selector.endsWith(':focus-visible')));
