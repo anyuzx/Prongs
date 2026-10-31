@@ -13,7 +13,12 @@ module.exports = async function purgeStyles (pagecontent, outputPath) {
             keyframes: true,
             variables: true,
             // Safelist tokens rather than the legacy full-selector whitelist.
-            safelist: { standard: ['code'], greedy: [/:focus-visible/] },
+            safelist: {
+                standard: ['code'],
+                greedy: [/:focus-visible/],
+                // Altmetric inserts its badge image after the page is rendered.
+                deep: pagecontent.includes('altmetric-embed') ? [/^altmetric-embed$/] : []
+            },
             // Tabs and post excerpts update these attributes after the page loads.
             dynamicAttributes: ['hidden', 'aria-selected', 'aria-expanded'],
             // This is the function used to extract class names from your templates

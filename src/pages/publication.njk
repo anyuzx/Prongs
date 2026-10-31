@@ -6,6 +6,8 @@ description: Publications, talks, and posters by Guang Shi
 script:
   - src: js/tabs.js
     inline: true
+  - src: js/loadPublicationMetrics.js
+    inline: true
 ---
 
 <header class="page-heading">
@@ -28,21 +30,44 @@ script:
     <ol class="publication-list list-none ml-0">
       {% for publication in publications %}
       <li class="publication-item">
-        <div class="publication-title-row">
-          {% if publication.DOI %}
-          <a class="publication-title" href="https://doi.org/{{ publication.DOI }}">{{ publication.title }} <span aria-hidden="true">↗</span></a>
-          {% else %}
-          <span class="publication-title">{{ publication.title }}</span>
-          {% endif %}
-          {% if publication.subtype === "preprint" %}
-          <span class="publication-badge">preprint</span>
-          {% endif %}
+        <div class="publication-details">
+          <div class="publication-title-row">
+            {% if publication.DOI %}
+            <a class="publication-title" href="https://doi.org/{{ publication.DOI }}">{{ publication.title }} <span aria-hidden="true">↗</span></a>
+            {% else %}
+            <span class="publication-title">{{ publication.title }}</span>
+            {% endif %}
+            {% if publication.subtype === "preprint" %}
+            <span class="publication-badge">preprint</span>
+            {% endif %}
+          </div>
+          <div class="publication-meta">
+            {% for author in publication.author %}
+              <span{% if author.family == "Shi" and author.given == "Guang" %} class="publication-author"{% endif %}>{{ author.family }}{% if author.given %}, {{ author.given }}{% endif %}{% if not loop.last %}; {% endif %}</span>
+            {% endfor %}
+            <span class="italic">{{ publication["container-title"] }}</span><span> ({{ publication["issued"]["date-parts"][0][0] }})</span>
+          </div>
         </div>
-        <div class="publication-meta">
-          {% for author in publication.author %}
-            <span{% if author.family == "Shi" and author.given == "Guang" %} class="publication-author"{% endif %}>{{ author.family }}{% if author.given %}, {{ author.given }}{% endif %}{% if not loop.last %}; {% endif %}</span>
-          {% endfor %}
-          <span class="italic">{{ publication["container-title"] }}</span><span> ({{ publication["issued"]["date-parts"][0][0] }})</span>
+        {% set metric = publicationMetrics.papers[publication.title | scholarTitle] %}
+        <div class="publication-metrics" role="group" aria-label="Citation and attention metrics">
+          {% if metric %}
+          <a class="publication-citations" href="{{ metric.url }}" aria-label="{{ metric.citations }} {% if metric.citations == 1 %}citation{% else %}citations{% endif %} on Google Scholar for {{ publication.title }}" title="Google Scholar · updated {% dayjs metric.updatedAt, 'MMM D, YYYY' %}">
+            <span class="publication-citation-count">{{ metric.citations }}</span>
+            <span class="publication-metric-label">{% if metric.citations == 1 %}citation{% else %}citations{% endif %}</span>
+            <span class="publication-metric-source">Google Scholar <span aria-hidden="true">↗</span></span>
+          </a>
+          {% else %}
+          <a class="publication-citations" href="https://scholar.google.com/scholar?q={{ publication.title | urlencode }}" aria-label="Find citations on Google Scholar for {{ publication.title }}">
+            <span class="publication-metric-label">View citations</span>
+            <span class="publication-metric-source">Google Scholar <span aria-hidden="true">↗</span></span>
+          </a>
+          {% endif %}
+          {% if publication.DOI %}
+          <div class="publication-altmetric">
+            <div class="altmetric-embed" data-badge-type="donut" data-badge-popover="left" data-doi="{{ publication.DOI }}"></div>
+            <a class="publication-metric-source" href="https://www.altmetric.com/details.php?doi={{ publication.DOI | urlencode }}" aria-label="Altmetric attention details for {{ publication.title }}">Altmetric <span aria-hidden="true">↗</span></a>
+          </div>
+          {% endif %}
         </div>
       </li>
       {% endfor %}

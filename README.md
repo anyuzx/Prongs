@@ -16,6 +16,7 @@ This repository containts the source code for my personal site. The site is buil
 * RSS feed
 * Image Lazy Loading
 * Automatc publication page generated from a list of DOI
+* Per-paper Google Scholar citation counts and official Altmetric badges
 
 ## Development Notes
 
@@ -28,3 +29,10 @@ This repository containts the source code for my personal site. The site is buil
 * Run `npm run build:refresh-data` for an explicit refresh of publication and photo data. This command stays strict: a failed Cloudinary request fails the build. Commit updated JSON caches after a successful local refresh so future deployments have a current fallback.
 * Photo refreshes reuse embedded image metadata for unchanged asset versions; only new or replaced images require individual metadata requests. Tags and captions still refresh from the resource listing. Failed or empty refreshes do not replace the existing cache, and builds fail if neither remote data nor a usable photo cache is available.
 * Run `node --test tests/getPhotos.test.js` to check photo refresh and fallback behavior without making external API requests.
+
+### Publication metrics
+
+* Google Scholar counts come from the public profile linked on the site and are saved in `src/contents/publications/scholar_metrics.json`. Papers are matched by their complete titles, ignoring case and punctuation. Ambiguous or unavailable records never become invented zero counts; a paper without a verified count links to Scholar instead.
+* Remote-data builds make at most one Scholar profile request when the saved snapshot is older than 24 hours. A timeout, rate limit, or unexpected response keeps the saved counts and their original timestamps. Each count links to Scholar and shows its snapshot date in the tooltip. Normal local builds work entirely from the committed snapshot.
+* To refresh the saved snapshot without refreshing photos/publications, run `FETCH_REMOTE_DATA=1 node -e 'require("./src/_data/publicationMetrics")()'`. The same 24-hour limit applies. Commit updated `scholar_metrics.json` so future deployments have that fallback; a deployment's temporary filesystem is not a durable cache.
+* The official [Altmetric embed](https://docs.altmetric.com/badges/getting-started/) loads only on the publication page, after the page finishes loading. Its DOI-based donuts show online attention, not scholarly citation counts. The Altmetric text link remains usable if the external badge is blocked or unavailable. Metrics sit to the right on desktop and below each paper on narrow screens.
