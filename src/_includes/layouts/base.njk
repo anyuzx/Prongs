@@ -135,7 +135,7 @@
           {% endif %}
         {% endif %}
       {% elif item.inline %}
-        {%if head %}
+        {% if item.head %}
         {% else %}
           {% set scriptRaw %}
             {% include item.src %}

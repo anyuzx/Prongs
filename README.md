@@ -30,6 +30,12 @@ This repository containts the source code for my personal site. The site is buil
 * Photo refreshes reuse embedded image metadata for unchanged asset versions; only new or replaced images require individual metadata requests. Tags and captions still refresh from the resource listing. Failed or empty refreshes do not replace the existing cache, and builds fail if neither remote data nor a usable photo cache is available.
 * Run `node --test tests/getPhotos.test.js` to check photo refresh and fallback behavior without making external API requests.
 
+### 404 structure viewer
+
+* The 404 page uses the standalone, pinned NGL 2.5.0 browser bundle and explicitly requests `https://files.rcsb.org/download/6CO8.cif`. Do not restore the extensionless `rcsb://` URL: older NGL versions resolve it to RCSB's retired MMTF service.
+* The viewer initializes once after DOM readiness, preserves biological assembly `BU1` and its cartoon representation, and falls back to a local structure image if the library, WebGL, or the structure download is unavailable. The fallback also works without JavaScript and at nested missing URLs.
+* `src/assets/images/404/6co8-assembly-1.jpeg` is the unmodified RCSB PDB preview from `https://cdn.rcsb.org/images/structures/6co8_assembly-1.jpeg`, downloaded November 8, 2026 (America/Chicago). Attribution appears on the page: RCSB PDB entry 6CO8, Sevvana et al. (2018), DOI `10.1016/j.str.2018.05.006`. RCSB website content is available under CC BY 4.0; see https://www.rcsb.org/pages/policies.
+
 ### Publication metrics
 
 * Google Scholar counts come from the public profile linked on the site and are saved in `src/contents/publications/scholar_metrics.json`. Papers are matched by their complete titles, ignoring case and punctuation. Ambiguous or unavailable records never become invented zero counts; a paper without a verified count links to Scholar instead.
